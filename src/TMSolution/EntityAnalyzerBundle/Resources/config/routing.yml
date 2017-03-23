@@ -1,0 +1,3 @@
+tm_solution_entity_analyzer_homepage:
+    path:     /
+    defaults: { _controller: TMSolutionEntityAnalyzerBundle:Default:index }
