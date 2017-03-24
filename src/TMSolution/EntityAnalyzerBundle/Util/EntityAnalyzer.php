@@ -16,13 +16,6 @@ class EntityAnalyzer {
     protected $manager;
     protected $metadata;
     protected $reflectionClass;
-    protected $association = [
-        1 => 'OneToOne',
-        2 => 'ManyToOne',
-        4 => 'OneToMany',
-        8 => 'ManyToMany',
-        3 => 'ToOne',
-        12 => 'ToMany'];
 
     public function __construct($orm, $entityClass, $managerName = null) {
         $this->entityClass = $entityClass;
@@ -83,7 +76,7 @@ class EntityAnalyzer {
             $field->setName($parameters['fieldName']);
             $field->setType('object');
             $field->setEntityName($parameters['targetEntity']);
-            $field->setAssociationType($this->association[$parameters['type']]);
+            $field->setAssociationType($parameters['type']);
             $field->setSetterName($this->findMethodByPrefix($parameters['fieldName'], ['set', 'add']));
             $fields[$field->getName()] = $field;
         }
