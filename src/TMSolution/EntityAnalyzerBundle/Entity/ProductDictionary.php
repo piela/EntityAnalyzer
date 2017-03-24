@@ -1,6 +1,6 @@
 <?php
 
-namespace CCO\CallCenterBundle\Entity;
+namespace TMSolution\EntityAnalyzerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -71,11 +71,11 @@ class ProductDictionary
     /**
      * Set productCategory
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductCategory $productCategory
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductCategory $productCategory
      *
      * @return ProductDefinition
      */
-    public function setProductCategory(\CCO\CallCenterBundle\Entity\ProductCategory $productCategory = null)
+    public function setProductCategory(\TMSolution\EntityAnalyzerBundle\Entity\ProductCategory $productCategory = null)
     {
         $this->productCategory = $productCategory;
 
@@ -85,7 +85,7 @@ class ProductDictionary
     /**
      * Get productCategory
      *
-     * @return \CCO\CallCenterBundle\Entity\ProductCategory
+     * @return \TMSolution\EntityAnalyzerBundle\Entity\ProductCategory
      */
     public function getProductCategory()
     {

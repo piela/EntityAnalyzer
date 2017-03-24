@@ -1,6 +1,6 @@
 <?php
 
-namespace CCO\CallCenterBundle\Entity;
+namespace TMSolution\EntityAnalyzerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -27,9 +27,9 @@ class Product {
 
 
     /**
-     * @var CCO\CallCenterBundle\Entity\ProductDefinition
+     * @var TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition
      *
-     * @ORM\ManyToOne(targetEntity="CCO\CallCenterBundle\Entity\ProductDefinition")
+     * @ORM\ManyToOne(targetEntity="TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="productdefinition_id", referencedColumnName="id", nullable=true)
      * })
@@ -53,9 +53,9 @@ class Product {
     protected $dateTo;
 
     /**
-     * @var CCO\CallCenterBundle\Entity\Transaction
+     * @var TMSolution\EntityAnalyzerBundle\Entity\Transaction
      *
-     * @ORM\ManyToOne(targetEntity="CCO\CallCenterBundle\Entity\Transaction",inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="TMSolution\EntityAnalyzerBundle\Entity\Transaction",inversedBy="products")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="transaction_id", referencedColumnName="id", nullable=true)
      * })
@@ -73,9 +73,9 @@ class Product {
     protected $transactionName;
 
     /**
-     * @var CCO\CallCenterBundle\Entity\PaymentFrequency
+     * @var TMSolution\EntityAnalyzerBundle\Entity\PaymentFrequency
      *
-     * @ORM\ManyToOne(targetEntity="CCO\CallCenterBundle\Entity\PaymentFrequency")
+     * @ORM\ManyToOne(targetEntity="TMSolution\EntityAnalyzerBundle\Entity\PaymentFrequency")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="payment_frequency_id", referencedColumnName="id", nullable=false)
      * })
@@ -281,10 +281,10 @@ class Product {
     /**
      * Set productDefinition
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductDefinition $productDefinition
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition
      * @return Product
      */
-    public function setProductDefinition(\CCO\CallCenterBundle\Entity\ProductDefinition $productDefinition = null) {
+    public function setProductDefinition(\TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition = null) {
         $this->productDefinition = $productDefinition;
 
         return $this;
@@ -293,7 +293,7 @@ class Product {
     /**
      * Get productDefinition
      *
-     * @return \CCO\CallCenterBundle\Entity\ProductDefinition 
+     * @return \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition 
      */
     public function getProductDefinition() {
         return $this->productDefinition;
@@ -302,10 +302,10 @@ class Product {
     /**
      * Set transaction
      *
-     * @param \CCO\CallCenterBundle\Entity\Transaction $transaction
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\Transaction $transaction
      * @return Product
      */
-    public function setTransaction(\CCO\CallCenterBundle\Entity\Transaction $transaction = null) {
+    public function setTransaction(\TMSolution\EntityAnalyzerBundle\Entity\Transaction $transaction = null) {
         $this->transaction = $transaction;
 
         return $this;
@@ -314,7 +314,7 @@ class Product {
     /**
      * Get transaction
      *
-     * @return \CCO\CallCenterBundle\Entity\Transaction 
+     * @return \TMSolution\EntityAnalyzerBundle\Entity\Transaction 
      */
     public function getTransaction() {
         return $this->transaction;

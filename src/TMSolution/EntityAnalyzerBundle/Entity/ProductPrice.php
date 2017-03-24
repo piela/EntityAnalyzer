@@ -1,6 +1,6 @@
 <?php
 
-namespace CCO\CallCenterBundle\Entity;
+namespace TMSolution\EntityAnalyzerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -37,9 +37,9 @@ class ProductPrice
     protected $active;
 
     /**
-     * @var CCO\CallCenterBundle\Entity\ProductDefinition
+     * @var TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition
      *
-     * @ORM\ManyToOne(targetEntity="CCO\CallCenterBundle\Entity\ProductDefinition", inversedBy="productPrices")
+     * @ORM\ManyToOne(targetEntity="TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition", inversedBy="productPrices")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="productdefinition_id", referencedColumnName="id", nullable=true)
      * })
@@ -135,10 +135,10 @@ class ProductPrice
     /**
      * Set productDefinition
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductDefinition $productDefinition
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition
      * @return ProductPrice
      */
-    public function setProductDefinition(\CCO\CallCenterBundle\Entity\ProductDefinition $productDefinition = null)
+    public function setProductDefinition(\TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition = null)
     {
         $this->productDefinition = $productDefinition;
 
@@ -148,7 +148,7 @@ class ProductPrice
     /**
      * Get productDefinition
      *
-     * @return \CCO\CallCenterBundle\Entity\ProductDefinition 
+     * @return \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition 
      */
     public function getProductDefinition()
     {

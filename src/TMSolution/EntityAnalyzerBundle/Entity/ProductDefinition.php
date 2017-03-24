@@ -1,15 +1,11 @@
 <?php
 
-namespace CCO\CallCenterBundle\Entity;
+namespace TMSolution\EntityAnalyzerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
-use JMS\Serializer\Annotation as JMS;
-use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\VirtualProperty;
-use JMS\Serializer\Annotation\SerializedName;
-use JMS\Serializer\Annotation\Accessor;
+
 
 /**
  * Productdefinition
@@ -67,7 +63,7 @@ class ProductDefinition
     protected $productPrices;
     
     /**
-     * @ORM\OneToMany(targetEntity="CCO\CallCenterBundle\Entity\Discount", mappedBy="productDefinition")
+     * @ORM\OneToMany(targetEntity="TMSolution\EntityAnalyzerBundle\Entity\Discount", mappedBy="productDefinition")
      */    
     protected $discounts; 
     
@@ -92,11 +88,11 @@ class ProductDefinition
     /**
      * Add productPrice
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductPrice $productPrice
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductPrice $productPrice
      *
      * @return ProductDefinition
      */
-    public function addProductPrice(\CCO\CallCenterBundle\Entity\ProductPrice $productPrice)
+    public function addProductPrice(\TMSolution\EntityAnalyzerBundle\Entity\ProductPrice $productPrice)
     {
         $this->productPrices[] = $productPrice;
         
@@ -106,9 +102,9 @@ class ProductDefinition
     /**
      * Remove productPrice
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductPrice $productPrice
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductPrice $productPrice
      */
-    public function removeProductPrice(\CCO\CallCenterBundle\Entity\ProductPrice $productPrice)
+    public function removeProductPrice(\TMSolution\EntityAnalyzerBundle\Entity\ProductPrice $productPrice)
     {
         $this->productPrices->removeElement($productPrice);
     }
@@ -126,11 +122,11 @@ class ProductDefinition
     /**
      * Set productDictionary
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductDictionary $productDictionary
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductDictionary $productDictionary
      *
      * @return ProductDefinition
      */
-    public function setProductDictionary(\CCO\CallCenterBundle\Entity\ProductDictionary $productDictionary = null)
+    public function setProductDictionary(\TMSolution\EntityAnalyzerBundle\Entity\ProductDictionary $productDictionary = null)
     {
         $this->productDictionary = $productDictionary;
 
@@ -140,7 +136,7 @@ class ProductDefinition
     /**
      * Get productDictionary
      *
-     * @return \CCO\CallCenterBundle\Entity\ProductDictionary
+     * @return \TMSolution\EntityAnalyzerBundle\Entity\ProductDictionary
      */
     public function getProductDictionary()
     {
@@ -161,11 +157,11 @@ class ProductDefinition
     /**
      * Add parent
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductDefinition $parent
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $parent
      *
      * @return ProductDefinition
      */
-    public function addParent(\CCO\CallCenterBundle\Entity\ProductDefinition $parent)
+    public function addParent(\TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $parent)
     {
         $this->parents[] = $parent;
         $parent->addProductDefinition($this);
@@ -176,11 +172,11 @@ class ProductDefinition
     /**
      * Set parent
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductDefinition $parent
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $parent
      *
      * @return ProductDefinition
      */
-    public function setParents(\CCO\CallCenterBundle\Entity\ProductDefinition $parent)
+    public function setParents(\TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $parent)
     {
         return $this->addParent($parent);
     }    
@@ -188,9 +184,9 @@ class ProductDefinition
     /**
      * Remove parent
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductDefinition $parent
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $parent
      */
-    public function removeParent(\CCO\CallCenterBundle\Entity\ProductDefinition $parent)
+    public function removeParent(\TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $parent)
     {
         $this->parents->removeElement($parent);
     }
@@ -208,11 +204,11 @@ class ProductDefinition
     /**
      * Add productDefinition
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductDefinition $productDefinition
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition
      *
      * @return ProductDefinition
      */
-    public function addProductDefinition(\CCO\CallCenterBundle\Entity\ProductDefinition $productDefinition)
+    public function addProductDefinition(\TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition)
     {
         $this->productDefinitions[] = $productDefinition;
         
@@ -222,9 +218,9 @@ class ProductDefinition
     /**
      * Remove productDefinition
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductDefinition $productDefinition
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition
      */
-    public function removeProductDefinition(\CCO\CallCenterBundle\Entity\ProductDefinition $productDefinition)
+    public function removeProductDefinition(\TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition)
     {
         $this->productDefinitions->removeElement($productDefinition);
     }
@@ -266,11 +262,11 @@ class ProductDefinition
     /**
      * Set measureUnit
      *
-     * @param \CCO\CallCenterBundle\Entity\MeasureUnit $measureUnit
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit $measureUnit
      *
      * @return ProductDefinition
      */
-    public function setMeasureUnit(\CCO\CallCenterBundle\Entity\MeasureUnit $measureUnit = null)
+    public function setMeasureUnit(\TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit $measureUnit = null)
     {
         $this->measureUnit = $measureUnit;
 
@@ -280,7 +276,7 @@ class ProductDefinition
     /**
      * Get measureUnit
      *
-     * @return \CCO\CallCenterBundle\Entity\MeasureUnit
+     * @return \TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit
      */
     public function getMeasureUnit()
     {
@@ -290,11 +286,11 @@ class ProductDefinition
     /**
      * Add discount
      *
-     * @param \CCO\CallCenterBundle\Entity\Discount $discount
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\Discount $discount
      *
      * @return ProductDefinition
      */
-    public function addDiscount(\CCO\CallCenterBundle\Entity\Discount $discount)
+    public function addDiscount(\TMSolution\EntityAnalyzerBundle\Entity\Discount $discount)
     {
         $this->discounts[] = $discount;
 
@@ -304,9 +300,9 @@ class ProductDefinition
     /**
      * Remove discount
      *
-     * @param \CCO\CallCenterBundle\Entity\Discount $discount
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\Discount $discount
      */
-    public function removeDiscount(\CCO\CallCenterBundle\Entity\Discount $discount)
+    public function removeDiscount(\TMSolution\EntityAnalyzerBundle\Entity\Discount $discount)
     {
         $this->discounts->removeElement($discount);
     }

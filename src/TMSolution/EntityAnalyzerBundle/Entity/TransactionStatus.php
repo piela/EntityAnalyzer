@@ -1,6 +1,6 @@
 <?php
 
-namespace CCO\CallCenterBundle\Entity;
+namespace TMSolution\EntityAnalyzerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

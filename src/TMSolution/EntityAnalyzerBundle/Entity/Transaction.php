@@ -1,6 +1,6 @@
 <?php
 
-namespace CCO\CallCenterBundle\Entity;
+namespace TMSolution\EntityAnalyzerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -53,9 +53,9 @@ class Transaction {
     protected $user;
 
     /**
-     * @var CCO\CallCenterBundle\Entity\TransactionType
+     * @var TMSolution\EntityAnalyzerBundle\Entity\TransactionType
      *
-     * @ORM\ManyToOne(targetEntity="CCO\CallCenterBundle\Entity\TransactionType")
+     * @ORM\ManyToOne(targetEntity="TMSolution\EntityAnalyzerBundle\Entity\TransactionType")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="transaction_type_id", referencedColumnName="id", nullable=true)
      * })
@@ -235,11 +235,11 @@ class Transaction {
     /**
      * Add product
      *
-     * @param \CCO\CallCenterBundle\Entity\Product $product
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\Product $product
      *
      * @return Transaction
      */
-    public function addProduct(\CCO\CallCenterBundle\Entity\Product $product) {
+    public function addProduct(\TMSolution\EntityAnalyzerBundle\Entity\Product $product) {
         $this->products[] = $product;
 
         return $this;
@@ -248,9 +248,9 @@ class Transaction {
     /**
      * Remove product
      *
-     * @param \CCO\CallCenterBundle\Entity\Product $product
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\Product $product
      */
-    public function removeProduct(\CCO\CallCenterBundle\Entity\Product $product) {
+    public function removeProduct(\TMSolution\EntityAnalyzerBundle\Entity\Product $product) {
         $this->products->removeElement($product);
     }
 
@@ -289,11 +289,11 @@ class Transaction {
     /**
      * Set transactionType
      *
-     * @param \CCO\CallCenterBundle\Entity\TransactionType $transactionType
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\TransactionType $transactionType
      *
      * @return Transaction
      */
-    public function setTransactionType(\CCO\CallCenterBundle\Entity\TransactionType $transactionType = null) {
+    public function setTransactionType(\TMSolution\EntityAnalyzerBundle\Entity\TransactionType $transactionType = null) {
         $this->transactionType = $transactionType;
 
         return $this;
@@ -302,7 +302,7 @@ class Transaction {
     /**
      * Get transactionType
      *
-     * @return \CCO\CallCenterBundle\Entity\TransactionType
+     * @return \TMSolution\EntityAnalyzerBundle\Entity\TransactionType
      */
     public function getTransactionType() {
         return $this->transactionType;
@@ -386,11 +386,11 @@ class Transaction {
     /**
      * Set status
      *
-     * @param \CCO\CallCenterBundle\Entity\TransactionStatus $status
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\TransactionStatus $status
      *
      * @return Transaction
      */
-    public function setStatus(\CCO\CallCenterBundle\Entity\TransactionStatus $status = null) {
+    public function setStatus(\TMSolution\EntityAnalyzerBundle\Entity\TransactionStatus $status = null) {
         $this->status = $status;
 
         return $this;
@@ -399,7 +399,7 @@ class Transaction {
     /**
      * Get status
      *
-     * @return \CCO\CallCenterBundle\Entity\TransactionStatus
+     * @return \TMSolution\EntityAnalyzerBundle\Entity\TransactionStatus
      */
     public function getStatus() {
         return $this->status;

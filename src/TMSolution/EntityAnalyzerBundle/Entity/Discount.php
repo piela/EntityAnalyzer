@@ -1,6 +1,6 @@
 <?php
 
-namespace CCO\CallCenterBundle\Entity;
+namespace TMSolution\EntityAnalyzerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -38,16 +38,11 @@ class Discount
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="CCO\CallCenterBundle\Entity\MeasureUnit")
+     * @ORM\ManyToOne(targetEntity="TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit")
      */
     private $measureUnit;
 
-    /**
-     * @var integer
-     *
-     * @ORM\ManyToOne(targetEntity="CCO\CallCenterBundle\Entity\DiscountType")
-     */
-    private $discountType;
+ 
 
     /**
      * @var string
@@ -59,7 +54,7 @@ class Discount
     /**
      * @var ProductDefinition
      * 
-     * @ORM\ManyToOne(targetEntity="CCO\CallCenterBundle\Entity\ProductDefinition", inversedBy="discounts")
+     * @ORM\ManyToOne(targetEntity="TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition", inversedBy="discounts")
      */    
     protected $productDefinition;
     
@@ -121,29 +116,7 @@ class Discount
         return $this->measureUnit;
     }
 
-    /**
-     * Set discountType
-     *
-     * @param integer $discountType
-     *
-     * @return Discount
-     */
-    public function setDiscountType($discountType)
-    {
-        $this->discountType = $discountType;
 
-        return $this;
-    }
-
-    /**
-     * Get discountType
-     *
-     * @return integer
-     */
-    public function getDiscountType()
-    {
-        return $this->discountType;
-    }
 
     /**
      * Set value
@@ -206,11 +179,11 @@ class Discount
     /**
      * Set productDefinition
      *
-     * @param \CCO\CallCenterBundle\Entity\ProductDefinition $productDefinition
+     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition
      *
      * @return Discount
      */
-    public function setProductDefinition(\CCO\CallCenterBundle\Entity\ProductDefinition $productDefinition = null)
+    public function setProductDefinition(\TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition = null)
     {
         $this->productDefinition = $productDefinition;
 
@@ -220,7 +193,7 @@ class Discount
     /**
      * Get productDefinition
      *
-     * @return \CCO\CallCenterBundle\Entity\ProductDefinition
+     * @return \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition
      */
     public function getProductDefinition()
     {
