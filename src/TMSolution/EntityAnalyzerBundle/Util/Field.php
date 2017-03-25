@@ -13,6 +13,7 @@ class Field {
     protected $associationType;
     protected $entityName;
     protected $type;
+    protected $metadata;
 
     function getName() {
         return $this->name;
@@ -52,6 +53,14 @@ class Field {
 
     function setType($type) {
         $this->type = $type;
+    }
+    
+    function getMetadata() {
+        return $this->metadata;
+    }
+
+    function setMetadata($metadata) {
+        $this->metadata = $metadata;
     }
 
 }

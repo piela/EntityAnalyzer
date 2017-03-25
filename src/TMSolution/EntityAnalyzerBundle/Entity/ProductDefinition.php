@@ -3,7 +3,6 @@
 namespace TMSolution\EntityAnalyzerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
@@ -23,7 +22,6 @@ class ProductDefinition
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @JMS\Groups({"api"}) 
      */
     protected $id;
 

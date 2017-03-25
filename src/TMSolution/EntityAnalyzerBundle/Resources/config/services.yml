@@ -1,4 +1,11 @@
 services:
-#    tm_solution_entity_analyzer.example:
-#        class: TMSolution\EntityAnalyzerBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    prototype.controller:
+        class: TMSolution\EntityAnalyzerBundle\Controller\PrototypeController
+        arguments: ["@service_container"]
+        shared: false
+        
+        
+    prototype.config:
+        class: TMSolution\EntityAnalyzerBundle\Service\PrototypeConfig
+        arguments: ["@service_container"]
+        shared: false    

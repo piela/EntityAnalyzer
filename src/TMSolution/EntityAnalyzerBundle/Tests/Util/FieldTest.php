@@ -1,52 +1,81 @@
 <?php
 
-namespace TMSolution\EntityAnalyzerBundle\Util;
+namespace TMSolution\EntityAnalyzerBundle\Tests\Util;
+
+use TMSolution\EntityAnalyzerBundle\Util\Field;
+use \PHPUnit\Framework\TestCase;
 
 /**
  * Description of EntityAnalyzer
  *
  * @author Mariusz
  */
-class FieldTest {
-    
+class FieldTest extends  TestCase {
+
+    protected static $field;
+
+    public static function setUpBeforeClass() {
+        self::$field = new Field();
+    }
+
     function testGetName() {
-        return $this->name;
+        $name = 'test';
+        self::$field->setName($name);
+        $this->assertEquals('test', self::$field->getName());
     }
 
     function testGetSetterName() {
-        return $this->setterName;
+        $name = 'test';
+        self::$field->setSetterName($name);
+        $this->assertEquals('test', self::$field->getSetterName());
     }
 
     function testGetAssociationType() {
-        return $this->associationType;
+        $name = 1;
+        self::$field->setAssociationType($name);
+        $this->assertEquals(1, self::$field->getAssociationType());
     }
 
-    function testSetName($name) {
-        $this->name = $name;
+    function testSetName() {
+        $name = 'test';
+        self::$field->setName($name);
+        $this->assertEquals('test', self::$field->getName());
     }
 
-    function testSetSetterName($setterName) {
-        $this->setterName = $setterName;
+    function testSetSetterName() {
+        $name = 'test';
+        self::$field->setSetterName($name);
+        $this->assertEquals('test', self::$field->getSetterName());
     }
 
-    function testSetAssociationType($associationType) {
-        $this->associationType = $associationType;
+    function testSetAssociationType() {
+        $name = 1;
+        self::$field->setAssociationType($name);
+        $this->assertEquals(1, self::$field->getAssociationType());
     }
 
     function testGetEntityName() {
-        return $this->entityName;
+        $name = 'test';
+        self::$field->setEntityName($name);
+        $this->assertEquals('test', self::$field->getEntityName());
     }
 
-    function testSetEntityName($entityName) {
-        $this->entityName = $entityName;
+    function testSetEntityName() {
+        $name = 'test';
+        self::$field->setEntityName($name);
+        $this->assertEquals('test', self::$field->getEntityName());
     }
 
     function testGetType() {
-        return $this->type;
+        $name = 'test';
+        self::$field->setType($name);
+        $this->assertEquals('test', self::$field->getType());
     }
 
-    function testSetType($type) {
-        $this->type = $type;
+    function testSetType() {
+        $name = 'test';
+        self::$field->setType($name);
+        $this->assertEquals('test', self::$field->getType());
     }
 
 }

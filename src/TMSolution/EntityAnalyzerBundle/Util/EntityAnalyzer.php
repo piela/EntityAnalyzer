@@ -4,6 +4,7 @@ namespace TMSolution\EntityAnalyzerBundle\Util;
 
 use \TMSolution\EntityAnalyzerBundle\Util\EntityAnalyze;
 use \TMSolution\EntityAnalyzerBundle\Util\Field;
+use TMSolution\EntityAnalyzerBundle\Association;
 
 /**
  * Description of EntityAnalyzer
@@ -20,19 +21,18 @@ class EntityAnalyzer {
     public function __construct($orm, $entityClass, $managerName = null) {
         $this->entityClass = $entityClass;
         $this->manager = $orm->getManager($managerName);
-        $this->metadata = $this->getManager()->getClassMetadata($this->entityClass);
+        $this->metadata = $orm->getManager()->getClassMetadata($entityClass);
         $this->reflectionClass = $this->metadata->getReflectionClass();
     }
 
     public function getEntityAnalyze() {
-        $entityAnalize = new EntityAnalyze($this->getEntityClass());
-        $entityAnalize->setFields($this->getFields());
-        return $entityAnalize;
+        return $this->analize();
     }
-    
+
     protected function getEntityClass() {
-         return $this->entityClass;
+        return $this->entityClass;
     }
+
     protected function getMetadata() {
         return $this->metadata;
     }
@@ -62,25 +62,35 @@ class EntityAnalyzer {
         return false;
     }
 
-    protected function getFields($metadata) {
+    protected function analize() {
+        $entityAnalyze = new EntityAnalyze($this->getEntityClass());
         $fields = [];
-        foreach ($metadata->fieldMappings as $field => $parameters) {
+        foreach ($this->metadata->fieldMappings as $field => $parameters) {
             $field = new Field();
             $field->setName($parameters['fieldName']);
             $field->setType($parameters['type']);
             $field->setSetterName($this->findMethodByPrefix($parameters['fieldName'], ['set', 'add']));
-            $fields[$field->getName()] = $field;
+            $field->setMetadata($parameters);
+            $entityAnalyze->addField($field->getName(), $field);
         }
-        foreach ($metadata->associationMappings as $field => $parameters) {
+        foreach ($this->metadata->associationMappings as $field => $parameters) {
             $field = new Field();
             $field->setName($parameters['fieldName']);
             $field->setType('object');
             $field->setEntityName($parameters['targetEntity']);
             $field->setAssociationType($parameters['type']);
             $field->setSetterName($this->findMethodByPrefix($parameters['fieldName'], ['set', 'add']));
-            $fields[$field->getName()] = $field;
+            $field->setMetadata($parameters);
+            $entityAnalyze->addField($field->getName(), $field);
+            $entityAnalyze->addAssociation($field->getName(), $field);
+            if (in_array($parameters['type'], [Association::MANY_TO_MANY, Association::ONE_TO_ONE, Association::ONE_TO_MANY, Association::TO_MANY])) {
+                $entityAnalyze->addChildEntity($field->getName(), $field);
+            }
+            if (in_array($parameters['type'], [Association::MANY_TO_MANY,Association::MANY_TO_ONE, Association::TO_ONE])) {
+                $entityAnalyze->addParentEntity($field->getName(), $field);
+            }
         }
-        return $fields;
+        return $entityAnalyze;
     }
 
 }

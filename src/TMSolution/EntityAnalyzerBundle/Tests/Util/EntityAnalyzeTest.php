@@ -1,43 +1,52 @@
 <?php
-namespace TMSolution\EntityAnalyzerBundle\Util;
 
+namespace TMSolution\EntityAnalyzerBundle\Tests\Util;
+
+use TMSolution\EntityAnalyzerBundle\Util\EntityAnalyze;
+use \PHPUnit\Framework\TestCase;
 
 /**
  * Description of EntityAnalyzer
  *
  * @author Mariusz
  */
-class EntityAnalyze {
- 
-    protected $entityClass = null;
-    protected $fields = array();
-    
-    public function __construct($entityClass) {
-        
-        $this->entityClass=$entityClass;
-    }
-   
-    function getEntityClass() {
-        return $this->entityClass;
+class EntityAnalyzeTest extends TestCase {
+
+    protected static $entityClass = 'Some/Class/Name';
+    protected static $entityAnalyze;
+
+    public static function setupBeforeClass() {
+        self::$entityAnalyze = new EntityAnalyze(self::$entityClass);
     }
 
-    function getFields() {
-        return $this->fields;
+    function testGetEntityClass() {
+        self::$entityAnalyze->setEntityClass(self::$entityClass);
+        $this->assertEquals(self::$entityClass, self::$entityAnalyze->getEntityClass());
     }
 
-    function setEntityClass($entityClass) {
-        $this->entityClass = $entityClass;
+    function testGetFields() {
+        $fields = ["a", "b", "c"];
+        self::$entityAnalyze->setFields($fields);
+        $this->assertEquals($fields, self::$entityAnalyze->getFields());
     }
 
-    function setFields($fields) {
-        $this->fields = $fields;
-    }
-    
-    
-    function addField($fieldName,$field) {
-        $this->fields[$fieldName] = $field;
+    function testSetEntityClass() {
+        self::$entityAnalyze->setEntityClass(self::$entityClass);
+        $this->assertEquals(self::$entityClass, self::$entityAnalyze->getEntityClass());
     }
 
+    function testSetFields() {
+        $fields = ["a", "b", "c"];
+        self::$entityAnalyze->setFields($fields);
+        $this->assertEquals($fields, self::$entityAnalyze->getFields());
+    }
 
-    
+    function testAddField() {
+        $fieldName = "aaaa";
+        $field = new \stdClass();
+        self::$entityAnalyze->addField($fieldName, $field);
+        $fields = self::$entityAnalyze->getFields();
+        $this->assertEquals($fields[$fieldName], $field);
+    }
+
 }

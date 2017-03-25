@@ -1,93 +1,34 @@
 <?php
 
-namespace TMSolution\EntityAnalyzerBundle\Util;
+namespace TMSolution\EntityAnalyzerBundle\Tests\Util;
 
-use \TMSolution\EntityAnalyzerBundle\Util\EntityAnalyze;
-use \TMSolution\EntityAnalyzerBundle\Util\Field;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use TMSolution\EntityAnalyzerBundle\Util\EntityAnalyzer;
 
 /**
  * Description of EntityAnalyzer
  *
  * @author Mariusz
  */
-class EntityAnalyzer {
+class EntityAnalyzerTest extends KernelTestCase {
 
-    protected $entityClass;
-    protected $manager;
-    protected $metadata;
-    protected $reflectionClass;
-    protected $association = [
-        1 => 'OneToOne',
-        2 => 'ManyToOne',
-        4 => 'OneToMany',
-        8 => 'ManyToMany',
-        3 => 'ToOne',
-        12 => 'ToMany'];
+    static protected $entityAnalyzer;
 
-    public function __construct($orm, $entityClass, $managerName = null) {
-        $this->entityClass = $entityClass;
-        $this->manager = $orm->getManager($managerName);
-        $this->metadata = $this->getManager()->getClassMetadata($entityClass);
-        $this->reflectionClass = $this->metadata->getReflectionClass();
+    static public function setUpBeforeClass() {
+        self::bootKernel();
+        $orm = static::$kernel->getContainer()
+                ->get('doctrine');
+
+        $entityClass = 'TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition';
+        self::$entityAnalyzer = new EntityAnalyzer($orm, $entityClass);
     }
 
-    public function getEntityAnalyze() {
-        $entityAnalize = new EntityAnalyze($this->getEntityClass());
-        $entityAnalize->setFields($this->getFields());
-        return $entityAnalize;
-    }
-    
-    protected function getEntityClass() {
-         return $this->entityClass;
-    }
-    protected function getMetadata() {
-        return $this->metadata;
+    public function testGetEntityAnalyze() {
+        $this->assertInstanceOf('TMSolution\EntityAnalyzerBundle\Util\EntityAnalyze', self::$entityAnalyzer->getEntityAnalyze());
     }
 
-    protected function getReflectionClass() {
-        return $this->reflectionClass;
-    }
-
-    protected function findMethodByPrefix($propertyName, $methodPrefixes) {
-        if (is_string($methodPrefixes)) {
-            $methodPrefixes = array($methodPrefixes);
-        }
-        foreach ($methodPrefixes as $methodPrefix) {
-            $method = $this->checktMethodExists(\sprintf('%s%s', $methodPrefix, ucfirst($propertyName)));
-            if ($method !== false) {
-                return $method;
-            }
-        }
-        return false;
-    }
-
-    protected function checktMethodExists($methodName) {
-        $reflectionClass = $this->getReflectionClass();
-        if ($reflectionClass->hasMethod($methodName) && $reflectionClass->getMethod($methodName)->isPublic()) {
-            return $methodName;
-        }
-        return false;
-    }
-
-    protected function getFields($metadata) {
-        $fields = [];
-        foreach ($metadata->fieldMappings as $field => $parameters) {
-            $field = new Field();
-            $field->setName($parameters['fieldName']);
-            $field->setType($parameters['type']);
-            $field->setSetterName($this->findMethodByPrefix($parameters['fieldName'], ['set', 'add']));
-            $fields[$field->getName()] = $field;
-        }
-        foreach ($metadata->associationMappings as $field => $parameters) {
-            $field = new Field();
-            $field->setName($parameters['fieldName']);
-            $field->setType('object');
-            $field->setEntityName($parameters['targetEntity']);
-            $field->setAssociationType($this->association[$parameters['type']]);
-            $field->setSetterName($this->findMethodByPrefix($parameters['fieldName'], ['set', 'add']));
-            $fields[$field->getName()] = $field;
-        }
-        return $fields;
+    public function testGetEntityAnalyzeBody() {
+        var_dump(self::$entityAnalyzer->getEntityAnalyze());
     }
 
 }

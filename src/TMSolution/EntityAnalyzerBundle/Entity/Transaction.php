@@ -3,10 +3,7 @@
 namespace TMSolution\EntityAnalyzerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
-use JMS\Serializer\Annotation as JMS;
-use JMS\Serializer\Annotation\Groups;
 
 /**
  * Userskill
@@ -40,17 +37,6 @@ class Transaction {
      */
     protected $products;
 
-    
-
-    /**
-     * @var CCO\UserBundle\Entity\User
-     *
-     * @ORM\ManyToOne(targetEntity="CCO\UserBundle\Entity\User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
-     * })
-     */
-    protected $user;
 
     /**
      * @var TMSolution\EntityAnalyzerBundle\Entity\TransactionType
@@ -67,7 +53,6 @@ class Transaction {
      *
      * @ORM\Column(name="value", type="decimal", nullable=false, scale=2)
      * @Assert\NotBlank()
-     * @JMS\Groups({"api"})
      */
     protected $value;
 
@@ -95,7 +80,6 @@ class Transaction {
      *
      * @ORM\Column(name="date", type="datetime", nullable=true)
      * @Assert\DateTime()
-     * @JMS\Groups({"api"})
      */
     protected $date;
 
@@ -263,28 +247,6 @@ class Transaction {
         return $this->products;
     }
 
-
-    /**
-     * Set user
-     *
-     * @param \CCO\UserBundle\Entity\User $user
-     *
-     * @return Transaction
-     */
-    public function setUser(\CCO\UserBundle\Entity\User $user = null) {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \CCO\UserBundle\Entity\User
-     */
-    public function getUser() {
-        return $this->user;
-    }
 
     /**
      * Set transactionType

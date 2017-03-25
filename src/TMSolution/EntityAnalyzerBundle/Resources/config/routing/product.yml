@@ -1,0 +1,63 @@
+list:
+    path: "{application}/{path}/list/{state}"
+    defaults: { _controller: "prototype.controller:listAction", state: "",  format: ~ }
+    requirements: {"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+        
+query:
+    path: "{application}/{path}/query/{state}"
+    defaults: { _controller: "prototype.controller:queryAction", state: "",  format: ~ }
+    requirements: {"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true        
+            
+new:
+    path: "{application}/{path}/new/{state}"
+    defaults: { _controller: "prototype.controller:newAction", state: "",  format: ~ }
+    requirements: {"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+create:
+    path: "{application}/{path}/create/{state}"
+    defaults: { _controller: "prototype.controller:createAction", state: "",  format: ~ }
+    requirements: {"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true      
+
+delete:
+    path: "{application}/{path}/delete/{id}/{state}"
+    defaults: { _controller: "prototype.controller:deleteAction", state: "",  format: ~ }
+    requirements: {"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+edit:
+    path: "{application}/{path}/edit/{id}/{state}"
+    defaults: { _controller: "prototype.controller:editAction", state: "",  format: ~ }
+    requirements: {"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+            
+update:
+    path: "{application}/{path}/update/{id}/{state}"
+    defaults: { _controller: "prototype.controller:updateAction", state: "",  format: ~ }
+    requirements: {"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+        
+show:
+    path: "{application}/{path}/show/{id}/{state}"
+    defaults: { _controller: "prototype.controller:showAction", state: "",  format: ~ }
+    requirements: {"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true
