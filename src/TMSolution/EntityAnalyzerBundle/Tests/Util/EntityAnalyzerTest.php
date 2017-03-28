@@ -19,7 +19,7 @@ class EntityAnalyzerTest extends KernelTestCase {
         $orm = static::$kernel->getContainer()
                 ->get('doctrine');
 
-        $entityClass = 'TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition';
+        $entityClass = 'TMSolution\SampleEntitiesBundle\Entity\ProductDefinition';
         self::$entityAnalyzer = new EntityAnalyzer($orm, $entityClass);
     }
 

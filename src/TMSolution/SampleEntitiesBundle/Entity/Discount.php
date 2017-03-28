@@ -1,7 +1,6 @@
 <?php
 
-
-namespace TMSolution\EntityAnalyzerBundle\Entity;
+namespace TMSolution\SampleEntitiesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -39,7 +38,7 @@ class Discount
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit")
+     * @ORM\ManyToOne(targetEntity="TMSolution\SampleEntitiesBundle\Entity\MeasureUnit")
      */
     private $measureUnit;
 
@@ -55,7 +54,7 @@ class Discount
     /**
      * @var ProductDefinition
      * 
-     * @ORM\ManyToOne(targetEntity="TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition", inversedBy="discounts")
+     * @ORM\ManyToOne(targetEntity="TMSolution\SampleEntitiesBundle\Entity\ProductDefinition", inversedBy="discounts")
      */    
     protected $productDefinition;
     
@@ -180,11 +179,11 @@ class Discount
     /**
      * Set productDefinition
      *
-     * @param \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition
+     * @param \TMSolution\SampleEntitiesBundle\Entity\ProductDefinition $productDefinition
      *
      * @return Discount
      */
-    public function setProductDefinition(\TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition $productDefinition = null)
+    public function setProductDefinition(\TMSolution\SampleEntitiesBundle\Entity\ProductDefinition $productDefinition = null)
     {
         $this->productDefinition = $productDefinition;
 
@@ -194,7 +193,7 @@ class Discount
     /**
      * Get productDefinition
      *
-     * @return \TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition
+     * @return \TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
      */
     public function getProductDefinition()
     {

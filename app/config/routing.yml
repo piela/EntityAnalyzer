@@ -1,3 +1,11 @@
+tm_solution_sample_entities:
+    resource: "@TMSolutionSampleEntitiesBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tm_solution_class_mapper:
+    resource: "@TMSolutionClassMapperBundle/Resources/config/routing.yml"
+    prefix:   /
+
 tm_solution_entity_analyzer:
     resource: "@TMSolutionEntityAnalyzerBundle/Resources/config/routing.yml"
     prefix:   /
