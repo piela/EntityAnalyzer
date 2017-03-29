@@ -3,7 +3,7 @@ tm_solution_sample_entities:
     prefix:   /
 
 tm_solution_class_mapper:
-    resource: "@TMSolutionClassMapperBundle/Resources/config/routing.yml"
+    resource: "@TMSolutionMapperBundle/Resources/config/routing.yml"
     prefix:   /
 
 tm_solution_entity_analyzer:
@@ -14,9 +14,3 @@ app:
     resource: '@AppBundle/Controller/'
     type: annotation
 
-# app/config/routing.yml
-fos_oauth_server_token:
-    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
-
-fos_oauth_server_authorize:
-    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"

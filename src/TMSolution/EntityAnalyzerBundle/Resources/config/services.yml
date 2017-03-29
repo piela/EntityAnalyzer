@@ -1,11 +1,29 @@
+parameters:
+
 services:
     prototype.controller:
         class: TMSolution\EntityAnalyzerBundle\Controller\PrototypeController
         arguments: ["@service_container"]
         shared: false
-        
-        
-    prototype.config:
+         
+    tm_solution.prototype.interpreter:
+        class: TMSolution\EntityAnalyzerBundle\Service\RequestInterpreter
+        arguments: ["@service_container"]        
+    
+    tm_solution.prototype.security:
+        class: TMSolution\EntityAnalyzerBundle\Service\Security
+        arguments: ["@service_container"]        
+    
+    tm_solution.prototype.config:
         class: TMSolution\EntityAnalyzerBundle\Service\PrototypeConfig
-        arguments: ["@service_container"]
+        arguments: ["@service_container", "@tm_solution_mapper","@tm_solution.prototype.interpreter","@tm_solution.prototype.security"]
         shared: false    
+        
+    tm_solution.prototype.config:
+        class: TMSolution\EntityAnalyzerBundle\Service\PrototypeConfig
+        arguments: ["@service_container", "@tm_solution_mapper","@tm_solution.prototype.interpreter","@tm_solution.prototype.security"]
+        tags: 
+            name: 'tm_solution.prototype.config'
+            applicationPath: 'admin/wizard/step2/'
+            entityAlias: 'user'
+        

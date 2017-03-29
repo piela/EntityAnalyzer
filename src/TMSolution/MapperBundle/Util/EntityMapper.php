@@ -13,16 +13,16 @@ class EntityMapper {
         $this->entities = $entities;
     }
 
-    public function getEntityClass($name, $namespace) {
+    public function getEntityClass($alias, $namespace) {
         $this->checkNamespaceExists($namespace);
-        if (array_key_exists($name, $this->entities[$namespace])) {
-            return $this->entities[$namespace][$name];
+        if (array_key_exists($alias, $this->entities[$namespace])) {
+            return $this->entities[$namespace][$alias];
         } else {
-            throw new \Exception(sprintf('There is no class for name: %s', $name));
+            throw new \Exception(sprintf('There is no class for name: %s', $alias));
         }
     }
-
-    public function getName($entityClass, $namespace) {
+    
+    public function getAlias($entityClass, $namespace) {
         $this->checkNamespaceExists($namespace);
         $name = array_search($entityClass, $this->entities[$namespace]);
         if ($name) {

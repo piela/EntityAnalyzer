@@ -1,5 +1,8 @@
 tm_solution_mapper:
-    applications: {  }
+    applications: 
+        admin: tm_solution_entity_analyzer
+               tm_solution_sample_entities
+        
     entities:
         tm_solution_entity_analyzer:
             discount: TMSolution\EntityAnalyzerBundle\Entity\Discount
@@ -14,7 +17,7 @@ tm_solution_mapper:
             transaction-status: TMSolution\EntityAnalyzerBundle\Entity\TransactionStatus
             transaction-type: TMSolution\EntityAnalyzerBundle\Entity\TransactionType
         tm_solution_sample_entities:
-            discount: TMSolution\SampleEntitiesBundle\Entity\Discount
+            discounta: TMSolution\SampleEntitiesBundle\Entity\Discount
             measure-unit: TMSolution\SampleEntitiesBundle\Entity\MeasureUnit
             payment-frequency: TMSolution\SampleEntitiesBundle\Entity\PaymentFrequency
             product: TMSolution\SampleEntitiesBundle\Entity\Product

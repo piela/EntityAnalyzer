@@ -1,4 +1,4 @@
 services:
     tm_solution_mapper:
-        class: TMSolution\MapperBundle\Util\ClassMapper
+        class: TMSolution\MapperBundle\Util\EntityMapper
         arguments: [%tm_solution_mapper.entities%]

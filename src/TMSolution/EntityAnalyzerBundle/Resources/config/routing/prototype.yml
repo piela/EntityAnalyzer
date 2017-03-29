@@ -1,0 +1,61 @@
+
+#{applicationPath} ={application}/{service}/{name} = app.{application}.{service}.{name}
+#{entitiesPath} ={parent}/{parentid}/{entityAlias}
+list:
+    path: "{applicationPath}/-/{entitiesPath}/list/{state}"
+    defaults: { _controller: "prototype.controller:listAction", state: "",  format: ~ }
+    requirements: {"applicationPath":".+" ,"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true    
+query:
+    path: "{applicationPath}/-/{entitiesPath}/query/{state}"
+    defaults: { _controller: "prototype.controller:queryAction", state: "",  format: ~ }
+    requirements: {"applicationPath":".+" ,"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true                
+new:
+    path: "{applicationPath}/-/{entitiesPath}/new/{state}"
+    defaults: { _controller: "prototype.controller:newAction", state: "",  format: ~ }
+    requirements: {"applicationPath":".+" ,"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+create:
+    path: "{applicationPath}/-/{entitiesPath}/create/{state}"
+    defaults: { _controller: "prototype.controller:createAction", state: "",  format: ~ }
+    requirements: {"applicationPath":".+" ,"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true      
+
+delete:
+    path: "{applicationPath}/-/{entitiesPath}/delete/{id}/{state}"
+    defaults: { _controller: "prototype.controller:deleteAction", state: "",  format: ~ }
+    requirements: {"applicationPath":".+" ,"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+edit:
+    path: "{applicationPath}/-/{entitiesPath}/edit/{id}/{state}"
+    defaults: { _controller: "prototype.controller:editAction", state: "",  format: ~ }
+    requirements: {"applicationPath":".+" ,"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true          
+update:
+    path: "{applicationPath}/-/{entitiesPath}/update/{id}/{state}"
+    defaults: { _controller: "prototype.controller:updateAction", state: "",  format: ~ }
+    requirements: {"applicationPath":".+" ,"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true      
+show:
+    path: "{applicationPath}/-/{entitiesPath}/show/{id}/{state}"
+    defaults: { _controller: "prototype.controller:showAction", state: "",  format: ~ }
+    requirements: {"applicationPath":".+" ,"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true
