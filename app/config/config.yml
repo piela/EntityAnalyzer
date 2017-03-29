@@ -71,66 +71,66 @@ swiftmailer:
     spool: { type: memory }
 
 
-tm_solution_prototype:
-    
-    base:
-        allowed: true
-        model: #model
-        security:
-            roles: ROLE_USER 
-        templates:
-                 index: 'Default\Base\dashboard.html.twig'
-                 #ajax_index: 'Default\Base\ajax_index.html.twig'
-                 blank: 'Default\Base\ajax_index.html.twig'       
-    actions:
-        filter:
-            allowed: true
-            model:
-            security:
-                roles: ROLE_ADMIN
-            searchFormType:
-            queryBuilder:
-            templates:
-                container: 'Default\Container\list.html.twig'
-                element: 'Default\Element\list.html.twig'
-            limit: 10
-            hydrateMode: 1
-        list: 
-            allowed: true
-            queryBuilder:
-            templates:
-                container: 'Default\Container\list.html.twig'
-                element: 'Default\Element\list.html.twig'
-            limit: 10
-            hydrateMode: 1
-        create:
-            allowed: true
-            formType: *
-            redirect:
-                route: '*read'
-                route_params: null 
-            templates:
-                container: 'Default\Container\create.html.twig'
-                element: 'Default\Element\create.html.twig'
-            redirect: true    
-        show: 
-            allowed: true
-            templates:
-                container: 'Default\Container\show.html.twig'
-                element: 'Default\Element\show.html.twig'
-        update:
-            allowed: true
-            redirect:
-                route: '*read'
-                route_params: null 
-            templates:
-                container: 'Default\Container\update.html.twig'
-                element: 'Default\Element\update.html.twig'
-        delete:
-            allowed: true
-            redirect:
-                route: '*list'
-                route_params: null
-            templates:
-                container: 'Default\Container\blank.html.twig'
-                element: 'Default\Element\delete.html.twig'                  
+#tm_solution_prototype:
+#    
+#    base:
+#        allowed: true
+#        model: #defaultModel
+#        security:
+#            roles: ROLE_USER 
+#        templates:
+#                 index: 'Default\Base\dashboard.html.twig'
+#                 #ajax_index: 'Default\Base\ajax_index.html.twig'
+#                 blank: 'Default\Base\ajax_index.html.twig'       
+#    actions:
+#        filter:
+#            allowed: true
+#            model:
+#            security:
+#                roles: ROLE_ADMIN
+#            searchFormType:
+#            queryBuilder:
+#            templates:
+#                container: 'Default\Container\list.html.twig'
+#                element: 'Default\Element\list.html.twig'
+#            limit: 10
+#            hydrateMode: 1
+#        list: 
+#            allowed: true
+#            queryBuilder:
+#            templates:
+#                container: 'Default\Container\list.html.twig'
+#                element: 'Default\Element\list.html.twig'
+#            limit: 10
+#            hydrateMode: 1
+#        create:
+#            allowed: true
+#            formType: *
+#            redirect:
+#                route: '*read'
+#                route_params: null 
+#            templates:
+#                container: 'Default\Container\create.html.twig'
+#                element: 'Default\Element\create.html.twig'
+#            redirect: true    
+#        show: 
+#            allowed: true
+#            templates:
+#                container: 'Default\Container\show.html.twig'
+#                element: 'Default\Element\show.html.twig'
+#        update:
+#            allowed: true
+#            redirect:
+#                route: '*read'
+#                route_params: null 
+#            templates:
+#                container: 'Default\Container\update.html.twig'
+#                element: 'Default\Element\update.html.twig'
+#        delete:
+#            allowed: true
+#            redirect:
+#                route: '*list'
+#                route_params: null
+#            templates:
+#                container: 'Default\Container\blank.html.twig'
+#                element: 'Default\Element\delete.html.twig'                  
