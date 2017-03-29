@@ -76,7 +76,7 @@ swiftmailer:
 #    base:
 #        
 #    allowed: true
-#        model: #defaultModel
+#        modelService: #defaultModel
 #        security:
 #            roles: ROLE_USER 
 #        templates:
