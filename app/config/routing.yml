@@ -1,25 +1,6 @@
+
 tm_solution_prototype:
     resource: "@TMSolutionPrototypeBundle/Resources/config/routing.yml"
-    prefix:   /
-
-tm_solution_controller_configuration:
-    resource: "@TMSolutionControllerConfigurationBundle/Resources/config/routing.yml"
-    prefix:   /
-
-tm_solution_config:
-    resource: "@TMSolutionConfigBundle/Resources/config/routing.yml"
-    prefix:   /
-
-tm_solution_sample_entities:
-    resource: "@TMSolutionSampleEntitiesBundle/Resources/config/routing.yml"
-    prefix:   /
-
-tm_solution_class_mapper:
-    resource: "@TMSolutionMapperBundle/Resources/config/routing.yml"
-    prefix:   /
-
-tm_solution_entity_analyzer:
-    resource: "@TMSolutionEntityAnalyzerBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:

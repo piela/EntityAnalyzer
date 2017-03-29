@@ -1,4 +1,0 @@
-services:
-#    tm_solution_config.example:
-#        class: TMSolution\ConfigBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

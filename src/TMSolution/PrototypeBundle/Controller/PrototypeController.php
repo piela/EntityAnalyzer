@@ -1,6 +1,6 @@
 <?php
 
-namespace TMSolution\EntityAnalyzerBundle\Controller;
+namespace TMSolution\PrototypeBundle\Controller;
 
 use TMSolution\EntityAnalyzerBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,25 +13,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class PrototypeController extends Controller {
 
+    const _LIST = 'list';
+    const _NEW = 'new';
+    const _CREATE = 'create';
+    const _SHOW = 'show';
+    const _EDIT = 'edit';
+    const _UPDATE = 'update';
+    const _DELETE = 'delete';
+    
     public function __construct(ContainerInterface $container = null) {
         $this->container = $container;
-    }
-
-    /**
-     * Lists all product entities.
-     *
-     */
-    public function filterAction(Request $request) {
-        $config = $this->get("prototype.config_factory")->createConfig($request);
-        $config->getApplication();
-        $config->createEntity();
-        $config->getEntityClass();
-        $config->getSearchFormType();
-        $config->getFormType();
-        $config->getFormTypeClass();
-        $config->getModel();
-        $config->getTemplate('list');
-        $config->getRedirectStrategy('list');
     }
 
     /**
@@ -57,9 +48,9 @@ class PrototypeController extends Controller {
      *
      */
     public function newAction(Request $request) {
-        $config = $this->getConfig($request);
+        $config = $this->createConfig($request);
         $entity = $config->createEnity();
-        $this->denyAccessUnlessGranted(__FUNCTION__,$entity);
+        $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $form = $this->createForm($config->getFormTypeClass(), $entity);
         return $this->render($config->getTemplate('new'), array(
                     'entity' => $entity,
@@ -68,9 +59,9 @@ class PrototypeController extends Controller {
     }
 
     public function createAction(Request $request) {
-        $config = $this->getConfig($request);
+        $config = $this->createConfig($request);
         $entity = $config->createEnity();
-        $this->denyAccessUnlessGranted(__FUNCTION__,$entity);
+        $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $form = $this->createForm($config->get(), $entity);
         $form->submit($request);
         if ($form->isValid()) {
@@ -88,9 +79,9 @@ class PrototypeController extends Controller {
      *
      */
     public function showAction(Request $request, $id) {
-        $config = $this->getConfig($request);
+        $config = $this->createConfig($request);
         $entity = $config->getModel()->findOneById($id);
-        $this->denyAccessUnlessGranted(__FUNCTION__,$entity);
+        $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $deleteForm = $this->createDeleteForm($entity);
         return $this->render($config->getTemplate("show"), array(
                     'entity' => entity,
@@ -103,9 +94,9 @@ class PrototypeController extends Controller {
      *
      */
     public function editAction(Request $request, $id) {
-        $config = $this->getConfig($request);
+        $config = $this->createConfig($request);
         $entity = $config->getModel()->findOneById($id);
-        $this->denyAccessUnlessGranted(__FUNCTION__,$entity);
+        $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createForm($config->getFormTypeClass(), $entity);
         return $this->render($config->getTemplate("edit"), array(
@@ -120,18 +111,18 @@ class PrototypeController extends Controller {
      *
      */
     public function updateAction(Request $request, $id) {
-        $config = $this->getConfig($request);
+        $config = $this->createConfig($request);
         $entity = $config->getModel()->findOneById($id);
-        $this->denyAccessUnlessGranted(__FUNCTION__,$entity);
+        $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createForm($config->getFormTypeClass(), $entity);
         $editForm->submit($request);
-        
+
         if ($editForm->isValid()) {
             $config->getModel()->update($entity);
             return $this->redirectToRoute($config->getRedirectStrategy('update'), array('id' => $entity->getId()));
         }
-        
+
         return $this->render($config->getTemplate("edit"), array(
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
@@ -144,16 +135,16 @@ class PrototypeController extends Controller {
      *
      */
     public function deleteAction(Request $request, $id) {
-        $config = $this->getConfig($request);
+        $config = $this->createConfig($request, self::DELETE);
         $entity = $config->getModel()->findOneById($id);
-        $this->denyAccessUnlessGranted(__FUNCTION__,$entity);
+        $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $form = $this->createDeleteForm($entity);
         $form->submit($request);
-        
+
         if ($form->isValid()) {
             $config->getModel()->remove($entity);
         }
-        
+
         return $this->redirectToRoute('test_index');
     }
 
@@ -171,8 +162,8 @@ class PrototypeController extends Controller {
                         ->getForm();
     }
 
-    protected function getConfig(Request $request) {
-        return $this->get("prototype.config_factory")->createConfig($request);
+    protected function createConfig(Request $request, $action) {
+        return $this->get("tm_solution_prototype.controller_configuration_factory")->createConfig($request, $action);
     }
 
 }

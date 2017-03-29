@@ -1,3 +1,0 @@
-tm_solution_controller_configuration_homepage:
-    path:     /
-    defaults: { _controller: TMSolutionControllerConfigurationBundle:Default:index }

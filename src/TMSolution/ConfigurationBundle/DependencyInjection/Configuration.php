@@ -1,6 +1,6 @@
 <?php
 
-namespace TMSolution\ConfigBundle\DependencyInjection;
+namespace TMSolution\ConfigurationBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -10,7 +10,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/configuration.html}
  */
-class Config implements ConfigurationInterface
+class Configuration implements ConfigurationInterface
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class Config implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('tm_solution_config');
+        $rootNode = $treeBuilder->root('tm_solution_configuration');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

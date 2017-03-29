@@ -6,69 +6,31 @@ use TMSolution\ControllerConfigurationBundle\Util\ConfigurationInterface;
 
 class ControllerConfiguration implements ConfigurationInterface {
 
- protected $mapper;
-    protected $requestInterpreter;
-    protected $security;
-    protected $request;
-    protected $configuration;
 
-    public function __construct($requestInterpreter) {
-
-    }
-
-//  
-//    public function getSecurity() {
-//        return $this->security;
-//    }
-//
-//    public function getRequestInterpreter() {
-//        return $this->requestInterpreter;
-//    }
-
-
-//    public function getApplication() {
-//        
-//    }
-
-//    public function createEntity() {
-//        
-//    }
-
-//    public function getEntityClass() {
-//        return $this->getMapper()->getEntityClass('ala', 'aaaa');
-//    }
-
-    public function getSearchFormType() {
+    public function getSearchFormTypeClass() {
         
-    }
-
-//    public function createSearchQuery() {
-//        
-//    }
-
-    public function getFormType() {
+        return $this->get('searchFormType');
         
     }
 
     public function getFormTypeClass() {
         
+        return $this->get('formType');
     }
 
     public function getModel() {
-        $serviceName = sprintf("%s.%s", $this->getApplication(), $this->getEntityClass());
-        if ($this->container->has($serviceName)) {
-            return $this->container->get($serviceName);
-        } else {
-            return $this->container->get('model.factory')->getModel($this->getEntityClass());
-        }
+        
+        return $this->get('model');
     }
 
     public function getTemplate($actionName) {
         
+        return $this->get('templates.element');
     }
 
-    public function getRedirectStrategy($actionName) {
+    public function getRedirectRoute() {
         
+        return $this->get('templates.redirect.route');
     }
-
+    
 }

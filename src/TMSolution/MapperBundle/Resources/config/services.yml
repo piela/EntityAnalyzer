@@ -1,4 +1,11 @@
 services:
-    tm_solution_mapper:
+    
+    tm_solution_mapper.application_mapper:
+        class: TMSolution\MapperBundle\Util\ApplicationMapper     
+        arguments: [%tm_solution_mapper.appliactions%]
+      
+    tm_solution_mapper.entity_mapper:
         class: TMSolution\MapperBundle\Util\EntityMapper
         arguments: [%tm_solution_mapper.entities%]
+    
+        

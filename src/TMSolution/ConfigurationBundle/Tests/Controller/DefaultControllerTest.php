@@ -1,6 +1,6 @@
 <?php
 
-namespace TMSolution\ConfigBundle\Tests\Controller;
+namespace TMSolution\ConfigurationBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

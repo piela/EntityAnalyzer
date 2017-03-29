@@ -1,4 +1,13 @@
 services:
-#    tm_solution_prototype.example:
-#        class: TMSolution\PrototypeBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    
+    tm_solution_prototype.configuration:
+        class: TMSolution\ConfigurationBundle\Util\Configuration
+        arguments: [%tm_solution_prototype.config%]
+        
+    tm_solution_prototype.request_analyzer:
+        class: TMSolution\ConfigurationBundle\Util\RequestAnalyzer
+        arguments: [@tm_solution_mapper.application_mapper,@tm_solution_mapper.entity_mapper]    
+
+    tm_solution_prototype.controller_configuration_factory:
+        class: TMSolution\PrototypeBundle\Util\ControllerConfigurationFactory
+        arguments: [@tm_solution_prototype.configuration,@tm_solution_prototype.request_analyzer]
