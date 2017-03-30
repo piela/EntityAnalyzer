@@ -2,7 +2,7 @@ services:
     
     tm_solution_mapper.application_mapper:
         class: TMSolution\MapperBundle\Util\ApplicationMapper     
-        arguments: [%tm_solution_mapper.appliactions%]
+        arguments: [%tm_solution_mapper.applications%]
       
     tm_solution_mapper.entity_mapper:
         class: TMSolution\MapperBundle\Util\EntityMapper

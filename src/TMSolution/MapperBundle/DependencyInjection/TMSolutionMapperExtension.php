@@ -21,6 +21,7 @@ class TMSolutionMapperExtension extends Extension {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        
         if (!array_key_exists('enitites', $config)) {
             $config['entities'] = [];
         }

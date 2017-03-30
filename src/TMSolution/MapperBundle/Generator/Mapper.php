@@ -18,7 +18,7 @@ class Mapper {
         return ltrim(strtolower(preg_replace('/[A-Z]([A-Z](?![a-z]))*/', '_$0', $text)), '_');
     }
     
-    protected function getSnakeCase2($text) {
+    protected function getDashCase($text) {
         return ltrim(strtolower(preg_replace('/[A-Z]([A-Z](?![a-z]))*/', '-$0', $text)), '-');
     }
     
@@ -49,7 +49,10 @@ class Mapper {
             if (!array_key_exists($namespace, $root['tm_solution_mapper']['entities'])) {
                 $root['tm_solution_mapper']['entities'][$namespace] = [];
             }
-            $root['tm_solution_mapper']['entities'][$namespace][$this->getSnakeCase2($this->getEntityName($metadata->name))] = $metadata->name;
+            $entityName=$this->getEntityName($metadata->name);
+            $snakeEntityName=$this->getSnakeCase($entityName);
+            $root['tm_solution_mapper']['entities'][$namespace][$snakeEntityName]['alias'] = $this->getDashCase($entityName);
+            $root['tm_solution_mapper']['entities'][$namespace][$snakeEntityName]['entityClass'] = $metadata->name;
         }
         $this->recursiveSort($root);
         return $root;
@@ -69,7 +72,7 @@ class Mapper {
         if (!$root || !array_key_exists('tm_solution_mapper', $root) ) {
             $root['tm_solution_mapper'] = [];
         }
-        $yaml = Yaml::dump($this->readEntities($root), 4);
+        $yaml = Yaml::dump($this->readEntities($root), 5);
         file_put_contents($this->filePath, $yaml);
     }
 

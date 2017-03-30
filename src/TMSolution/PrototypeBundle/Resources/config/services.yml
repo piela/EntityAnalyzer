@@ -1,13 +1,40 @@
 services:
-    
-    tm_solution_prototype.configuration:
-        class: TMSolution\ConfigurationBundle\Util\Configuration
-        arguments: [%tm_solution_prototype.config%]
-        
-    tm_solution_prototype.request_analyzer:
-        class: TMSolution\ConfigurationBundle\Util\RequestAnalyzer
-        arguments: [@tm_solution_mapper.application_mapper,@tm_solution_mapper.entity_mapper]    
+#    
+#    tm_solution_prototype.configuration:
+#        class: TMSolution\ConfigurationBundle\Util\Configuration
+#        arguments: [%tm_solution_prototype.config%]
+#        
+#    tm_solution_prototype.request_analyzer:
+#        class: TMSolution\ConfigurationBundle\Util\RequestAnalyzer
+#        arguments: [@tm_solution_mapper.application_mapper,@tm_solution_mapper.entity_mapper]    
+#
+#    tm_solution_prototype.controller_configuration_factory:
+#        class: TMSolution\PrototypeBundle\Util\ControllerConfigurationFactory
+#        arguments: [@tm_solution_prototype.configuration,@tm_solution_prototype.request_analyzer]
+#
+#    prototype.controller:
+#        class: TMSolution\EntityAnalyzerBundle\Controller\PrototypeController
+#        arguments: ["@service_container"]
+#        shared: false
+#         
+#    tm_solution.prototype.interpreter:
+#        class: TMSolution\EntityAnalyzerBundle\Service\RequestInterpreter
+#        arguments: ["@service_container"]        
+#    
+#    tm_solution.prototype.security:
+#        class: TMSolution\EntityAnalyzerBundle\Service\Security
+#        arguments: ["@service_container"]        
+#    
+#    tm_solution.prototype.config:
+#        class: TMSolution\EntityAnalyzerBundle\Service\PrototypeConfig
+#        arguments: ["@service_container", "@tm_solution_mapper","@tm_solution.prototype.interpreter","@tm_solution.prototype.security"]
+#        shared: false    
+#        
+#    tm_solution.prototype.config:
+#        class: TMSolution\EntityAnalyzerBundle\Service\PrototypeConfig
+#        arguments: ["@service_container", "@tm_solution_mapper","@tm_solution.prototype.interpreter","@tm_solution.prototype.security"]
+#        tags: 
+#            name: 'tm_solution.prototype.config'
+#            applicationPath: 'admin/wizard/step2/'
+#            entityAlias: 'user'
 
-    tm_solution_prototype.controller_configuration_factory:
-        class: TMSolution\PrototypeBundle\Util\ControllerConfigurationFactory
-        arguments: [@tm_solution_prototype.configuration,@tm_solution_prototype.request_analyzer]

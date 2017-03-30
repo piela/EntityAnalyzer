@@ -1,5 +1,7 @@
 <?php
 
+// TMSolution\MapperBundle\Util\ApplicationMapper
+
 namespace TMSolution\MapperBundle\Util;
 
 /**
@@ -13,20 +15,13 @@ class ApplicationMapper {
         $this->applications = $applications;
     }
 
-    public function getNamepaces($name) {
-        $this->checkApplicationExists($name);
-        if (!is_array($this->applications[$name])) {
-            $array = [];
-            $array[] = $this->applications[$name];
-            return $array;
-        } else {
-            return $this->applications[$name];
-        }
-    }
+    public function getBundles($name) {
 
-    protected function checkApplicationExists($name) {
-        if (!array_key_exists($name, $this->applications)) {
-            throw new \Exception(sprintf('There is no application: %s', $name));
+        foreach ($this->applications as $application) {
+
+            if ($application["name"] == $name) {
+                return $application["bundles"];
+            }
         }
     }
 

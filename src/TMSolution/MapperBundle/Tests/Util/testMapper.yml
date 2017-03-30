@@ -1,5 +1,10 @@
 tm_solution_mapper:
-    applications: null
+    applications: 
+           admin:
+                name: admin  
+                bundles:
+                    - tm_solution_entity_analyzer
+                    - tm_solution_sample_entities
     entities:
         tm_solution_entity_analyzer:
             discount:
@@ -69,3 +74,7 @@ tm_solution_mapper:
             transaction_type:
                 alias: transaction-type
                 entityClass: TMSolution\SampleEntitiesBundle\Entity\TransactionType
+
+   
+
+   

@@ -1,0 +1,31 @@
+tm_solution_mapper:
+    applications: 
+        admin:
+               tm_solution_entity_analyzer
+               tm_solution_sample_entities
+   
+    entities:
+        tm_solution_entity_analyzer:
+            discount: TMSolution\EntityAnalyzerBundle\Entity\Discount
+            measure-unit: TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit
+            payment-frequency: TMSolution\EntityAnalyzerBundle\Entity\PaymentFrequency
+            product: TMSolution\EntityAnalyzerBundle\Entity\Product
+            product-category: TMSolution\EntityAnalyzerBundle\Entity\ProductCategory
+            product-definition: TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition
+            product-dictionary: TMSolution\EntityAnalyzerBundle\Entity\ProductDictionary
+            product-price: TMSolution\EntityAnalyzerBundle\Entity\ProductPrice
+            transaction: TMSolution\EntityAnalyzerBundle\Entity\Transaction
+            transaction-status: TMSolution\EntityAnalyzerBundle\Entity\TransactionStatus
+            transaction-type: TMSolution\EntityAnalyzerBundle\Entity\TransactionType
+        tm_solution_sample_entities:
+            discounta: TMSolution\SampleEntitiesBundle\Entity\Discount
+            measure-unit: TMSolution\SampleEntitiesBundle\Entity\MeasureUnit
+            payment-frequency: TMSolution\SampleEntitiesBundle\Entity\PaymentFrequency
+            product: TMSolution\SampleEntitiesBundle\Entity\Product
+            product-category: TMSolution\SampleEntitiesBundle\Entity\ProductCategory
+            product-definition: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            product-dictionary: TMSolution\SampleEntitiesBundle\Entity\ProductDictionary
+            product-price: TMSolution\SampleEntitiesBundle\Entity\ProductPrice
+            transaction: TMSolution\SampleEntitiesBundle\Entity\Transaction
+            transaction-status: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
+            transaction-type: TMSolution\SampleEntitiesBundle\Entity\TransactionType

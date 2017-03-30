@@ -74,23 +74,17 @@ swiftmailer:
 #tm_solution_prototype:
 #    
 #    base:
-#        
-#    allowed: true
-#        modelService: #defaultModel
-#        security:
-#            roles: ROLE_USER 
+#        allowed: true
+#        model: #service
 #        templates:
 #                 index: 'Default\Base\dashboard.html.twig'
-#                 #ajax_index: 'Default\Base\ajax_index.html.twig'
 #                 blank: 'Default\Base\ajax_index.html.twig'       
 #    actions:
 #        filter:
 #            allowed: true
 #            model:
-#            security:
-#                roles: ROLE_ADMIN
-#            searchFormType:
-#            queryBuilder:
+#            searchFormType: #service 
+#            queryBuilder: #service
 #            templates:
 #                container: 'Default\Container\list.html.twig'
 #                element: 'Default\Element\list.html.twig'

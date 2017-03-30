@@ -59,7 +59,7 @@ class PrototypeController extends Controller {
     }
 
     public function createAction(Request $request) {
-        $config = $this->createConfig($request);
+        $config = $this->createConfig($request,__FUNCTION__);
         $entity = $config->createEnity();
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $form = $this->createForm($config->get(), $entity);

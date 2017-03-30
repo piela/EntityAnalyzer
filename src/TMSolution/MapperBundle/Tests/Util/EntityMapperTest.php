@@ -1,52 +1,73 @@
 <?php
 
-namespace TMSolution\MapperBundle\Test\Util;
+namespace TMSolution\MapperBundle\Tests\Util;
 
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use TMSolution\MapperBundle\Util\ClassMapper;
+use Symfony\Component\Yaml\Yaml;
+use TMSolution\MapperBundle\Util\EntityMapper;
+use \PHPUnit\Framework\TestCase;
 
-class EntityMapperTest extends KernelTestCase {
+/**
+ * Description of EntityAnalyzer
+ * php  app/phpunit.phar   --bootstrap=./app/autoload.php ./src/TMSolution/MapperBundle/Tests/Util/EntityMapperTest.php
+ * @author Mariusz
+ */
+class EntityMapperTest extends TestCase {
 
-    protected static $classMapper;
+    const _ALIAS = 'measure-unit';
+    const _NOT_EXISTED_ALIAS = 'not-existed-measure-unit';
+    const _BUNDLE_NAME = 'tm_solution_entity_analyzer';
+    const _CONFLICTED_BUNDLE_NAME = 'tm_solution_sample_entities';
+    const _ENTITY_CLASS = 'TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit';
+    const _NOT_EXISTED_ENTITY_CLASS = 'NotExistedTMSolution\EntityAnalyzerBundle\Entity\MeasureUnit';
 
-    static public function setUpBeforeClass() {
-        self::bootKernel();
-        $entities = ['tm_solution_entity_analyzer' =>
-        ['discount' => 'TMSolution\EntityAnalyzerBundle\Entity\Discount',
-        'measureunit' => 'TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit',
-        'paymentfrequency' => 'TMSolution\EntityAnalyzerBundle\Entity\PaymentFrequency',
-        'product' => 'TMSolution\EntityAnalyzerBundle\Entity\Product',
-        'productcategory' => 'TMSolution\EntityAnalyzerBundle\Entity\ProductCategory',
-        'productdefinition' => 'TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition',
-        'productdictionary' => 'TMSolution\EntityAnalyzerBundle\Entity\ProductDictionary',
-        'productprice' => 'TMSolution\EntityAnalyzerBundle\Entity\ProductPrice',
-        'transaction' => 'TMSolution\EntityAnalyzerBundle\Entity\Transaction',
-        'transactionstatus' => 'TMSolution\EntityAnalyzerBundle\Entity\TransactionStatus',
-        'transactiontype' => 'TMSolution\EntityAnalyzerBundle\Entity\TransactionType'],
-        'tm_solution_sample_entities' =>
-        ['discount' => 'TMSolution\SampleEntitiesBundle\Entity\Discount',
-        'measureunit' => 'TMSolution\SampleEntitiesBundle\Entity\MeasureUnit',
-        'paymentfrequency' => 'TMSolution\SampleEntitiesBundle\Entity\PaymentFrequency',
-        'product' => 'TMSolution\SampleEntitiesBundle\Entity\Product',
-        'productcategory' => 'TMSolution\SampleEntitiesBundle\Entity\ProductCategory',
-        'productdefinition' => 'TMSolution\SampleEntitiesBundle\Entity\ProductDefinition',
-        'productdictionary' => 'TMSolution\SampleEntitiesBundle\Entity\ProductDictionary',
-        'productprice' => 'TMSolution\SampleEntitiesBundle\Entity\ProductPrice',
-        'transaction' => 'TMSolution\SampleEntitiesBundle\Entity\Transaction',
-        'transactionstatus' => 'TMSolution\SampleEntitiesBundle\Entity\TransactionStatus',
-        'transactiontype' => 'TMSolution\SampleEntitiesBundle\Entity\TransactionType']];
-//      $entities = static::$kernel->getContainer()->getParameter('tm_solution_class_mapper.map');
-        self::$classMapper = new ClassMapper($entities);
+    public static function setupBeforeClass() {
+        
     }
 
     public function testGetEntityClass() {
-        $entityClass = self::$classMapper->getEntityClass('productcategory', 'tm_solution_entity_analyzer');
-        $this->assertEquals('TMSolution\EntityAnalyzerBundle\Entity\ProductCategory', $entityClass);
+        
+        $mapperConfiguration = Yaml::parse(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml'));
+        $applicationMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
+        $entityClass = $applicationMapper->getEntityClass(self::_ALIAS, [self::_BUNDLE_NAME]);
+        $this->assertEquals(self::_ENTITY_CLASS, $entityClass);
     }
 
-    public function testGetName() {
-        $name = self::$classMapper->getName('TMSolution\EntityAnalyzerBundle\Entity\ProductCategory', 'tm_solution_entity_analyzer');
-        $this->assertEquals('productcategory', $name);
+    /**
+     * @expectedException TMSolution\MapperBundle\Exceptions\MoreThanOneEntityClassForAlias
+     */
+    public function testGetEntityClass_MoreThanOneEntityClassForAliasException() {
+        
+        $mapperConfiguration = Yaml::parse(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml'));
+        $applicationMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
+        $applicationMapper->getEntityClass(self::_ALIAS, [self::_BUNDLE_NAME, self::_CONFLICTED_BUNDLE_NAME]);
+    }
+
+    /**
+     * @expectedException TMSolution\MapperBundle\Exceptions\TMSolution\MapperBundle\Exceptions\NoEntityClassForAlias;
+     */
+    public function testGetEntityClass_NoEntityClassForAliasException() {
+       
+        $mapperConfiguration = Yaml::parse(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml'));
+        $applicationMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
+        $applicationMapper->getEntityClass(self::_NOT_EXISTED_ALIAS, [self::_BUNDLE_NAME, self::_CONFLICTED_BUNDLE_NAME]);
+    }
+
+    public function testGetAlias() {
+       
+        $mapperConfiguration = Yaml::parse(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml'));
+        $applicationMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
+        $entityClass = $applicationMapper->getAlias(self::_ENTITY_CLASS, [self::_BUNDLE_NAME]);
+        $this->assertEquals(self::_ALIAS, $entityClass);
+    }
+
+    /**
+     * @expectedException TMSolution\MapperBundle\Exceptions\NoAliasForEntityClass; 
+     */
+    public function testGetAliasExcepiton() {
+        
+        $mapperConfiguration = Yaml::parse(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml'));
+        $applicationMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
+        $applicationMapper->getAlias(_NOT_EXISTED_ENTITY_CLASS, [self::_BUNDLE_NAME, self::_CONFLICTED_BUNDLE_NAME]);
     }
 
 }
