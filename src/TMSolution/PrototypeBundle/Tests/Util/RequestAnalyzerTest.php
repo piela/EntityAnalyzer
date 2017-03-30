@@ -19,11 +19,12 @@ class RequestAnalyzerTest extends TestCase {
     const _NAMESPACE = 'admin';
     const _APPLICATION_PATH = 'admin/some/other/path';
     const _ENTITIES_PATH = 'discount/2/measure-unit/3/payment-frequency';
-
+    const _ID = '7';
+    
     static protected $request;
 
     public static function setupBeforeClass() {
-        self::$request = new Request(['id' => 7], [/* post */], [
+        self::$request = new Request(['id' => self::_ID], [/* post */], [
             'applicationPath' => self::_APPLICATION_PATH,
             'entitiesPath' => self::_ENTITIES_PATH
         ]);
@@ -38,7 +39,6 @@ class RequestAnalyzerTest extends TestCase {
         $requestAnalyze = $requestAnalyzer->analyze(self::$request);
         $patternRequestAnalyze = unserialize(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'serializedRequestAnalyze'));
         var_dump($patternRequestAnalyze);
-        $this->assertInstanceof('TMSolution\PrototypeBundle\Util\RequestAnalyze', $requestAnalyze);
         $this->assertEquals($patternRequestAnalyze, $requestAnalyze);
     }
 

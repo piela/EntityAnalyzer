@@ -2,35 +2,16 @@
 
 namespace TMSolution\PrototypeBundle\Util;
 
-use TMSolution\ControllerConfigurationBundle\Util\ConfigurationInterface;
-
-class ControllerConfiguration implements ConfigurationInterface {
-
-
-    public function getSearchFormTypeClass() {
-        
-        return $this->get('searchFormType');
+use TMSolution\ConfigurationBundle\Util\ConfigurationInterface;
+use TMSolution\ConfigurationBundle\Util\Configuration;
+class ControllerConfiguration extends  Configuration implements ConfigurationInterface {
+    
+    public function getEntityClass()
+    {
+    
         
     }
-
-    public function getFormTypeClass() {
-        
-        return $this->get('formType');
-    }
-
-    public function getModel() {
-        
-        return $this->get('model');
-    }
-
-    public function getTemplate($actionName) {
-        
-        return $this->get('templates.element');
-    }
-
-    public function getRedirectRoute() {
-        
-        return $this->get('templates.redirect.route');
-    }
+    
+    
     
 }

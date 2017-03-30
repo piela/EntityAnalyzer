@@ -8,23 +8,36 @@ class Configuration implements ConfigurationInterface {
 
     protected $data = [];
 
-    public function __construct($data) {
+    public function __construct($data = []) {
 
         $this->data = $data;
     }
 
-    protected function merge($data) {
+    protected function merge() {
 
-        if (is_object($data) && array_key_exists('TMSolution\ConfigurationBundle\Util\ConfigurationInterface', class_implements($dataItem))) {
-            $data = $data->getData();
-        }
+        $dataItems = func_get_args();
+        
+        foreach ($dataItems as $data) {
 
-        if (empty($this->data)) {
-            $this->data = $data;
-        } else {
-            $this->data = array_replace_recursive($this->data, $data);
+            if (is_object($data) && array_key_exists('TMSolution\ConfigurationBundle\Util\ConfigurationInterface', class_implements($data))) {
+                $data = $data->getData();
+            }
+            else if(is_array($data))
+            {
+                break;
+            }
+            else
+            {
+                throw new \Exception('Argument must be an array or implements TMSolution\ConfigurationBundle\Util\ConfigurationInterface');
+            }
+
+            if (empty($this->data)) {
+                $this->data = $data;
+            } else {
+                $this->data = array_replace_recursive($this->data, $data);
+            }
         }
-        return $this->data;
+        return $this;
     }
 
     public function getData() {
