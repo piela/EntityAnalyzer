@@ -2,7 +2,7 @@
 
 namespace TMSolution\PrototypeBundle\Controller;
 
-use TMSolution\EntityAnalyzerBundle\Entity\Product;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -48,6 +48,8 @@ class PrototypeController extends Controller {
      *
      */
     public function newAction(Request $request) {
+       dump($request);
+       die();
         $config = $this->createConfig($request);
         $entity = $config->createEnity();
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
@@ -162,8 +164,8 @@ class PrototypeController extends Controller {
                         ->getForm();
     }
 
-    protected function createConfig(Request $request, $action) {
-        return $this->get("tm_solution_prototype.controller_configuration_factory")->createConfig($request, $action);
-    }
+//    protected function createConfig(Request $request, $action) {
+//        return $this->get("tm_solution_prototype.controller_configuration_factory")->createConfig($request, $action);
+//    }
 
 }

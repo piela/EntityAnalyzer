@@ -12,10 +12,10 @@ services:
 #        class: TMSolution\PrototypeBundle\Util\ControllerConfigurationFactory
 #        arguments: [@tm_solution_prototype.configuration,@tm_solution_prototype.request_analyzer]
 #
-#    prototype.controller:
-#        class: TMSolution\EntityAnalyzerBundle\Controller\PrototypeController
-#        arguments: ["@service_container"]
-#        shared: false
+    prototype.prototype_controller:
+        class: TMSolution\PrototypeBundle\Controller\PrototypeController
+        arguments: ["@service_container"]
+        shared: false
 #         
 #    tm_solution.prototype.interpreter:
 #        class: TMSolution\EntityAnalyzerBundle\Service\RequestInterpreter

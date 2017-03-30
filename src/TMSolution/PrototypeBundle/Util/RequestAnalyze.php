@@ -1,4 +1,5 @@
 <?php
+
 //TMSolution\PrototypeBundle\Util\RequestAnalyze
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,8 +17,25 @@ class RequestAnalyze {
     protected $applicationPath;
     protected $application;
     protected $entityAlias;
-    protected $entityPath;
+    protected $entityClass;
+    protected $entitiesPath;
     protected $entitiesFromPath = [];
+
+    function getEntityClass() {
+        return $this->entityClass;
+    }
+
+    function setEntityClass($entityClass) {
+        $this->entityClass = $entityClass;
+    }
+
+    function getEntitiesPath() {
+        return $this->entitiesPath;
+    }
+
+    function setEntitiesPath($entitiesPath) {
+        $this->entitiesPath = $entitiesPath;
+    }
 
     function getApplicationPath() {
         return $this->applicationPath;
@@ -29,10 +47,6 @@ class RequestAnalyze {
 
     function getApplication() {
         return $this->application;
-    }
-
-    function getEntityPath() {
-        return $this->entityPath;
     }
 
     function getEntitiesFromPath() {
@@ -49,10 +63,6 @@ class RequestAnalyze {
 
     function setEntityAlias($entityAlias) {
         $this->entityAlias = $entityAlias;
-    }
-
-    function setEntityPath($entityPath) {
-        $this->entityPath = $entityPath;
     }
 
     function setEntitiesFromPath($entitiesFromPath) {

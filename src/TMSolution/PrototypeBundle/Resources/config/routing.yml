@@ -1,3 +1,3 @@
-tm_solution_prototype_homepage:
-    path:     /
-    defaults: { _controller: TMSolutionPrototypeBundle:Default:index }
+tm_solution_prototype_test:
+    resource: "@TMSolutionPrototypeBundle/Resources/config/routing/prototype.yml"
+    prefix:   /test

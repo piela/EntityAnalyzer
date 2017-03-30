@@ -7,7 +7,9 @@ class RequestAnalyzer {
     const APPLICATION_PATH = 'applicationPath';
     const ENTITIES_PATH = 'entitiesPath';
     const DELIMETER = '/';
-    
+    const ID = 'id';
+    const ENTITIES_LIMIT = 10;
+
     protected $request;
     protected $applicationMapper;
     protected $entityMapper;
@@ -18,31 +20,78 @@ class RequestAnalyzer {
     }
 
     public function analyze($request) {
+
         $requestAnalyze = new RequestAnalyze();
-        $applicationPath = $request->request->get(self::APPLICATION_PATH);
+
+        $applicationPath = $request->attributes->get(self::APPLICATION_PATH);
+        $entitiesPath = $request->attributes->get(self::ENTITIES_PATH);
+        $id = $request->query->get(self::ID);
+
+        $entityAlias = $this->getEntityAlias($entitiesPath);
+        $application = $this->getApplication($applicationPath);
+        $bundles = $this->getBundles($application);
+        $entityClass = $this->getEntityClass($entityAlias, $bundles);
+        $entittiesFromPath = $this->getEntitiesFromPath($id, $entitiesPath, $bundles);
         $requestAnalyze->setApplicationPath($applicationPath);
-        $entitiesPath = $request->request->get(self::ENTITIES_PATH);
-        $requestAnalyze->setEntityPath($this->getApplication());
-        $requestAnalyze->setEntityAlias($this->getEntityAlias($entitiesPath));
+        $requestAnalyze->setApplication($application);
+        $requestAnalyze->setEntitiesPath($entitiesPath);
+        $requestAnalyze->setEntitiesFromPath($entittiesFromPath);
+        $requestAnalyze->setEntityAlias($entityAlias);
+        $requestAnalyze->setEntityClass($entityClass);
+
         return $requestAnalyze;
     }
 
     protected function getApplication($applicationPath) {
+
         $applicationPathArr = explode(self::DELIMETER, $applicationPath);
+        
         return $applicationPathArr[0];
     }
-    
+
     protected function getEntityAlias($entitiesPath) {
-        $applicationPathArr = explode(self::DELIMETER, $entitiesPath);
-        return end($applicationPathArr);
+
+        $entitiesPath = explode(self::DELIMETER, $entitiesPath);
+        
+        return end($entitiesPath);
     }
-    
-    protected function getNamespace($application) {
-       return  $this->applicationMapper->getNamespaces($application);
+
+    protected function getBundles($application) {
+
+        return $this->applicationMapper->getBundles($application);
     }
-    
-    protected function getEntityClass($entityAlias,$namespaces) {   
-       return  $this->entityMapper->getClassName($entityAlias,$namespaces);
+
+    protected function getEntityClass($entityAlias, $bundles) {
+
+        return $this->entityMapper->getEntityClass($entityAlias, $bundles);
+    }
+
+    protected function getEntitiesFromPath($id, $entitiesPath, $bundles) {
+
+        $entities = [];
+        $entitiesPathArr = explode(self::DELIMETER, $entitiesPath);
+        $entitiesArr = array_chunk($entitiesPathArr, 2);
+        $entitiesNumber = count($entitiesArr);
+        $counter = 0;
+
+        if (self::ENTITIES_LIMIT >= $entitiesNumber)
+            foreach ($entitiesArr as $entityArr) {
+
+                $counter++;
+                $entity = new \stdClass();
+                $entity->alias = $entityArr[0];
+                $entity->entityClass = $this->getEntityClass($entityArr[0],$bundles);
+
+                if ($counter == $entitiesNumber) {
+                    $entity->id = $id;
+                } else {
+                    $entity->id = $entityArr[1];
+                }
+
+                $entities[] = $entity;
+            }
+
+        return $entities;
     }
 
 }

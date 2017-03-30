@@ -33,9 +33,9 @@ class EntityMapper {
         $count = count($results);
 
         if ($count == 0) {
-            throw new \NoEntityClassForAliasException(sprintf('There is no entityClass for alias: %s', $alias));
+            throw new NoEntityClassForAliasException(sprintf('There is no entityClass for alias: %s', $alias));
         } else if ($count > 1) {
-            throw new \MoreThanOneEntityClassForAliasException(sprintf('There is more than one entityClass for alias :%s - %s', $alias, implode(',', $results)));
+            throw new MoreThanOneEntityClassForAliasException(sprintf('There is more than one entityClass for alias: %s - %s', $alias, implode(',', $results)));
         } else {
             return $results[0];
         }
@@ -66,7 +66,7 @@ class EntityMapper {
         $count = count($results);
 
         if ($count == 0) {
-            throw new \NoAliasForEntityClassException(sprintf('There is no alias for entityClass: %s', $entityClass));
+            throw new NoAliasForEntityClassException(sprintf('There is no alias for entityClass: %s', $entityClass));
         }
         else {
             return $results[0];
@@ -88,7 +88,7 @@ class EntityMapper {
         foreach ($bundles as $bundle) {
 
             if (!array_key_exists($bundle, $this->entities)) {
-                throw new \NoBundleException(sprintf('There is no bundle: %s', $bundle));
+                throw new NoBundleException(sprintf('There is no bundle: %s', $bundle));
             }
         }
     }

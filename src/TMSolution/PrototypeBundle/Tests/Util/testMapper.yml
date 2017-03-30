@@ -1,31 +1,46 @@
 tm_solution_mapper:
     applications: 
-        admin:
-               tm_solution_entity_analyzer
-               tm_solution_sample_entities
-   
+           admin:
+                name: admin  
+                bundles:
+                    - tm_solution_entity_analyzer
+                   
     entities:
         tm_solution_entity_analyzer:
-            discount: TMSolution\EntityAnalyzerBundle\Entity\Discount
-            measure-unit: TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit
-            payment-frequency: TMSolution\EntityAnalyzerBundle\Entity\PaymentFrequency
-            product: TMSolution\EntityAnalyzerBundle\Entity\Product
-            product-category: TMSolution\EntityAnalyzerBundle\Entity\ProductCategory
-            product-definition: TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition
-            product-dictionary: TMSolution\EntityAnalyzerBundle\Entity\ProductDictionary
-            product-price: TMSolution\EntityAnalyzerBundle\Entity\ProductPrice
-            transaction: TMSolution\EntityAnalyzerBundle\Entity\Transaction
-            transaction-status: TMSolution\EntityAnalyzerBundle\Entity\TransactionStatus
-            transaction-type: TMSolution\EntityAnalyzerBundle\Entity\TransactionType
-        tm_solution_sample_entities:
-            discounta: TMSolution\SampleEntitiesBundle\Entity\Discount
-            measure-unit: TMSolution\SampleEntitiesBundle\Entity\MeasureUnit
-            payment-frequency: TMSolution\SampleEntitiesBundle\Entity\PaymentFrequency
-            product: TMSolution\SampleEntitiesBundle\Entity\Product
-            product-category: TMSolution\SampleEntitiesBundle\Entity\ProductCategory
-            product-definition: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
-            product-dictionary: TMSolution\SampleEntitiesBundle\Entity\ProductDictionary
-            product-price: TMSolution\SampleEntitiesBundle\Entity\ProductPrice
-            transaction: TMSolution\SampleEntitiesBundle\Entity\Transaction
-            transaction-status: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
-            transaction-type: TMSolution\SampleEntitiesBundle\Entity\TransactionType
+            discount:
+                alias: discount
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\Discount
+            measure_unit:
+                alias: measure-unit
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit
+            payment_frequency:
+                alias: payment-frequency
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\PaymentFrequency
+            product:
+                alias: product
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\Product
+            product_category:
+                alias: product-category
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\ProductCategory
+            product_definition:
+                alias: product-definition
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\ProductDefinition
+            product_dictionary:
+                alias: product-dictionary
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\ProductDictionary
+            product_price:
+                alias: product-price
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\ProductPrice
+            transaction:
+                alias: transaction
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\Transaction
+            transaction_status:
+                alias: transaction-status
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\TransactionStatus
+            transaction_type:
+                alias: transaction-type
+                entityClass: TMSolution\EntityAnalyzerBundle\Entity\TransactionType
+       
+   
+
+   

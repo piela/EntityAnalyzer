@@ -17,6 +17,7 @@ class EntityMapperTest extends TestCase {
     const _NOT_EXISTED_ALIAS = 'not-existed-measure-unit';
     const _BUNDLE_NAME = 'tm_solution_entity_analyzer';
     const _CONFLICTED_BUNDLE_NAME = 'tm_solution_sample_entities';
+    const _NOT_EXISTED_BUNDLE_NAME = 'not_existed_tm_solution_sample_entities';
     const _ENTITY_CLASS = 'TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit';
     const _NOT_EXISTED_ENTITY_CLASS = 'NotExistedTMSolution\EntityAnalyzerBundle\Entity\MeasureUnit';
 
@@ -33,7 +34,7 @@ class EntityMapperTest extends TestCase {
     }
 
     /**
-     * @expectedException TMSolution\MapperBundle\Exceptions\MoreThanOneEntityClassForAlias
+     * @expectedException TMSolution\MapperBundle\Exceptions\MoreThanOneEntityClassForAliasException
      */
     public function testGetEntityClass_MoreThanOneEntityClassForAliasException() {
         
@@ -43,7 +44,7 @@ class EntityMapperTest extends TestCase {
     }
 
     /**
-     * @expectedException TMSolution\MapperBundle\Exceptions\TMSolution\MapperBundle\Exceptions\NoEntityClassForAlias;
+     * @expectedException TMSolution\MapperBundle\Exceptions\NoEntityClassForAliasException
      */
     public function testGetEntityClass_NoEntityClassForAliasException() {
        
@@ -51,6 +52,18 @@ class EntityMapperTest extends TestCase {
         $applicationMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
         $applicationMapper->getEntityClass(self::_NOT_EXISTED_ALIAS, [self::_BUNDLE_NAME, self::_CONFLICTED_BUNDLE_NAME]);
     }
+    
+    
+     /**
+     * @expectedException TMSolution\MapperBundle\Exceptions\NoBundleException
+     */
+    public function testGetEntityClass_NoBundleException() {
+       
+        $mapperConfiguration = Yaml::parse(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml'));
+        $applicationMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
+        $applicationMapper->getEntityClass(self::_NOT_EXISTED_ALIAS, [self::_BUNDLE_NAME, self::_CONFLICTED_BUNDLE_NAME, self::_NOT_EXISTED_BUNDLE_NAME]);
+    }
+    
 
     public function testGetAlias() {
        
@@ -61,13 +74,13 @@ class EntityMapperTest extends TestCase {
     }
 
     /**
-     * @expectedException TMSolution\MapperBundle\Exceptions\NoAliasForEntityClass; 
+     * @expectedException TMSolution\MapperBundle\Exceptions\NoAliasForEntityClassException 
      */
     public function testGetAliasExcepiton() {
         
         $mapperConfiguration = Yaml::parse(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml'));
         $applicationMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
-        $applicationMapper->getAlias(_NOT_EXISTED_ENTITY_CLASS, [self::_BUNDLE_NAME, self::_CONFLICTED_BUNDLE_NAME]);
+        $applicationMapper->getAlias(self::_NOT_EXISTED_ENTITY_CLASS, [self::_BUNDLE_NAME, self::_CONFLICTED_BUNDLE_NAME]);
     }
 
 }
