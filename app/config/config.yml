@@ -69,70 +69,94 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+    
+fos_rest:  
+    view:
+        formats:
+            json: true
+        templating_formats:
+            html: true
+        force_redirects:
+            html: true
+        failed_validation: HTTP_BAD_REQUEST
+        default_engine: twig
+    access_denied_listener:
+        json: true    
+    format_listener:
+            rules:
+                - { path: '^/', priorities: ['html'], prefer_extension: false }    
 
 
-#tm_solution_prototype:
-#    
-#    base:
-#        allowed: true
-#        model: #service
-#        templates:
-#                 index: 'Default\Base\dashboard.html.twig'
-#                 blank: 'Default\Base\ajax_index.html.twig'       
-#    actions:
-#        filter:
-#            allowed: true
-#            model:
-#                   serviceName:
-#                   method:
-#            searchFormType:
-#                   serviceName:
-#                   method:    
-#            queryBuilder:
-#                   type: #service,#object
-#                   name:
-#                   method:
-#            templates:
-#                container: 'Default\Container\list.html.twig'
-#                element: 'Default\Element\list.html.twig'
-#            limit: 10
-#            hydrateMode: 1
-#        list: 
-#            allowed: true
-#            queryBuilder:
-#            templates:
-#                container: 'Default\Container\list.html.twig'
-#                element: 'Default\Element\list.html.twig'
-#            limit: 10
-#            hydrateMode: 1
-#        create:
-#            allowed: true
-#            formType: *
-#            redirect: # true
-#                       route: '*read'
-#                route_params: null 
-#            templates:
-#                container: 'Default\Container\create.html.twig'
-#                element: 'Default\Element\create.html.twig'
-#            redirect: true    
-#        show: 
-#            allowed: true
-#            templates:
-#                container: 'Default\Container\show.html.twig'
-#                element: 'Default\Element\show.html.twig'
-#        update:
-#            allowed: true
-#            redirect:
-#                route: '*read'
-#                route_params: null 
-#            templates:
-#                container: 'Default\Container\update.html.twig'
-#                element: 'Default\Element\update.html.twig'
-#        delete:
-#            allowed: true
-#            redirect:
-#                route: '*list'
-#                route_params: null
-#            templates:
-#                container: 'Default\Container\blank.html.twig'
-#                element: 'Default\Element\delete.html.twig'                  
+tm_solution_prototype:
+    base:
+        allowed: true
+        templates:
+                 index: 'Default\Base\dashboard.html.twig'
+                 blank: 'Default\Base\ajax_index.html.twig'       
+    actions:
+        filter:
+            allowed: true
+            model:
+                   serviceName:
+                   method:
+            searchFormType:
+                   serviceName:
+                   method:    
+            queryBuilder:
+                   type: #service,#object
+                   name:
+                   method:
+            templates:
+                container: 'Default\Container\list.html.twig'
+                element: 'Default\Element\list.html.twig'
+            limit: 10
+            hydrateMode: 1
+        list: 
+            allowed: true
+            queryBuilder:
+            templates:
+                container: 'Default\Container\list.html.twig'
+                element: 'Default\Element\list.html.twig'
+            limit: 10
+            hydrateMode: 1
+        new:
+            allowed: true
+            formType:
+            redirect: 
+                       route: '*read'
+                       route_params: null 
+            templates:
+                container: 'Default\Container\create.html.twig'
+                element: 'Default\Element\create.html.twig'
+            redirect: true        
+        create:
+            allowed: true
+            formType:
+            redirect: 
+                       route: '*read'
+                       route_params: null 
+            templates:
+                container: 'Default\Container\create.html.twig'
+                element: 'Default\Element\create.html.twig'
+            redirect: true    
+        show: 
+            allowed: true
+            templates:
+                container: 'Default\Container\show.html.twig'
+                element: 'Default\Element\show.html.twig'
+        update:
+            allowed: true
+            redirect:
+                route: '*read'
+                route_params: null 
+            templates:
+                container: 'Default\Container\update.html.twig'
+                element: 'Default\Element\update.html.twig'
+        delete:
+            allowed: true
+            redirect:
+                route: '*list'
+                route_params: null
+            templates:
+                container: 'Default\Container\blank.html.twig'
+                element: 'Default\Element\delete.html.twig'                  

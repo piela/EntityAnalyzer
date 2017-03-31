@@ -23,6 +23,10 @@ class AppKernel extends Kernel
             new TMSolution\ConfigurationBundle\TMSolutionConfigurationBundle(),
             new TMSolution\ControllerConfigurationBundle\TMSolutionControllerConfigurationBundle(),
             new TMSolution\RequestAnalyzerBundle\TMSolutionRequestAnalyzerBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new TMSolution\ModelBundle\TMSolutionModelBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

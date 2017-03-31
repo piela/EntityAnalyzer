@@ -20,9 +20,26 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('tm_solution_prototype');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode->children()
+                        ->booleanNode('debug')
+                            ->defaultValue(true)
+                            ->end()
+                        ->arrayNode('base')
+                            ->useAttributeAsKey('name')
+                            ->prototype('array')
+                                ->useAttributeAsKey('name') 
+                                        ->prototype('scalar')
+                                        ->end()    
+                            ->end()    
+                        ->end()
+                        ->arrayNode('actions')
+                                ->useAttributeAsKey('name')
+                                ->prototype('array')
+                                    ->useAttributeAsKey('name')
+                                        ->prototype('variable')
+                                        ->end()
+                                ->end()
+                        ->end();
 
         return $treeBuilder;
     }

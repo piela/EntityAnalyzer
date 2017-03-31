@@ -6,6 +6,7 @@ use TMSolution\MapperBundle\Exceptions\MoreThanOneEntityClassForAliasException;
 use TMSolution\MapperBundle\Exceptions\NoAliasForEntityClassException;
 use TMSolution\MapperBundle\Exceptions\NoEntityClassForAliasException;
 use TMSolution\MapperBundle\Exceptions\NoBundleException;
+
 /**
  * cache
  */
@@ -50,7 +51,7 @@ class EntityMapper {
         }
     }
 
-    public function getAlias($entityClass, $bundles) {
+    public function getAlias($entityClass, $bundles=[]) {
 
         $this->checkNamespaceExists($bundles);
         $results = [];
@@ -67,8 +68,7 @@ class EntityMapper {
 
         if ($count == 0) {
             throw new NoAliasForEntityClassException(sprintf('There is no alias for entityClass: %s', $entityClass));
-        }
-        else {
+        } else {
             return $results[0];
         }
     }
@@ -76,7 +76,7 @@ class EntityMapper {
     protected function findAlias($entityClass, $bundle) {
 
         foreach ($this->entities[$bundle] as $map) {
-            
+
             if ($map['entityClass'] == $entityClass) {
                 return $map['alias'];
             }
@@ -85,11 +85,18 @@ class EntityMapper {
 
     protected function checkNamespaceExists($bundles) {
 
-        foreach ($bundles as $bundle) {
+        if (is_array($bundles)) {
+            
+            foreach ($bundles as $bundle) {
 
-            if (!array_key_exists($bundle, $this->entities)) {
-                throw new NoBundleException(sprintf('There is no bundle: %s', $bundle));
+                if (!array_key_exists($bundle, $this->entities)) {
+                    throw new NoBundleException(sprintf('There is no bundle in your mapper file: %s', $bundle));
+                }
             }
+        }
+        else
+        {
+            throw new NoBundleException(sprintf('There are no bundles associated with your application, you shoud configure "applications" section in your mapper file first'));
         }
     }
 

@@ -1,40 +1,27 @@
 services:
-#    
-#    tm_solution_prototype.configuration:
-#        class: TMSolution\ConfigurationBundle\Util\Configuration
-#        arguments: [%tm_solution_prototype.config%]
-#        
-#    tm_solution_prototype.request_analyzer:
-#        class: TMSolution\ConfigurationBundle\Util\RequestAnalyzer
-#        arguments: [@tm_solution_mapper.application_mapper,@tm_solution_mapper.entity_mapper]    
-#
-#    tm_solution_prototype.controller_configuration_factory:
-#        class: TMSolution\PrototypeBundle\Util\ControllerConfigurationFactory
-#        arguments: [@tm_solution_prototype.configuration,@tm_solution_prototype.request_analyzer]
-#
-    prototype.prototype_controller:
+    
+    
+    tm_solution_prototype.application_mapper:
+        class: TMSolution\MapperBundle\Util\ApplicationMapper     
+        arguments: [%tm_solution_mapper.applications%]
+      
+    tm_solution_prototype.entity_mapper: 
+        class: TMSolution\MapperBundle\Util\EntityMapper
+        arguments: [%tm_solution_mapper.entities%]
+    
+    tm_solution_prototype.request_analyzer:
+        class: TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzer
+        arguments: ['@tm_solution_prototype.application_mapper', '@tm_solution_prototype.entity_mapper']
+    
+    tm_solution_prototype.base_configuration:
+        class: TMSolution\ConfigurationBundle\Util\Configuration
+        arguments: [%tm_solution_prototype.configuration%]
+    
+    tm_solution_prototype.configuration_factory:
+        class: TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory
+        arguments: ['@tm_solution_prototype.base_configuration','@tm_solution_prototype.request_analyzer']
+   
+    tm_solution_prototype.prototype_controller:
         class: TMSolution\PrototypeBundle\Controller\PrototypeController
-        arguments: ["@service_container"]
-        shared: false
-#         
-#    tm_solution.prototype.interpreter:
-#        class: TMSolution\EntityAnalyzerBundle\Service\RequestInterpreter
-#        arguments: ["@service_container"]        
-#    
-#    tm_solution.prototype.security:
-#        class: TMSolution\EntityAnalyzerBundle\Service\Security
-#        arguments: ["@service_container"]        
-#    
-#    tm_solution.prototype.config:
-#        class: TMSolution\EntityAnalyzerBundle\Service\PrototypeConfig
-#        arguments: ["@service_container", "@tm_solution_mapper","@tm_solution.prototype.interpreter","@tm_solution.prototype.security"]
-#        shared: false    
-#        
-#    tm_solution.prototype.config:
-#        class: TMSolution\EntityAnalyzerBundle\Service\PrototypeConfig
-#        arguments: ["@service_container", "@tm_solution_mapper","@tm_solution.prototype.interpreter","@tm_solution.prototype.security"]
-#        tags: 
-#            name: 'tm_solution.prototype.config'
-#            applicationPath: 'admin/wizard/step2/'
-#            entityAlias: 'user'
+        arguments: ['@service_container','@tm_solution_prototype.configuration_factory']
 

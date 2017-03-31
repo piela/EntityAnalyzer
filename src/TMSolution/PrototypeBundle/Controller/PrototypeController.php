@@ -6,6 +6,8 @@ namespace TMSolution\PrototypeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory;
+use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
 
 /**
  * Prototype controller.
@@ -14,6 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class PrototypeController extends Controller {
 
     const _LIST = 'list';
+    const _QUERY = 'query';
     const _NEW = 'new';
     const _CREATE = 'create';
     const _SHOW = 'show';
@@ -21,8 +24,11 @@ class PrototypeController extends Controller {
     const _UPDATE = 'update';
     const _DELETE = 'delete';
     
-    public function __construct(ContainerInterface $container = null) {
+    protected $configurationFactory;
+    
+    public function __construct(ContainerInterface $container = null,ControllerConfigurationFactory $configurationFactory ) {
         $this->container = $container;
+        $this->configurationFactory=$configurationFactory;
     }
 
     /**
@@ -48,11 +54,10 @@ class PrototypeController extends Controller {
      *
      */
     public function newAction(Request $request) {
-       dump($request);
-       die();
-        $config = $this->createConfig($request);
+       
+        $config = $this->createConfiguration($request,self::_NEW);
         $entity = $config->createEnity();
-        $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
+        $this->denyAccessUnlessGranted(self::_NEW, $entity);
         $form = $this->createForm($config->getFormTypeClass(), $entity);
         return $this->render($config->getTemplate('new'), array(
                     'entity' => $entity,
@@ -61,7 +66,7 @@ class PrototypeController extends Controller {
     }
 
     public function createAction(Request $request) {
-        $config = $this->createConfig($request,__FUNCTION__);
+        $config = $this->createConfiguration($request,__FUNCTION__);
         $entity = $config->createEnity();
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $form = $this->createForm($config->get(), $entity);
@@ -81,7 +86,7 @@ class PrototypeController extends Controller {
      *
      */
     public function showAction(Request $request, $id) {
-        $config = $this->createConfig($request);
+        $config = $this->createConfiguration($request);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $deleteForm = $this->createDeleteForm($entity);
@@ -96,7 +101,7 @@ class PrototypeController extends Controller {
      *
      */
     public function editAction(Request $request, $id) {
-        $config = $this->createConfig($request);
+        $config = $this->createConfiguration($request);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $deleteForm = $this->createDeleteForm($entity);
@@ -113,7 +118,7 @@ class PrototypeController extends Controller {
      *
      */
     public function updateAction(Request $request, $id) {
-        $config = $this->createConfig($request);
+        $config = $this->createConfiguration($request);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $deleteForm = $this->createDeleteForm($entity);
@@ -137,7 +142,7 @@ class PrototypeController extends Controller {
      *
      */
     public function deleteAction(Request $request, $id) {
-        $config = $this->createConfig($request, self::DELETE);
+        $config = $this->createConfiguration($request, self::DELETE);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $form = $this->createDeleteForm($entity);
@@ -164,8 +169,8 @@ class PrototypeController extends Controller {
                         ->getForm();
     }
 
-//    protected function createConfig(Request $request, $action) {
-//        return $this->get("tm_solution_prototype.controller_configuration_factory")->createConfig($request, $action);
-//    }
-
+    protected function createConfiguration(Request $request, $action) {    
+       return $this->configurationFactory->createConfiguration($request,new ControllerConfiguration(), $action);   
+    }
+//call_user_func
 }

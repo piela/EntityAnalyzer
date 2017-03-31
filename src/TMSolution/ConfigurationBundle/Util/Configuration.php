@@ -9,22 +9,20 @@ class Configuration implements ConfigurationInterface {
     protected $data = [];
 
     public function __construct($data = []) {
-       
+
         $this->checkType($data);
         $this->data = $this->assimilateData($data);
-    
-        
     }
 
     public function merge() {
 
         $dataItems = func_get_args();
-        
+
         foreach ($dataItems as $data) {
-            
+
             $this->checkType($data);
-            $data=$this->assimilateData($data);
-            
+            $data = $this->assimilateData($data);
+
             if (empty($this->data)) {
                 $this->data = $data;
             } else {
@@ -33,27 +31,21 @@ class Configuration implements ConfigurationInterface {
         }
         return $this;
     }
-    
-    
-    protected function assimilateData($data)
-    {
+
+    protected function assimilateData($data) {
         if (is_object($data) && array_key_exists('TMSolution\ConfigurationBundle\Util\ConfigurationInterface', class_implements($data))) {
-                $data = $data->getData();
-            }
+            $data = $data->getData();
+        }
         return $data;
     }
-    
-    protected function  checkType($data)
-    {
-           if (is_array($data) || (is_object($data) && array_key_exists('TMSolution\ConfigurationBundle\Util\ConfigurationInterface', class_implements($data)))) {
-            
-               return true;
-            }
-            else
-            {
-                throw new \Exception('Argument must be an array or implements TMSolution\ConfigurationBundle\Util\ConfigurationInterface');
-            }
-        
+
+    protected function checkType($data) {
+        if (is_array($data) || (is_object($data) && array_key_exists('TMSolution\ConfigurationBundle\Util\ConfigurationInterface', class_implements($data)))) {
+
+            return true;
+        } else {
+            throw new \Exception('Argument must be an array or implements TMSolution\ConfigurationBundle\Util\ConfigurationInterface');
+        }
     }
 
     public function getData() {
@@ -66,14 +58,17 @@ class Configuration implements ConfigurationInterface {
         $propertyArr = explode('.', $property);
         $result = null;
 
+        $result = $this->data;
+
         foreach ($propertyArr as $value) {
 
-            if (!$result) {
-                $result = $this->data[$value];
-            } else {
+            if (isset($result[$value])) {
                 $result = $result[$value];
+            } else {
+                throw new \Exception(sprintf('Property \'%s\' doesn\'t exists in configuration', $property));
             }
         }
+
         return $result;
     }
 
@@ -81,25 +76,18 @@ class Configuration implements ConfigurationInterface {
 
         $propertyArr = explode('.', $property);
 
-        $result = null;
+        $result = $this->data;
 
         foreach ($propertyArr as $value) {
 
-            if (!$result) {
-                if (isset($this->data[$value])) {
-                    $result = $this->data[$value];
-                }
+            if (isset($result[$value])) {
+                $result = $result[$value];
             } else {
-
-                if (isset($result[$value])) {
-                    $result = $result[$value];
-                }
+                return false;
             }
         }
 
-        if ($result != null) {
-            return true;
-        }
+        return true;
     }
 
 }

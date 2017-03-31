@@ -25,7 +25,8 @@ class ControllerConfigurationFactory {
     }
 
     public function createConfiguration(Request $request, ConfigurationInterface $controllerConfiguration, $action) {
-
+   
+         
         $analyze = $this->requestAnalyzer->analyze($request);
 
         $applicationPath = $analyze->getApplicationPath();
@@ -38,9 +39,12 @@ class ControllerConfigurationFactory {
         $actionSection=$this->getActionSection($action);
         $analyzeSection=$this->getAnalyzeSection($analyze);
         
-        $controllerConfiguration->setAction($action);
+        
         $controllerConfiguration->merge($baseSection,$actionSection,$analyzeSection );
         
+        dump($controllerConfiguration);
+    
+       // $controllerConfiguration->setAction($action);
         return $controllerConfiguration;
     }
     
@@ -69,6 +73,7 @@ class ControllerConfigurationFactory {
     
         $actionAddress = sprintf('actions.%s', $action);
         if ($this->config->has($actionAddress)) {
+     
             return $this->config->get($actionAddress);
         } else {
             
