@@ -1,8 +1,8 @@
 <?php
-
+//TMSolution\PrototypeBundle\Util\RequestAnalyzerInterface
 namespace TMSolution\PrototypeBundle\Util;
 
-class RequestAnalyzerInterface {
+interface RequestAnalyzerInterface {
 
         public function analyze($request);
 

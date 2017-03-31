@@ -1,7 +1,0 @@
-tm_solution_entity_analyzer_test:
-    resource: "@TMSolutionEntityAnalyzerBundle/Resources/config/routing/prototype.yml"
-    prefix:   /test
-
-tm_solution_entity_analyzer_homepage:
-    path:     /
-    defaults: { _controller: TMSolutionEntityAnalyzerBundle:Default:index }

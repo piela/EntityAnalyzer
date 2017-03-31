@@ -27,8 +27,6 @@ class EntityAnalyzerTest extends KernelTestCase {
         $this->assertInstanceOf('TMSolution\EntityAnalyzerBundle\Util\EntityAnalyze', self::$entityAnalyzer->getEntityAnalyze());
     }
 
-    public function testGetEntityAnalyzeBody() {
-        var_dump(self::$entityAnalyzer->getEntityAnalyze());
-    }
+   
 
 }

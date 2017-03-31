@@ -8,6 +8,7 @@ use TMSolution\MapperBundle\Util\ApplicationMapper;
 use TMSolution\MapperBundle\Util\EntityMapper;
 use \PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use TMSolution\PrototypeBundle\Util\ControllerConfiguration;
 
 /**
  * Description of EntityAnalyzer
@@ -16,15 +17,23 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ControllerConfigurationTest extends TestCase {
 
-   
-
+    protected static $controllerConfiguration;
+    
     public static function setupBeforeClass() {
-     
+
+        self::$controllerConfiguration = new ControllerConfiguration();
     }
 
-    public function testAnalyze() {
+    public function testGetAction() {
 
-       
+        self::$controllerConfiguration->setAction('aaaa');
+        $this->assertEquals('aaaa', self::$controllerConfiguration->getAction());
+    }
+
+    public function testSetAction() {
+
+        self::$controllerConfiguration->setAction('aaaa');
+        $this->assertEquals('aaaa', self::$controllerConfiguration->getAction());
     }
 
 }

@@ -9,8 +9,11 @@ class Configuration implements ConfigurationInterface {
     protected $data = [];
 
     public function __construct($data = []) {
+       
         $this->checkType($data);
-        $this->data = $data;
+        $this->data = $this->assimilateData($data);
+    
+        
     }
 
     public function merge() {
@@ -18,11 +21,10 @@ class Configuration implements ConfigurationInterface {
         $dataItems = func_get_args();
         
         foreach ($dataItems as $data) {
+            
             $this->checkType($data);
-            if (is_object($data) && array_key_exists('TMSolution\ConfigurationBundle\Util\ConfigurationInterface', class_implements($data))) {
-                $data = $data->getData();
-            } 
-
+            $data=$this->assimilateData($data);
+            
             if (empty($this->data)) {
                 $this->data = $data;
             } else {
@@ -30,6 +32,15 @@ class Configuration implements ConfigurationInterface {
             }
         }
         return $this;
+    }
+    
+    
+    protected function assimilateData($data)
+    {
+        if (is_object($data) && array_key_exists('TMSolution\ConfigurationBundle\Util\ConfigurationInterface', class_implements($data))) {
+                $data = $data->getData();
+            }
+        return $data;
     }
     
     protected function  checkType($data)

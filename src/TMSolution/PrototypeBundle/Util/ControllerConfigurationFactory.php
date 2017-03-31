@@ -8,11 +8,11 @@ use TMSolution\PrototypeBundle\Util\RequestAnalyzerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class ControllerConfigurationFactory {
-    
-    const BASE_CONFIG='base';
-    const REQUEST_ANALYZE='requestAnalyze';
 
-    protected $services = [];
+    const BASE_CONFIG = 'base';
+    const REQUEST_ANALYZE = 'requestAnalyze';
+
+    protected $configurations = [];
     protected $config;
     protected $requestAnalyzer;
 
@@ -22,7 +22,7 @@ class ControllerConfigurationFactory {
         $this->requestAnalyzer = $requestAnalyzer;
     }
 
-    public function createConfig(Request $request,ConfigurationInterface $controllerConfiguration, $action) {
+    public function createConfiguration(Request $request, ConfigurationInterface $controllerConfiguration, $action) {
 
         $analyze = $this->requestAnalyzer->analyze($request);
 
@@ -30,18 +30,61 @@ class ControllerConfigurationFactory {
         $entityAlias = $analyze->getEntityAlias();
         $entityClass = $analyze->getEntityClass();
 
-        if (array_key_exists($applicationPath, $this->services) && array_key_exists($entityAlias, $this->services[$applicationPath])) {
-            $this->config->merge($this->services[$applicationPath][$entityAlias]);
-        }
-
-        $analzyeConfig[[self::REQUEST_ANALYZE] = json_decode(json_encode($analyze), true)
-        $controllerConfiguration->merge($config->get[self::BASE_CONFIG]);
-        return new ControllerConfiguration(, $config->get[$action],$analzyeConfig );
+        $this->mergeConfigurations($applicationPath, $entityAlias);
+        
+        $baseSection=$this->getBaseSection();
+        $actionSection=$this->getActionSection($action);
+        $analyzeSection=$this->getAnalyzeSection($analyze);
+        
+        $controllerConfiguration->setAction($action);
+        $controllerConfiguration->merge($baseSection,$actionSection,$analyzeSection );
+        
+        return $controllerConfiguration;
+    }
+    
+    protected function getBaseSection()
+    {
+        return $this->config->get(self::BASE_CONFIG);
     }
 
-    public function addConfiguration($service, $applicationPath, $entityAlias) {
+    protected function getAnalyzeSection($analyze) {
+        
+        $analzyeConfig = [];
+        $analzyeConfig[self::REQUEST_ANALYZE] = json_decode(json_encode($analyze), true);
+        return $analzyeConfig;
+        
+    }
+    protected function mergeConfigurations($applicationPath, $entityAlias) {
 
-        $this->services[$applicationPath][$entityAlias] = $service;
+        $configuration = $this->findSpecializedConfiguration($applicationPath, $entityAlias);
+        if ($configuration) {
+            $this->config->merge($configuration);
+        }
+        return $this->config;
+    }
+
+    protected function getActionSection($action) {
+    
+        $actionAddress = sprintf('actions.%s', $action);
+        if ($this->config->has($actionAddress)) {
+            return $this->config->get($actionAddress);
+        } else {
+            
+            throw new \Exception(sprintf('There is no configuration for action: %s', $action));
+        }
+    }
+
+    protected function findSpecializedConfiguration($applicationPath, $entityAlias) {
+
+        if (array_key_exists($applicationPath, $this->configurations) && array_key_exists($entityAlias, $this->configurations[$applicationPath])) {
+
+            return $this->configurations[$applicationPath][$entityAlias];
+        }
+    }
+
+    public function addConfiguration(ConfigurationInterface $cofniguration, $applicationPath, $entityAlias) {
+
+        $this->configurations[$applicationPath][$entityAlias] = $cofniguration;
     }
 
 }

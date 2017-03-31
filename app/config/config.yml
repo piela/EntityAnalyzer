@@ -83,8 +83,15 @@ swiftmailer:
 #        filter:
 #            allowed: true
 #            model:
-#            searchFormType: #service 
-#            queryBuilder: #service
+#                   serviceName:
+#                   method:
+#            searchFormType:
+#                   serviceName:
+#                   method:    
+#            queryBuilder:
+#                   type: #service,#object
+#                   name:
+#                   method:
 #            templates:
 #                container: 'Default\Container\list.html.twig'
 #                element: 'Default\Element\list.html.twig'
@@ -101,8 +108,8 @@ swiftmailer:
 #        create:
 #            allowed: true
 #            formType: *
-#            redirect:
-#                route: '*read'
+#            redirect: # true
+#                       route: '*read'
 #                route_params: null 
 #            templates:
 #                container: 'Default\Container\create.html.twig'

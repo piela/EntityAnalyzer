@@ -38,7 +38,6 @@ class RequestAnalyzerTest extends TestCase {
         $requestAnalyzer = new RequestAnalyzer($appliactionMapper, $entityMapper);
         $requestAnalyze = $requestAnalyzer->analyze(self::$request);
         $patternRequestAnalyze = unserialize(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'serializedRequestAnalyze'));
-        var_dump($patternRequestAnalyze);
         $this->assertEquals($patternRequestAnalyze, $requestAnalyze);
     }
 

@@ -1,8 +1,8 @@
 <?php
 
 namespace TMSolution\PrototypeBundle\Util;
-
-class RequestAnalyzer {
+use TMSolution\PrototypeBundle\Util\RequestAnalyzerInterface;
+class RequestAnalyzer  implements RequestAnalyzerInterface {
 
     const APPLICATION_PATH = 'applicationPath';
     const ENTITIES_PATH = 'entitiesPath';
