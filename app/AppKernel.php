@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new TMSolution\SampleEntitiesBundle\TMSolutionSampleEntitiesBundle(),
             new TMSolution\PrototypeBundle\TMSolutionPrototypeBundle(),
             new TMSolution\ConfigurationBundle\TMSolutionConfigurationBundle(),
+            new TMSolution\ControllerConfigurationBundle\TMSolutionControllerConfigurationBundle(),
+            new TMSolution\RequestAnalyzerBundle\TMSolutionRequestAnalyzerBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

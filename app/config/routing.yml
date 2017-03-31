@@ -1,3 +1,11 @@
+tm_solution_request_analyzer:
+    resource: "@TMSolutionRequestAnalyzerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tm_solution_controller_configuration:
+    resource: "@TMSolutionControllerConfigurationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 
 tm_solution_prototype:
     resource: "@TMSolutionPrototypeBundle/Resources/config/routing.yml"
