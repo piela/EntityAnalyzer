@@ -45,7 +45,7 @@ tm_solution_mapper:
                 alias: discount
                 entityClass: TMSolution\SampleEntitiesBundle\Entity\Discount
             measure_unit:
-                alias: measure-unit-new
+                alias: measure-unit
                 entityClass: TMSolution\SampleEntitiesBundle\Entity\MeasureUnit
             payment_frequency:
                 alias: payment-frequency
