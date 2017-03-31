@@ -3,9 +3,11 @@
 namespace TMSolution\ControllerConfigurationBundle\Util;
 
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
+use TMSolution\ControllerConfigurationBundle\Exception\NoConfigurationForActionException;
 use TMSolution\ConfigurationBundle\Util\ConfigurationInterface;
 use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class ControllerConfigurationFactory {
 
@@ -70,7 +72,7 @@ class ControllerConfigurationFactory {
             return $this->config->get($actionAddress);
         } else {
             
-            throw new \Exception(sprintf('There is no configuration for action: %s', $action));
+            throw new NoConfigurationForActionException(sprintf('There is no configuration for action: %s', $action));
         }
     }
 
