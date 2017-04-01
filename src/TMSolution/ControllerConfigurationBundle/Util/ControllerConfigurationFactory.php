@@ -8,23 +8,28 @@ use TMSolution\ConfigurationBundle\Util\ConfigurationInterface;
 use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+
+//@to do: change mergin model
 class ControllerConfigurationFactory {
 
     const BASE_CONFIG = 'base';
     const REQUEST_ANALYZE = 'requestAnalyze';
 
     protected $configurations = [];
+    protected $baseConfig;
     protected $config;
     protected $requestAnalyzer;
 
-    public function __construct(ConfigurationInterface $config, RequestAnalyzerInterface $requestAnalyzer) {
+    public function __construct(ConfigurationInterface $baseConfig, RequestAnalyzerInterface $requestAnalyzer) {
 
-        $this->config = $config;
+        $this->baseConfig = $baseConfig;
         $this->requestAnalyzer = $requestAnalyzer;
     }
 
     public function createConfiguration(Request $request, ConfigurationInterface $controllerConfiguration, $action) {
 
+        $this->config=clone $this->baseConfig;
+        
         $analyze = $this->requestAnalyzer->analyze($request);
 
         $applicationPath = $analyze->getApplicationPath();
@@ -50,7 +55,7 @@ class ControllerConfigurationFactory {
     protected function getAnalyzeSection($analyze) {
 
         $analyzeConfig = [];
-        $analyzeConfig[self::REQUEST_ANALYZE] = $analyze->getProperties();
+        $analyzeConfig[self::REQUEST_ANALYZE] =$analyzeArr = $analyze->getProperties();
 
         return $analyzeConfig;
     }

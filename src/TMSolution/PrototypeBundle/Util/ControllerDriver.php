@@ -36,6 +36,30 @@ class ControllerDriver {
         
     } 
     
+    
+    public function shouldRedirect()
+    {
+        if($this->configuration->has('redirect') && $this->configuration->get('redirect')!=null)
+        {
+            return true;
+        }
+    }
+    
+    
+    public function getRedirectRoute($arguments)
+    {
+        
+        if($this->configuration->has('redirect') && $this->configuration->get('redirect')!=null)
+        {
+            return true;
+        }
+        else
+        {
+            throw new \Exception('No route to redirect');
+        }
+    }
+    
+    
 
     public function getModel() {
 

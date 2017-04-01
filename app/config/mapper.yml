@@ -4,6 +4,11 @@ tm_solution_mapper:
               name: admin  
               bundles:
                     - tm_solution_sample_entities
+            api:
+              name: api  
+              bundles:
+                    - tm_solution_sample_entities        
+                    
         
     entities:
         tm_solution_sample_entities:

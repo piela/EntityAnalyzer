@@ -1,12 +1,13 @@
 parameters:
     
     test.configuration:
-        actions: 
-            new:
-                allowed: true
-                formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
-                templates:
+        
+        base:
+               allowed: true
+               formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+               templates:
                     element: 'productcategory\new.html.twig'
+                
                 
 services:
     
@@ -44,3 +45,12 @@ services:
         arguments: [%test.configuration%]
         tags:
             - { name: tm_solution_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entityAlias: 'product-category' }
+            
+            
+            
+    
+    tm_solution_prototype.test_configuration1:
+        class: TMSolution\ConfigurationBundle\Util\Configuration
+        arguments: [%test.configuration%]
+        tags:
+            - { name: tm_solution_prototype.controller_configuration, applicationPath: 'api', entityAlias: 'product-category' }        

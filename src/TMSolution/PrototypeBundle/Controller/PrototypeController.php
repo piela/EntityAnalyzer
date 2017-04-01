@@ -2,18 +2,18 @@
 
 namespace TMSolution\PrototypeBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
 use TMSolution\PrototypeBundle\Util\ControllerDriver;
+use FOS\RestBundle\Controller\FOSRestController;
 
 /**
  * Prototype controller.
  * 
  */
-class PrototypeController extends Controller {
+class PrototypeController extends FOSRestController {
 
     const _LIST = 'list';
     const _QUERY = 'query';
@@ -48,10 +48,8 @@ class PrototypeController extends Controller {
         $config->getTemplate('list');
         $config->getRedirectStrategy('list');
     }
-    
-    
-    
-     /**
+
+    /**
      * Lists all product entities.
      *
      */
@@ -68,52 +66,70 @@ class PrototypeController extends Controller {
         $config->getTemplate('list');
         $config->getRedirectStrategy('list');
     }
-    
-    
 
     /**
      * Creates a new product entity.
      *
      */
     public function newAction(Request $request) {
-        
+
         $driver = $this->getDriver($request, self::_NEW);
 
-        if ($driver->isActionAllowed()) {
-
-            $entityClass=$driver->getEntityClass();
-            $entity = $this->createEntity($entityClass);
-            //$this->denyAccessUnlessGranted(self::_NEW, $entity);
-            $form = $this->createForm($driver->getFormTypeClass(), $entity);
-
-            $this->invokeModelMethod($driver, [$form, $entity]);
-
-            return $this->render($driver->getTemplate('new'), array(
-                        'driver' => $driver,
-                        'entity' => $entity,
-                        'form' => $form->createView(),
-            ));
-        } else {
-
+        if (!$driver->isActionAllowed()) {
             throw new \Exception('Action not allowed');
         }
+
+        $entityClass = $driver->getEntityClass();
+        $entity = $this->createEntity($entityClass);
+        //$this->denyAccessUnlessGranted(self::_NEW, $entity);
+        $form = $this->createForm($driver->getFormTypeClass(), $entity);
+
+        $this->invokeModelMethod($driver, [$form, $entity]);
+
+        $view = $this->view([
+                    'entity' => $entity
+                        ], 200)
+                ->setTemplateData([
+                    'driver' => $driver,
+                    'form' => $form->createView(),
+                ])
+                ->setTemplate($driver->getTemplate('new'));
+        return $this->handleView($view);
     }
 
     public function createAction(Request $request) {
-        $config = $this->createConfiguration($request, __FUNCTION__);
-        $entity = $config->createEnity();
-        $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
-        $form = $this->createForm($config->get(), $entity);
-        $form->submit($request);
-        if ($form->isValid()) {
-            $config->getModel()->save($entity);
-            return $this->redirectToRoute($config->getRedirectStrategy('create'), array('id' => $entity->getId()));
+
+        $driver = $this->getDriver($request, self::_CREATE);
+        
+        if (!$driver->isActionAllowed()) {
+            throw new \Exception('Action not allowed');
         }
-        return $this->render($config->getTemplate("new"), array(
+
+        $entityClass = $driver->getEntityClass();
+        $entity = $this->createEntity($entityClass);
+
+        //$this->denyAccessUnlessGranted(self::_CREATE, $entity);
+        $form = $this->createForm($driver->getFormTypeClass(), $entity);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+           
+            $this->invokeModelMethod($driver, [$entity]);
+
+            if ($driver->shouldRedirect()) {
+            //@todo    return $this->redirectView($this->generateUrl('some_route'),$driver->getRedirectRoute(["id" => $entity->getId()]), 301);
+            }
+        }
+
+        $view = $this->view([
+                    'entity' => $entity
+                        ], 200)
+                ->setTemplateData([
                     'driver' => $driver,
-                    'entity' => $entity,
                     'form' => $form->createView(),
-        ));
+                ])
+                ->setTemplate($driver->getTemplate('new'));
+        return $this->handleView($view);
     }
 
     /**
@@ -227,9 +243,8 @@ class PrototypeController extends Controller {
             return call_user_method($model['method'], $object, $arguments);
         }
     }
-    
-    protected function createEntity($entityClass)
-    {
+
+    protected function createEntity($entityClass) {
         return new $entityClass;
     }
 

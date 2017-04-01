@@ -25,12 +25,12 @@ class TestController extends Controller {
     public function testAction(Request $request) {
 
 
-        $request = new Request([], [/* post */], [
+        $requestA = new Request([], [/* post */], [
             'applicationPath' => 'admin/ala/ma/kota',
             'entitiesPath' => 'product-category'
         ]);
 
-        $response=$this->get('tm_solution_prototype.prototype_controller')->newAction($request);
+        $response=$this->get('tm_solution_prototype.prototype_controller')->newAction($requestA);
         return $this->render('default/test.html.twig', array(
                     'editForm1' => $response->getContent(),
                     'editForm2' => $response->getContent()

@@ -74,6 +74,7 @@ fos_rest:
     view:
         formats:
             json: true
+            xml: true
         templating_formats:
             html: true
         force_redirects:
@@ -84,7 +85,7 @@ fos_rest:
         json: true    
     format_listener:
             rules:
-                - { path: '^/', priorities: ['html'], prefer_extension: false }    
+                - { path: '^/', priorities: ['xml'], prefer_extension: false }    
 
 
 tm_solution_prototype:
@@ -120,13 +121,11 @@ tm_solution_prototype:
             limit: 10
             hydrateMode: 1
         new:
-            formTypeClass: 'ala ma kota'
             redirect: 
                        route: '*read'
                        route_params: null 
             templates:
                 container: 'Default\Container\create.html.twig'
-                element: 'Default\Element\create.html.twig'
             redirect: true        
         create:
             allowed: true
@@ -136,7 +135,6 @@ tm_solution_prototype:
                        route_params: null 
             templates:
                 container: 'Default\Container\create.html.twig'
-                element: 'Default\Element\create.html.twig'
             redirect: true    
         show: 
             allowed: true
@@ -147,7 +145,8 @@ tm_solution_prototype:
             allowed: true
             redirect:
                 route: '*read'
-                route_params: null 
+                params: 
+                     -id
             templates:
                 container: 'Default\Container\update.html.twig'
                 element: 'Default\Element\update.html.twig'
@@ -155,7 +154,7 @@ tm_solution_prototype:
             allowed: true
             redirect:
                 route: '*list'
-                route_params: null
+                _params: null
             templates:
                 container: 'Default\Container\blank.html.twig'
                 element: 'Default\Element\delete.html.twig'                  
