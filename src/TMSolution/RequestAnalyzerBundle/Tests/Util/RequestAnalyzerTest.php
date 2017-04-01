@@ -2,7 +2,7 @@
 
 namespace TMSolution\RequestAnalyzerBundle\Tests\Util;
 
-use TMSolution\PrototypeBundle\Util\RequestAnalyzer;
+use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzer;
 use Symfony\Component\Yaml\Yaml;
 use TMSolution\MapperBundle\Util\ApplicationMapper;
 use TMSolution\MapperBundle\Util\EntityMapper;

@@ -2,12 +2,12 @@
 
 namespace TMSolution\PrototypeBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
+use TMSolution\PrototypeBundle\Util\ControllerDriver;
 
 /**
  * Prototype controller.
@@ -23,12 +23,12 @@ class PrototypeController extends Controller {
     const _EDIT = 'edit';
     const _UPDATE = 'update';
     const _DELETE = 'delete';
-    
+
     protected $configurationFactory;
-    
-    public function __construct(ContainerInterface $container = null,ControllerConfigurationFactory $configurationFactory ) {
+
+    public function __construct(ContainerInterface $container = null, ControllerConfigurationFactory $configurationFactory) {
         $this->container = $container;
-        $this->configurationFactory=$configurationFactory;
+        $this->configurationFactory = $configurationFactory;
     }
 
     /**
@@ -48,25 +48,59 @@ class PrototypeController extends Controller {
         $config->getTemplate('list');
         $config->getRedirectStrategy('list');
     }
+    
+    
+    
+     /**
+     * Lists all product entities.
+     *
+     */
+    public function queryAction(Request $request) {
+        $config = $this->get("prototype.config_factory")->createConfig($request);
+        $config->getApplication();
+        $config->createEntity();
+        $config->getEntityClass();
+        $config->getSearchFormType();
+        $config->createSearchQuery();
+        $config->getFormType();
+        $config->getFormTypeClass();
+        $config->getModel();
+        $config->getTemplate('list');
+        $config->getRedirectStrategy('list');
+    }
+    
+    
 
     /**
      * Creates a new product entity.
      *
      */
     public function newAction(Request $request) {
-       
-        $config = $this->createConfiguration($request,self::_NEW);
-        $entity = $config->createEnity();
-        $this->denyAccessUnlessGranted(self::_NEW, $entity);
-        $form = $this->createForm($config->getFormTypeClass(), $entity);
-        return $this->render($config->getTemplate('new'), array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
-        ));
+        
+        $driver = $this->getDriver($request, self::_NEW);
+
+        if ($driver->isActionAllowed()) {
+
+            $entityClass=$driver->getEntityClass();
+            $entity = $this->createEntity($entityClass);
+            //$this->denyAccessUnlessGranted(self::_NEW, $entity);
+            $form = $this->createForm($driver->getFormTypeClass(), $entity);
+
+            $this->invokeModelMethod($driver, [$form, $entity]);
+
+            return $this->render($driver->getTemplate('new'), array(
+                        'driver' => $driver,
+                        'entity' => $entity,
+                        'form' => $form->createView(),
+            ));
+        } else {
+
+            throw new \Exception('Action not allowed');
+        }
     }
 
     public function createAction(Request $request) {
-        $config = $this->createConfiguration($request,__FUNCTION__);
+        $config = $this->createConfiguration($request, __FUNCTION__);
         $entity = $config->createEnity();
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
         $form = $this->createForm($config->get(), $entity);
@@ -76,6 +110,7 @@ class PrototypeController extends Controller {
             return $this->redirectToRoute($config->getRedirectStrategy('create'), array('id' => $entity->getId()));
         }
         return $this->render($config->getTemplate("new"), array(
+                    'driver' => $driver,
                     'entity' => $entity,
                     'form' => $form->createView(),
         ));
@@ -169,8 +204,34 @@ class PrototypeController extends Controller {
                         ->getForm();
     }
 
-    protected function createConfiguration(Request $request, $action) {    
-       return $this->configurationFactory->createConfiguration($request,new ControllerConfiguration(), $action);   
+    protected function getDriver(Request $request, $action) {
+        $driver = $this->createConfiguration($request, $action);
+        return new ControllerDriver($driver);
     }
+
+    protected function createConfiguration(Request $request, $action) {
+        return $this->configurationFactory->createConfiguration($request, new ControllerConfiguration(), $action);
+    }
+
+    protected function invokeModelMethod($driver, $arguments = []) {
+
+        $model = $driver->getModel();
+        if ($model) {
+            if ($model['type'] == 'class') {
+                $className = $model['name'];
+                $object = new $className;
+            } else if ($model['type'] == 'service') {
+                $object = $this->get($model['name']);
+            }
+
+            return call_user_method($model['method'], $object, $arguments);
+        }
+    }
+    
+    protected function createEntity($entityClass)
+    {
+        return new $entityClass;
+    }
+
 //call_user_func
 }

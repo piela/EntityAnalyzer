@@ -89,7 +89,7 @@ fos_rest:
 
 tm_solution_prototype:
     base:
-        allowed: true
+        allowed: false
         templates:
                  index: 'Default\Base\dashboard.html.twig'
                  blank: 'Default\Base\ajax_index.html.twig'       
@@ -120,8 +120,7 @@ tm_solution_prototype:
             limit: 10
             hydrateMode: 1
         new:
-            allowed: true
-            formType:
+            formTypeClass: 'ala ma kota'
             redirect: 
                        route: '*read'
                        route_params: null 

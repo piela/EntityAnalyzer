@@ -1,5 +1,14 @@
-services:
+parameters:
     
+    test.configuration:
+        actions: 
+            new:
+                allowed: true
+                formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+                templates:
+                    element: 'productcategory\new.html.twig'
+                
+services:
     
     tm_solution_prototype.application_mapper:
         class: TMSolution\MapperBundle\Util\ApplicationMapper     
@@ -24,4 +33,14 @@ services:
     tm_solution_prototype.prototype_controller:
         class: TMSolution\PrototypeBundle\Controller\PrototypeController
         arguments: ['@service_container','@tm_solution_prototype.configuration_factory']
+        
+    tm_solution_prototype.test_controller:
+        class: TMSolution\PrototypeBundle\Controller\TestController
+        arguments: ['@service_container','@tm_solution_prototype.configuration_factory']    
 
+
+    tm_solution_prototype.test_configuration:
+        class: TMSolution\ConfigurationBundle\Util\Configuration
+        arguments: [%test.configuration%]
+        tags:
+            - { name: tm_solution_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entityAlias: 'product-category' }

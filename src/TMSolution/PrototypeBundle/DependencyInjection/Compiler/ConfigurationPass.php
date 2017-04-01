@@ -6,11 +6,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Reference;
 
-class TransportCompilerPass implements CompilerPassInterface {
+class ConfigurationPass implements CompilerPassInterface {
 
-    const SERVICE_NAME = 'tm_solution.prototype.configurationFactory';
+    const SERVICE_NAME = 'tm_solution_prototype.configuration_factory';
     const METHOD_NAME = 'addConfiguration';
-    const TAG_ID = 'tm_solution.prototype.controller_configuration';
+    const TAG_ID = 'tm_solution_prototype.controller_configuration';
     const APPLICATION_PATH = 'applicationPath';
     const ENTITY_ALIAS = 'entityAlias';
 

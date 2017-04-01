@@ -1,8 +1,12 @@
 <?php
+
 //TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzer
+
 namespace TMSolution\RequestAnalyzerBundle\Util;
+
 use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
-class RequestAnalyzer  implements RequestAnalyzerInterface {
+
+class RequestAnalyzer implements RequestAnalyzerInterface {
 
     const APPLICATION_PATH = 'applicationPath';
     const ENTITIES_PATH = 'entitiesPath';
@@ -45,14 +49,14 @@ class RequestAnalyzer  implements RequestAnalyzerInterface {
     protected function getApplication($applicationPath) {
 
         $applicationPathArr = explode(self::DELIMETER, $applicationPath);
-        
+
         return $applicationPathArr[0];
     }
 
     protected function getEntityAlias($entitiesPath) {
 
         $entitiesPath = explode(self::DELIMETER, $entitiesPath);
-        
+
         return end($entitiesPath);
     }
 
@@ -66,6 +70,14 @@ class RequestAnalyzer  implements RequestAnalyzerInterface {
         return $this->entityMapper->getEntityClass($entityAlias, $bundles);
     }
 
+    protected function getValidId($id) {
+        if (is_numeric($id)) {
+            return $id;
+        } else {
+            throw new \Exception('Entity id must by numeric');
+        }
+    }
+
     protected function getEntitiesFromPath($id, $entitiesPath, $bundles) {
 
         $entities = [];
@@ -74,24 +86,27 @@ class RequestAnalyzer  implements RequestAnalyzerInterface {
         $entitiesNumber = count($entitiesArr);
         $counter = 0;
 
-        if (self::ENTITIES_LIMIT >= $entitiesNumber)
+        if (self::ENTITIES_LIMIT >= $entitiesNumber) {
             foreach ($entitiesArr as $entityArr) {
 
                 $counter++;
-                $entity = new \stdClass();
-                $entity->alias = $entityArr[0];
-                $entity->entityClass = $this->getEntityClass($entityArr[0],$bundles);
+                $entity = [];
+                $entity['alias'] = $entityArr[0];
+                $entity['entityClass'] = $this->getEntityClass($entityArr[0], $bundles);
 
                 if ($counter == $entitiesNumber) {
-                    $entity->id = $id;
+                    $entity['id'] = $id;
                 } else {
-                    $entity->id = $entityArr[1];
+                    $entity['id'] = $this->getValidId($entityArr[1]);
                 }
 
                 $entities[] = $entity;
             }
 
-        return $entities;
+            return $entities;
+        } else {
+            throw new \Exception('Entities limit exceeded. EntitiesPath is to long');
+        }
     }
 
 }

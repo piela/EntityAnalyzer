@@ -69,5 +69,12 @@ class RequestAnalyze {
     function setEntitiesFromPath($entitiesFromPath) {
         $this->entitiesFromPath = $entitiesFromPath;
     }
-
+    
+    function getProperties()
+    {
+        return get_object_vars($this);
+        
+    }
+    
+   
 }

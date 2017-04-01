@@ -76,7 +76,7 @@ class EntityMapperTest extends TestCase {
     /**
      * @expectedException TMSolution\MapperBundle\Exceptions\NoAliasForEntityClassException 
      */
-    public function testGetAliasExcepiton() {
+    public function testGetAlias_Excepiton() {
         
         $mapperConfiguration = Yaml::parse(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml'));
         $applicationMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);

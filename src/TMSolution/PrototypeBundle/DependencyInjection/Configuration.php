@@ -21,24 +21,9 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('tm_solution_prototype');
 
         $rootNode->children()
-                        ->booleanNode('debug')
-                            ->defaultValue(true)
-                            ->end()
-                        ->arrayNode('base')
-                            ->useAttributeAsKey('name')
-                            ->prototype('array')
-                                ->useAttributeAsKey('name') 
-                                        ->prototype('scalar')
-                                        ->end()    
-                            ->end()    
-                        ->end()
-                        ->arrayNode('actions')
-                                ->useAttributeAsKey('name')
-                                ->prototype('array')
-                                    ->useAttributeAsKey('name')
-                                        ->prototype('variable')
-                                        ->end()
-                                ->end()
+                        ->variableNode('base')
+                        ->end()    
+                        ->variableNode('actions')
                         ->end();
 
         return $treeBuilder;
