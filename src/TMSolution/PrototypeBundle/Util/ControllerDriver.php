@@ -37,6 +37,20 @@ class ControllerDriver {
     } 
     
     
+    public function returnResultToView()
+    {
+        if($this->configuration->has('model.returnResultToView') )
+        {
+           return  $this->configuration->get('model.returnResultToView');
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    
+    
     public function shouldRedirect()
     {
         if($this->configuration->has('redirect') && $this->configuration->get('redirect')!=null)
@@ -66,13 +80,13 @@ class ControllerDriver {
         if ($this->configuration->has('model')) {
 
             $model = $this->configuration->get('model');
-
+            
             if (!array_key_exists('name', $model)) {
-                throw new Exception('Model must have defined name in configuration');
+                throw new \Exception('Model must have defined name in configuration');
             } 
 
-            if (array_key_exists('method', $model)) {
-                throw new Exception('Model must have defined method in configuration');
+            if (!array_key_exists('method', $model)) {
+                throw new \Exception('Model must have defined method in configuration');
             }
 
             if (!array_key_exists('type', $model)  ) {

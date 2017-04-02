@@ -83,10 +83,12 @@ class PrototypeController extends FOSRestController {
         $entity = $this->createEntity($entityClass);
         //$this->denyAccessUnlessGranted(self::_NEW, $entity);
         $form = $this->createForm($driver->getFormTypeClass(), $entity);
-        $result=$this->invokeModelMethod($driver, [$form, $entity]);
+        $result = $this->invokeModelMethod($driver, [$form, $entity]);
         
-        $data=[];
-        $data['result']=$result;
+        $data = [];
+        if ($driver->returnResultToView()) {
+            $data[$driver->getResultParameter()] = $result;
+        }
         
         $view = $this->view($data, 200)
                 ->setTemplateData([
@@ -100,7 +102,7 @@ class PrototypeController extends FOSRestController {
     public function createAction(Request $request) {
 
         $driver = $this->getDriver($request, self::_CREATE);
-        
+
         if (!$driver->isActionAllowed()) {
             throw new \Exception('Action not allowed');
         }
@@ -113,11 +115,11 @@ class PrototypeController extends FOSRestController {
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-           
+
             $this->invokeModelMethod($driver, [$entity]);
 
             if ($driver->shouldRedirect()) {
-            //@todo    return $this->redirectView($this->generateUrl('some_route'),$driver->getRedirectRoute(["id" => $entity->getId()]), 301);
+                //@todo    return $this->redirectView($this->generateUrl('some_route'),$driver->getRedirectRoute(["id" => $entity->getId()]), 301);
             }
         }
 
@@ -240,7 +242,7 @@ class PrototypeController extends FOSRestController {
                 $object = $this->get($model['name']);
             }
 
-            return call_user_method($model['method'], $object, $arguments);
+            return call_user_func(array($object, $model['method']), $arguments);
         }
     }
 

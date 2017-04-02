@@ -7,6 +7,10 @@ parameters:
                formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
                templates:
                     element: 'productcategory\new.html.twig'
+               model:
+                   name: some_model
+                   method: getSomething
+                   returnResultToView: true
                 
                 
 services:
@@ -47,7 +51,12 @@ services:
             - { name: tm_solution_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entityAlias: 'product-category' }
             
             
-            
+#####################################exeperiment            
+    
+    some_model:
+        class: TMSolution\PrototypeBundle\Util\SomeModel
+        
+    
     
     tm_solution_prototype.test_configuration1:
         class: TMSolution\ConfigurationBundle\Util\Configuration

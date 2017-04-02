@@ -33,7 +33,7 @@ class ControllerConfigurationFactory {
         $applicationPath = $analyze->getApplicationPath();
         $entityAlias = $analyze->getEntityAlias();
 
-        $this->doSoemthing($this->baseConfiguration, $action);
+        $this->mergeToConfiguration($this->baseConfiguration, $action);
         $this->mergeConfigurations($applicationPath, $entityAlias,$action);
 
         $this->configuration->merge($analyzeSection);
@@ -42,11 +42,11 @@ class ControllerConfigurationFactory {
         return $controllerConfiguration;
     }
     
-    protected function doSoemthing($configuration, $action)
+    protected function mergeToConfiguration($configuration, $action)
     {
         $baseSection = $this->getBaseSection($configuration);
         $actionSection = $this->getActionSection($configuration,$action);
-        $this->mergeSections($baseSection,$actionSection);
+        return $this->mergeSections($baseSection,$actionSection);
     }
 
     protected function mergeSections() {
@@ -90,7 +90,7 @@ class ControllerConfigurationFactory {
 
         $configuration = $this->findSpecializedConfiguration($applicationPath, $entityAlias);
         if ($configuration) { 
-            $this->doSoemthing($configuration, $action);
+            $this->mergeToConfiguration($configuration, $action);
         }
         return $this->configuration;
     }
