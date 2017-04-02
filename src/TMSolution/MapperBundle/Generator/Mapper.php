@@ -72,7 +72,8 @@ class Mapper {
         if (!$root || !array_key_exists('tm_solution_mapper', $root) ) {
             $root['tm_solution_mapper'] = [];
         }
-        $yaml = Yaml::dump($this->readEntities($root), 5);
+        $entities = $this->readEntities($root);
+        $yaml = Yaml::dump($entities, 5);
         file_put_contents($this->filePath, $yaml);
     }
 
