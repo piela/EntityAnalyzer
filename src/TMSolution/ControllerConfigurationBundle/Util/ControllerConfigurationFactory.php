@@ -8,7 +8,6 @@ use TMSolution\ConfigurationBundle\Util\ConfigurationInterface;
 use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-
 //@to do: change mergin model
 class ControllerConfigurationFactory {
 
@@ -16,69 +15,87 @@ class ControllerConfigurationFactory {
     const REQUEST_ANALYZE = 'requestAnalyze';
 
     protected $configurations = [];
-    protected $baseConfig;
-    protected $config;
+    protected $baseConfiguration;
+    protected $configuration;
     protected $requestAnalyzer;
 
     public function __construct(ConfigurationInterface $baseConfig, RequestAnalyzerInterface $requestAnalyzer) {
 
-        $this->baseConfig = $baseConfig;
+        $this->baseConfiguration = $baseConfig;
         $this->requestAnalyzer = $requestAnalyzer;
     }
 
     public function createConfiguration(Request $request, ConfigurationInterface $controllerConfiguration, $action) {
 
-        $this->config=clone $this->baseConfig;
+        $this->configuration=$controllerConfiguration;
         
         $analyze = $this->requestAnalyzer->analyze($request);
-
+        $analyzeSection = $this->getAnalyzeSection($analyze);
+        
         $applicationPath = $analyze->getApplicationPath();
         $entityAlias = $analyze->getEntityAlias();
         $entityClass = $analyze->getEntityClass();
 
-        $this->mergeConfigurations($applicationPath, $entityAlias);
+        $this->doSoemthing($this->baseConfiguration, $action);
+        $this->mergeConfigurations($applicationPath, $entityAlias,$action);
 
-        $baseSection = $this->getBaseSection();
-        $actionSection = $this->getActionSection($action);
-        $analyzeSection = $this->getAnalyzeSection($analyze);
-
-        $controllerConfiguration->merge($baseSection, $actionSection, $analyzeSection);
+        $this->configuration->merge($analyzeSection);
         $controllerConfiguration->setAction($action);
 
         return $controllerConfiguration;
     }
+    
+    protected function doSoemthing($configuration, $action)
+    {
+        $baseSection = $this->getBaseSection($configuration);
+        $actionSection = $this->getActionSection($configuration,$action);
+        $this->mergeSections($baseSection,$actionSection);
+    }
 
-    protected function getBaseSection() {
-        return $this->config->get(self::BASE_CONFIG);
+    protected function mergeSections() {
+        
+        $sections=func_get_args();
+        foreach($sections as $section)
+        {
+            if($section)
+            {
+                $this->configuration->merge($section);
+            }
+            
+        }
+        return $this->configuration;
+    }
+
+    protected function getBaseSection($configuration) {
+
+        if ($configuration->has(self::BASE_CONFIG)) {
+            return $configuration->get(self::BASE_CONFIG);
+        }
+    }
+
+    protected function getActionSection($configuration, $action) {
+
+        $actionAddress = sprintf('actions.%s', $action);
+        if ($configuration->has($actionAddress)) {
+            return $configuration->get($actionAddress);
+        }
     }
 
     protected function getAnalyzeSection($analyze) {
 
-        $analyzeConfig = [];
-        $analyzeConfig[self::REQUEST_ANALYZE] =$analyzeArr = $analyze->getProperties();
+        $analyzeConfiguration = [];
+        $analyzeConfiguration[self::REQUEST_ANALYZE] = $analyzeArr = $analyze->getProperties();
 
-        return $analyzeConfig;
+        return $analyzeConfiguration;
     }
 
-    protected function mergeConfigurations($applicationPath, $entityAlias) {
+    protected function mergeConfigurations($applicationPath, $entityAlias,$action) {
 
         $configuration = $this->findSpecializedConfiguration($applicationPath, $entityAlias);
-        if ($configuration) {
-            $this->config->merge($configuration);
+        if ($configuration) { 
+            $this->doSoemthing($configuration, $action);
         }
-        return $this->config;
-    }
-
-    protected function getActionSection($action) {
-
-        $actionAddress = sprintf('actions.%s', $action);
-        if ($this->config->has($actionAddress)) {
-
-            return $this->config->get($actionAddress);
-        } else {
-
-            throw new NoConfigurationForActionException(sprintf('There is no configuration for action: %s', $action));
-        }
+        return $this->configuration;
     }
 
     protected function findSpecializedConfiguration($applicationPath, $entityAlias) {
@@ -89,9 +106,9 @@ class ControllerConfigurationFactory {
         }
     }
 
-    public function addConfiguration(ConfigurationInterface $cofniguration, $applicationPath, $entityAlias) {
+    public function addConfiguration(ConfigurationInterface $configuration, $applicationPath, $entityAlias) {
 
-        $this->configurations[$applicationPath][$entityAlias] = $cofniguration;
+        $this->configurations[$applicationPath][$entityAlias] = $configuration;
     }
 
 }

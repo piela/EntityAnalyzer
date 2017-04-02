@@ -85,7 +85,7 @@ fos_rest:
         json: true    
     format_listener:
             rules:
-                - { path: '^/', priorities: ['xml'], prefer_extension: false }    
+                - { path: '^/', priorities: ['html'], prefer_extension: false }    
 
 
 tm_solution_prototype:

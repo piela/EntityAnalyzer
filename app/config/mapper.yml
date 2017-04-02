@@ -8,8 +8,6 @@ tm_solution_mapper:
               name: api  
               bundles:
                     - tm_solution_sample_entities        
-                    
-        
     entities:
         tm_solution_sample_entities:
             discount:
