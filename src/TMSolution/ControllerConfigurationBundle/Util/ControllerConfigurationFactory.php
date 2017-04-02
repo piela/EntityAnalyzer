@@ -81,7 +81,7 @@ class ControllerConfigurationFactory {
     protected function getAnalyzeSection($analyze) {
 
         $analyzeConfiguration = [];
-        $analyzeConfiguration[self::REQUEST_ANALYZE] = $analyzeArr = $analyze->getProperties();
+        $analyzeConfiguration[self::REQUEST_ANALYZE] =  $analyze->getProperties();
 
         return $analyzeConfiguration;
     }
