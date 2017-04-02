@@ -1,13 +1,13 @@
 tm_solution_mapper:
-    applications: 
-            admin:
-              name: admin  
-              bundles:
-                    - tm_solution_sample_entities
-            api:
-              name: api  
-              bundles:
-                    - tm_solution_sample_entities        
+    applications:
+        admin:
+            bundles:
+                - tm_solution_sample_entities
+            name: admin
+        api:
+            bundles:
+                - tm_solution_sample_entities
+            name: api
     entities:
         tm_solution_sample_entities:
             discount:

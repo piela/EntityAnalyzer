@@ -49,6 +49,18 @@ class ControllerDriver {
         }
     }
     
+    public function getResultParameter()
+    {
+        if($this->configuration->has('model.resultParameter') )
+        {
+           return  $this->configuration->get('model.resultParameter');
+        }
+        else
+        {
+            return 'result';
+        }   
+        
+    }
     
     
     public function shouldRedirect()
