@@ -2,8 +2,6 @@
 
 namespace TMSolution\ControllerConfigurationBundle\Util;
 
-use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
-use TMSolution\ControllerConfigurationBundle\Exception\NoConfigurationForActionException;
 use TMSolution\ConfigurationBundle\Util\ConfigurationInterface;
 use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,7 +32,6 @@ class ControllerConfigurationFactory {
         
         $applicationPath = $analyze->getApplicationPath();
         $entityAlias = $analyze->getEntityAlias();
-        $entityClass = $analyze->getEntityClass();
 
         $this->doSoemthing($this->baseConfiguration, $action);
         $this->mergeConfigurations($applicationPath, $entityAlias,$action);
