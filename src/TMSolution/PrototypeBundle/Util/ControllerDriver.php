@@ -79,6 +79,10 @@ class ControllerDriver {
                 $model['type'] = 'service';
             }
             
+            if (!array_key_exists('property', $model)  ) {
+                $model['property'] = 'result';
+            }
+            
             return $model;
         }
         

@@ -83,12 +83,12 @@ class PrototypeController extends FOSRestController {
         $entity = $this->createEntity($entityClass);
         //$this->denyAccessUnlessGranted(self::_NEW, $entity);
         $form = $this->createForm($driver->getFormTypeClass(), $entity);
-
-        $this->invokeModelMethod($driver, [$form, $entity]);
-
-        $view = $this->view([
-                    'entity' => $entity
-                        ], 200)
+        $result=$this->invokeModelMethod($driver, [$form, $entity]);
+        
+        $data=[];
+        $data['result']=$result;
+        
+        $view = $this->view($data, 200)
                 ->setTemplateData([
                     'driver' => $driver,
                     'form' => $form->createView(),
