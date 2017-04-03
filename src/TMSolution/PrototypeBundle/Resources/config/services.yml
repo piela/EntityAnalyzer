@@ -2,7 +2,8 @@ parameters:
     
     test.configuration:
         
-        base:
+        actions:
+            new:
                allowed: true
                formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
                templates:
@@ -11,6 +12,7 @@ parameters:
                    name: some_model
                    method: getSomething
                    returnResultToView: true
+                   resultParameter: dupa
                 
                 
 services:
@@ -44,14 +46,17 @@ services:
         arguments: ['@service_container','@tm_solution_prototype.configuration_factory']    
 
 
+
+            
+            
+#####################################exeperiment            
     tm_solution_prototype.test_configuration:
         class: TMSolution\ConfigurationBundle\Util\Configuration
         arguments: [%test.configuration%]
         tags:
             - { name: tm_solution_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entityAlias: 'product-category' }
-            
-            
-#####################################exeperiment            
+
+    
     
     some_model:
         class: TMSolution\PrototypeBundle\Util\SomeModel

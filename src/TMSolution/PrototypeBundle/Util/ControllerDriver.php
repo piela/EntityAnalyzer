@@ -3,8 +3,9 @@
 namespace TMSolution\PrototypeBundle\Util;
 
 use TMSolution\ConfigurationBundle\Util\ConfigurationInterface;
+use TMSolution\PrototypeBundle\Util\ControllerDriverInterface;
 
-class ControllerDriver {
+class ControllerDriver implements ControllerDriverInterface {
 
     protected $configuration;
 

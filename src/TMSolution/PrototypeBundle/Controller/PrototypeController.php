@@ -5,6 +5,7 @@ namespace TMSolution\PrototypeBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory;
+use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactoryInterface;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
 use TMSolution\PrototypeBundle\Util\ControllerDriver;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -26,52 +27,52 @@ class PrototypeController extends FOSRestController {
 
     protected $configurationFactory;
 
-    public function __construct(ContainerInterface $container = null, ControllerConfigurationFactory $configurationFactory) {
+    public function __construct(ContainerInterface $container, ControllerConfigurationFactoryInterface $configurationFactory) {
         $this->container = $container;
         $this->configurationFactory = $configurationFactory;
     }
 
-    /**
-     * Lists all product entities.
-     *
-     */
-    public function listAction(Request $request) {
-        $config = $this->get("prototype.config_factory")->createConfig($request);
-        $config->getApplication();
-        $config->createEntity();
-        $config->getEntityClass();
-        $config->getSearchFormType();
-        $config->createSearchQuery();
-        $config->getFormType();
-        $config->getFormTypeClass();
-        $config->getModel();
-        $config->getTemplate('list');
-        $config->getRedirectStrategy('list');
-    }
-
-    /**
-     * Lists all product entities.
-     *
-     */
-    public function queryAction(Request $request) {
-        $config = $this->get("prototype.config_factory")->createConfig($request);
-        $config->getApplication();
-        $config->createEntity();
-        $config->getEntityClass();
-        $config->getSearchFormType();
-        $config->createSearchQuery();
-        $config->getFormType();
-        $config->getFormTypeClass();
-        $config->getModel();
-        $config->getTemplate('list');
-        $config->getRedirectStrategy('list');
-    }
+//    /**
+//     * Lists all product entities.
+//     *
+//     */
+//    public function listAction($request) {
+//        $config = $this->get("prototype.config_factory")->createConfig($request);
+//        $config->getApplication();
+//        $config->createEntity();
+//        $config->getEntityClass();
+//        $config->getSearchFormType();
+//        $config->createSearchQuery();
+//        $config->getFormType();
+//        $config->getFormTypeClass();
+//        $config->getModel();
+//        $config->getTemplate('list');
+//        $config->getRedirectStrategy('list');
+//    }
+//
+//    /**
+//     * Lists all product entities.
+//     *
+//     */
+//    public function queryAction($request) {
+//        $config = $this->get("prototype.config_factory")->createConfig($request);
+//        $config->getApplication();
+//        $config->createEntity();
+//        $config->getEntityClass();
+//        $config->getSearchFormType();
+//        $config->createSearchQuery();
+//        $config->getFormType();
+//        $config->getFormTypeClass();
+//        $config->getModel();
+//        $config->getTemplate('list');
+//        $config->getRedirectStrategy('list');
+//    }
 
     /**
      * Creates a new product entity.
      *
      */
-    public function newAction(Request $request) {
+    public function newAction($request) {
 
         $driver = $this->getDriver($request, self::_NEW);
 
@@ -81,13 +82,15 @@ class PrototypeController extends FOSRestController {
 
         $entityClass = $driver->getEntityClass();
         $entity = $this->createEntity($entityClass);
-        //$this->denyAccessUnlessGranted(self::_NEW, $entity);
+        $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver,$entity));
         $form = $this->createForm($driver->getFormTypeClass(), $entity);
         $result = $this->invokeModelMethod($driver, [$form, $entity]);
         
         $data = [];
         if ($driver->returnResultToView()) {
+            
             $data[$driver->getResultParameter()] = $result;
+            
         }
         
         $view = $this->view($data, 200)
@@ -96,10 +99,11 @@ class PrototypeController extends FOSRestController {
                     'form' => $form->createView(),
                 ])
                 ->setTemplate($driver->getTemplate('new'));
+        
         return $this->handleView($view);
     }
 
-    public function createAction(Request $request) {
+    public function createAction($request) {
 
         $driver = $this->getDriver($request, self::_CREATE);
 
@@ -138,7 +142,7 @@ class PrototypeController extends FOSRestController {
      * Finds and displays a product entity.
      *
      */
-    public function showAction(Request $request, $id) {
+    public function showAction($request, $id) {
         $config = $this->createConfiguration($request);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
@@ -153,7 +157,7 @@ class PrototypeController extends FOSRestController {
      * Displays a form to edit an existing product entity.
      *
      */
-    public function editAction(Request $request, $id) {
+    public function editAction($request, $id) {
         $config = $this->createConfiguration($request);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
@@ -170,7 +174,7 @@ class PrototypeController extends FOSRestController {
      * Displays a form to edit an existing product entity.
      *
      */
-    public function updateAction(Request $request, $id) {
+    public function updateAction($request, $id) {
         $config = $this->createConfiguration($request);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
@@ -194,7 +198,7 @@ class PrototypeController extends FOSRestController {
      * Deletes a product entity.
      *
      */
-    public function deleteAction(Request $request, $id) {
+    public function deleteAction($request, $id) {
         $config = $this->createConfiguration($request, self::DELETE);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
@@ -227,7 +231,7 @@ class PrototypeController extends FOSRestController {
         return new ControllerDriver($driver);
     }
 
-    protected function createConfiguration(Request $request, $action) {
+    protected function createConfiguration($request, $action) {
         return $this->configurationFactory->createConfiguration($request, new ControllerConfiguration(), $action);
     }
 
@@ -248,6 +252,14 @@ class PrototypeController extends FOSRestController {
 
     protected function createEntity($entityClass) {
         return new $entityClass;
+    }
+    
+    protected function getSecurityTicket($driver,$object)
+    {
+       $ticket=$this->get('tm_solution_prototype.ticket');
+       $ticket->setDriver($driver);
+       $ticket->setObject($object);
+       return $ticket;
     }
 
 //call_user_func

@@ -44,10 +44,11 @@ class ProductCategoryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            
+            //asnsodf
+$em = $this->getDoctrine()->getManager();
             $em->persist($productCategory);
             $em->flush();
-
             return $this->redirectToRoute('productcategory_show', array('id' => $productCategory->getId()));
         }
 

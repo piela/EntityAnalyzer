@@ -1,21 +1,21 @@
 
 #{applicationPath} ={application}/{service}/{name} = app.{application}.{service}.{name}
 #{entitiesPath} ={parent}/{parentid}/{entityAlias}
-list:
+tm_solution_prototype.list:
     path: "{applicationPath}/-/{entitiesPath}/list/{state}"
     defaults: { _controller: "tm_solution_prototype.prototype_controller:listAction", state: "",  format: ~ }
     requirements: {"applicationPath":".+" ,"path": ".+" }
     methods:  [GET, POST]
     options:
         expose: true    
-query:
+tm_solution_prototype.query:
     path: "{applicationPath}/-/{entitiesPath}/query/{state}"
     defaults: { _controller: "tm_solution_prototype.prototype_controller:queryAction", state: "",  format: ~ }
     requirements: {"applicationPath":".+" ,"path": ".+" }
     methods:  [GET, POST]
     options:
         expose: true                
-new:
+tm_solution_prototype.new:
     path: "{applicationPath}/-/{entitiesPath}/new/{state}"
     defaults: { _controller: "tm_solution_prototype.prototype_controller:newAction", state: "",  format: ~ }
     requirements: {"applicationPath":".+" ,"path": ".+" }
@@ -23,7 +23,7 @@ new:
     options:
         expose: true
 
-create:
+tm_solution_prototype.create:
     path: "{applicationPath}/-/{entitiesPath}/create/{state}"
     defaults: { _controller: "tm_solution_prototype.prototype_controller:createAction", state: "",  format: ~ }
     requirements: {"applicationPath":".+" ,"path": ".+" }
@@ -31,28 +31,28 @@ create:
     options:
         expose: true      
 
-delete:
+tm_solution_prototype.delete:
     path: "{applicationPath}/-/{entitiesPath}/delete/{id}/{state}"
     defaults: { _controller: "tm_solution_prototype.prototype_controller:deleteAction", state: "",  format: ~ }
     requirements: {"applicationPath":".+" ,"path": ".+" }
     methods:  [GET, POST]
     options:
         expose: true
-edit:
+tm_solution_prototype.edit:
     path: "{applicationPath}/-/{entitiesPath}/edit/{id}/{state}"
     defaults: { _controller: "tm_solution_prototype.prototype_controller:editAction", state: "",  format: ~ }
     requirements: {"applicationPath":".+" ,"path": ".+" }
     methods:  [GET, POST]
     options:
         expose: true          
-update:
+tm_solution_prototype.update:
     path: "{applicationPath}/-/{entitiesPath}/update/{id}/{state}"
     defaults: { _controller: "tm_solution_prototype.prototype_controller:updateAction", state: "",  format: ~ }
     requirements: {"applicationPath":".+" ,"path": ".+" }
     methods:  [GET, POST]
     options:
         expose: true      
-show:
+tm_solution_prototype.show:
     path: "{applicationPath}/-/{entitiesPath}/show/{id}/{state}"
     defaults: { _controller: "tm_solution_prototype.prototype_controller:showAction", state: "",  format: ~ }
     requirements: {"applicationPath":".+" ,"path": ".+" }

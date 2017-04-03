@@ -4,10 +4,10 @@ namespace TMSolution\ControllerConfigurationBundle\Util;
 
 use TMSolution\ConfigurationBundle\Util\ConfigurationInterface;
 use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
-use Symfony\Component\HttpFoundation\Request;
+use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactoryInterface;
 
 //@to do: change mergin model
-class ControllerConfigurationFactory {
+class ControllerConfigurationFactory  implements ControllerConfigurationFactoryInterface{
 
     const BASE_CONFIG = 'base';
     const REQUEST_ANALYZE = 'requestAnalyze';
@@ -23,7 +23,7 @@ class ControllerConfigurationFactory {
         $this->requestAnalyzer = $requestAnalyzer;
     }
 
-    public function createConfiguration(Request $request, ConfigurationInterface $controllerConfiguration, $action) {
+    public function createConfiguration($request, ConfigurationInterface $controllerConfiguration, $action) {
 
         $this->configuration=$controllerConfiguration;
         
@@ -38,7 +38,8 @@ class ControllerConfigurationFactory {
 
         $this->configuration->merge($analyzeSection);
         $controllerConfiguration->setAction($action);
-
+        
+        
         return $controllerConfiguration;
     }
     

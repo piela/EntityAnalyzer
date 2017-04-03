@@ -29,8 +29,13 @@ class TestController extends Controller {
             'applicationPath' => 'admin/ala/ma/kota',
             'entitiesPath' => 'product-category'
         ]);
+        
+        
 
         $response=$this->get('tm_solution_prototype.prototype_controller')->newAction($requestA);
+        
+        
+        
         return $this->render('default/test.html.twig', array(
                     'editForm1' => $response->getContent(),
                     'editForm2' => $response->getContent()
