@@ -21,10 +21,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('productcategory_show', { 'id': productCategory.id }) }}">show</a>
+                            <a href="{{ path('get',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath,  'id': productCategory.id }) }}"> show</a>
                         </li>
                         <li>
-                            <a href="{{ path('productcategory_edit', { 'id': productCategory.id }) }}">edit</a>
+                            <a href="{{ path('edit',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath,  'id': productCategory.id }) }}"> edit</a>
                         </li>
                     </ul>
                 </td>

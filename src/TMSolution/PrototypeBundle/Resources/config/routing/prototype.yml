@@ -48,7 +48,7 @@ update:
         expose: true      
 get:
     path: "{applicationPath}/-/{entitiesPath}/get/{id}/{state}"
-    defaults: { _controller: "tm_solution_prototype.prototype_controller:showAction", state: "",  format: ~ }
+    defaults: { _controller: "tm_solution_prototype.prototype_controller:getAction", state: "",  format: ~ }
     requirements: {"applicationPath":".+" ,"path": ".+" }
     methods:  [GET, POST]
     options:

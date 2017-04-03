@@ -6,8 +6,19 @@ parameters:
             allowed: true
             form: 
                    formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+                   action: list
         
         actions:
+            
+            list:
+                templates:
+                    element: 'productcategory\index.html.twig' 
+                models:
+                    list:
+                        name: some_model
+                        method: search
+                        returnResultToView: true
+                        resultParameter: productCategories
             new:
                form: 
                    action: create 
@@ -30,7 +41,32 @@ parameters:
                 redirection: 
                     routeName: new
                     parameters:
-                          
+                        
+            get:
+                templates:
+                    element: 'productcategory\show.html.twig'
+                models:
+                    get:
+                        name: some_model
+                        method: findOneById
+                        returnResultToView: true
+                        resultParameter: productCategory 
+                redirection: 
+                    routeName: new
+                    parameters:                        
+            edit:
+                form:
+                   formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+                   action: update
+                   paremeters: id
+                models:
+                   get:
+                        name: some_model
+                        method: findOneById
+                        returnResultToView: true
+                        resultParameter: entity 
+                templates:
+                    element: 'productcategory\edit.html.twig'
 #
 #                    
 #                    

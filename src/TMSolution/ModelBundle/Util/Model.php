@@ -17,11 +17,11 @@ class Model {
     }
 
     public function findOneById($entityClass, $id) {
-        return $this->orm->getManager()->getRepository($entityClass)->findOneById($id);
+        return $this->entityManager->getRepository($entityClass)->findOneById($id);
     }
 
-    public function search($query) {
-        return $this->orm->getManager()->getRepository($entityClass)->findOneById($id);
+    public function search($entityClass,$query) {
+        return $this->entityManager->getRepository($entityClass)->findAll();
     }
 
     public function save($entity) {
