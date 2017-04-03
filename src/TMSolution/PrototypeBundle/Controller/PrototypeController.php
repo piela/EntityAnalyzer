@@ -82,8 +82,8 @@ class PrototypeController extends FOSRestController {
         $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver, $entity));
         $form = $this->createForm($driver->getFormTypeClass(), $entity);
         $result = $this->invokeModelMethod($driver, [$form, $entity]);
-        $data = [];
-        $this->addResult($driver, $data, $result);
+        $data=  [];
+        $this->addResultToData($driver, $data, $result);
 
         $view = $this->view($data, 200)
                 ->setTemplateData([
@@ -252,7 +252,7 @@ class PrototypeController extends FOSRestController {
         }
     }
 
-    protected function addResult($driver, &$data, $result) {
+    protected function addResultToData($driver, &$data, $result) {
         if ($driver->returnResultToView()) {
             $data[$driver->getResultParameter()] = $result;
         }
