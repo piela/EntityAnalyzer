@@ -75,31 +75,23 @@ class PrototypeController extends FOSRestController {
     public function newAction(Request $request) {
 
         $driver = $this->getDriver($request, self::_NEW);
-
-        if (!$driver->isActionAllowed()) {
-            throw new \Exception('Action not allowed');
-        }
+        $this->isActionAllowed($driver);
 
         $entityClass = $driver->getEntityClass();
         $entity = $this->createEntity($entityClass);
-        $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver,$entity));
+        $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver, $entity));
         $form = $this->createForm($driver->getFormTypeClass(), $entity);
         $result = $this->invokeModelMethod($driver, [$form, $entity]);
-        
         $data = [];
-        if ($driver->returnResultToView()) {
-            
-            $data[$driver->getResultParameter()] = $result;
-            
-        }
-        
+        $this->addResult($driver, $data, $result);
+
         $view = $this->view($data, 200)
                 ->setTemplateData([
                     'driver' => $driver,
                     'form' => $form->createView(),
                 ])
                 ->setTemplate($driver->getTemplate('new'));
-        
+
         return $this->handleView($view);
     }
 
@@ -253,13 +245,24 @@ class PrototypeController extends FOSRestController {
     protected function createEntity($entityClass) {
         return new $entityClass;
     }
-    
-    protected function getSecurityTicket($driver,$object)
-    {
-       $ticket=$this->get('tm_solution_prototype.ticket');
-       $ticket->setDriver($driver);
-       $ticket->setObject($object);
-       return $ticket;
+
+    protected function isActionAllowed($driver) {
+        if (!$driver->isActionAllowed()) {
+            throw new \Exception('Action not allowed');
+        }
+    }
+
+    protected function addResult($driver, &$data, $result) {
+        if ($driver->returnResultToView()) {
+            $data[$driver->getResultParameter()] = $result;
+        }
+    }
+
+    protected function getSecurityTicket($driver, $object) {
+        $ticket = $this->get('tm_solution_prototype.ticket');
+        $ticket->setDriver($driver);
+        $ticket->setObject($object);
+        return $ticket;
     }
 
 //call_user_func
