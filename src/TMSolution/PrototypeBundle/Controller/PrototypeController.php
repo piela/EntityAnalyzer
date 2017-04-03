@@ -81,7 +81,7 @@ class PrototypeController extends FOSRestController {
         $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver, $entity));
         $form = $this->createForm($driver->getFormTypeClass(), $entity);
         $result = $this->invokeModelMethod($driver, [$entity]);
-        $data=  [];
+        $data = [];
         $this->addResultToData($driver, $data, $result);
         $view = $this->view($data, 200)
                 ->setTemplateData([
@@ -102,27 +102,28 @@ class PrototypeController extends FOSRestController {
         $this->denyAccessUnlessGranted(self::_CREATE, $this->getSecurityTicket($driver, $entity));
         $form = $this->createForm($driver->getFormTypeClass(), $entity);
         $form->handleRequest($request);
+        $data = ['entity' => $entity];
 
         if ($form->isValid()) {
 
             $result = $this->invokeModelMethod($driver, [$entity]);
-            $data=  [];
-            $data['id']=$entity->getId();
+            $data['id'] = $entity->getId();
             $this->addResultToData($driver, $data, $result);
             
             if ($driver->shouldRedirect()) {
-                return $this->redirectView($this->generateUrl('some_route'),$driver->getRedirectRoute($data), 301);
+                
+                return $this->redirectView($this->getUrlToRedirect($driver, $data),301);
+            
             }
         }
 
-        $view = $this->view([
-                    'entity' => $entity
-                        ], 200)
+        $view = $this->view($data, 200)
                 ->setTemplateData([
-                    'driver' => $driver,
+                    'driver' => $driver, 
                     'form' => $form->createView(),
                 ])
                 ->setTemplate($driver->getTemplate('new'));
+        
         return $this->handleView($view);
     }
 
@@ -200,13 +201,7 @@ class PrototypeController extends FOSRestController {
         return $this->redirectToRoute('test_index');
     }
 
-    /**
-     * Creates a form to delete a product entity.
-     *
-     * @param Product $product The product entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
+
     private function createDeleteForm($config, $entity) {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl($config->getRedirectStrategy('delete'), array('id' => $entity->getId())))
@@ -243,7 +238,7 @@ class PrototypeController extends FOSRestController {
     }
 
     protected function isActionAllowed($driver) {
-        
+
         if (!$driver->isActionAllowed()) {
             throw new \NotFoundHttpException('Action not allowed');
         }
@@ -253,6 +248,7 @@ class PrototypeController extends FOSRestController {
         if ($driver->returnResultToView()) {
             $data[$driver->getResultParameter()] = $result;
         }
+        return $data;
     }
 
     protected function getSecurityTicket($driver, $object) {
@@ -260,6 +256,29 @@ class PrototypeController extends FOSRestController {
         $ticket->setDriver($driver);
         $ticket->setObject($object);
         return $ticket;
+    }
+
+    protected function getRedirectRouteParameters($driver, $data) {
+        
+        $definedParameters = $driver->getRedirectRouteParameters();
+        $resultParameters = [];
+        if ($definedParameters) {
+            foreach ($definedParameters as $parameter) {
+                if (array_key_exists($parameter, $data)) {
+                    $resultParameters[$parameter] = $data[$parameter];
+                }
+                else
+                {
+                    throw new \Exception('Parameter %s for action needed, check configuration of your action',$parameter);
+                }
+            }
+        }
+
+        return $resultParameters;
+    }
+
+    protected function getUrlToRedirect($driver, $data) {
+            return $this->generateUrl($driver->getRedirectRoute(),$this->getRedirectRouteParameters($driver, $data));
     }
 
 //call_user_func
