@@ -5,29 +5,29 @@ namespace TMSolution\SampleEntitiesBundle\Controller;
 use TMSolution\SampleEntitiesBundle\Entity\ProductCategory;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Productcategory controller.
  *
  * @Route("productcategory")
  */
-class ProductCategoryController extends Controller
-{
+class ProductCategoryController extends Controller {
+
     /**
      * Lists all productCategory entities.
      *
      * @Route("/", name="productcategory_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $productCategories = $em->getRepository('TMSolutionSampleEntitiesBundle:ProductCategory')->findAll();
+        $productCategories = $em->getRepository('TMSolutionSampleEntitiesBunProductCategorydle:ProductCategory')->findAll();
 
         return $this->render('productcategory/index.html.twig', array(
-            'productCategories' => $productCategories,
+                    'productCategories' => $productCategories,
         ));
     }
 
@@ -37,24 +37,23 @@ class ProductCategoryController extends Controller
      * @Route("/new", name="productcategory_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $productCategory = new Productcategory();
         $form = $this->createForm('TMSolution\SampleEntitiesBundle\Form\ProductCategoryType', $productCategory);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             //asnsodf
-$em = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($productCategory);
             $em->flush();
             return $this->redirectToRoute('productcategory_show', array('id' => $productCategory->getId()));
         }
 
         return $this->render('productcategory/new.html.twig', array(
-            'productCategory' => $productCategory,
-            'form' => $form->createView(),
+                    'productCategory' => $productCategory,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -64,13 +63,12 @@ $em = $this->getDoctrine()->getManager();
      * @Route("/{id}", name="productcategory_show")
      * @Method("GET")
      */
-    public function showAction(ProductCategory $productCategory)
-    {
+    public function showAction(ProductCategory $productCategory) {
         $deleteForm = $this->createDeleteForm($productCategory);
 
         return $this->render('productcategory/show.html.twig', array(
-            'productCategory' => $productCategory,
-            'delete_form' => $deleteForm->createView(),
+                    'productCategory' => $productCategory,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -80,8 +78,7 @@ $em = $this->getDoctrine()->getManager();
      * @Route("/{id}/edit", name="productcategory_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, ProductCategory $productCategory)
-    {
+    public function editAction(Request $request, ProductCategory $productCategory) {
         $deleteForm = $this->createDeleteForm($productCategory);
         $editForm = $this->createForm('TMSolution\SampleEntitiesBundle\Form\ProductCategoryType', $productCategory);
         $editForm->handleRequest($request);
@@ -93,9 +90,9 @@ $em = $this->getDoctrine()->getManager();
         }
 
         return $this->render('productcategory/edit.html.twig', array(
-            'productCategory' => $productCategory,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'productCategory' => $productCategory,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -105,8 +102,7 @@ $em = $this->getDoctrine()->getManager();
      * @Route("/{id}", name="productcategory_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, ProductCategory $productCategory)
-    {
+    public function deleteAction(Request $request, ProductCategory $productCategory) {
         $form = $this->createDeleteForm($productCategory);
         $form->handleRequest($request);
 
@@ -126,12 +122,12 @@ $em = $this->getDoctrine()->getManager();
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(ProductCategory $productCategory)
-    {
+    private function createDeleteForm(ProductCategory $productCategory) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('productcategory_delete', array('id' => $productCategory->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('productcategory_delete', array('id' => $productCategory->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

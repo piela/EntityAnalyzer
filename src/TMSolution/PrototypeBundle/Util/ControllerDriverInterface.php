@@ -14,17 +14,22 @@ interface ControllerDriverInterface {
     
     public function getEntitiesPath(); 
     
-    public function returnResultToView();
+    public function returnResultToView($modelName);
     
-    public function getResultParameter();
+    public function getResultParameter($modelName);
     
     public function shouldRedirect();
         
-    public function getRedirectRoute($arguments);
+    public function getRedirectionRoute();
     
-    public function getModel();
+    public function getRedirectionRouteParameters();
+    
+    public function getModel($name);
+    public function hasModel($name);
 
     public function getFormTypeClass();
+    
+    public function getFormAction();
 
     public function getTemplate(); 
 

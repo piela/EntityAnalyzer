@@ -2,17 +2,84 @@ parameters:
   #####################################exeperiment     
     test.configuration:
         
+        base:
+            allowed: true
+            form: 
+                   formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+        
         actions:
             new:
-               allowed: true
-               formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+               form: 
+                   action: create 
+               #                routeName: aaa    
+               #                parameters:
+               #                value        
                templates:
+                    element: 'productcategory\new.html.twig'    
+            create:
+                form:
+                        action: new
+                templates:
                     element: 'productcategory\new.html.twig'
-               model:
-                   name: some_model
-                   method: getSomething
-                   returnResultToView: true
-                   resultParameter: dupa
+                models:
+                    create:
+                        name: some_model
+                        method: save
+                        returnResultToView: true
+                        resultParameter: result 
+                redirection: 
+                    routeName: new
+                    parameters:
+                          
+#
+#                    
+#                    
+#            edit:
+#                allowed: true
+#                forms:
+#                    edit:
+#                        formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+#                        action: new
+#                    delete:
+#                        formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+#                        action: new    
+#                templates:
+#                    element: 'productcategory\new.html.twig'
+#                models:
+#                    get:
+#                        name: some_model
+#                        method: getSomething
+#                        returnResultToView: true
+#                        resultParameter: result 
+#                    update:
+#                        name: some_model
+#                        method: getSomething
+#                        returnResultToView: true
+#                        resultParameter: result
+#                redirection: 
+#                    routeName: new        
+#                    
+#            update:
+#                allowed: true
+#                forms:
+#                    udpate:
+#                        formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+#                        action: new
+#                templates:
+#                    element: 'productcategory\new.html.twig'
+#                models:
+#                    get:
+#                        name: some_model
+#                        method: getSomething
+#                        returnResultToView: true
+#                        resultParameter: result 
+#                    update:
+#                        name: some_model
+#                        method: getSomething
+#                        returnResultToView: true
+#                        resultParameter: result
+#                redirection: 
+#                    routeName: new        
                    
   #####################################                   
                 
@@ -73,7 +140,8 @@ services:
             - { name: tm_solution_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entityAlias: 'product-category' }
     
     some_model:
-        class: TMSolution\PrototypeBundle\Sample\SomeModel
+        class: TMSolution\ModelBundle\Util\Model
+        arguments: ['@doctrine.orm.entity_manager']
         
     
     
