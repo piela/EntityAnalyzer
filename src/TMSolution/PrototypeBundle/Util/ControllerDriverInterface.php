@@ -3,7 +3,7 @@
 namespace TMSolution\PrototypeBundle\Util;
 
 
-class ControllerDriverInterface {
+interface ControllerDriverInterface {
 
   
     public function isActionAllowed();

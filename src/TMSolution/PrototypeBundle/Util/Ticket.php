@@ -8,12 +8,14 @@
 
 namespace TMSolution\PrototypeBundle\Util;
 
+use TMSolution\PrototypeBundle\Util\TicketInterface;
+
 /**
  * Description of Ticket
  *
  * @author Mariusz
  */
-class Ticket {
+class Ticket implements  TicketInterface {
    
     protected $driver;
     protected $object;

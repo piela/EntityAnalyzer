@@ -1,5 +1,5 @@
 parameters:
-    
+  #####################################exeperiment     
     test.configuration:
         
         actions:
@@ -13,6 +13,8 @@ parameters:
                    method: getSomething
                    returnResultToView: true
                    resultParameter: dupa
+                   
+  #####################################                   
                 
                 
 services:
@@ -43,20 +45,31 @@ services:
         
     tm_solution_prototype.test_controller:
         class: TMSolution\PrototypeBundle\Controller\TestController
-        arguments: ['@service_container','@tm_solution_prototype.configuration_factory']    
-
-
-
+        arguments: ['@service_container','@tm_solution_prototype.configuration_factory']   
+        
+    tm_solution_prototype.ticket:
+        class: TMSolution\PrototypeBundle\Util\Ticket
+        arguments: []       
             
+ 
             
 #####################################exeperiment            
+ 
+    
+    app.post_voter:
+        class: TMSolution\PrototypeBundle\Sample\SampleVoter
+        arguments: ['@security.access.decision_manager']
+        tags:
+            - { name: security.voter }
+        public: false
+
+    
+    
     tm_solution_prototype.test_configuration:
         class: TMSolution\ConfigurationBundle\Util\Configuration
         arguments: [%test.configuration%]
         tags:
             - { name: tm_solution_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entityAlias: 'product-category' }
-
-    
     
     some_model:
         class: TMSolution\PrototypeBundle\Util\SomeModel

@@ -72,7 +72,7 @@ class PrototypeController extends FOSRestController {
      * Creates a new product entity.
      *
      */
-    public function newAction($request) {
+    public function newAction(Request $request) {
 
         $driver = $this->getDriver($request, self::_NEW);
 
@@ -103,7 +103,7 @@ class PrototypeController extends FOSRestController {
         return $this->handleView($view);
     }
 
-    public function createAction($request) {
+    public function createAction(Request $request) {
 
         $driver = $this->getDriver($request, self::_CREATE);
 
@@ -142,7 +142,7 @@ class PrototypeController extends FOSRestController {
      * Finds and displays a product entity.
      *
      */
-    public function showAction($request, $id) {
+    public function showAction(Request $request, $id) {
         $config = $this->createConfiguration($request);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
@@ -157,7 +157,7 @@ class PrototypeController extends FOSRestController {
      * Displays a form to edit an existing product entity.
      *
      */
-    public function editAction($request, $id) {
+    public function editAction(Request $request, $id) {
         $config = $this->createConfiguration($request);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
@@ -174,7 +174,7 @@ class PrototypeController extends FOSRestController {
      * Displays a form to edit an existing product entity.
      *
      */
-    public function updateAction($request, $id) {
+    public function updateAction(Request $request, $id) {
         $config = $this->createConfiguration($request);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
@@ -198,7 +198,7 @@ class PrototypeController extends FOSRestController {
      * Deletes a product entity.
      *
      */
-    public function deleteAction($request, $id) {
+    public function deleteAction(Request $request, $id) {
         $config = $this->createConfiguration($request, self::DELETE);
         $entity = $config->getModel()->findOneById($id);
         $this->denyAccessUnlessGranted(__FUNCTION__, $entity);
