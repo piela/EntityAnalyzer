@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace TMSolution\PrototypeBundle\Util;
+namespace TMSolution\PrototypeBundle\Sample;
 
 /**
  * Description of SomeModel

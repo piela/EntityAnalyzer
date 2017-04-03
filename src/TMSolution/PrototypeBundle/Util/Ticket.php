@@ -20,20 +20,19 @@ class Ticket implements  TicketInterface {
     protected $driver;
     protected $object;
 
-    
-    function getDriver() {
+    public function getDriver() {
         return $this->driver;
     }
 
-    function getObject() {
+    public function getObject() {
         return $this->object;
     }
 
-    function setDriver($driver) {
+    public function setDriver($driver) {
         $this->driver = $driver;
     }
 
-    function setObject($object) {
+    public function setObject($object) {
         $this->object = $object;
     }
 

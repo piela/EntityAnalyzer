@@ -50,6 +50,7 @@ services:
     tm_solution_prototype.ticket:
         class: TMSolution\PrototypeBundle\Util\Ticket
         arguments: []       
+        shared: false
             
  
             
@@ -72,7 +73,7 @@ services:
             - { name: tm_solution_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entityAlias: 'product-category' }
     
     some_model:
-        class: TMSolution\PrototypeBundle\Util\SomeModel
+        class: TMSolution\PrototypeBundle\Sample\SomeModel
         
     
     
