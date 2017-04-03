@@ -4,7 +4,7 @@ namespace TMSolution\PrototypeBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactoryInterface;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
 use TMSolution\PrototypeBundle\Util\ControllerDriver;
@@ -76,15 +76,13 @@ class PrototypeController extends FOSRestController {
 
         $driver = $this->getDriver($request, self::_NEW);
         $this->isActionAllowed($driver);
-
         $entityClass = $driver->getEntityClass();
         $entity = $this->createEntity($entityClass);
         $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver, $entity));
         $form = $this->createForm($driver->getFormTypeClass(), $entity);
-        $result = $this->invokeModelMethod($driver, [$form, $entity]);
+        $result = $this->invokeModelMethod($driver, [$entity]);
         $data=  [];
         $this->addResultToData($driver, $data, $result);
-
         $view = $this->view($data, 200)
                 ->setTemplateData([
                     'driver' => $driver,
@@ -98,24 +96,22 @@ class PrototypeController extends FOSRestController {
     public function createAction(Request $request) {
 
         $driver = $this->getDriver($request, self::_CREATE);
-
-        if (!$driver->isActionAllowed()) {
-            throw new \Exception('Action not allowed');
-        }
-
+        $this->isActionAllowed($driver);
         $entityClass = $driver->getEntityClass();
         $entity = $this->createEntity($entityClass);
-
-        //$this->denyAccessUnlessGranted(self::_CREATE, $entity);
+        $this->denyAccessUnlessGranted(self::_CREATE, $this->getSecurityTicket($driver, $entity));
         $form = $this->createForm($driver->getFormTypeClass(), $entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
 
-            $this->invokeModelMethod($driver, [$entity]);
-
+            $result = $this->invokeModelMethod($driver, [$entity]);
+            $data=  [];
+            $data['id']=$entity->getId();
+            $this->addResultToData($driver, $data, $result);
+            
             if ($driver->shouldRedirect()) {
-                //@todo    return $this->redirectView($this->generateUrl('some_route'),$driver->getRedirectRoute(["id" => $entity->getId()]), 301);
+                return $this->redirectView($this->generateUrl('some_route'),$driver->getRedirectRoute($data), 301);
             }
         }
 
@@ -247,8 +243,9 @@ class PrototypeController extends FOSRestController {
     }
 
     protected function isActionAllowed($driver) {
+        
         if (!$driver->isActionAllowed()) {
-            throw new \Exception('Action not allowed');
+            throw new \NotFoundHttpException('Action not allowed');
         }
     }
 
