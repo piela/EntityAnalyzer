@@ -1,4 +1,142 @@
+parameters:
+  #####################################exeperiment     
+    test.configuration:    
+        base:
+            allowed: true
+            form: 
+                   formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+                   action: list
+            models:
+                    get:
+                        name: some_model
+                        method: findOneById
+                        returnResultToView: true
+                        resultParameter: productCategory 
+                   
+        actions: 
+            list:
+                templates:
+                    element: 'productcategory\index.html.twig' 
+                models:
+                    list:
+                        name: some_model
+                        method: search
+                        returnResultToView: true
+                        resultParameter: productCategories
+            new:
+               form: 
+                   action: create 
+               #                routeName: aaa    
+               #                parameters:
+               #                value        
+               templates:
+                    element: 'productcategory\new.html.twig'    
+            create:
+                form:
+                        action: new
+                templates:
+                    element: 'productcategory\new.html.twig'
+                models:
+                    create:
+                        name: some_model
+                        method: save
+                        returnResultToView: true
+                        resultParameter: result 
+                redirection: 
+                    routeName: list
+                    parameters:
+                        
+            get:
+                templates:
+                    element: 'productcategory\show.html.twig'   
+                redirection: 
+                    routeName: new
+                    parameters:                        
+            edit:
+                form:
+                   formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+                   action: update
+                   paremeters: 
+                            -id
+                models:
+                   get:
+                        name: some_model
+                        method: findOneById
+                        returnResultToView: true
+                        resultParameter: entity 
+                templates:
+                    element: 'productcategory\edit.html.twig'
+                    
+            update:
+                form:
+                   formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+                   action: update
+                   paremeters: 
+                            -id
+                models:
+                    get:
+                        name: some_model
+                        method: findOneById
+                        returnResultToView: true
+                        resultParameter: entity
+                    update:
+                        name: some_model
+                        method: update
+                        returnResultToView: true
+                        resultParameter: entity    
+                templates:
+                    element: 'productcategory\edit.html.twig'         
+            delete:
+                form:
+                   action: delete     
+                models:
+                    delete:
+                        name: some_model
+                        method: delete
+                        returnResultToView: true
+                        resultParameter: entity   
+                templates:
+                    element: 'productcategory\list.html.twig'
+                redirection: 
+                    routeName: list
+ 
+ 
 services:
-#    tm_solution_sandbox.example:
-#        class: TMSolution\SandboxBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    
+    app.post_voter:
+        class: TMSolution\SandboxBundle\Sample\SampleVoter
+        arguments: ['@security.access.decision_manager']
+        tags:
+            - { name: security.voter }
+        public: false
+
+    
+    
+    tm_solution_prototype.test_configuration:
+        class: TMSolution\ConfigurationBundle\Util\Configuration
+        arguments: [%test.configuration%]
+        tags:
+            - { name: tm_solution_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entityAlias: 'product-category' }
+    
+
+    #wczesniejsza deklaracja
+    #some_model:
+    #    class: TMSolution\ModelBundle\Util\Model
+    #    arguments: ['@doctrine.orm.entity_manager']
+    
+    
+    real_model:
+        class: TMSolution\ModelBundle\Util\Model
+        arguments: ['@doctrine.orm.entity_manager']
+    
+    some_model:
+        class: TMSolution\SandboxBundle\Sample\SampleLogger
+        arguments: ['@real_model']
+        
+    
+    
+    tm_solution_prototype.test_configuration1:
+        class: TMSolution\ConfigurationBundle\Util\Configuration
+        arguments: [%test.configuration%]
+        tags:
+            - { name: tm_solution_prototype.controller_configuration, applicationPath: 'api', entityAlias: 'product-category' }  
