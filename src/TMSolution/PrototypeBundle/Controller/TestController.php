@@ -34,9 +34,9 @@ class TestController extends Controller {
         
 
         $response=$this->get('tm_solution_prototype.prototype_controller')->newAction($request);
-        $response2=$this->get('tm_solution_prototype.prototype_controller')->getAction($request,1);
-        $response3=$this->get('tm_solution_prototype.prototype_controller')->editAction($request,2);
-        $response4=$this->get('tm_solution_prototype.prototype_controller')->listAction($request,2);
+        $response2=$this->get('tm_solution_prototype.prototype_controller')->getAction($request,6);
+        $response3=$this->get('tm_solution_prototype.prototype_controller')->editAction($request,6);
+        $response4=$this->get('tm_solution_prototype.prototype_controller')->listAction($request,6);
         
         
         

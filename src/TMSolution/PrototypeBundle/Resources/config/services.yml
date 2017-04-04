@@ -100,57 +100,7 @@ parameters:
                 redirection: 
                     routeName: list
  
-#
-#                    
-#                    
-#            edit:
-#                allowed: true
-#                forms:
-#                    edit:
-#                        formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
-#                        action: new
-#                    delete:
-#                        formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
-#                        action: new    
-#                templates:
-#                    element: 'productcategory\new.html.twig'
-#                models:
-#                    get:
-#                        name: some_model
-#                        method: getSomething
-#                        returnResultToView: true
-#                        resultParameter: result 
-#                    update:
-#                        name: some_model
-#                        method: getSomething
-#                        returnResultToView: true
-#                        resultParameter: result
-#                redirection: 
-#                    routeName: new        
-#                    
-#            update:
-#                allowed: true
-#                forms:
-#                    udpate:
-#                        formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
-#                        action: new
-#                templates:
-#                    element: 'productcategory\new.html.twig'
-#                models:
-#                    get:
-#                        name: some_model
-#                        method: getSomething
-#                        returnResultToView: true
-#                        resultParameter: result 
-#                    update:
-#                        name: some_model
-#                        method: getSomething
-#                        returnResultToView: true
-#                        resultParameter: result
-#                redirection: 
-#                    routeName: new        
-                   
-  #####################################                   
+                
                 
                 
 services:

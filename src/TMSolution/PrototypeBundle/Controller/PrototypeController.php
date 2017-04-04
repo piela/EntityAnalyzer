@@ -56,6 +56,7 @@ class PrototypeController extends FOSRestController {
         $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver, $entity));
         $form = $this->createForm($driver->getFormTypeClass(), $entity, ['action' => $this->getFormActionUrl($driver)]);
         $result = $this->invokeModelMethod($driver, self::_NEW, [$entity], true);
+
         $data = [];
         $this->addResultToData($driver, self::_NEW, $data, $result);
 
@@ -180,11 +181,8 @@ class PrototypeController extends FOSRestController {
         $this->addResultToData($driver, self::_GET, $data, $entity);
 
         $deleteForm = $this->createDeleteForm($request, $entity);
-
         $editForm = $this->createForm($driver->getFormTypeClass(), $entity, ['action' => $this->getFormActionUrl($driver, ['id' => $entity->getId()])]);
-
         $editForm->handleRequest($request);
-
 
         if ($editForm->isValid()) {
 
@@ -195,7 +193,7 @@ class PrototypeController extends FOSRestController {
 
             if ($driver->shouldRedirect()) {
 
-                $view = $this->redirectView($this->getUrlToRedirect($driver, $data), 301);
+                $view = $this->redirectView($this->getUrlToRedirect($driver, [$data]), 301);
                 return $this->handleView($view);
             }
         }
@@ -257,6 +255,18 @@ class PrototypeController extends FOSRestController {
         return $this->configurationFactory->createConfiguration($request, new ControllerConfiguration(), $action);
     }
 
+    protected function getModelObject($model) {
+
+        if ($model['type'] == 'class') {
+            $className = $model['name'];
+            $object = new $className;
+        } else if ($model['type'] == 'service') {
+            $object = $this->get($model['name']);
+        }
+
+        return $object;
+    }
+
     protected function invokeModelMethod($driver, $modelName, $arguments = [], $optional = false) {
 
 
@@ -264,15 +274,8 @@ class PrototypeController extends FOSRestController {
 
             $model = $driver->getModel($modelName);
             if ($model) {
-                if ($model['type'] == 'class') {
-                    $className = $model['name'];
-                    $object = new $className;
-                } else if ($model['type'] == 'service') {
-                    $object = $this->get($model['name']);
-                }
-
+                $object = $this->getModelObject($model);
                 $arguments[] = $driver;
-
                 return call_user_func_array(array($object, $model['method']), $arguments);
             }
         } else {
@@ -337,38 +340,40 @@ class PrototypeController extends FOSRestController {
         return $this->generateUrl($driver->getRedirectionRoute(), $parameters);
     }
 
+    protected function getFormActionParameters($formAction) {
+
+        if (is_array($formAction)) {
+
+            if (!array_key_exists('routeName', $formAction)) {
+                throw new Exception('Parameter routeName for formAciton doesn\'t exists ');
+            }
+
+            if (array_key_exists('parameters', $formAction)) {
+                return $formAction['parameters'];
+            }
+        }
+        return [];
+    }
+
     protected function getFormActionUrl($driver, $extraParameters = []) {
 
         $formAction = $driver->getFormAction();
         $urlParameters = ['applicationPath' => $driver->getApplicationPath(), 'entitiesPath' => $driver->getEntitiesPath()];
 
         if ($formAction) {
-
-            if (is_array($formAction)) {
-
-                if (!array_key_exists('routeName', $formAction)) {
-                    throw new Exception('Parameter routeName for formAciton doesn\'t exists ');
-                }
-
-                if (array_key_exists('parameters', $formAction)) {
-                    $urlParameters = array_merge($urlParameters, $formAction['parameters']);
-                }
-            }
-
-            $urlParameters = array_merge($urlParameters, $extraParameters);
+            $urlParameters = array_merge($urlParameters,$this->getFormActionParameters($formAction), $extraParameters);
             $uri = $this->generateUrl($formAction, $urlParameters);
         }
 
         return $uri;
     }
-    
-    
-    
-    protected function checkEntityExists($driver,$entity) {
-        
-        $entityClass=$driver->getEntityClass();
-        if(!$entity || !($entity instanceof $entityClass ) )
-        { throw new \Exception('Entity doesn\'t exists');}
+
+    protected function checkEntityExists($driver, $entity) {
+
+        $entityClass = $driver->getEntityClass();
+        if (!$entity || !($entity instanceof $entityClass )) {
+            throw new \Exception('Entity doesn\'t exists');
+        }
     }
 
 }
