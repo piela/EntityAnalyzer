@@ -21,17 +21,12 @@
     </table>
 
     <ul>
-        {#
-        <li>
-            <a href="{{ path('productcategory_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('productcategory_edit', { 'id': productCategory.id }) }}">Edit</a>
-        </li>
+   
+       
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>#}
+        </li>
     </ul>
 {% endblock %}

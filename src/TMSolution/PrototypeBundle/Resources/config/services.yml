@@ -58,7 +58,8 @@ parameters:
                 form:
                    formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
                    action: update
-                   paremeters: id
+                   paremeters: 
+                            -id
                 models:
                    get:
                         name: some_model
@@ -67,6 +68,10 @@ parameters:
                         resultParameter: entity 
                 templates:
                     element: 'productcategory\edit.html.twig'
+            delete:
+                form:
+                   action: delete        
+                    
 #
 #                    
 #                    

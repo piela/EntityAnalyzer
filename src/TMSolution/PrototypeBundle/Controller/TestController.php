@@ -36,13 +36,15 @@ class TestController extends Controller {
         $response=$this->get('tm_solution_prototype.prototype_controller')->newAction($request);
         $response2=$this->get('tm_solution_prototype.prototype_controller')->getAction($request,1);
         $response3=$this->get('tm_solution_prototype.prototype_controller')->editAction($request,2);
+        $response4=$this->get('tm_solution_prototype.prototype_controller')->listAction($request,2);
         
         
         
         return $this->render('default/test.html.twig', array(
                     'editForm1' => $response->getContent(),
                     'editForm2' => $response2->getContent(),
-                    'editForm3' => $response3->getContent()
+                    'editForm3' => $response3->getContent(),
+                    'editForm4'=>$response4->getContent()
         ));
     }
 
