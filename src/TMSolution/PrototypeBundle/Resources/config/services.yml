@@ -1,15 +1,19 @@
 parameters:
   #####################################exeperiment     
-    test.configuration:
-        
+    test.configuration:    
         base:
             allowed: true
             form: 
                    formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
                    action: list
-        
-        actions:
-            
+            models:
+                    get:
+                        name: some_model
+                        method: findOneById
+                        returnResultToView: true
+                        resultParameter: productCategory 
+                   
+        actions: 
             list:
                 templates:
                     element: 'productcategory\index.html.twig' 
@@ -39,18 +43,12 @@ parameters:
                         returnResultToView: true
                         resultParameter: result 
                 redirection: 
-                    routeName: new
+                    routeName: list
                     parameters:
                         
             get:
                 templates:
-                    element: 'productcategory\show.html.twig'
-                models:
-                    get:
-                        name: some_model
-                        method: findOneById
-                        returnResultToView: true
-                        resultParameter: productCategory 
+                    element: 'productcategory\show.html.twig'   
                 redirection: 
                     routeName: new
                     parameters:                        
@@ -68,10 +66,40 @@ parameters:
                         resultParameter: entity 
                 templates:
                     element: 'productcategory\edit.html.twig'
+                    
+            update:
+                form:
+                   formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+                   action: update
+                   paremeters: 
+                            -id
+                models:
+                    get:
+                        name: some_model
+                        method: findOneById
+                        returnResultToView: true
+                        resultParameter: entity
+                    update:
+                        name: some_model
+                        method: update
+                        returnResultToView: true
+                        resultParameter: entity    
+                templates:
+                    element: 'productcategory\edit.html.twig'         
             delete:
                 form:
-                   action: delete        
-                    
+                   action: delete     
+                models:
+                    delete:
+                        name: some_model
+                        method: delete
+                        returnResultToView: true
+                        resultParameter: entity   
+                templates:
+                    element: 'productcategory\list.html.twig'
+                redirection: 
+                    routeName: list
+ 
 #
 #                    
 #                    
