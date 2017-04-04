@@ -1,3 +1,7 @@
+tm_solution_sandbox:
+    resource: "@TMSolutionSandboxBundle/Resources/config/routing.yml"
+    prefix:   /
+
 tm_solution_sample_entities_product_category:
     resource: "@TMSolutionSampleEntitiesBundle/Controller/ProductCategoryController.php"
     type:     annotation

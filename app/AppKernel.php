@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new TMSolution\ModelBundle\TMSolutionModelBundle(),
+            new TMSolution\SandboxBundle\TMSolutionSandboxBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

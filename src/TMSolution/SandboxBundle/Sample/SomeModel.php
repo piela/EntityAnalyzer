@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace TMSolution\PrototypeBundle\Sample;
+namespace TMSolution\SandboxBundle\Sample;
 
 /**
  * Description of SomeModel

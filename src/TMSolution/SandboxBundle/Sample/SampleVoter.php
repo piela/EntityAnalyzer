@@ -1,6 +1,6 @@
 <?php
 
-namespace TMSolution\PrototypeBundle\Sample;
+namespace TMSolution\SandboxBundle\Sample;
 
 use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;

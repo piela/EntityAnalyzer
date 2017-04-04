@@ -1,7 +1,4 @@
-
-#{applicationPath} ={application}/{service}/{name} = app.{application}.{service}.{name}
-#{entitiesPath} ={parent}/{parentid}/{entityAlias}
-test_test:
+tm_solution_sandbox_test:
     path: "test"
     defaults: { _controller: "tm_solution_prototype.test_controller:testAction",  format: ~ }
     methods:  [GET, POST]

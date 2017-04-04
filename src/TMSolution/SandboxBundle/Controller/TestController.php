@@ -1,13 +1,12 @@
 <?php
 
-namespace TMSolution\PrototypeBundle\Controller;
+namespace TMSolution\SanboxBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory;
-use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
-use TMSolution\PrototypeBundle\Util\ControllerDriver;
+
 
 /**
  * Prototype controller.

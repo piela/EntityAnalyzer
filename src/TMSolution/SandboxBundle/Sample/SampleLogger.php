@@ -8,7 +8,7 @@
 
 //TMSolution\PrototypeBundle\Sample\SampleLogger
 
-namespace TMSolution\PrototypeBundle\Sample;
+namespace TMSolution\SandboxBundle\Sample;
 
 use TMSolution\ModelBundle\Util\ModelInterface;
 
