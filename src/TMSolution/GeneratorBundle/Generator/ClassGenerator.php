@@ -29,9 +29,7 @@ abstract class ClassGenerator extends AbstractGenerator {
         return implode("\\", $entityNameArr);
     }
 
-    
-    
-    
+
     protected function getClassName()
     {
         $arr= explode(".",$this->getFileName());
