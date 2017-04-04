@@ -158,9 +158,20 @@ services:
         tags:
             - { name: tm_solution_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entityAlias: 'product-category' }
     
-    some_model:
+
+    #wczesniejsza deklaracja
+    #some_model:
+    #    class: TMSolution\ModelBundle\Util\Model
+    #    arguments: ['@doctrine.orm.entity_manager']
+    
+    
+    real_model:
         class: TMSolution\ModelBundle\Util\Model
         arguments: ['@doctrine.orm.entity_manager']
+    
+    some_model:
+        class: TMSolution\PrototypeBundle\Sample\SampleLogger
+        arguments: ['@real_model']
         
     
     

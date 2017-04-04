@@ -2,13 +2,15 @@
 
 namespace TMSolution\ModelBundle\Util;
 
+
+use TMSolution\ModelBundle\Util\ModelInterface;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-class Model {
+class Model implements ModelInterface {
 
     protected $entityManager;
 
@@ -30,7 +32,7 @@ class Model {
         $this->entityManager->flush();
     }
 
-    public function update($entityClass, $entity) {
+    public function update() {
         $this->entityManager->flush();
     }
     
