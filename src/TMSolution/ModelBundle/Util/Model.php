@@ -33,5 +33,13 @@ class Model {
     public function update($entityClass, $entity) {
         $this->entityManager->flush();
     }
-
+    
+    
+    public function delete($entity) {
+        $this->entityManager->flush();
+        $this->entityManager->remove($entity);
+        $this->entityManager->flush();
+    }
+    
+   
 }

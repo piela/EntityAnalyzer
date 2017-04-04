@@ -54,8 +54,8 @@ class PrototypeController extends FOSRestController {
         $entityClass = $driver->getEntityClass();
         $entity = $this->createEntity($entityClass);
         $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver, $entity));
-        $form = $this->createForm($driver->getFormTypeClass(), $entity, $this->getFormOptions($driver));
-        $result = $this->invokeModelMethod($driver, self::_NEW, [$entity]);
+        $form = $this->createForm($driver->getFormTypeClass(), $entity, ['action' => $this->getFormActionUrl($driver)]);
+        $result = $this->invokeModelMethod($driver, self::_NEW, [$entity], true);
         $data = [];
         $this->addResultToData($driver, self::_NEW, $data, $result);
 
@@ -82,6 +82,7 @@ class PrototypeController extends FOSRestController {
 
         if ($form->isValid()) {
 
+            //save
             $result = $this->invokeModelMethod($driver, self::_CREATE, [$entity]);
             $data['id'] = $entity->getId();
             $this->addResultToData($driver, self::_CREATE, $data, $result);
@@ -111,7 +112,9 @@ class PrototypeController extends FOSRestController {
 
         $driver = $this->getDriver($request, self::_GET);
         $this->isActionAllowed($driver);
+        //find
         $entity = $this->invokeModelMethod($driver, self::_GET, [$driver->getEntityClass(), $id]);
+        $this->checkEntityExists($driver, $entity);
         $this->denyAccessUnlessGranted(self::_GET, $this->getSecurityTicket($driver, $entity));
         $data = [];
         $data['entity'] = $entity;
@@ -139,19 +142,20 @@ class PrototypeController extends FOSRestController {
         $this->isActionAllowed($driver);
         //find
         $entity = $this->invokeModelMethod($driver, self::_GET, [$driver->getEntityClass(), $id]);
+        $this->checkEntityExists($driver, $entity);
         $this->denyAccessUnlessGranted(self::_EDIT, $this->getSecurityTicket($driver, $entity));
 
         $data = [];
         $data['entity'] = $entity;
         $this->addResultToData($driver, self::_EDIT, $data, $entity);
 
-        // $deleteForm = $this->createDeleteForm($entity);
-        $editForm = $this->createForm($driver->getFormTypeClass(), $entity, $this->getFormOptions($driver, ["id" => $entity->getId()]));
+        $deleteForm = $this->createDeleteForm($request, $entity);
+        $editForm = $this->createForm($driver->getFormTypeClass(), $entity, ['action' => $this->getFormActionUrl($driver, ['id' => $entity->getId()])]);
 
         $view = $this->view($data, 200)
                 ->setTemplateData([
                     'driver' => $driver,
-                    //          'delete_form' => $deleteForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
                     'form' => $editForm->createView(),
                 ])
                 ->setTemplate($driver->getTemplate());
@@ -168,22 +172,24 @@ class PrototypeController extends FOSRestController {
         $driver = $this->getDriver($request, self::_UPDATE);
         $this->isActionAllowed($driver);
         //find
-        $result = $this->invokeModelMethod($driver, self::_GET, [$id]);
-        $this->denyAccessUnlessGranted(self::_UPDATE, $this->getSecurityTicket($driver, $result));
+        $entity = $this->invokeModelMethod($driver, self::_GET, [$driver->getEntityClass(), $id]);
+        $this->checkEntityExists($driver, $entity);
+        $this->denyAccessUnlessGranted(self::_UPDATE, $this->getSecurityTicket($driver, $entity));
 
         $data = [];
-        $this->addResultToData($driver, self::_GET, $data, $result);
+        $this->addResultToData($driver, self::_GET, $data, $entity);
 
-        $deleteForm = $this->createDeleteForm($result);
+        $deleteForm = $this->createDeleteForm($request, $entity);
 
-        $editForm = $this->createForm($driver->getFormTypeClass(), $result, $this->getFormOptions($driver));
+        $editForm = $this->createForm($driver->getFormTypeClass(), $entity, ['action' => $this->getFormActionUrl($driver, ['id' => $entity->getId()])]);
 
         $editForm->handleRequest($request);
+
 
         if ($editForm->isValid()) {
 
             //update
-            $result = $this->invokeModelMethod($driver, self::_UPDATE, [$result]);
+            $result = $this->invokeModelMethod($driver, self::_UPDATE, [$entity]);
             $data['id'] = $entity->getId();
             $this->addResultToData($driver, self::_UPDATE, $data, $result);
 
@@ -194,11 +200,15 @@ class PrototypeController extends FOSRestController {
             }
         }
 
-        return $this->render($config->getTemplate("edit"), array(
-                    'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
+        $view = $this->view($data, 200)
+                ->setTemplateData([
+                    'driver' => $driver,
                     'delete_form' => $deleteForm->createView(),
-        ));
+                    'form' => $editForm->createView(),
+                ])
+                ->setTemplate($driver->getTemplate());
+
+        return $this->handleView($view);
     }
 
     /**
@@ -209,19 +219,23 @@ class PrototypeController extends FOSRestController {
 
         $driver = $this->getDriver($request, self::_DELETE);
         $this->isActionAllowed($driver);
-        //find
-        $result = $this->invokeModelMethod($driver, self::_GET, [$id]);
-        $this->denyAccessUnlessGranted(self::_DELETE, $this->getSecurityTicket($driver, $result));
+        $entity = $this->invokeModelMethod($driver, self::_GET, [$driver->getEntityClass(), $id]);
+        $this->checkEntityExists($driver, $entity);
+        $this->denyAccessUnlessGranted(self::_DELETE, $this->getSecurityTicket($driver, $entity));
 
-        $form = $this->createDeleteForm($result);
+        $form = $this->createDeleteForm($request, $entity);
         $form->handleRequest($request);
 
+        $data = [];
+
         if ($form->isValid()) {
-            //remove
-            $this->invokeModelMethod($driver, self::_DELETE, [$id]);
+
+            $result = $this->invokeModelMethod($driver, self::_DELETE, [$entity]);
+            $this->addResultToData($driver, self::_UPDATE, $data, $result);
         }
 
         $view = $this->redirectView($this->getUrlToRedirect($driver, $data), 301);
+        return $this->handleView($view);
     }
 
     private function createDeleteForm($request, $entity) {
@@ -243,7 +257,7 @@ class PrototypeController extends FOSRestController {
         return $this->configurationFactory->createConfiguration($request, new ControllerConfiguration(), $action);
     }
 
-    protected function invokeModelMethod($driver, $modelName, $arguments = []) {
+    protected function invokeModelMethod($driver, $modelName, $arguments = [], $optional = false) {
 
 
         if ($driver->hasModel($modelName)) {
@@ -260,6 +274,10 @@ class PrototypeController extends FOSRestController {
                 $arguments[] = $driver;
 
                 return call_user_func_array(array($object, $model['method']), $arguments);
+            }
+        } else {
+            if (!$optional) {
+                throw new \Exception(sprintf("Model: \"%s\" doesn\'t exists", $modelName));
             }
         }
     }
@@ -319,15 +337,13 @@ class PrototypeController extends FOSRestController {
         return $this->generateUrl($driver->getRedirectionRoute(), $parameters);
     }
 
-    protected function getFormOptions($driver, $extraParameters = []) {
+    protected function getFormActionUrl($driver, $extraParameters = []) {
 
         $formAction = $driver->getFormAction();
-        $options = [];
-
         $urlParameters = ['applicationPath' => $driver->getApplicationPath(), 'entitiesPath' => $driver->getEntitiesPath()];
 
         if ($formAction) {
-           
+
             if (is_array($formAction)) {
 
                 if (!array_key_exists('routeName', $formAction)) {
@@ -337,16 +353,22 @@ class PrototypeController extends FOSRestController {
                 if (array_key_exists('parameters', $formAction)) {
                     $urlParameters = array_merge($urlParameters, $formAction['parameters']);
                 }
-            } 
+            }
 
-
-            $options['action'] = $this->generateUrl($formAction, $urlParameters);
+            $urlParameters = array_merge($urlParameters, $extraParameters);
+            $uri = $this->generateUrl($formAction, $urlParameters);
         }
 
-        $options = array_merge($options, $extraParameters);
-
-
-        return $options;
+        return $uri;
+    }
+    
+    
+    
+    protected function checkEntityExists($driver,$entity) {
+        
+        $entityClass=$driver->getEntityClass();
+        if(!$entity || !($entity instanceof $entityClass ) )
+        { throw new \Exception('Entity doesn\'t exists');}
     }
 
 }

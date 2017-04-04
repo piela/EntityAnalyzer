@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('productcategory_new') }}">Create a new productCategory</a>
+            <a href="{{ path('new',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath }) }}">Create a new productCategory</a>
         </li>
     </ul>
 {% endblock %}

@@ -29,7 +29,7 @@ delete:
     path: "{applicationPath}/-/{entitiesPath}/delete/{id}/{state}"
     defaults: { _controller: "tm_solution_prototype.prototype_controller:deleteAction", state: "",  format: ~ }
     requirements: {"applicationPath":".+" ,"path": ".+" }
-    methods:  [DELETE]
+    methods:  [GET,DELETE]
     options:
         expose: true
 edit:
