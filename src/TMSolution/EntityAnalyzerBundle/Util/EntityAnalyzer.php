@@ -63,9 +63,12 @@ class EntityAnalyzer {
     }
 
     protected function analize() {
+        
         $entityAnalyze = new EntityAnalyze($this->getEntityClass());
         $fields = [];
+        
         foreach ($this->metadata->fieldMappings as $field => $parameters) {
+        
             $field = new Field();
             $field->setName($parameters['fieldName']);
             $field->setType($parameters['type']);
@@ -73,7 +76,9 @@ class EntityAnalyzer {
             $field->setMetadata($parameters);
             $entityAnalyze->addField($field->getName(), $field);
         }
+        
         foreach ($this->metadata->associationMappings as $field => $parameters) {
+        
             $field = new Field();
             $field->setName($parameters['fieldName']);
             $field->setType('object');
@@ -83,13 +88,16 @@ class EntityAnalyzer {
             $field->setMetadata($parameters);
             $entityAnalyze->addField($field->getName(), $field);
             $entityAnalyze->addAssociation($field->getName(), $field);
+            
             if (in_array($parameters['type'], [Association::MANY_TO_MANY, Association::ONE_TO_ONE, Association::ONE_TO_MANY, Association::TO_MANY])) {
                 $entityAnalyze->addChildEntity($field->getName(), $field);
             }
+            
             if (in_array($parameters['type'], [Association::MANY_TO_MANY,Association::MANY_TO_ONE, Association::TO_ONE])) {
                 $entityAnalyze->addParentEntity($field->getName(), $field);
             }
         }
+        
         return $entityAnalyze;
     }
 

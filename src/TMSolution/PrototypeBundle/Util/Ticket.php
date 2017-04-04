@@ -9,6 +9,7 @@
 namespace TMSolution\PrototypeBundle\Util;
 
 use TMSolution\PrototypeBundle\Util\TicketInterface;
+use TMSolution\PrototypeBundle\Util\ControllerDriverInterface;
 
 /**
  * Description of Ticket
@@ -28,7 +29,7 @@ class Ticket implements  TicketInterface {
         return $this->object;
     }
 
-    public function setDriver($driver) {
+    public function setDriver(ControllerDriverInterface $driver) {
         $this->driver = $driver;
     }
 

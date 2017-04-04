@@ -44,7 +44,7 @@ class SampleLogger {
         echo "loguję zapis";
         return $this->model->search($entity);
     }
-
+  
     public function update() {
         echo "loguję aktualizację";
         return $this->model->update();
