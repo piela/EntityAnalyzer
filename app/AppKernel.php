@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new TMSolution\ModelBundle\TMSolutionModelBundle(),
             new TMSolution\SandboxBundle\TMSolutionSandboxBundle(),
+            new TMSolution\GeneratorBundle\TMSolutionGeneratorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

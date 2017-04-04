@@ -1,0 +1,3 @@
+tm_solution_generator_homepage:
+    path:     /
+    defaults: { _controller: TMSolutionGeneratorBundle:Default:index }

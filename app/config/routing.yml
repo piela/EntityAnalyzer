@@ -1,3 +1,7 @@
+tm_solution_generator:
+    resource: "@TMSolutionGeneratorBundle/Resources/config/routing.yml"
+    prefix:   /
+
 tm_solution_sandbox:
     resource: "@TMSolutionSandboxBundle/Resources/config/routing.yml"
     prefix:   /

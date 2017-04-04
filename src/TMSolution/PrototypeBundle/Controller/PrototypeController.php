@@ -345,7 +345,7 @@ class PrototypeController extends FOSRestController {
         if (is_array($formAction)) {
 
             if (!array_key_exists('routeName', $formAction)) {
-                throw new Exception('Parameter routeName for formAciton doesn\'t exists ');
+                throw new Exception('Parameter "routeName" for "formAciton" doesn\'t exists ');
             }
 
             if (array_key_exists('parameters', $formAction)) {
