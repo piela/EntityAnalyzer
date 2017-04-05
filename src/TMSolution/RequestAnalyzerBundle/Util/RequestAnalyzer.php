@@ -92,7 +92,7 @@ class RequestAnalyzer implements RequestAnalyzerInterface {
                 $counter++;
                 $entity = [];
                 $entity['alias'] = $entityArr[0];
-                $entity['entityClass'] = $this->getEntityClass($entityArr[0], $bundles);
+                $entity['entity_class'] = $this->getEntityClass($entityArr[0], $bundles);
 
                 if ($counter == $entitiesNumber) {
                     $entity['id'] = $id;

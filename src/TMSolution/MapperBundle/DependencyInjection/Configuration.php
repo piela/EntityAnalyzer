@@ -26,7 +26,7 @@ class Configuration implements ConfigurationInterface {
                         ->prototype('array')
                         ->children()
                             ->scalarNode('alias')->end()
-                            ->scalarNode('entityClass')->end()
+                            ->scalarNode('entity_class')->end()
                     ->end()
                 ->end()
             ->end()

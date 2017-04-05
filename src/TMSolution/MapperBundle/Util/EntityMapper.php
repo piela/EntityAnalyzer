@@ -46,7 +46,7 @@ class EntityMapper {
 
         foreach ($this->entities[$bundle] as $map) {
             if ($map['alias'] == $alias) {
-                return $map['entityClass'];
+                return $map['entity_class'];
             }
         }
     }

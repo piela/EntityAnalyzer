@@ -36,16 +36,25 @@ class Mapper {
 
     protected function readEntities($root) {
         $allMetadata = $this->manager->getMetadataFactory()->getAllMetadata();
-        if (!array_key_exists('entities', $root['tm_solution_mapper'])) {
+        
+        if (!array_key_exists('tm_solution_mapper', $root) ) {
+            $root['tm_solution_mapper'] = [];
+        }
+        
+        
+        if (!array_key_exists('entities', $root['tm_solution_mapper']) || !is_array($root['tm_solution_mapper']['entities'])) {
             $root['tm_solution_mapper']['entities'] = [];
         }
         
-        if (!array_key_exists('applications', $root['tm_solution_mapper'])) {
+        
+        if (!array_key_exists('applications', $root['tm_solution_mapper']) || !is_array($root['tm_solution_mapper']['applications'])) {
             $root['tm_solution_mapper']['applications'] = [];
         }
         
         foreach ($allMetadata as $metadata) {
+            
             $namespace = $this->getSnakeCase($this->getBundleName($metadata->namespace));
+            
             if (!array_key_exists($namespace, $root['tm_solution_mapper']['entities'])) {
                 $root['tm_solution_mapper']['entities'][$namespace] = [];
             }
@@ -69,9 +78,6 @@ class Mapper {
 
     public function updateConfigFile() {
         $root = Yaml::parse(file_get_contents($this->filePath));
-        if (!$root || !array_key_exists('tm_solution_mapper', $root) ) {
-            $root['tm_solution_mapper'] = [];
-        }
         $entities = $this->readEntities($root);
         $yaml = Yaml::dump($entities, 5);
         file_put_contents($this->filePath, $yaml);
