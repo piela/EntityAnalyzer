@@ -1,6 +1,6 @@
 <?php
 
-namespace TMSolution\GeneratorBundle\Util;
+namespace TMSolution\GeneratorBundle\Test\Util;
 
 /**
  * Description of Generator
