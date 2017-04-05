@@ -10,7 +10,7 @@ use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory
 class ControllerConfigurationFactory  implements ControllerConfigurationFactoryInterface{
 
     const BASE_CONFIG = 'base';
-    const REQUEST_ANALYZE = 'requestAnalyze';
+    const REQUEST_ANALYZE = 'request_analyze';
 
     protected $configurations = [];
     protected $baseConfiguration;

@@ -8,8 +8,8 @@ use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
 
 class RequestAnalyzer implements RequestAnalyzerInterface {
 
-    const APPLICATION_PATH = 'applicationPath';
-    const ENTITIES_PATH = 'entitiesPath';
+    const APPLICATION_PATH = 'application_path';
+    const ENTITIES_PATH = 'entities_path';
     const DELIMETER = '/';
     const ID = 'id';
     const ENTITIES_LIMIT = 10;

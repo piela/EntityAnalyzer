@@ -4,14 +4,14 @@ parameters:
         base:
             allowed: true
             form: 
-                   formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+                   form_type_class: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
                    action: list
             models:
                     get:
                         name: some_model
                         method: findOneById
-                        returnResultToView: true
-                        resultParameter: productCategory 
+                        return_result_to_view: true
+                        result_parameter: productCategory 
                    
         actions: 
             list:
@@ -21,8 +21,8 @@ parameters:
                     list:
                         name: some_model
                         method: search
-                        returnResultToView: true
-                        resultParameter: productCategories
+                        return_result_to_view: true
+                        result_parameter: productCategories
             new:
                form: 
                    action: create 
@@ -40,21 +40,21 @@ parameters:
                     create:
                         name: some_model
                         method: save
-                        returnResultToView: true
-                        resultParameter: result 
+                        return_result_to_view: true
+                        result_parameter: result 
                 redirection: 
-                    routeName: list
+                    route_name: list
                     parameters:
                         
             get:
                 templates:
                     element: 'productcategory\show.html.twig'   
                 redirection: 
-                    routeName: new
+                    route_name: new
                     parameters:                        
             edit:
                 form:
-                   formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+                   form_type_class: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
                    action: update
                    paremeters: 
                             -id
@@ -62,14 +62,14 @@ parameters:
                    get:
                         name: some_model
                         method: findOneById
-                        returnResultToView: true
-                        resultParameter: entity 
+                        return_result_to_view: true
+                        result_parameter: entity 
                 templates:
                     element: 'productcategory\edit.html.twig'
                     
             update:
                 form:
-                   formTypeClass: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
+                   form_type_class: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
                    action: update
                    paremeters: 
                             -id
@@ -77,13 +77,13 @@ parameters:
                     get:
                         name: some_model
                         method: findOneById
-                        returnResultToView: true
-                        resultParameter: entity
+                        return_result_to_view: true
+                        result_parameter: entity
                     update:
                         name: some_model
                         method: update
-                        returnResultToView: true
-                        resultParameter: entity    
+                        return_result_to_view: true
+                        result_parameter: entity    
                 templates:
                     element: 'productcategory\edit.html.twig'         
             delete:
@@ -93,12 +93,12 @@ parameters:
                     delete:
                         name: some_model
                         method: delete
-                        returnResultToView: true
-                        resultParameter: entity   
+                        return_result_to_view: true
+                        result_parameter: entity   
                 templates:
                     element: 'productcategory\list.html.twig'
                 redirection: 
-                    routeName: list
+                    route_name: list
  
  
 services:
@@ -116,7 +116,7 @@ services:
         class: TMSolution\ConfigurationBundle\Util\Configuration
         arguments: [%test.configuration%]
         tags:
-            - { name: tm_solution_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entityAlias: 'product-category' }
+            - { name: tm_solution_prototype.controller_configuration, application_path: 'admin/ala/ma/kota', entity_alias: 'product-category' }
     
 
     #wczesniejsza deklaracja
@@ -139,4 +139,4 @@ services:
         class: TMSolution\ConfigurationBundle\Util\Configuration
         arguments: [%test.configuration%]
         tags:
-            - { name: tm_solution_prototype.controller_configuration, applicationPath: 'api', entityAlias: 'product-category' }  
+            - { name: tm_solution_prototype.controller_configuration, application_path: 'api', entity_alias: 'product-category' }  

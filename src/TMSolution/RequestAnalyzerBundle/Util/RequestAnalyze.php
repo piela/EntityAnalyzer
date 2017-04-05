@@ -72,7 +72,15 @@ class RequestAnalyze {
     
     function getProperties()
     {
-        return get_object_vars($this);
+        
+    return [    
+    'application_path'=>$this->applicationPath,
+    'application'=>$this->application,
+    'entity_alias'=>$this->entityAlias,
+    'entity_class'=> $this->entityClass,
+    'entities_path'=> $this->entitiesPath,
+    'entities_from_path'=> $this->entitiesFromPath
+    ];
         
     }
     

@@ -19,38 +19,38 @@ class ControllerDriver implements ControllerDriverInterface {
 
     public function getEntityClass() {
 
-        return $this->configuration->get('requestAnalyze.entityClass');
+        return $this->configuration->get('request_analyze.entity_class');
     }
 
     public function getApplicationPath() {
 
-        return $this->configuration->get('requestAnalyze.applicationPath');
+        return $this->configuration->get('request_analyze.application_path');
     }
 
     public function getEntitiesPath() {
 
-        return $this->configuration->get('requestAnalyze.entitiesPath');
+        return $this->configuration->get('request_analyze.entities_path');
     }
 
     public function returnResultToView($modelName) {
         
-        $returnToViewParameter=sprintf('models.%s.returnResultToView',$modelName);
+        $returnToViewParameter=sprintf('models.%s.return_result_to_view',$modelName);
  
         if ($this->configuration->has($returnToViewParameter)) {
             return $this->configuration->get($returnToViewParameter);
 
         } else {
-             throw new \Exception(sprintf('No returnResultToView parameter for \'%s\' model',$modelName));
+             throw new \Exception(sprintf('No return_result_to_view parameter for \'%s\' model',$modelName));
         }
     }
 
     public function getResultParameter($modelName) {
         
-        $resultParameter=sprintf('models.%s.resultParameter',$modelName);
+        $resultParameter=sprintf('models.%s.result_parameter',$modelName);
         if ($this->configuration->has($resultParameter)) {
             return $this->configuration->get($resultParameter);
         } else {
-             throw new \Exception(sprintf('No resultParameter for %s',$modelName));
+             throw new \Exception(sprintf('No result_parameter for %s',$modelName));
         }
     }
 
@@ -65,8 +65,8 @@ class ControllerDriver implements ControllerDriverInterface {
         if ($this->configuration->has('redirection')) {
             $redirection = $this->configuration->get('redirection');
 
-            if (array_key_exists('routeName', $redirection)) {
-                return $redirection['routeName'];
+            if (array_key_exists('route_name', $redirection)) {
+                return $redirection['route_name'];
             }
         } else {
             throw new \Exception('No routeName in redirection');
@@ -130,7 +130,7 @@ class ControllerDriver implements ControllerDriverInterface {
     
     public function getFormTypeClass() {
 
-        $formTypeClass = $this->configuration->get('form.formTypeClass');
+        $formTypeClass = $this->configuration->get('form.form_type_class');
 
         return $formTypeClass;
     }

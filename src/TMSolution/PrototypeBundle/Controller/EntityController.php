@@ -24,6 +24,9 @@ class EntityController extends FOSRestController {
     const _UPDATE = 'update';
     const _DELETE = 'delete';
 
+    const APPLICATION_PATH ='application_path';
+    const ENTITIES_PATH = 'entities_path';
+
     protected $configurationFactory;
 
     public function __construct(ContainerInterface $container, ControllerConfigurationFactoryInterface $configurationFactory) {
@@ -239,7 +242,7 @@ class EntityController extends FOSRestController {
     private function createDeleteForm($request, $entity) {
 
         $driver = $this->getDriver($request, self::_DELETE);
-        $url = $this->generateUrl('delete', ["applicationPath" => $driver->getApplicationPath(), "entitiesPath" => $driver->getEntitiesPath(), "id" => $entity->getId()]);
+        $url = $this->generateUrl('delete', [self::APPLICATION_PATH => $driver->getApplicationPath(), self::ENTITIES_PATH => $driver->getEntitiesPath(), "id" => $entity->getId()]);
         return $this->createFormBuilder()
                         ->setAction($url)
                         ->setMethod('DELETE')
@@ -333,7 +336,7 @@ class EntityController extends FOSRestController {
     protected function getUrlToRedirect($driver, $data) {
 
 
-        $urlParameters = ['applicationPath' => $driver->getApplicationPath(), 'entitiesPath' => $driver->getEntitiesPath()];
+        $urlParameters = [self::APPLICATION_PATH => $driver->getApplicationPath(), self::ENTITIES_PATH => $driver->getEntitiesPath()];
         $redirectionParameters = $this->getRedirectionRouteParameters($driver, $data);
         $parameters = array_merge($urlParameters, $redirectionParameters);
 
@@ -358,7 +361,7 @@ class EntityController extends FOSRestController {
     protected function getFormActionUrl($driver, $extraParameters = []) {
 
         $formAction = $driver->getFormAction();
-        $urlParameters = ['applicationPath' => $driver->getApplicationPath(), 'entitiesPath' => $driver->getEntitiesPath()];
+        $urlParameters = [self::APPLICATION_PATH => $driver->getApplicationPath(), self::ENTITIES_PATH => $driver->getEntitiesPath()];
 
         if ($formAction) {
             $urlParameters = array_merge($urlParameters,$this->getFormActionParameters($formAction), $extraParameters);
