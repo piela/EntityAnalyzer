@@ -17,7 +17,7 @@ use UnexpectedValueException;
 
 /**
  * GridConfigCommand generates widget class and his template.
- * @author Mariusz Piela <mariuszpiela@gmail.com>
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class ChartGenerator  extends ServiceGenerator {
 

@@ -9,7 +9,7 @@ use TMSolution\EntityAnalyzerBundle\Association;
 /**
  * Description of EntityAnalyzer
  *
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class EntityAnalyzer {
 

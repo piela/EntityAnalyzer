@@ -5,7 +5,7 @@ namespace TMSolution\EntityAnalyzerBundle\Util;
 /**
  * Description of EntityAnalyzer
  *
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class Field {
     protected $name;

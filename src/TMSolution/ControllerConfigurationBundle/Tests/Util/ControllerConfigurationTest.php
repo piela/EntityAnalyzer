@@ -13,7 +13,7 @@ use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
 /**
  * Description of EntityAnalyzer
  * php  app/phpunit.phar   --bootstrap=./app/autoload.php ./src/TMSolution/PrototypeBundle/Tests/Util/RequestAnalyzerTest.php
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class ControllerConfigurationTest extends TestCase {
 

@@ -19,7 +19,7 @@ use Core\PrototypeBundle\Component\Yaml\Dumper;
 
 /**
  * GridConfigCommand generates widget class and his template.
- * @author Mariusz Piela <mariuszpiela@gmail.com>
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 
 class TranslationGenerator extends YamlGenerator {

@@ -8,7 +8,7 @@ use TMSolution\EntityAnalyzerBundle\Util\EntityAnalyzer;
 /**
  * Description of EntityAnalyzer
  *
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class EntityAnalyzerTest extends KernelTestCase {
 

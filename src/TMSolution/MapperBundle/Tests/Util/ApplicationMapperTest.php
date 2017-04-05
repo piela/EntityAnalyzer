@@ -9,7 +9,7 @@ use \PHPUnit\Framework\TestCase;
 /**
  * Description of EntityAnalyzer
  * php  app/phpunit.phar   --bootstrap=./app/autoload.php ./src/TMSolution/MapperBundle/Tests/Util/ApplicationMapperTest.php
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class ApplicationMapperTest extends TestCase {
 

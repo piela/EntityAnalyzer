@@ -15,7 +15,7 @@ use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory
 /**
  * Description of EntityAnalyzer
  * php  app/phpunit.phar   --bootstrap=./app/autoload.php ./src/TMSolution/ControllerConfigurationBundle/Tests/Util/ControllerConfigurationFactoryTest.php
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class ControllerConfigurationFactoryTest extends TestCase {
 

@@ -14,7 +14,7 @@ use TMSolution\PrototypeBundle\Util\ControllerDriverInterface;
 /**
  * Description of Ticket
  *
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class Ticket implements  TicketInterface {
    

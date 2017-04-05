@@ -82,7 +82,7 @@ class ControllerConfigurationFactory  implements ControllerConfigurationFactoryI
     protected function getAnalyzeSection($analyze) {
 
         $analyzeConfiguration = [];
-        $analyzeConfiguration[self::REQUEST_ANALYZE] =  $analyze->getProperties();
+        $analyzeConfiguration[self::REQUEST_ANALYZE] =  $analyze->dump();
 
         return $analyzeConfiguration;
     }

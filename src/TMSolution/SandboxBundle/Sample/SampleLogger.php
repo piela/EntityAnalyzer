@@ -15,7 +15,7 @@ use TMSolution\ModelBundle\Util\ModelInterface;
 /**
  * Description of SampleLogger
  *
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class SampleLogger {
 

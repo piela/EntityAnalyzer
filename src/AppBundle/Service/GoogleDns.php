@@ -5,7 +5,7 @@ namespace AppBundle\Service;
 /**
  * Simple class to adding and finding google dns records, using creditionals key file
  *
- * @author Mariusz Piela
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl> Piela
  */
 class GoogleDns {
 

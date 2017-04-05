@@ -10,7 +10,7 @@ use TMSolution\PrototypeBundle\Util\TicketInterface;
 /**
  * Description of Voter
  *
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class SampleVoter extends Voter {
 

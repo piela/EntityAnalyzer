@@ -5,13 +5,13 @@ namespace TMSolution\EntityAnalyzerBundle\Util;
 /**
  * Description of EntityAnalyzer
  *
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 
 /**
  * Description of EntityAnalyzer
  *
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class EntityAnalyze {
 
@@ -27,62 +27,72 @@ class EntityAnalyze {
         $this->entityClass = $entityClass;
     }
 
-    function getEntityClass() {
+    public function getEntityClass() {
         return $this->entityClass;
     }
 
-    function getFields() {
+    public function getFields() {
         return $this->fields;
     }
 
-    function setEntityClass($entityClass) {
+    public function setEntityClass($entityClass) {
         $this->entityClass = $entityClass;
     }
 
-    function setFields($fields) {
+    public function setFields($fields) {
         $this->fields = $fields;
     }
 
-    function addField($fieldName, $field) {
+    public function addField($fieldName, $field) {
         $this->fields[$fieldName] = $field;
     }
 
-    function getParentEntities() {
+    public function getParentEntities() {
         return $this->parentEntities;
     }
 
-    function getChildEntities() {
+    public function getChildEntities() {
         return $this->childEntities;
     }
 
-    function getAssociations() {
+    public function getAssociations() {
         return $this->associations;
     }
 
-    function setParentEntities($parentEntities) {
+    public function setParentEntities($parentEntities) {
         $this->parentEntities = $parentEntities;
     }
 
-    function addParentEntity($fieldName, $field) {
+    public function addParentEntity($fieldName, $field) {
         $this->parentEntities[$fieldName] = $field;
     }
 
-    function setChildEntities($childEntities) {
+    public function setChildEntities($childEntities) {
         $this->childEntities = $childEntities;
     }
 
-    function addChildEntity($fieldName, $field) {
+    public function addChildEntity($fieldName, $field) {
         $this->childEntities[$fieldName] = $field;
     }
 
-    function setAssociations($associations) {
+    public function setAssociations($associations) {
         $this->associations = $associations;
     }
 
-    function addAssociation($fieldName, $field) {
+    public function addAssociation($fieldName, $field) {
         $this->associations[$fieldName] = $field;
     }
-
- 
-
+    
+    public function dump()
+    {
+        return [
+           'entity_class' =>$this->entityClass,
+           'fields' => $this->fields,
+           'parent_entities' =>$this->parentEntities,
+           'child_entities' => $this->childEntities ,
+           'associations' =>$this->associations,
+        ];
+        
+        
+    }
 }

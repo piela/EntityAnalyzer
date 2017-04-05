@@ -11,7 +11,7 @@ namespace TMSolution\PrototypeBundle\Util;
 /**
  * Description of Ticket
  *
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 interface TicketInterface {
    

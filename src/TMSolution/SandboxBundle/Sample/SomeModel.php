@@ -11,7 +11,7 @@ namespace TMSolution\SandboxBundle\Sample;
 /**
  * Description of SomeModel
  *
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class SomeModel {
 

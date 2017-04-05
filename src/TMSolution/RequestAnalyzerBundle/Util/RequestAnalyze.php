@@ -70,7 +70,7 @@ class RequestAnalyze {
         $this->entitiesFromPath = $entitiesFromPath;
     }
     
-    function getProperties()
+    function dump()
     {
         
     return [    

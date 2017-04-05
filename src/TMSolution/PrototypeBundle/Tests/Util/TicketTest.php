@@ -8,7 +8,7 @@ use \PHPUnit\Framework\TestCase;
 /**
  * 
  * php  app/phpunit.phar   --bootstrap=./app/autoload.php ./src/TMSolution/PrototypeBundle/Tests/Util/TicketTest.php
- * @author Mariusz,TomDyg
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>,TomDyg
  */
 class TicketTest extends TestCase {
     

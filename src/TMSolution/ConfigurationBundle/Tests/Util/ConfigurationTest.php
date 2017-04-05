@@ -9,7 +9,7 @@ use \PHPUnit\Framework\TestCase;
 /**
  * Description of EntityAnalyzer
  *php  app/phpunit.phar   --bootstrap=./app/autoload.php ./src/TMSolution/ConfigurationBundle/Tests/Util/ConfigurationTest.php
- * @author Mariusz
+ * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class ConfigurationTest extends TestCase {
 
