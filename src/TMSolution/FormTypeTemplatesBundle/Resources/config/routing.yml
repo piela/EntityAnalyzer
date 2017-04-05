@@ -1,0 +1,3 @@
+tm_solution_form_type_templates_homepage:
+    path:     /
+    defaults: { _controller: TMSolutionFormTypeTemplatesBundle:Default:index }

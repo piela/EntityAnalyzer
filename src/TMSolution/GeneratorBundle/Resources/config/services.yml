@@ -1,4 +1,20 @@
+parameters:
+    
+    tm_solution_generator.twig_enviroment_parameter:
+            debug: true,
+            cache: false,
+            strict_variables: true,
+            autoescape: false
 services:
-#    tm_solution_generator.example:
-#        class: TMSolution\GeneratorBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    tm_solution_generator.twig_loader_filesystem:
+        class: Twig_Loader_Filesystem
+ 
+    tm_solution_generator.twig_enviroment:
+        class: Twig_Environment
+        arguments: ['@tm_solution_generator.twig_loader_filesystem',%tm_solution_generator.twig_enviroment_parameter%]    
+        
+    tm_solution_generator.generator:
+        class: TMSolution\GeneratorBundle\Util\Generator
+        arguments: ['@tm_solution_generator.twig_enviroment']
+        
+        

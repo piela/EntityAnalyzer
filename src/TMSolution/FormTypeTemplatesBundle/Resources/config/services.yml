@@ -1,0 +1,4 @@
+services:
+#    tm_solution_form_type_templates.example:
+#        class: TMSolution\FormTypeTemplatesBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
