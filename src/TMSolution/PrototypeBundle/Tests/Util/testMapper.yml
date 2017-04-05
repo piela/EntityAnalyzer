@@ -8,9 +8,8 @@ tm_solution_mapper:
     entities:
         tm_solution_entity_analyzer:
             discount:
-                request_analyze:
-                    alias: discount
-                    entity_class: TMSolution\EntityAnalyzerBundle\Entity\Discount
+                alias: discount
+                entity_class: TMSolution\EntityAnalyzerBundle\Entity\Discount
             measure_unit:
                 alias: measure-unit
                 entity_class: TMSolution\EntityAnalyzerBundle\Entity\MeasureUnit
