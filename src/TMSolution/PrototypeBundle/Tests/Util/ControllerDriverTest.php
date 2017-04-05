@@ -17,16 +17,18 @@ use \PHPUnit\Framework\TestCase;
  */
 class ControllerDriverTest extends TestCase {
    
- //   protected static $controllerDriver;
+   protected static $controllerDriver;
    
     public static function setupBeforeClass() {
-   //     self::$controllerDriver = new ControllerDriver(new ControllerConfiguration());
+  
+        $configuration = Yaml::parse(file_get_contents(__DIR__.DIRECTORY_SEPARATOR.'testConfiguration.yml'));
+        $controllerConfiguration=new ControllerConfiguration($configuration['tm_solution_prototype']['base']);
+        self::$controllerDriver=new ControllerDriver($controllerConfiguration);
     } 
     
     public function testIsActionAllowed() {
-        $configuration = Yaml::parse(file_get_contents(__DIR__.DIRECTORY_SEPARATOR.'testConfiguration.yml'));
-        $controllerDriver=new ControllerDriver(new ControllerConfiguration($configuration['tm_solution_prototype']['base']));
-        $this->assertTrue($controllerDriver->isActionAllowed());
+        
+        $this->assertTrue(self::$controllerDriver->isActionAllowed());
     }
     
     public function testGetEntityClass() {
