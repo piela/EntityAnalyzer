@@ -52,7 +52,7 @@ class Mapper {
             $entityName=$this->getEntityName($metadata->name);
             $snakeEntityName=$this->getSnakeCase($entityName);
             $root['tm_solution_mapper']['entities'][$namespace][$snakeEntityName]['alias'] = $this->getDashCase($entityName);
-            $root['tm_solution_mapper']['entities'][$namespace][$snakeEntityName]['entityClass'] = $metadata->name;
+            $root['tm_solution_mapper']['entities'][$namespace][$snakeEntityName]['entity_class'] = $metadata->name;
         }
         $this->recursiveSort($root);
         return $root;
