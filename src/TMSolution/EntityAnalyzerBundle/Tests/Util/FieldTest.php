@@ -30,11 +30,7 @@ class FieldTest extends  TestCase {
         $this->assertEquals('test', self::$field->getSetterName());
     }
 
-    function testGetAssociationType() {
-        $name = 1;
-        self::$field->setAssociationType($name);
-        $this->assertEquals(1, self::$field->getAssociationType());
-    }
+ 
 
     function testSetName() {
         $name = 'test';
@@ -48,23 +44,7 @@ class FieldTest extends  TestCase {
         $this->assertEquals('test', self::$field->getSetterName());
     }
 
-    function testSetAssociationType() {
-        $name = 1;
-        self::$field->setAssociationType($name);
-        $this->assertEquals(1, self::$field->getAssociationType());
-    }
-
-    function testGetEntityName() {
-        $name = 'test';
-        self::$field->setEntityName($name);
-        $this->assertEquals('test', self::$field->getEntityName());
-    }
-
-    function testSetEntityName() {
-        $name = 'test';
-        self::$field->setEntityName($name);
-        $this->assertEquals('test', self::$field->getEntityName());
-    }
+ 
 
     function testGetType() {
         $name = 'test';

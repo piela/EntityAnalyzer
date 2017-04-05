@@ -55,21 +55,37 @@ class Field {
         $this->metadata = $metadata;
     }
 
-     protected function getSnakeCase($text) {
+    protected function getSnakeCase($text) {
         return ltrim(strtolower(preg_replace('/[A-Z]([A-Z](?![a-z]))*/', '_$0', $text)), '_');
     }
-    
-    
+
+    protected function convertKeysToSnakeCase($array) {
+
+        $resultArray = [];
+
+        foreach ($array as $key => $value) {
+
+            if (is_array($value)) {
+                $value = $this->convertKeysToSnakeCase($value);
+            }
+
+
+            $resultArray[$this->getSnakeCase($key)] = $value;
+        }
+
+        return $resultArray;
+    }
+
     public function dump() {
 
-        $this->metadata
-        
-        
+
+
+
         return [
             'name' => $this->name,
             'setter_name' => $this->setterName,
             'type' => $this->type,
-            'metadata' => $this->metadata,
+            'metadata' => $this->convertKeysToSnakeCase($this->metadata)
         ];
     }
 

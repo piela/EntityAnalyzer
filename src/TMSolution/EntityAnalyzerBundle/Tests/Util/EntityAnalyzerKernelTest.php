@@ -3,6 +3,7 @@
 namespace TMSolution\EntityAnalyzerBundle\Tests\Util;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use TMSolution\EntityAnalyzerBundle\Util\EntityAnalyzer;
 
 
 /**

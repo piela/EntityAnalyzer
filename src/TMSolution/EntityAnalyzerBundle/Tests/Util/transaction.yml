@@ -5,139 +5,139 @@ fields:
         setter_name: null
         type: integer
         metadata:
-            fieldName: id
+            field_name: id
             type: integer
             scale: 0
             length: null
             unique: false
             nullable: false
             precision: 0
-            columnName: id
+            column_name: id
             id: true
     name:
         name: name
         setter_name: setName
         type: string
         metadata:
-            fieldName: name
+            field_name: name
             type: string
             scale: 0
             length: 255
             unique: false
             nullable: false
             precision: 0
-            columnName: name
+            column_name: name
     value:
         name: value
         setter_name: setValue
         type: decimal
         metadata:
-            fieldName: value
+            field_name: value
             type: decimal
             scale: 2
             length: null
             unique: false
             nullable: false
             precision: 0
-            columnName: value
+            column_name: value
     balance:
         name: balance
         setter_name: setBalance
         type: decimal
         metadata:
-            fieldName: balance
+            field_name: balance
             type: decimal
             scale: 2
             length: null
             unique: false
             nullable: false
             precision: 0
-            columnName: balance
+            column_name: balance
     currency:
         name: currency
         setter_name: setCurrency
         type: string
         metadata:
-            fieldName: currency
+            field_name: currency
             type: string
             scale: 0
             length: 3
             unique: false
             nullable: true
             precision: 0
-            columnName: currency
+            column_name: currency
     date:
         name: date
         setter_name: setDate
         type: datetime
         metadata:
-            fieldName: date
+            field_name: date
             type: datetime
             scale: 0
             length: null
             unique: false
             nullable: true
             precision: 0
-            columnName: date
+            column_name: date
     transaction_hash:
         name: transactionHash
         setter_name: setTransactionHash
         type: string
         metadata:
-            fieldName: transactionHash
+            field_name: transactionHash
             type: string
             scale: 0
             length: null
             unique: false
             nullable: true
             precision: 0
-            columnName: hash
+            column_name: hash
     parameters:
         name: parameters
         setter_name: setParameters
         type: array
         metadata:
-            fieldName: parameters
+            field_name: parameters
             type: array
             scale: 0
             length: null
             unique: false
             nullable: false
             precision: 0
-            columnName: parameters
+            column_name: parameters
     link:
         name: link
         setter_name: setLink
         type: text
         metadata:
-            fieldName: link
+            field_name: link
             type: text
             scale: 0
             length: null
             unique: false
             nullable: true
             precision: 0
-            columnName: link
+            column_name: link
     products:
         name: products
         setter_name: addProduct
         type: object
         metadata:
-            fieldName: products
-            mappedBy: transaction
-            targetEntity: TMSolution\SampleEntitiesBundle\Entity\Product
+            field_name: products
+            mapped_by: transaction
+            target_entity: TMSolution\SampleEntitiesBundle\Entity\Product
             cascade: {  }
-            orphanRemoval: false
+            orphan_removal: false
             fetch: 2
             type: 4
-            inversedBy: null
-            isOwningSide: false
-            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\Transaction
-            isCascadeRemove: false
-            isCascadePersist: false
-            isCascadeRefresh: false
-            isCascadeMerge: false
-            isCascadeDetach: false
+            inversed_by: null
+            is_owning_side: false
+            source_entity: TMSolution\SampleEntitiesBundle\Entity\Transaction
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
         association_type: 4
         entity_name: TMSolution\SampleEntitiesBundle\Entity\Product
     transaction_type:
@@ -145,29 +145,35 @@ fields:
         setter_name: setTransactionType
         type: object
         metadata:
-            fieldName: transactionType
-            joinColumns:
-                - { name: transaction_type_id, unique: false, nullable: true, onDelete: null, columnDefinition: null, referencedColumnName: id }
+            field_name: transactionType
+            join_columns:
+                -
+                    name: transaction_type_id
+                    unique: false
+                    nullable: true
+                    on_delete: null
+                    column_definition: null
+                    referenced_column_name: id
             cascade: {  }
-            inversedBy: null
-            targetEntity: TMSolution\SampleEntitiesBundle\Entity\TransactionType
+            inversed_by: null
+            target_entity: TMSolution\SampleEntitiesBundle\Entity\TransactionType
             fetch: 2
             type: 2
-            mappedBy: null
-            isOwningSide: true
-            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\Transaction
-            isCascadeRemove: false
-            isCascadePersist: false
-            isCascadeRefresh: false
-            isCascadeMerge: false
-            isCascadeDetach: false
-            sourceToTargetKeyColumns:
+            mapped_by: null
+            is_owning_side: true
+            source_entity: TMSolution\SampleEntitiesBundle\Entity\Transaction
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
                 transaction_type_id: id
-            joinColumnFieldNames:
+            join_column_field_names:
                 transaction_type_id: transaction_type_id
-            targetToSourceKeyColumns:
+            target_to_source_key_columns:
                 id: transaction_type_id
-            orphanRemoval: false
+            orphan_removal: false
         association_type: 2
         entity_name: TMSolution\SampleEntitiesBundle\Entity\TransactionType
     status:
@@ -175,29 +181,31 @@ fields:
         setter_name: setStatus
         type: object
         metadata:
-            fieldName: status
-            joinColumns:
-                - { name: status_id, referencedColumnName: id }
+            field_name: status
+            join_columns:
+                -
+                    name: status_id
+                    referenced_column_name: id
             cascade: {  }
-            inversedBy: null
-            targetEntity: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
+            inversed_by: null
+            target_entity: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
             fetch: 2
             type: 2
-            mappedBy: null
-            isOwningSide: true
-            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\Transaction
-            isCascadeRemove: false
-            isCascadePersist: false
-            isCascadeRefresh: false
-            isCascadeMerge: false
-            isCascadeDetach: false
-            sourceToTargetKeyColumns:
+            mapped_by: null
+            is_owning_side: true
+            source_entity: TMSolution\SampleEntitiesBundle\Entity\Transaction
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
                 status_id: id
-            joinColumnFieldNames:
+            join_column_field_names:
                 status_id: status_id
-            targetToSourceKeyColumns:
+            target_to_source_key_columns:
                 id: status_id
-            orphanRemoval: false
+            orphan_removal: false
         association_type: 2
         entity_name: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
 parent_entities:
@@ -206,29 +214,35 @@ parent_entities:
         setter_name: setTransactionType
         type: object
         metadata:
-            fieldName: transactionType
-            joinColumns:
-                - { name: transaction_type_id, unique: false, nullable: true, onDelete: null, columnDefinition: null, referencedColumnName: id }
+            field_name: transactionType
+            join_columns:
+                -
+                    name: transaction_type_id
+                    unique: false
+                    nullable: true
+                    on_delete: null
+                    column_definition: null
+                    referenced_column_name: id
             cascade: {  }
-            inversedBy: null
-            targetEntity: TMSolution\SampleEntitiesBundle\Entity\TransactionType
+            inversed_by: null
+            target_entity: TMSolution\SampleEntitiesBundle\Entity\TransactionType
             fetch: 2
             type: 2
-            mappedBy: null
-            isOwningSide: true
-            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\Transaction
-            isCascadeRemove: false
-            isCascadePersist: false
-            isCascadeRefresh: false
-            isCascadeMerge: false
-            isCascadeDetach: false
-            sourceToTargetKeyColumns:
+            mapped_by: null
+            is_owning_side: true
+            source_entity: TMSolution\SampleEntitiesBundle\Entity\Transaction
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
                 transaction_type_id: id
-            joinColumnFieldNames:
+            join_column_field_names:
                 transaction_type_id: transaction_type_id
-            targetToSourceKeyColumns:
+            target_to_source_key_columns:
                 id: transaction_type_id
-            orphanRemoval: false
+            orphan_removal: false
         association_type: 2
         entity_name: TMSolution\SampleEntitiesBundle\Entity\TransactionType
     status:
@@ -236,29 +250,31 @@ parent_entities:
         setter_name: setStatus
         type: object
         metadata:
-            fieldName: status
-            joinColumns:
-                - { name: status_id, referencedColumnName: id }
+            field_name: status
+            join_columns:
+                -
+                    name: status_id
+                    referenced_column_name: id
             cascade: {  }
-            inversedBy: null
-            targetEntity: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
+            inversed_by: null
+            target_entity: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
             fetch: 2
             type: 2
-            mappedBy: null
-            isOwningSide: true
-            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\Transaction
-            isCascadeRemove: false
-            isCascadePersist: false
-            isCascadeRefresh: false
-            isCascadeMerge: false
-            isCascadeDetach: false
-            sourceToTargetKeyColumns:
+            mapped_by: null
+            is_owning_side: true
+            source_entity: TMSolution\SampleEntitiesBundle\Entity\Transaction
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
                 status_id: id
-            joinColumnFieldNames:
+            join_column_field_names:
                 status_id: status_id
-            targetToSourceKeyColumns:
+            target_to_source_key_columns:
                 id: status_id
-            orphanRemoval: false
+            orphan_removal: false
         association_type: 2
         entity_name: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
 child_entities:
@@ -267,21 +283,21 @@ child_entities:
         setter_name: addProduct
         type: object
         metadata:
-            fieldName: products
-            mappedBy: transaction
-            targetEntity: TMSolution\SampleEntitiesBundle\Entity\Product
+            field_name: products
+            mapped_by: transaction
+            target_entity: TMSolution\SampleEntitiesBundle\Entity\Product
             cascade: {  }
-            orphanRemoval: false
+            orphan_removal: false
             fetch: 2
             type: 4
-            inversedBy: null
-            isOwningSide: false
-            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\Transaction
-            isCascadeRemove: false
-            isCascadePersist: false
-            isCascadeRefresh: false
-            isCascadeMerge: false
-            isCascadeDetach: false
+            inversed_by: null
+            is_owning_side: false
+            source_entity: TMSolution\SampleEntitiesBundle\Entity\Transaction
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
         association_type: 4
         entity_name: TMSolution\SampleEntitiesBundle\Entity\Product
 associations:
@@ -290,21 +306,21 @@ associations:
         setter_name: addProduct
         type: object
         metadata:
-            fieldName: products
-            mappedBy: transaction
-            targetEntity: TMSolution\SampleEntitiesBundle\Entity\Product
+            field_name: products
+            mapped_by: transaction
+            target_entity: TMSolution\SampleEntitiesBundle\Entity\Product
             cascade: {  }
-            orphanRemoval: false
+            orphan_removal: false
             fetch: 2
             type: 4
-            inversedBy: null
-            isOwningSide: false
-            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\Transaction
-            isCascadeRemove: false
-            isCascadePersist: false
-            isCascadeRefresh: false
-            isCascadeMerge: false
-            isCascadeDetach: false
+            inversed_by: null
+            is_owning_side: false
+            source_entity: TMSolution\SampleEntitiesBundle\Entity\Transaction
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
         association_type: 4
         entity_name: TMSolution\SampleEntitiesBundle\Entity\Product
     transaction_type:
@@ -312,29 +328,35 @@ associations:
         setter_name: setTransactionType
         type: object
         metadata:
-            fieldName: transactionType
-            joinColumns:
-                - { name: transaction_type_id, unique: false, nullable: true, onDelete: null, columnDefinition: null, referencedColumnName: id }
+            field_name: transactionType
+            join_columns:
+                -
+                    name: transaction_type_id
+                    unique: false
+                    nullable: true
+                    on_delete: null
+                    column_definition: null
+                    referenced_column_name: id
             cascade: {  }
-            inversedBy: null
-            targetEntity: TMSolution\SampleEntitiesBundle\Entity\TransactionType
+            inversed_by: null
+            target_entity: TMSolution\SampleEntitiesBundle\Entity\TransactionType
             fetch: 2
             type: 2
-            mappedBy: null
-            isOwningSide: true
-            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\Transaction
-            isCascadeRemove: false
-            isCascadePersist: false
-            isCascadeRefresh: false
-            isCascadeMerge: false
-            isCascadeDetach: false
-            sourceToTargetKeyColumns:
+            mapped_by: null
+            is_owning_side: true
+            source_entity: TMSolution\SampleEntitiesBundle\Entity\Transaction
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
                 transaction_type_id: id
-            joinColumnFieldNames:
+            join_column_field_names:
                 transaction_type_id: transaction_type_id
-            targetToSourceKeyColumns:
+            target_to_source_key_columns:
                 id: transaction_type_id
-            orphanRemoval: false
+            orphan_removal: false
         association_type: 2
         entity_name: TMSolution\SampleEntitiesBundle\Entity\TransactionType
     status:
@@ -342,28 +364,30 @@ associations:
         setter_name: setStatus
         type: object
         metadata:
-            fieldName: status
-            joinColumns:
-                - { name: status_id, referencedColumnName: id }
+            field_name: status
+            join_columns:
+                -
+                    name: status_id
+                    referenced_column_name: id
             cascade: {  }
-            inversedBy: null
-            targetEntity: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
+            inversed_by: null
+            target_entity: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
             fetch: 2
             type: 2
-            mappedBy: null
-            isOwningSide: true
-            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\Transaction
-            isCascadeRemove: false
-            isCascadePersist: false
-            isCascadeRefresh: false
-            isCascadeMerge: false
-            isCascadeDetach: false
-            sourceToTargetKeyColumns:
+            mapped_by: null
+            is_owning_side: true
+            source_entity: TMSolution\SampleEntitiesBundle\Entity\Transaction
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
                 status_id: id
-            joinColumnFieldNames:
+            join_column_field_names:
                 status_id: status_id
-            targetToSourceKeyColumns:
+            target_to_source_key_columns:
                 id: status_id
-            orphanRemoval: false
+            orphan_removal: false
         association_type: 2
         entity_name: TMSolution\SampleEntitiesBundle\Entity\TransactionStatus
