@@ -20,8 +20,8 @@ services:
         class: TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory
         arguments: ['@tm_solution_prototype.base_configuration','@tm_solution_prototype.request_analyzer']
    
-    tm_solution_prototype.prototype_controller:
-        class: TMSolution\PrototypeBundle\Controller\PrototypeController
+    tm_solution_prototype.entity_controller:
+        class: TMSolution\PrototypeBundle\Controller\EntityController
         arguments: ['@service_container','@tm_solution_prototype.configuration_factory']
         
     tm_solution_prototype.test_controller:

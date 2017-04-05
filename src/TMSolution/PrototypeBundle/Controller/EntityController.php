@@ -14,7 +14,7 @@ use FOS\RestBundle\Controller\FOSRestController;
  * Prototype controller.
  * 
  */
-class PrototypeController extends FOSRestController {
+class EntityController extends FOSRestController {
 
     const _LIST = 'list';
     const _NEW = 'new';

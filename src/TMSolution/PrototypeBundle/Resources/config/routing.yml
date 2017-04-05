@@ -1,4 +1,4 @@
 tm_solution_prototype_prototype:
-    resource: "@TMSolutionPrototypeBundle/Resources/config/routing/prototype.yml"
+    resource: "@TMSolutionPrototypeBundle/Resources/config/routing/entity.yml"
     prefix:   /
 
