@@ -3,14 +3,14 @@
 namespace TMSolution\EntityAnalyzerBundle\Tests\Util;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use TMSolution\EntityAnalyzerBundle\Util\EntityAnalyzer;
+
 
 /**
  * Description of EntityAnalyzer
  *
  * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
-class EntityAnalyzerTest extends KernelTestCase {
+class EntityAnalyzerKrenelTest extends KernelTestCase {
 
     static protected $entityAnalyzer;
 
@@ -26,6 +26,8 @@ class EntityAnalyzerTest extends KernelTestCase {
     public function testGetEntityAnalyze() {
         $this->assertInstanceOf('TMSolution\EntityAnalyzerBundle\Util\EntityAnalyze', self::$entityAnalyzer->getEntityAnalyze());
     }
+    
+    
 
    
 

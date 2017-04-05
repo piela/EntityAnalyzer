@@ -20,7 +20,6 @@ class EntityAnalyze {
     protected $parentEntities = [];
     protected $childEntities = [];
     protected $associations = [];
-    
 
     public function __construct($entityClass) {
 
@@ -82,17 +81,28 @@ class EntityAnalyze {
     public function addAssociation($fieldName, $field) {
         $this->associations[$fieldName] = $field;
     }
+
     
-    public function dump()
-    {
-        return [
-           'entity_class' =>$this->entityClass,
-           'fields' => $this->fields,
-           'parent_entities' =>$this->parentEntities,
-           'child_entities' => $this->childEntities ,
-           'associations' =>$this->associations,
-        ];
-        
-        
+    protected function getSnakeCase($text) {
+        return ltrim(strtolower(preg_replace('/[A-Z]([A-Z](?![a-z]))*/', '_$0', $text)), '_');
     }
+    
+    protected function dumpArrays($fields) {
+        $resultArray = [];
+        foreach ($fields as $field) {
+            $resultArray[$this->getSnakeCase($field->getName())] = $field->dump();
+        }
+        return $resultArray;
+    }
+
+    public function dump() {
+        return [
+            'entity_class' => $this->entityClass,
+            'fields' => $this->dumpArrays($this->fields),
+            'parent_entities' => $this->dumpArrays( $this->parentEntities),
+            'child_entities' => $this->dumpArrays( $this->childEntities),
+            'associations' =>  $this->dumpArrays($this->associations),
+        ];
+    }
+
 }

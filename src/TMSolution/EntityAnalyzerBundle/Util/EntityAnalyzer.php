@@ -4,6 +4,7 @@ namespace TMSolution\EntityAnalyzerBundle\Util;
 
 use \TMSolution\EntityAnalyzerBundle\Util\EntityAnalyze;
 use \TMSolution\EntityAnalyzerBundle\Util\Field;
+use \TMSolution\EntityAnalyzerBundle\Util\ObjectField;
 use TMSolution\EntityAnalyzerBundle\Association;
 
 /**
@@ -41,7 +42,9 @@ class EntityAnalyzer {
         return $this->reflectionClass;
     }
 
-    protected function findMethodByPrefix($propertyName, $methodPrefixes) {
+    protected function findMethodByPrefix($propertyName, $methodPrefixes, $entityName=null) {
+        
+   
         if (is_string($methodPrefixes)) {
             $methodPrefixes = array($methodPrefixes);
         }
@@ -50,8 +53,15 @@ class EntityAnalyzer {
             if ($method !== false) {
                 return $method;
             }
+            if ($entityName) {
+                
+                $method = $this->checktMethodExists(\sprintf('%s%s', $methodPrefix, $entityName));
+                if ($method !== false) {
+                    return $method;
+                }
+            }
         }
-        return false;
+      
     }
 
     protected function checktMethodExists($methodName) {
@@ -63,12 +73,12 @@ class EntityAnalyzer {
     }
 
     protected function analize() {
-        
+
         $entityAnalyze = new EntityAnalyze($this->getEntityClass());
-        $fields = [];
-        
+
+
         foreach ($this->metadata->fieldMappings as $field => $parameters) {
-        
+
             $field = new Field();
             $field->setName($parameters['fieldName']);
             $field->setType($parameters['type']);
@@ -76,28 +86,30 @@ class EntityAnalyzer {
             $field->setMetadata($parameters);
             $entityAnalyze->addField($field->getName(), $field);
         }
-        
+
         foreach ($this->metadata->associationMappings as $field => $parameters) {
-        
-            $field = new Field();
+
+            $field = new ObjectField();
             $field->setName($parameters['fieldName']);
             $field->setType('object');
+            $entityNamespaceArray=explode('\\', $parameters['targetEntity']);
+            $entityName = end($entityNamespaceArray);
             $field->setEntityName($parameters['targetEntity']);
             $field->setAssociationType($parameters['type']);
-            $field->setSetterName($this->findMethodByPrefix($parameters['fieldName'], ['set', 'add']));
+            $field->setSetterName($this->findMethodByPrefix($parameters['fieldName'], ['set', 'add'],$entityName));
             $field->setMetadata($parameters);
             $entityAnalyze->addField($field->getName(), $field);
             $entityAnalyze->addAssociation($field->getName(), $field);
-            
+
             if (in_array($parameters['type'], [Association::MANY_TO_MANY, Association::ONE_TO_ONE, Association::ONE_TO_MANY, Association::TO_MANY])) {
                 $entityAnalyze->addChildEntity($field->getName(), $field);
             }
-            
-            if (in_array($parameters['type'], [Association::MANY_TO_MANY,Association::MANY_TO_ONE, Association::TO_ONE])) {
+
+            if (in_array($parameters['type'], [Association::MANY_TO_MANY, Association::MANY_TO_ONE, Association::TO_ONE])) {
                 $entityAnalyze->addParentEntity($field->getName(), $field);
             }
         }
-        
+
         return $entityAnalyze;
     }
 

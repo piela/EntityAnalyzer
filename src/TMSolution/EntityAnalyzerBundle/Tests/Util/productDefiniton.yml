@@ -1,0 +1,584 @@
+entity_class: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+fields:
+    id:
+        name: id
+        setter_name: null
+        type: bigint
+        metadata:
+            fieldName: id
+            type: bigint
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            columnName: id
+            id: true
+    measure_unit_quantity:
+        name: measureUnitQuantity
+        setter_name: setMeasureUnitQuantity
+        type: integer
+        metadata:
+            fieldName: measureUnitQuantity
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            columnName: measureunit_quantity
+    parents:
+        name: parents
+        setter_name: setParents
+        type: object
+        metadata:
+            fieldName: parents
+            joinTable: {  }
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            mappedBy: productDefinitions
+            inversedBy: null
+            cascade:
+                - persist
+            orphanRemoval: false
+            fetch: 2
+            type: 8
+            isOwningSide: false
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: true
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+        association_type: 8
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+    product_definitions:
+        name: productDefinitions
+        setter_name: addProductDefinition
+        type: object
+        metadata:
+            fieldName: productDefinitions
+            joinTable:
+                name: callcenter_productdefinition_has_productdefinition
+                schema: null
+                joinColumns: [{ name: product_definition_source, referencedColumnName: id, onDelete: CASCADE }]
+                inverseJoinColumns: [{ name: product_definition_target, referencedColumnName: id, onDelete: CASCADE }]
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            mappedBy: null
+            inversedBy: parents
+            cascade:
+                - persist
+            orphanRemoval: false
+            fetch: 2
+            type: 8
+            isOwningSide: true
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: true
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+            joinTableColumns:
+                - product_definition_source
+                - product_definition_target
+            isOnDeleteCascade: true
+            relationToSourceKeyColumns:
+                product_definition_source: id
+            relationToTargetKeyColumns:
+                product_definition_target: id
+        association_type: 8
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+    measure_unit:
+        name: measureUnit
+        setter_name: setMeasureUnit
+        type: object
+        metadata:
+            fieldName: measureUnit
+            joinColumns:
+                - { name: measureunit_id, unique: false, nullable: true, onDelete: null, columnDefinition: null, referencedColumnName: id }
+            cascade: {  }
+            inversedBy: null
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\MeasureUnit
+            fetch: 2
+            type: 2
+            mappedBy: null
+            isOwningSide: true
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+            sourceToTargetKeyColumns:
+                measureunit_id: id
+            joinColumnFieldNames:
+                measureunit_id: measureunit_id
+            targetToSourceKeyColumns:
+                id: measureunit_id
+            orphanRemoval: false
+        association_type: 2
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\MeasureUnit
+    product_dictionary:
+        name: productDictionary
+        setter_name: setProductDictionary
+        type: object
+        metadata:
+            fieldName: productDictionary
+            joinColumns:
+                - { name: product_dictionary_id, referencedColumnName: id }
+            cascade: {  }
+            inversedBy: null
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDictionary
+            fetch: 2
+            type: 2
+            mappedBy: null
+            isOwningSide: true
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+            sourceToTargetKeyColumns:
+                product_dictionary_id: id
+            joinColumnFieldNames:
+                product_dictionary_id: product_dictionary_id
+            targetToSourceKeyColumns:
+                id: product_dictionary_id
+            orphanRemoval: false
+        association_type: 2
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDictionary
+    product_prices:
+        name: productPrices
+        setter_name: addProductPrice
+        type: object
+        metadata:
+            fieldName: productPrices
+            mappedBy: productDefinition
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductPrice
+            cascade: {  }
+            orphanRemoval: false
+            fetch: 2
+            type: 4
+            inversedBy: null
+            isOwningSide: false
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+        association_type: 4
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductPrice
+    discounts:
+        name: discounts
+        setter_name: addDiscount
+        type: object
+        metadata:
+            fieldName: discounts
+            mappedBy: productDefinition
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\Discount
+            cascade: {  }
+            orphanRemoval: false
+            fetch: 2
+            type: 4
+            inversedBy: null
+            isOwningSide: false
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+        association_type: 4
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\Discount
+parent_entities:
+    parents:
+        name: parents
+        setter_name: setParents
+        type: object
+        metadata:
+            fieldName: parents
+            joinTable: {  }
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            mappedBy: productDefinitions
+            inversedBy: null
+            cascade:
+                - persist
+            orphanRemoval: false
+            fetch: 2
+            type: 8
+            isOwningSide: false
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: true
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+        association_type: 8
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+    product_definitions:
+        name: productDefinitions
+        setter_name: addProductDefinition
+        type: object
+        metadata:
+            fieldName: productDefinitions
+            joinTable:
+                name: callcenter_productdefinition_has_productdefinition
+                schema: null
+                joinColumns: [{ name: product_definition_source, referencedColumnName: id, onDelete: CASCADE }]
+                inverseJoinColumns: [{ name: product_definition_target, referencedColumnName: id, onDelete: CASCADE }]
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            mappedBy: null
+            inversedBy: parents
+            cascade:
+                - persist
+            orphanRemoval: false
+            fetch: 2
+            type: 8
+            isOwningSide: true
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: true
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+            joinTableColumns:
+                - product_definition_source
+                - product_definition_target
+            isOnDeleteCascade: true
+            relationToSourceKeyColumns:
+                product_definition_source: id
+            relationToTargetKeyColumns:
+                product_definition_target: id
+        association_type: 8
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+    measure_unit:
+        name: measureUnit
+        setter_name: setMeasureUnit
+        type: object
+        metadata:
+            fieldName: measureUnit
+            joinColumns:
+                - { name: measureunit_id, unique: false, nullable: true, onDelete: null, columnDefinition: null, referencedColumnName: id }
+            cascade: {  }
+            inversedBy: null
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\MeasureUnit
+            fetch: 2
+            type: 2
+            mappedBy: null
+            isOwningSide: true
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+            sourceToTargetKeyColumns:
+                measureunit_id: id
+            joinColumnFieldNames:
+                measureunit_id: measureunit_id
+            targetToSourceKeyColumns:
+                id: measureunit_id
+            orphanRemoval: false
+        association_type: 2
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\MeasureUnit
+    product_dictionary:
+        name: productDictionary
+        setter_name: setProductDictionary
+        type: object
+        metadata:
+            fieldName: productDictionary
+            joinColumns:
+                - { name: product_dictionary_id, referencedColumnName: id }
+            cascade: {  }
+            inversedBy: null
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDictionary
+            fetch: 2
+            type: 2
+            mappedBy: null
+            isOwningSide: true
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+            sourceToTargetKeyColumns:
+                product_dictionary_id: id
+            joinColumnFieldNames:
+                product_dictionary_id: product_dictionary_id
+            targetToSourceKeyColumns:
+                id: product_dictionary_id
+            orphanRemoval: false
+        association_type: 2
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDictionary
+child_entities:
+    parents:
+        name: parents
+        setter_name: setParents
+        type: object
+        metadata:
+            fieldName: parents
+            joinTable: {  }
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            mappedBy: productDefinitions
+            inversedBy: null
+            cascade:
+                - persist
+            orphanRemoval: false
+            fetch: 2
+            type: 8
+            isOwningSide: false
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: true
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+        association_type: 8
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+    product_definitions:
+        name: productDefinitions
+        setter_name: addProductDefinition
+        type: object
+        metadata:
+            fieldName: productDefinitions
+            joinTable:
+                name: callcenter_productdefinition_has_productdefinition
+                schema: null
+                joinColumns: [{ name: product_definition_source, referencedColumnName: id, onDelete: CASCADE }]
+                inverseJoinColumns: [{ name: product_definition_target, referencedColumnName: id, onDelete: CASCADE }]
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            mappedBy: null
+            inversedBy: parents
+            cascade:
+                - persist
+            orphanRemoval: false
+            fetch: 2
+            type: 8
+            isOwningSide: true
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: true
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+            joinTableColumns:
+                - product_definition_source
+                - product_definition_target
+            isOnDeleteCascade: true
+            relationToSourceKeyColumns:
+                product_definition_source: id
+            relationToTargetKeyColumns:
+                product_definition_target: id
+        association_type: 8
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+    product_prices:
+        name: productPrices
+        setter_name: addProductPrice
+        type: object
+        metadata:
+            fieldName: productPrices
+            mappedBy: productDefinition
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductPrice
+            cascade: {  }
+            orphanRemoval: false
+            fetch: 2
+            type: 4
+            inversedBy: null
+            isOwningSide: false
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+        association_type: 4
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductPrice
+    discounts:
+        name: discounts
+        setter_name: addDiscount
+        type: object
+        metadata:
+            fieldName: discounts
+            mappedBy: productDefinition
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\Discount
+            cascade: {  }
+            orphanRemoval: false
+            fetch: 2
+            type: 4
+            inversedBy: null
+            isOwningSide: false
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+        association_type: 4
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\Discount
+associations:
+    parents:
+        name: parents
+        setter_name: setParents
+        type: object
+        metadata:
+            fieldName: parents
+            joinTable: {  }
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            mappedBy: productDefinitions
+            inversedBy: null
+            cascade:
+                - persist
+            orphanRemoval: false
+            fetch: 2
+            type: 8
+            isOwningSide: false
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: true
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+        association_type: 8
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+    product_definitions:
+        name: productDefinitions
+        setter_name: addProductDefinition
+        type: object
+        metadata:
+            fieldName: productDefinitions
+            joinTable:
+                name: callcenter_productdefinition_has_productdefinition
+                schema: null
+                joinColumns: [{ name: product_definition_source, referencedColumnName: id, onDelete: CASCADE }]
+                inverseJoinColumns: [{ name: product_definition_target, referencedColumnName: id, onDelete: CASCADE }]
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            mappedBy: null
+            inversedBy: parents
+            cascade:
+                - persist
+            orphanRemoval: false
+            fetch: 2
+            type: 8
+            isOwningSide: true
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: true
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+            joinTableColumns:
+                - product_definition_source
+                - product_definition_target
+            isOnDeleteCascade: true
+            relationToSourceKeyColumns:
+                product_definition_source: id
+            relationToTargetKeyColumns:
+                product_definition_target: id
+        association_type: 8
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+    measure_unit:
+        name: measureUnit
+        setter_name: setMeasureUnit
+        type: object
+        metadata:
+            fieldName: measureUnit
+            joinColumns:
+                - { name: measureunit_id, unique: false, nullable: true, onDelete: null, columnDefinition: null, referencedColumnName: id }
+            cascade: {  }
+            inversedBy: null
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\MeasureUnit
+            fetch: 2
+            type: 2
+            mappedBy: null
+            isOwningSide: true
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+            sourceToTargetKeyColumns:
+                measureunit_id: id
+            joinColumnFieldNames:
+                measureunit_id: measureunit_id
+            targetToSourceKeyColumns:
+                id: measureunit_id
+            orphanRemoval: false
+        association_type: 2
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\MeasureUnit
+    product_dictionary:
+        name: productDictionary
+        setter_name: setProductDictionary
+        type: object
+        metadata:
+            fieldName: productDictionary
+            joinColumns:
+                - { name: product_dictionary_id, referencedColumnName: id }
+            cascade: {  }
+            inversedBy: null
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDictionary
+            fetch: 2
+            type: 2
+            mappedBy: null
+            isOwningSide: true
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+            sourceToTargetKeyColumns:
+                product_dictionary_id: id
+            joinColumnFieldNames:
+                product_dictionary_id: product_dictionary_id
+            targetToSourceKeyColumns:
+                id: product_dictionary_id
+            orphanRemoval: false
+        association_type: 2
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductDictionary
+    product_prices:
+        name: productPrices
+        setter_name: addProductPrice
+        type: object
+        metadata:
+            fieldName: productPrices
+            mappedBy: productDefinition
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\ProductPrice
+            cascade: {  }
+            orphanRemoval: false
+            fetch: 2
+            type: 4
+            inversedBy: null
+            isOwningSide: false
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+        association_type: 4
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\ProductPrice
+    discounts:
+        name: discounts
+        setter_name: addDiscount
+        type: object
+        metadata:
+            fieldName: discounts
+            mappedBy: productDefinition
+            targetEntity: TMSolution\SampleEntitiesBundle\Entity\Discount
+            cascade: {  }
+            orphanRemoval: false
+            fetch: 2
+            type: 4
+            inversedBy: null
+            isOwningSide: false
+            sourceEntity: TMSolution\SampleEntitiesBundle\Entity\ProductDefinition
+            isCascadeRemove: false
+            isCascadePersist: false
+            isCascadeRefresh: false
+            isCascadeMerge: false
+            isCascadeDetach: false
+        association_type: 4
+        entity_name: TMSolution\SampleEntitiesBundle\Entity\Discount

@@ -4,6 +4,7 @@ namespace TMSolution\EntityAnalyzerBundle\Tests\Util;
 
 use TMSolution\EntityAnalyzerBundle\Util\EntityAnalyze;
 use \PHPUnit\Framework\TestCase;
+use TMSolution\EntityAnalyzerBundle\Util\EntityAnalyzer;
 
 /**
  * Description of EntityAnalyzer
@@ -42,6 +43,15 @@ class EntityAnalyzeTest extends TestCase {
     }
 
     function testAddField() {
+        $fieldName = "aaaa";
+        $field = new \stdClass();
+        self::$entityAnalyze->addField($fieldName, $field);
+        $fields = self::$entityAnalyze->getFields();
+        $this->assertEquals($fields[$fieldName], $field);
+    }
+    
+    
+     function testDump() {
         $fieldName = "aaaa";
         $field = new \stdClass();
         self::$entityAnalyze->addField($fieldName, $field);
