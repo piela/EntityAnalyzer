@@ -2,6 +2,7 @@
 
 namespace TMSolution\PrototypeBundle\Tests\Util;
 
+use Symfony\Component\Yaml\Yaml;
 use TMSolution\PrototypeBundle\Util\ControllerDriver;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
 use TMSolution\PrototypeBundle\Sample\SampleLogger;
@@ -16,14 +17,16 @@ use \PHPUnit\Framework\TestCase;
  */
 class ControllerDriverTest extends TestCase {
    
-    protected static $controllerDriver;
+ //   protected static $controllerDriver;
    
     public static function setupBeforeClass() {
-        self::$controllerDriver = new ControllerDriver(new ControllerConfiguration());
+   //     self::$controllerDriver = new ControllerDriver(new ControllerConfiguration());
     } 
     
     public function testIsActionAllowed() {
-        $this->assertTrue(self::$controllerDriver->isActionAllowed());
+        $configuration = Yaml::parse(file_get_contents(__DIR__.DIRECTORY_SEPARATOR.'testConfiguration.yml'));
+        $controllerDriver=new ControllerDriver(new ControllerConfiguration($configuration['tm_solution_prototype']['base']));
+        $this->assertTrue($controllerDriver->isActionAllowed());
     }
     
     public function testGetEntityClass() {
