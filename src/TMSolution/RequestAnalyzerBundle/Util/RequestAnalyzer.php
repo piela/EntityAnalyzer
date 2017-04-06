@@ -28,7 +28,17 @@ class RequestAnalyzer implements RequestAnalyzerInterface {
         $requestAnalyze = new RequestAnalyze();
 
         $applicationPath = $request->attributes->get(self::APPLICATION_PATH);
+        if(!$applicationPath)
+        {
+            throw new \Exception(sprintf('No "%s" parameter in Request attributes',self::APPLICATION_PATH));
+        }    
+        
         $entitiesPath = $request->attributes->get(self::ENTITIES_PATH);
+        if(!$entitiesPath)
+        {
+            throw new \Exception(sprintf('No "%s" parameter in Request attributes',self::ENTITIES_PATH));
+        }   
+        
         $id = $request->query->get(self::ID);
 
         $entityAlias = $this->getEntityAlias($entitiesPath);

@@ -25,8 +25,8 @@ class RequestAnalyzerTest extends TestCase {
 
     public static function setupBeforeClass() {
         self::$request = new Request(['id' => self::_ID], [/* post */], [
-            'applicationPath' => self::_APPLICATION_PATH,
-            'entitiesPath' => self::_ENTITIES_PATH
+            'application_path' => self::_APPLICATION_PATH,
+            'entities_path' => self::_ENTITIES_PATH
         ]);
     }
 
