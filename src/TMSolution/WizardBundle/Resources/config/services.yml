@@ -1,0 +1,6 @@
+services:
+        tm_solution_wizard.model:
+            class: TMSolution\ModelBundle\Util\Model
+            arguments: ['@doctrine.orm.entity_manager']
+
+            

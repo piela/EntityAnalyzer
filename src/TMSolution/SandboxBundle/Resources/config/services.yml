@@ -25,27 +25,24 @@ parameters:
                         result_parameter: productCategories
             new:
                form: 
-                   action: create 
+                   action: new 
                #                routeName: aaa    
                #                parameters:
                #                value        
                templates:
-                    element: 'productcategory\new.html.twig'    
-            create:
-                form:
-                        action: new
-                templates:
                     element: 'productcategory\new.html.twig'
-                models:
+               models:
+                    prepare:
+                        name: some_model
+                        method: save2
                     create:
                         name: some_model
                         method: save
                         return_result_to_view: true
                         result_parameter: result 
-                redirection: 
+               redirection: 
                     route_name: list
-                    parameters:
-                        
+                    parameters:                                       
             get:
                 templates:
                     element: 'productcategory\show.html.twig'   
@@ -55,7 +52,7 @@ parameters:
             edit:
                 form:
                    form_type_class: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
-                   action: update
+                   action:
                    paremeters: 
                             -id
                 models:
@@ -66,13 +63,7 @@ parameters:
                         result_parameter: entity 
                 templates:
                     element: 'productcategory\edit.html.twig'
-                    
-            update:
-                form:
-                   form_type_class: 'TMSolution\SampleEntitiesBundle\Form\ProductCategoryType'
-                   action: update
-                   paremeters: 
-                            -id
+                   
                 models:
                     get:
                         name: some_model

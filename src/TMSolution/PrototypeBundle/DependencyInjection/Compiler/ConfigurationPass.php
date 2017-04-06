@@ -31,7 +31,9 @@ class ConfigurationPass implements CompilerPassInterface {
 
     protected function findTaggedServices($taggedServices, $definition) {
 
+        
         foreach ($taggedServices as $id => $tags) {
+            var_dump($id);
             $this->addServices($id, $tags, $definition);
         }
     }

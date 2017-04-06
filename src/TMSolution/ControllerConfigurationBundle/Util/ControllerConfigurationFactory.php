@@ -24,7 +24,7 @@ class ControllerConfigurationFactory  implements ControllerConfigurationFactoryI
     }
 
     public function createConfiguration($request, ConfigurationInterface $controllerConfiguration, $action) {
-
+        
         $this->configuration=$controllerConfiguration;
         
         $analyze = $this->requestAnalyzer->analyze($request);
@@ -105,7 +105,7 @@ class ControllerConfigurationFactory  implements ControllerConfigurationFactoryI
     }
 
     public function addConfiguration(ConfigurationInterface $configuration, $applicationPath, $entityAlias) {
-
+        
         $this->configurations[$applicationPath][$entityAlias] = $configuration;
     }
 

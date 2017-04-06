@@ -1,0 +1,60 @@
+parameters:    
+    tm_solution_wizard_view_configuration.config: 
+        base:
+            allowed: true
+            form: 
+                   action: new 
+                   form_type_class: 'TMSolution\WizardBundle\Form\ViewConfigurationType'
+            models:
+                 get:
+                        name: 'tm_solution_wizard.model'
+                        method: findOneById
+                        return_result_to_view: true
+                        result_parameter: viewConfiguration   
+        
+        actions: 
+            new:
+               templates:
+                    element: 'viewconfiguration\new.html.twig'
+               models:
+                    prepare:
+                        name: 'tm_solution_wizard.map_reader'
+                        method: getEntities
+                    create:
+                        name: 'tm_solution_wizard.model'
+                        method: save
+                      
+               redirection: 
+                    route_name: list                                     
+            list:
+                templates:
+                    element: 'viewconfiguration\index.html.twig' 
+                models:
+                    list:
+                        name: 'tm_solution_wizard.model'
+                        method: search
+                        return_result_to_view: true
+                        result_parameter: viewConfigurations   
+            get:
+                templates:
+                    element: 'viewconfiguration\show.html.twig'
+            edit:
+                templates:
+                    element: 'viewconfiguration\edit.html.twig'            
+   
+   
+services:
+        tm_solution_wizard.view_configuration:
+            class: TMSolution\ConfigurationBundle\Util\Configuration
+            arguments: [%tm_solution_wizard_view_configuration.config%]
+            tags:
+                - { name: tm_solution_prototype.controller_configuration, application_path: 'wizard', entity_alias: 'view-configuration' }
+        
+        tm_solution_wizard.model:
+            class: TMSolution\ModelBundle\Util\Model
+            arguments: ['@doctrine.orm.entity_manager']
+            
+        tm_solution_wizard.map_reader:
+            class: TMSolution\WizardBundle\Util\MapReader
+            arguments: [%tm_solution_mapper.entities%]    
+            

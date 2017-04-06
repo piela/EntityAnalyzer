@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Viewtypes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for viewType in viewTypes %}
+            <tr>
+                <td><a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': viewType.id }) }}">{{ viewType.id }}</a></td>
+                <td>{{ viewType.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': viewType.id }) }}">Show </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('edit',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': viewType.id }) }}">Edit </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('new',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath }) }}">new </a>
+        </li>
+    </ul>
+{% endblock %}
+ 

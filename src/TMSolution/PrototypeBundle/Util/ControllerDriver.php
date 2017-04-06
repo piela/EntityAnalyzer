@@ -40,7 +40,7 @@ class ControllerDriver implements ControllerDriverInterface {
             return $this->configuration->get($returnToViewParameter);
 
         } else {
-             throw new \Exception(sprintf('No return_result_to_view parameter for \'%s\' model',$modelName));
+             return false;
         }
     }
 

@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new TMSolution\SandboxBundle\TMSolutionSandboxBundle(),
             new TMSolution\GeneratorBundle\TMSolutionGeneratorBundle(),
             new TMSolution\FormTypeTemplatesBundle\TMSolutionFormTypeTemplatesBundle(),
+            new TMSolution\WizardBundle\TMSolutionWizardBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

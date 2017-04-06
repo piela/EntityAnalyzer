@@ -26,7 +26,8 @@ services:
         
     tm_solution_prototype.test_controller:
         class: TMSolution\PrototypeBundle\Controller\TestController
-        arguments: ['@service_container','@tm_solution_prototype.configuration_factory']   
+        arguments: ['@service_container','@tm_solution_prototype.configuration_factory']
+
         
     tm_solution_prototype.ticket:
         class: TMSolution\PrototypeBundle\Util\Ticket

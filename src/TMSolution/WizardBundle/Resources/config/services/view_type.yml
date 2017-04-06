@@ -1,0 +1,53 @@
+parameters:    
+    tm_solution_wizard_view_type.config:                    
+        actions: 
+            new:
+               allowed: true
+               form: 
+                   action: new 
+                   form_type_class: 'TMSolution\WizardBundle\Form\ViewTypeType'
+               templates:
+                    element: 'viewtype\new.html.twig'
+               models:
+
+                    create:
+                        name: 'tm_solution_wizard.model'
+                        method: save
+                      
+               redirection: 
+                    route_name: list 
+            edit:
+               allowed: true
+               form: 
+                   action: edit 
+                   form_type_class: 'TMSolution\WizardBundle\Form\ViewTypeType'
+               templates:
+                    element: 'viewtype\edit.html.twig'
+               models:
+                    get:
+                        name: 'tm_solution_wizard.model'
+                        method: findOneById
+                    update:
+                        name: 'tm_solution_wizard.model'
+                        method: update          
+               redirection: 
+                    route_name: list         
+            list:
+                allowed: true
+                templates:
+                    element: 'viewtype\index.html.twig' 
+                models:
+                    list:
+                        name: 'tm_solution_wizard.model'
+                        method: search
+                        return_result_to_view: true
+                        result_parameter: viewTypes      
+   
+services:
+        tm_solution_wizard.view_type:
+            class: TMSolution\ConfigurationBundle\Util\Configuration
+            arguments: [%tm_solution_wizard_view_type.config%]
+            tags:
+                - { name: tm_solution_prototype.controller_configuration, application_path: 'wizard', entity_alias: 'view-type' }
+        
+

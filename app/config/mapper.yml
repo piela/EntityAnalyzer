@@ -8,6 +8,12 @@ tm_solution_mapper:
             bundles:
                 - tm_solution_sample_entities
             name: api
+            
+        wizard:
+            bundles:
+                - tm_solution_wizard
+            name: wizard    
+            
     entities:
         tm_solution_sample_entities:
             discount:
@@ -43,3 +49,10 @@ tm_solution_mapper:
             transaction_type:
                 alias: transaction-type
                 entity_class: TMSolution\SampleEntitiesBundle\Entity\TransactionType
+        tm_solution_wizard:
+            view_configuration:
+                alias: view-configuration
+                entity_class: TMSolution\WizardBundle\Entity\ViewConfiguration
+            view_type:
+                alias: view-type
+                entity_class: TMSolution\WizardBundle\Entity\ViewType

@@ -34,7 +34,7 @@ class EntityMapper {
         $count = count($results);
 
         if ($count == 0) {
-            throw new NoEntityClassForAliasException(sprintf('There is no entityClass for alias: %s', $alias));
+            throw new NoEntityClassForAliasException(sprintf('There is no entity class for alias: "%s" configured ', $alias));
         } else if ($count > 1) {
             throw new MoreThanOneEntityClassForAliasException(sprintf('There is more than one entityClass for alias: %s - %s', $alias, implode(',', $results)));
         } else {

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Viewconfigurations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for viewConfiguration in viewConfigurations %}
+            <tr>
+                <td><a href="{{ path('new',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath ,  'id': viewConfiguration.id }) }}">{{ viewConfiguration.id }}</a></td>
+                <td>{{ viewConfiguration.name }}</td>
+                <td>{{ viewConfiguration.address }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath ,  'id': viewConfiguration.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('edit',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath , 'id': viewConfiguration.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+              <a href="{{ path('new',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath }) }}">Create a new View Configuration</a>
+        </li>
+    </ul>
+{% endblock %}
