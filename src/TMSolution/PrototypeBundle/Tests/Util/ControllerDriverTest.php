@@ -26,8 +26,20 @@ class ControllerDriverTest extends TestCase {
     const _APPLICATION_PATH = 'admin/some/other/path';
     const _ENTITIES_PATH = 'discount/2/measure-unit/3/payment-frequency';
     const _ID = '7';
+    const _MODEL_NAME = 'get';
 
-    protected static $expected_entity_name = 'TMSolution\EntityAnalyzerBundle\Entity\PaymentFrequency';
+    static protected $expected_entity_name = 'TMSolution\EntityAnalyzerBundle\Entity\PaymentFrequency';
+    static protected $expected_application_path = 'admin/some/other/path';
+    static protected $expected_entities_path = 'discount/2/measure-unit/3/payment-frequency';
+    static protected $expected_result_parameter = 'productCategory';
+    static protected $expected_model_array = array(
+        'name' => 'some_model',
+        'method' => 'findOneById',
+        'return_result_to_view' => true,
+        'result_parameter' => 'productCategory',
+        'type' => 'service'
+    );
+    static protected $expected_route_name = 'list';
     static protected $mapperConfiguration;
     static protected $prototypeConfiguration;
     static protected $developerConfiguration;
@@ -49,7 +61,13 @@ class ControllerDriverTest extends TestCase {
         self::$developerConfiguration = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testDeveloperConfiguration.yml');
     }
 
-    protected function createConfiguration() {
+    protected function getDeleteActionConfiguration() {
+        $configuration = Yaml::parse(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testConfiguration.yml'));
+        $controllerConfiguration = new ControllerConfiguration($configuration['tm_solution_prototype']['actions']['delete']);
+        return new ControllerDriver($controllerConfiguration);
+    }
+
+    protected function getDriver() {
 
         $mapperConfiguration = Yaml::parse(self::$mapperConfiguration);
 
@@ -66,7 +84,8 @@ class ControllerDriverTest extends TestCase {
         $configurationFactory = new ControllerConfigurationFactory($baseConfiguration, $requestAnalyzer);
         $developerConfiguration = new Configuration($developerConfiguration['tm_solution_prototype']);
         $configurationFactory->addConfiguration($developerConfiguration, self::_APPLICATION_PATH, self::_ALIAS);
-        return $configurationFactory->createConfiguration(self::$request, new ControllerConfiguration(), 'new');
+        $controllerConfiguration = new ControllerConfiguration($configurationFactory->createConfiguration(self::$request, new ControllerConfiguration(), 'new'));
+        return new ControllerDriver($controllerConfiguration);
     }
 
     public function testIsActionAllowed() {
@@ -76,42 +95,53 @@ class ControllerDriverTest extends TestCase {
 
     public function testGetEntityClass() {
 
-        $configuration = $this->createConfiguration();
-        $controllerConfiguration = new ControllerConfiguration($configuration);
-        $controllerDriver = new ControllerDriver($controllerConfiguration);
+        $controllerDriver = $this->getDriver();
         $this->assertEquals($controllerDriver->getEntityClass(), self::$expected_entity_name);
     }
 
     public function testGetApplicationPath() {
-        
+
+        $controllerDriver = $this->getDriver();
+        $applicationPath = $controllerDriver->getApplicationPath();
+        $this->assertEquals($applicationPath, self::$expected_application_path);
     }
 
     public function testGetEntitiesPath() {
-        
+
+        $controllerDriver = $this->getDriver();
+        $entitiesPath = $controllerDriver->getEntitiesPath();
+        $this->assertEquals($entitiesPath, self::$expected_entities_path);
     }
 
     public function testReturnResultToView() {
-        
+
+        $this->assertTrue(self::$controllerDriver->returnResultToView(self::_MODEL_NAME));
     }
 
     public function testGetResultParameter() {
-        
+
+        $this->assertEquals(self::$controllerDriver->getResultParameter(self::_MODEL_NAME), self::$expected_result_parameter);
     }
 
     public function testShouldRedirect() {
-        
+        $controllerDriver = $this->getDeleteActionConfiguration();
+        $this->assertTrue($controllerDriver->shouldRedirect());
     }
 
-    public function testRedirectionRouteParameters() {
-        
+    public function testGetRedirectionRouteParameters() {
+
+        $controllerDriver = $this->getDeleteActionConfiguration();
+        $this->assertEquals($controllerDriver->getRedirectionRouteParameters(), []);
     }
 
     public function testGetModel() {
-        
+
+        $model = self::$controllerDriver->getModel(self::_MODEL_NAME);
+        $this->assertEquals($model, self::$expected_model_array);
     }
 
     public function testHasModel() {
-        
+        $this->assertTrue(self::$controllerDriver->hasModel(self::_MODEL_NAME));
     }
 
     public function testFormTypeClass() {

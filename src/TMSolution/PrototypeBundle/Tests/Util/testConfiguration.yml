@@ -5,7 +5,14 @@ tm_solution_prototype:
             serviceName: SameAsMyName
         templates:
                  index: 'Default\Base\dashboard.html.twig'
-                 clean: 'Default\Base\ajax_index.html.twig'       
+                 clean: 'Default\Base\ajax_index.html.twig'   
+        models:
+                    get:
+                        name: some_model
+                        method: findOneById
+                        return_result_to_view: true
+                        result_parameter: productCategory
+                        
     actions:
         find:
             allowed: true
@@ -72,4 +79,6 @@ tm_solution_prototype:
                 route_params: null
             templates:
                 container: 'Default\Container\blank.html.twig'
-                element: 'Default\Element\delete.html.twig'   
+                element: 'Default\Element\delete.html.twig'
+            redirection: 
+                    route_name: list    
