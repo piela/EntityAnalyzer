@@ -49,10 +49,15 @@ services:
         tm_solution_wizard.model:
             class: TMSolution\ModelBundle\Util\Model
             arguments: ['@doctrine.orm.entity_manager']
+            
+            
+        tm_solution_wizard.map_reader:
+            class: TMSolution\WizardBundle\Util\MapReader
+            arguments: [%tm_solution_mapper.entities%]    
               
-        tm_solution_wizard.form.friend_message:
+        tm_solution_wizard.form.view_configuration_type:
             class: TMSolution\WizardBundle\Form\ViewConfigurationType
-            arguments: ['@tm_solution_wizard.model']
+            arguments: ['@tm_solution_wizard.map_reader']
             tags:
                 - { name: form.type }
     

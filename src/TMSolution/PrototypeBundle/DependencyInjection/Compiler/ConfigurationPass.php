@@ -33,7 +33,6 @@ class ConfigurationPass implements CompilerPassInterface {
 
         
         foreach ($taggedServices as $id => $tags) {
-            var_dump($id);
             $this->addServices($id, $tags, $definition);
         }
     }
