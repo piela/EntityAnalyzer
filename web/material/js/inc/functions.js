@@ -6,14 +6,16 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 $(window).load(function () {
-    /*-----------------------------------------------------------
+    /*----------------------------------------------------------
         Page Loader
      -----------------------------------------------------------*/
-    if($('.page-loader')[0]) {
-        setTimeout (function () {
-            $('.page-loader').fadeOut();
-        }, 500);
+    if(!$('html').hasClass('ismobile')) {
+        if($('.page-loader')[0]) {
+            setTimeout (function () {
+                $('.page-loader').fadeOut();
+            }, 500);
 
+        }
     }
 })
 
@@ -26,7 +28,7 @@ $(document).ready(function(){
         $(selector).mCustomScrollbar({
             theme: theme,
             scrollInertia: 100,
-            axis:'mousewheelaxis',
+            axis:'yx',
             mouseWheel: {
                 enable: true,
                 axis: mousewheelaxis,
@@ -42,113 +44,126 @@ $(document).ready(function(){
         }
     }
 
+
     /*----------------------------------------------------------
         Dropdown Menu
     -----------------------------------------------------------*/
     if($('.dropdown')[0]) {
-  	   //Propagate
-    	$('body').on('click', '.dropdown.open .dropdown-menu', function(e){
-    	    e.stopPropagation();
-    	});
+	//Propagate
+	$('body').on('click', '.dropdown.open .dropdown-menu', function(e){
+	    e.stopPropagation();
+	});
 
-    	$('.dropdown').on('shown.bs.dropdown', function (e) {
-    	    if($(this).attr('data-animation')) {
-        		$animArray = [];
-        		$animation = $(this).data('animation');
-        		$animArray = $animation.split(',');
-        		$animationIn = 'animated '+$animArray[0];
-        		$animationOut = 'animated '+ $animArray[1];
-        		$animationDuration = ''
-        		if(!$animArray[2]) {
-        		    $animationDuration = 500; //if duration is not defined, default is set to 500ms
-        		}
-        		else {
-        		    $animationDuration = $animArray[2];
-        		}
+	$('.dropdown').on('shown.bs.dropdown', function (e) {
+	    if($(this).attr('data-animation')) {
+		$animArray = [];
+		$animation = $(this).data('animation');
+		$animArray = $animation.split(',');
+		$animationIn = 'animated '+$animArray[0];
+		$animationOut = 'animated '+ $animArray[1];
+		$animationDuration = ''
+		if(!$animArray[2]) {
+		    $animationDuration = 500; //if duration is not defined, default is set to 500ms
+		}
+		else {
+		    $animationDuration = $animArray[2];
+		}
 
-        		$(this).find('.dropdown-menu').removeClass($animationOut)
-        		$(this).find('.dropdown-menu').addClass($animationIn);
+		$(this).find('.dropdown-menu').removeClass($animationOut)
+		$(this).find('.dropdown-menu').addClass($animationIn);
+	    }
+	});
+
+	$('.dropdown').on('hide.bs.dropdown', function (e) {
+	    if($(this).attr('data-animation')) {
+    		e.preventDefault();
+    		$this = $(this);
+    		$dropdownMenu = $this.find('.dropdown-menu');
+
+    		$dropdownMenu.addClass($animationOut);
+    		setTimeout(function(){
+    		    $this.removeClass('open')
+
+    		}, $animationDuration);
     	    }
     	});
-
-	     $('.dropdown').on('hide.bs.dropdown', function (e) {
-    	    if($(this).attr('data-animation')) {
-        		e.preventDefault();
-        		$this = $(this);
-        		$dropdownMenu = $this.find('.dropdown-menu');
-
-        		$dropdownMenu.addClass($animationOut);
-        		setTimeout(function(){
-        		    $this.removeClass('open')
-
-        		}, $animationDuration);
-        	}
-        });
-      }
+    }
 
 
     /*----------------------------------------------------------
         Calendar Widget
     -----------------------------------------------------------*/
     if($('#calendar-widget')[0]) {
+
+
+
         (function(){
-            $('#calendar-widget #cw-body').fullCalendar({
-		        contentHeight: 'auto',
-		        theme: true,
-                header: {
-                    right: '',
-                    center: 'prev, title, next',
-                    left: ''
+            $('#cw-body').fullCalendar({
+                contentHeight: 'auto',
+                theme: false,
+                buttonIcons: {
+                    prev: ' zmdi zmdi-chevron-left',
+                    next: ' zmdi zmdi-chevron-right'
                 },
-                defaultDate: '2014-06-12',
+                header: {
+                    right: 'next',
+                    center: 'title, ',
+                    left: 'prev'
+                },
+                defaultDate: '2016-08-12',
                 editable: true,
                 events: [
                     {
-                        title: 'All Day',
-                        start: '2014-06-01',
+                        title: 'Dolor Pellentesque',
+                        start: '2016-08-01',
+                        className: 'bgm-cyan'
                     },
                     {
-                        title: 'Long Event',
-                        start: '2014-06-07',
-                        end: '2014-06-10',
+                        title: 'Purus Nibh',
+                        start: '2016-08-07',
+                        className: 'bgm-amber'
                     },
                     {
-                        id: 999,
-                        title: 'Repeat',
-                        start: '2014-06-09',
+                        title: 'Amet Condimentum',
+                        start: '2016-08-09',
+                        className: 'bgm-green'
                     },
                     {
-                        id: 999,
-                        title: 'Repeat',
-                        start: '2014-06-16',
+                        title: 'Tellus',
+                        start: '2016-08-12',
+                        className: 'bgm-blue'
                     },
                     {
-                        title: 'Meet',
-                        start: '2014-06-12',
-                        end: '2014-06-12',
+                        title: 'Vestibulum',
+                        start: '2016-08-18',
+                        className: 'bgm-cyan'
                     },
                     {
-                        title: 'Lunch',
-                        start: '2014-06-12',
+                        title: 'Ipsum',
+                        start: '2016-08-24',
+                        className: 'bgm-teal'
                     },
                     {
-                        title: 'Birthday',
-                        start: '2014-06-13',
+                        title: 'Fringilla Sit',
+                        start: '2016-08-27',
+                        className: 'bgm-blue'
                     },
                     {
-                        title: 'Google',
+                        title: 'Amet Pharetra',
                         url: 'http://google.com/',
-                        start: '2014-06-28',
+                        start: '2016-08-30',
+                        className: 'bgm-amber'
                     }
                 ]
             });
-
-            //Display Current Date as Calendar widget header
-            var mYear = moment().format('YYYY');
-            var mDay = moment().format('dddd, MMM D');
-            $('#calendar-widget .cwh-year').html(mYear);
-            $('#calendar-widget .cwh-day').html(mDay);
         })();
+
+        //Display Current Date as Calendar widget header
+        var mYear = moment().format('YYYY');
+        var mDay = moment().format('dddd, MMM D');
+        $('#calendar-widget .cwh-year').html(mYear);
+        $('#calendar-widget .cwh-day').html(mDay);
+
     }
 
 
@@ -181,10 +196,10 @@ $(document).ready(function(){
 
 
     /*----------------------------------------------------------
-         Auto Size Textare
+        Auto Size Textare
     -----------------------------------------------------------*/
     if ($('.auto-size')[0]) {
-	     autosize($('.auto-size'));
+	   autosize($('.auto-size'));
     }
 
 
@@ -295,14 +310,6 @@ $(document).ready(function(){
 
 
     /*----------------------------------------------------------
-        Input Mask
-    -----------------------------------------------------------*/
-    if ($('input-mask')[0]) {
-        $('.input-mask').mask();
-    }
-
-
-    /*----------------------------------------------------------
         Farbtastic Color Picker
     -----------------------------------------------------------*/
     if ($('.color-picker')[0]) {
@@ -336,6 +343,7 @@ $(document).ready(function(){
             $('.html-editor-click').code();
             $('.html-editor-click').destroy();
             $('.hec-save').hide();
+            notify('Content Saved Successfully!', 'success');
         });
     }
 
@@ -465,9 +473,9 @@ $(document).ready(function(){
     /*-----------------------------------------------------------
         Typeahead Auto Complete
     -----------------------------------------------------------*/
-     if($('.typeahead')[0]) {
+    if($('.typeahead')[0]) {
 
-          var statesArray = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+        var statesArray = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
             'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
             'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
             'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
@@ -476,7 +484,8 @@ $(document).ready(function(){
             'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
             'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
             'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-          ];
+        ];
+
         var states = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -489,8 +498,8 @@ $(document).ready(function(){
             minLength: 1
         },
         {
-          name: 'states',
-          source: states
+            name: 'states',
+            source: states
         });
     }
 
@@ -505,4 +514,5 @@ $(document).ready(function(){
 
         });
     }
+
 });

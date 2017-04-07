@@ -1,11 +1,10 @@
 .messages {
-    border: 1px solid @card-bg;
     height: ~"calc(100vh - 130px)";
     position: relative;
     overflow: hidden;
 
     header {
-        min-height: 55px;
+        min-height: 56px;
 
         .actions {
             position: absolute;
@@ -20,13 +19,12 @@
 ------------------------------------*/
 .m-sidebar {
     width: 300px;
-    border-right: 1px solid @card-bg;
+    border-right: 1px solid #f3f3f3;
     position: absolute;
     height: 100%;
     left: 0;
     top: 0;
     z-index: 1;
-    background: @body-bg;
 
     @media(max-width: @screen-xs-max) {
         width: 60px;
@@ -41,7 +39,7 @@
     }
 
     header {
-        background-color: @card-bg;
+        border-bottom: 1px solid #f3f3f3;
         padding: 20px;
 
         h2 {
@@ -51,6 +49,7 @@
             text-transform: uppercase;
             font-weight: 400;
         }
+
     }
 
     .lgi-heading {
@@ -71,7 +70,7 @@
     position: absolute;
     top: 16px;
     right: 25px;
-    color: rgba(255,255,255,0.2);
+    color: @text-muted;
 }
 
 .ms-search {
@@ -111,8 +110,8 @@
 }
 
 .mb-header {
-    background-color: @card-bg;
-    box-shadow: 0px -1px 0px 1px rgba(255,255,255,0.04);
+    border-bottom: 1px solid #f3f3f3;
+    box-shadow: 0px -1px 0px 1px #f3f3f3;
     position: relative;
     z-index: 2;
 }
@@ -164,20 +163,21 @@
 }
 
 .mblm-item-left > div {
-    background-color: @card-bg;
+    background-color: #eee;
 }
 
 .mblm-item-right {
     text-align: right;
 
     & > div {
-        background-color: @off-white;
-        color: @text-dark;
+        background-color: @m-amber;
+        color: #fff;
     }
 }
 
 .mblmi-img {
     margin: -10px -15px;
+    cursor: pointer;
 
     img {
         max-width: 250px;
@@ -186,7 +186,7 @@
 }
 
 .mbl-compose {
-    background-color: @card-bg;
+    border-top: 1px solid #eee;
     height: 70px;
     position: absolute;
     bottom: 0;
@@ -200,16 +200,11 @@
         border-radius: 2px;
         border: 0;
         resize: none;
-        background: rgba(0, 0, 0, 0.2);
+        background: #eee;
         padding: 5px 10px;
         color: @text-color;
         .transition(background-color);
         .transition-duration(300ms);
-
-        &:focus {
-            background-color: @off-white;
-            color: @text-dark;
-        }
     }
 
     button {
@@ -221,7 +216,7 @@
         font-size: 25px;
 
         &:hover {
-            color: #fff;
+            color: #333;
         }
     }
 }

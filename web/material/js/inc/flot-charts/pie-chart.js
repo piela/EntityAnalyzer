@@ -1,11 +1,11 @@
 $(document).ready(function(){
     var pieData = [
-        {data: 1, color: '#dbdddd', label: 'Toyota'},
-        {data: 2, color: '#636c72', label: 'Nissan'},
-        {data: 3, color: '#3e4a51', label: 'Hyundai'},
-        {data: 4, color: '#1f292f', label: 'Scion'},
-        {data: 4, color: '#ffffff', label: 'Daihatsu'},
-    ]
+        {data: 1, color: '#F44336', label: 'Toyota'},
+        {data: 2, color: '#03A9F4', label: 'Nissan'},
+        {data: 3, color: '#8BC34A', label: 'Hyundai'},
+        {data: 4, color: '#FFEB3B', label: 'Scion'},
+        {data: 4, color: '#009688', label: 'Daihatsu'},
+    ];
 
 
     /*---------------------------------
@@ -16,8 +16,8 @@ $(document).ready(function(){
             series: {
                 pie: {
                     show: true,
-                    stroke: {
-                        width: 0,
+                    stroke: { 
+                        width: 2,
                     },
                 },
             },
@@ -42,10 +42,9 @@ $(document).ready(function(){
                 defaultTheme: false,
                 cssClass: 'flot-tooltip'
             }
-
+            
         });
     }
-
 
     /*---------------------------------
         Donut Chart
@@ -56,9 +55,8 @@ $(document).ready(function(){
                 pie: {
                     innerRadius: 0.5,
                     show: true,
-                    stroke: {
-                        width: 0,
-                        color: '#2b343a'
+                    stroke: { 
+                        width: 2,
                     },
                 },
             },
@@ -83,6 +81,7 @@ $(document).ready(function(){
                 defaultTheme: false,
                 cssClass: 'flot-tooltip'
             }
+            
         });
     }
 });

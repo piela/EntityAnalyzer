@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     /*-----------------------------------------
         Make some random data for the Chart
-     -----------------------------------------*/
+    -----------------------------------------*/
     var d1 = [];
     for (var i = 0; i <= 10; i += 1) {
         d1.push([i, parseInt(Math.random() * 30)]);
@@ -10,16 +10,15 @@ $(document).ready(function(){
     var d2 = [];
     for (var i = 0; i <= 20; i += 1) {
         d2.push([i, parseInt(Math.random() * 30)]);
-    }
+    }    
     var d3 = [];
     for (var i = 0; i <= 10; i += 1) {
         d3.push([i, parseInt(Math.random() * 30)]);
     }
 
-
     /*---------------------------------
         Chart Options
-     ---------------------------------*/
+    ---------------------------------*/
     var options = {
         series: {
             shadowSize: 0,
@@ -31,6 +30,7 @@ $(document).ready(function(){
             lines: {
                 show: false,
                 lineWidth: 0,
+                fill: 1
             },
         },
         grid: {
@@ -39,38 +39,36 @@ $(document).ready(function(){
             hoverable: true,
             clickable: true,
             mouseActiveRadius:6,
-
+            
         },
         xaxis: {
             tickDecimals: 0,
             ticks: false
         },
-
+        
         yaxis: {
             tickDecimals: 0,
             ticks: false
         },
-
+        
         legend: {
             show: false
         }
     };
 
-
     /*---------------------------------
         Let's create the chart
-     ---------------------------------*/
+    ---------------------------------*/
     if ($("#curved-line-chart")[0]) {
         $.plot($("#curved-line-chart"), [
-            {data: d1, lines: { show: true, fill: 0.98 }, label: 'Product 1', stack: true, color: '#1f292f' },
-            {data: d3, lines: { show: true, fill: 0.98 }, label: 'Product 2', stack: true, color: '#dbdddd' }
+            {data: d1, lines: { show: true, fill: 0.98 }, label: 'Product 1', stack: true, color: '#e3e3e3' },
+            {data: d3, lines: { show: true, fill: 0.98 }, label: 'Product 2', stack: true, color: '#f1dd2c' }
         ], options);
     }
 
-
     /*---------------------------------
-        Tooltips for Flot Charts
-     ---------------------------------*/
+         Tooltips for Flot Charts
+    ---------------------------------*/
     if ($(".flot-chart")[0]) {
         $(".flot-chart").bind("plothover", function (event, pos, item) {
             if (item) {
@@ -82,7 +80,7 @@ $(document).ready(function(){
                 $(".flot-tooltip").hide();
             }
         });
-
+        
         $("<div class='flot-tooltip' class='chart-tooltip'></div>").appendTo("body");
     }
 });

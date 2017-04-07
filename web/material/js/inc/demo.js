@@ -2,7 +2,7 @@ $(window).load(function(){
 
     /*-------------------------------------------
         Welcome Message
-    ---------------------------------------------*/
+     ---------------------------------------------*/
     function notify(message, type){
         $.growl({
             message: message
@@ -17,8 +17,8 @@ $(window).load(function(){
             },
             delay: 2500,
             animate: {
-                    enter: 'animated fadeInUp',
-                    exit: 'animated fadeOutDown'
+                enter: 'animated fadeInUp',
+                exit: 'animated fadeOutDown'
             },
             offset: {
                 x: 30,
@@ -26,10 +26,10 @@ $(window).load(function(){
             }
         });
     };
-    
+
     setTimeout(function () {
         if (!$('.login-content')[0]) {
-            notify('Welcome back Mallinda Hollaway', 'default');
+            notify('Welcome back Mallinda Hollaway', 'inverse');
         }
     }, 1000)
 });

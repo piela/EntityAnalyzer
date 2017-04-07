@@ -16,10 +16,10 @@ html {
 
     &:not(.ie9) {
         body {
-            overflow-y: scroll;
+            overflow-y: scroll; 
         }
     }
-
+    
     &.ismobile * {
         cursor: pointer;
     }
@@ -32,10 +32,11 @@ html, body {
 body {
     font-weight: 400;
     position: relative;
+    overflow-x: hidden;
 }
 
 audio, video {
-      outline: none;
+    outline: none;
 }
 
 p {
@@ -51,7 +52,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 #main {
     position: relative;
     padding-bottom: @footer-height;
-    padding-top: @header-height + 30;
+    padding-top: @header-height + 40;
     min-height: 100vh;
 }
 

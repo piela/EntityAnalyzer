@@ -27,7 +27,7 @@
     Box Shadow
 --------------------------------------*/
 .bs-item {
-    background: #2b343a;
+    background: #fff;
     margin-bottom: 30px;
     height: 100px;
     text-align: center;
@@ -45,6 +45,7 @@
     vertical-align: middle;
     margin-right: 10px;
     width: 25px;
+    color: #333;
 }
 
 .icons-demo .card-body .col-sm-4 p {
@@ -55,12 +56,12 @@
     padding: 8px;
     border-radius: 2px;
     margin-bottom: 0;
-    color: rgba(255, 255, 255, 0.7);
+    color: #5e5e5e;
     display: block;
 }
 
 .icons-demo .card-body .col-sm-4 p:hover {
-    background: rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.05);
 }
 
 

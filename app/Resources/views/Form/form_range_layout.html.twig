@@ -1,0 +1,132 @@
+{% use "Form\\bootstrap_3_layout.html.twig" %}
+
+{%- block form_widget -%}
+
+{% if compound %}
+    {{- block('form_widget_compound') -}}
+{% else %}
+    {{- block('form_widget_simple') -}}
+{% endif %}
+
+{%- endblock form_widget -%}
+
+{%- block form_widget_simple -%}
+{%- set type = type|default('text') -%}
+
+{% if 'datetime' in block_prefixes %}
+    <span class="zmdi icon filterlist-input-group-addon zmdi-calendar"></span>
+{% elseif 'tagsinput' in block_prefixes %}
+    <span class="zmdi icon filterlist-input-group-addon zmdi-label"></span>
+{% elseif 'text' in block_prefixes %}
+    <span class="zmdi icon filterlist-input-group-addon zmdi-search"></span>
+{% endif %}  
+
+
+
+<input class="filter-search-input" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+
+{% if 'datetime' in block_prefixes %}
+    {{jsblocklater(block('form_widget_simple_script')) }}  
+    {{ jslater( asset('assets/vendor/moment/moment.js')) }}
+    {{ jslater( asset('assets/vendor/moment/locale/pl.js')) }}
+    {{ jslater( asset('assets/vendor/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js')) }}
+{% endif %}
+
+
+{%- endblock form_widget_simple -%}
+
+{%- block form_widget_simple_script -%}
+  
+            $("#{{id}}").datetimepicker({
+                sideBySide: true,
+                locale: moment.locale('{{locale}}'),
+                format: 'DD.MM.YYYY HH:mm',
+            });
+   
+{%- endblock form_widget_simple_script -%}
+
+
+{% block form_row -%}
+
+    {{- form_label(form) -}}
+
+    {% if not('filter_datetime_range' in block_prefixes) %}
+        <div class="form-group  filter-search-group  {% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">    
+        {% endif %}    
+
+        {{- form_widget(form) -}}
+        {{- form_errors(form) -}}
+        {% if not ('filter_datetime_range' in block_prefixes) %}
+        </div>    
+    {% endif %}    
+
+    {%- endblock form_row %}
+
+    {% block filter_text_widget %}
+        {% if compound %}
+            <div class="filter-pattern-selector">
+                {{ form_widget(form.condition_pattern, {'attr': {'class': 'pattern-selector'} }) }}
+                {{ form_widget(form.text, {'attr': attr}) }}
+            </div>
+        {% else %}
+            {{ block('form_widget_simple') }}
+        {% endif %}
+    {% endblock filter_text_widget %}
+
+    {% block filter_number_widget %}
+        {% if compound %}
+            <div class="filter-operator-selector">
+                {{ form_widget(form.condition_operator, {'attr': {'class': 'operator-selector'} }) }}
+                {{ form_widget(form.text, {'attr': attr}) }}
+            </div>
+        {% else %}
+            {{ block('form_widget_simple') }}
+        {% endif %}
+    {% endblock filter_number_widget %}
+
+    {% block filter_number_range_widget %}
+        <div class="filter-number-range">
+            {{ form_widget(form.left_number, {'attr': attr}) }}
+            {{ form_widget(form.right_number, {'attr': attr}) }}
+        </div>
+    {% endblock filter_number_range_widget %}
+
+    {% block filter_date_range_widget %}
+        <div class="filter-date-range">
+            <div class="filter-date-range-left">
+                {{ form_label(form.left_date) }}
+                {{ form_widget(form.left_date, {'attr': attr}) }}
+            </div>
+            <div class="filter-date-range-right">
+                {{ form_label(form.right_date) }}
+                {{ form_widget(form.right_date, {'attr': attr}) }}
+            </div>
+        </div>
+    {% endblock filter_date_range_widget %}
+
+
+    {% block filter_datetime_range_widget %}
+
+        {{ form_label(form.left_datetime) }}
+        <div class="filter-search-group  form-group filter-date-range-left ">
+
+            {{ form_widget(form.left_datetime, {'attr': attr}) }}
+        </div>
+        {{ form_label(form.right_datetime) }}
+
+        <div class="filter-search-group   form-group filter-date-range-right">
+            {{ form_widget(form.right_datetime, {'attr': attr}) }}
+        </div>
+
+      
+        
+
+    {% endblock filter_datetime_range_widget %}
+
+
+
+
+{% block filter_collection_adapter_widget %}
+    {# only display the first element #}
+    {{ form_widget(form[0]) }}
+{% endblock filter_collection_adapter_widget %}

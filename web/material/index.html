@@ -9,7 +9,7 @@
         <!-- Vendor CSS -->
         <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
         <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet">
+        <link href="vendors/bower_components/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
         <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
         <link href="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
 
@@ -18,9 +18,8 @@
         <link href="css/app_2.min.css" rel="stylesheet">
 
     </head>
-
     <body>
-        <header id="header" class="clearfix">
+        <header id="header" class="clearfix" data-ma-theme="blue">
             <ul class="h-inner">
                 <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
                     <div class="line-wrap">
@@ -47,14 +46,14 @@
                                 <i class="him-counts">6</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                <div class="list-group list-group-light">
+                                <div class="list-group">
                                     <div class="lg-header">
                                         Messages
                                     </div>
                                     <div class="lg-body">
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">David Belle</div>
@@ -63,7 +62,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Jonathan Morris</div>
@@ -72,7 +71,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Fredric Mitchell Jr.</div>
@@ -81,7 +80,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Glenn Jecobs</div>
@@ -90,7 +89,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Bill Phillips</div>
@@ -98,7 +97,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <a class="view-more view-more-light" href="">View All</a>
+                                    <a class="view-more" href="">View All</a>
                                 </div>
                             </div>
                         </li>
@@ -108,7 +107,7 @@
                                 <i class="him-counts">9</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                <div class="list-group list-group-light him-notification">
+                                <div class="list-group him-notification">
                                     <div class="lg-header">
                                         Notification
 
@@ -123,7 +122,7 @@
                                     <div class="lg-body">
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">David Belle</div>
@@ -132,7 +131,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Jonathan Morris</div>
@@ -141,7 +140,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Fredric Mitchell Jr.</div>
@@ -150,7 +149,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Glenn Jecobs</div>
@@ -159,7 +158,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Bill Phillips</div>
@@ -168,7 +167,7 @@
                                         </a>
                                     </div>
 
-                                    <a class="view-more view-more-light" href="">View Previous</a>
+                                    <a class="view-more" href="">View Previous</a>
                                 </div>
                             </div>
                         </li>
@@ -178,7 +177,7 @@
                                 <i class="him-counts">2</i>
                             </a>
                             <div class="dropdown-menu pull-right dropdown-menu-lg">
-                                <div class="list-group list-group-light">
+                                <div class="list-group">
                                     <div class="lg-header">
                                         Tasks
                                     </div>
@@ -187,7 +186,7 @@
                                             <div class="lgi-heading m-b-5">HTML5 Validation Report</div>
 
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
                                                     <span class="sr-only">95% Complete (success)</span>
                                                 </div>
                                             </div>
@@ -230,13 +229,22 @@
                                         </div>
                                     </div>
 
-                                    <a class="view-more view-more-light" href="">View All</a>
+                                    <a class="view-more" href="">View All</a>
                                 </div>
                             </div>
                         </li>
                         <li class="dropdown">
                             <a data-toggle="dropdown" href=""><i class="him-icon zmdi zmdi-more-vert"></i></a>
                             <ul class="dropdown-menu dm-icon pull-right">
+                                <li class="skin-switch hidden-xs">
+                                    <span class="ss-skin bgm-lightblue" data-ma-action="change-skin" data-ma-skin="lightblue"></span>
+                                    <span class="ss-skin bgm-bluegray" data-ma-action="change-skin" data-ma-skin="bluegray"></span>
+                                    <span class="ss-skin bgm-cyan" data-ma-action="change-skin" data-ma-skin="cyan"></span>
+                                    <span class="ss-skin bgm-teal" data-ma-action="change-skin" data-ma-skin="teal"></span>
+                                    <span class="ss-skin bgm-orange" data-ma-action="change-skin" data-ma-skin="orange"></span>
+                                    <span class="ss-skin bgm-blue" data-ma-action="change-skin" data-sma-kin="blue"></span>
+                                </li>
+                                <li class="divider hidden-xs"></li>
                                 <li class="hidden-xs">
                                     <a data-ma-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
                                 </li>
@@ -269,34 +277,46 @@
 
         <section id="main">
             <aside id="sidebar" class="sidebar c-overflow">
+                <div class="s-profile">
+                    <a href="" data-ma-action="profile-menu-toggle">
+                        <div class="sp-pic">
+                            <img src="img/demo/profile-pics/1.jpg" alt="">
+                        </div>
+
+                        <div class="sp-info">
+                            Malinda Hollaway
+
+                            <i class="zmdi zmdi-caret-down"></i>
+                        </div>
+                    </a>
+
+                    <ul class="main-menu">
+                        <li>
+                            <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
                 <ul class="main-menu">
-                    <li class="mm-profile sub-menu">
-                        <a href="" data-ma-action="submenu-toggle" class="media">
-                            <img class="pull-left" src="img/profile-pics/1.jpg" alt="">
-                            <div class="media-body">
-                                Malinda Hollaway
-                                <small>malinda-h@gmail.com</small>
-                            </div>
-                        </a>
-
-                        <ul>
-                            <li>
-                                <a href="profile-about.html">View Profile</a>
-                            </li>
-                            <li>
-                                <a href="">Privacy Settings</a>
-                            </li>
-                            <li>
-                                <a href="">Settings</a>
-                            </li>
-                            <li>
-                                <a href="">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-
                     <li class="active">
                         <a href="index.html"><i class="zmdi zmdi-home"></i> Home</a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-chart"></i> Dashboards</a>
+
+                        <ul>
+                            <li><a href="dashboards/analytics.html">Analytics</a></li>
+                            <li><a href="dashboards/school.html">School</a></li>
+                        </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-compact"></i> Headers</a>
@@ -339,7 +359,6 @@
                         <ul>
                             <li><a href="colors.html">Colors</a></li>
                             <li><a href="animations.html">Animations</a></li>
-                            <li><a href="box-shadow.html">Box Shadow</a></li>
                             <li><a href="buttons.html">Buttons</a></li>
                             <li><a href="icons.html">Icons</a></li>
                             <li><a href="alerts.html">Alerts</a></li>
@@ -351,10 +370,11 @@
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-trending-up"></i>Charts</a>
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-trending-up"></i>Charts & Maps</a>
                         <ul>
                             <li><a href="flot-charts.html">Flot Charts</a></li>
                             <li><a href="other-charts.html">Other Charts</a></li>
+                            <li><a href="maps.html">Maps</a></li>
                         </ul>
                     </li>
                     <li><a href="calendar.html"><i class="zmdi zmdi-calendar"></i> Calendar</a></li>
@@ -397,7 +417,7 @@
                                     <li><a href="">Third one</a></li>
                                 </ul>
                             </li>
-                            <li><a href="form-validations.html">One more</a></li>
+                            <li><a href="form-validations.html">One more 2</a></li>
                         </ul>
                     </li>
                     <li>
@@ -419,7 +439,7 @@
                     <div class="list-group">
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                 <i class="chat-status-busy"></i>
                             </div>
                             <div class="media-body">
@@ -430,7 +450,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">David Belle</div>
@@ -440,7 +460,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                 <i class="chat-status-online"></i>
                             </div>
                             <div class="media-body">
@@ -451,7 +471,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                 <i class="chat-status-online"></i>
                             </div>
                             <div class="media-body">
@@ -462,7 +482,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/5.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/5.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">Bill Phillips</div>
@@ -472,7 +492,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/6.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/6.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">Wendy Mitchell</div>
@@ -565,7 +585,7 @@
                     <div class="mini-charts">
                         <div class="row">
                             <div class="col-sm-6 col-md-3">
-                                <div class="mini-charts-item">
+                                <div class="mini-charts-item bgm-lightgreen">
                                     <div class="clearfix">
                                         <div class="chart stats-bar"></div>
                                         <div class="count">
@@ -577,19 +597,7 @@
                             </div>
 
                             <div class="col-sm-6 col-md-3">
-                                <div class="mini-charts-item">
-                                    <div class="clearfix">
-                                        <div class="chart stats-line"></div>
-                                        <div class="count">
-                                            <small>Total Sales</small>
-                                            <h2>$ 458,778</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-3">
-                                <div class="mini-charts-item">
+                                <div class="mini-charts-item bgm-purple">
                                     <div class="clearfix">
                                         <div class="chart stats-bar-2"></div>
                                         <div class="count">
@@ -601,7 +609,19 @@
                             </div>
 
                             <div class="col-sm-6 col-md-3">
-                                <div class="mini-charts-item card">
+                                <div class="mini-charts-item bgm-orange">
+                                    <div class="clearfix">
+                                        <div class="chart stats-line"></div>
+                                        <div class="count">
+                                            <small>Total Sales</small>
+                                            <h2>$ 458,778</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-3">
+                                <div class="mini-charts-item bgm-bluegray">
                                     <div class="clearfix">
                                         <div class="chart stats-line-2"></div>
                                         <div class="count">
@@ -617,45 +637,43 @@
                     <div class="dash-widgets">
                         <div class="row">
                             <div class="col-md-4 col-sm-6">
-                                <div id="site-visits" class="dash-widget-item">
-                                    <div class="dw-item">
-                                        <div class="dwi-header">
-                                            <div class="p-30">
-                                                <div class="dash-widget-visits"></div>
-                                            </div>
-
-                                            <div class="dwih-title">For the past 30 days</div>
+                                <div id="site-visits" class="dw-item bgm-teal">
+                                    <div class="dwi-header">
+                                        <div class="p-30">
+                                            <div class="dash-widget-visits"></div>
                                         </div>
 
-                                        <div class="list-group lg-even-white">
-                                            <div class="list-group-item media sv-item">
-                                                <div class="pull-right">
-                                                    <div class="stats-bar"></div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <small>Page Views</small>
-                                                    <h3>47,896,536</h3>
-                                                </div>
-                                            </div>
+                                        <div class="dwih-title">For the past 30 days</div>
+                                    </div>
 
-                                            <div class="list-group-item media sv-item">
-                                                <div class="pull-right">
-                                                    <div class="stats-bar-2"></div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <small>Site Visitors</small>
-                                                    <h3>24,456,799</h3>
-                                                </div>
+                                    <div class="list-group lg-even-white">
+                                        <div class="list-group-item media sv-item">
+                                            <div class="pull-right">
+                                                <div class="stats-bar"></div>
                                             </div>
+                                            <div class="media-body">
+                                                <small>Page Views</small>
+                                                <h3>47,896,536</h3>
+                                            </div>
+                                        </div>
 
-                                            <div class="list-group-item media sv-item">
-                                                <div class="pull-right">
-                                                    <div class="stats-line"></div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <small>Total Clicks</small>
-                                                    <h3>13,965</h3>
-                                                </div>
+                                        <div class="list-group-item media sv-item">
+                                            <div class="pull-right">
+                                                <div class="stats-bar-2"></div>
+                                            </div>
+                                            <div class="media-body">
+                                                <small>Site Visitors</small>
+                                                <h3>24,456,799</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-group-item media sv-item">
+                                            <div class="pull-right">
+                                                <div class="stats-line"></div>
+                                            </div>
+                                            <div class="media-body">
+                                                <small>Total Clicks</small>
+                                                <h3>13,965</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -663,7 +681,8 @@
                             </div>
 
                             <div class="col-md-4 col-sm-6">
-                                <div id="pie-charts" class="dash-widget-item">
+                                <div id="pie-charts" class="dw-item bgm-cyan c-white">
+
                                     <div class="dw-item">
                                         <div class="dwi-header">
                                             <div class="dwih-title">Email Statistics</div>
@@ -698,7 +717,7 @@
                             </div>
 
                             <div class="col-md-4 col-sm-6">
-                                <div class="dw-item">
+                                <div class="dw-item bgm-lime">
                                     <div id="weather-widget"></div>
                                 </div>
                             </div>
@@ -743,29 +762,29 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="f-500">2569</td>
+                                                <td class="f-500 c-cyan">2569</td>
                                                 <td>Samsung Galaxy Mega</td>
-                                                <td class="f-500">$521</td>
+                                                <td class="f-500 c-cyan">$521</td>
                                             </tr>
                                             <tr>
-                                                <td class="f-500">9658</td>
+                                                <td class="f-500 c-cyan">9658</td>
                                                 <td>Huawei Ascend P6</td>
-                                                <td class="f-500">$440</td>
+                                                <td class="f-500 c-cyan">$440</td>
                                             </tr>
                                             <tr>
-                                                <td class="f-500">1101</td>
+                                                <td class="f-500 c-cyan">1101</td>
                                                 <td>HTC One M8</td>
-                                                <td class="f-500">$680</td>
+                                                <td class="f-500 c-cyan">$680</td>
                                             </tr>
                                             <tr>
-                                                <td class="f-500">6598</td>
+                                                <td class="f-500 c-cyan">6598</td>
                                                 <td>Samsung Galaxy Alpha</td>
-                                                <td class="f-500">$870</td>
+                                                <td class="f-500 c-cyan">$870</td>
                                             </tr>
                                             <tr>
-                                                <td class="f-500">4562</td>
+                                                <td class="f-500 c-cyan">4562</td>
                                                 <td>LG G3</td>
-                                                <td class="f-500">$690</td>
+                                                <td class="f-500 c-cyan">$690</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -774,7 +793,7 @@
                             </div>
 
                             <!-- Todo -->
-                            <div id="todo" class="card">
+                            <div id="todo" class="card card-light">
                                 <div class="card-header ch-alt">
                                     <h2>Todo Lists <small>Add, edit and manage your Todo Lists</small></h2>
                                 </div>
@@ -787,8 +806,8 @@
                                             <textarea placeholder="What you want to do..."></textarea>
 
                                             <div class="tab-actions">
-                                                <a data-ma-action="todo-form-close" href=""><i class="zmdi zmdi-close"></i></a>
-                                                <a data-ma-action="todo-form-close" href=""><i class="zmdi zmdi-check"></i></a>
+                                                <a data-ma-action="todo-form-close" href="" class="c-red"><i class="zmdi zmdi-close"></i></a>
+                                                <a data-ma-action="todo-form-close" href="" class="c-green"><i class="zmdi zmdi-check"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -796,7 +815,7 @@
                                     <div class="list-group">
                                         <div class="list-group-item media">
                                             <div class="pull-right">
-                                                <ul class="actions">
+                                                <ul class="actions actions-alt">
                                                     <li class="dropdown">
                                                         <a href="" data-toggle="dropdown">
                                                             <i class="zmdi zmdi-more-vert"></i>
@@ -824,7 +843,7 @@
 
                                         <div class="list-group-item media">
                                             <div class="pull-right">
-                                                <ul class="actions">
+                                                <ul class="actions actions-alt">
                                                     <li class="dropdown">
                                                         <a href="" data-toggle="dropdown">
                                                             <i class="zmdi zmdi-more-vert"></i>
@@ -852,7 +871,7 @@
 
                                         <div class="list-group-item media">
                                             <div class="pull-right">
-                                                <ul class="actions">
+                                                <ul class="actions actions-alt">
                                                     <li class="dropdown">
                                                         <a href="" data-toggle="dropdown">
                                                             <i class="zmdi zmdi-more-vert"></i>
@@ -880,7 +899,7 @@
 
                                         <div class="list-group-item media">
                                             <div class="pull-right">
-                                                <ul class="actions">
+                                                <ul class="actions actions-alt">
                                                     <li class="dropdown">
                                                         <a href="" data-toggle="dropdown">
                                                             <i class="zmdi zmdi-more-vert"></i>
@@ -908,7 +927,7 @@
 
                                         <div class="list-group-item media">
                                             <div class="pull-right">
-                                                <ul class="actions">
+                                                <ul class="actions actions-alt">
                                                     <li class="dropdown">
                                                         <a href="" data-toggle="dropdown">
                                                             <i class="zmdi zmdi-more-vert"></i>
@@ -936,7 +955,7 @@
 
                                         <div class="list-group-item media">
                                             <div class="pull-right">
-                                                <ul class="actions">
+                                                <ul class="actions actions-alt">
                                                     <li class="dropdown">
                                                         <a href="" data-toggle="dropdown">
                                                             <i class="zmdi zmdi-more-vert"></i>
@@ -969,11 +988,11 @@
                         <div class="col-sm-6">
                             <!-- Calendar -->
                             <div class="card" id="calendar-widget">
-                                <div class="card-header ch-alt">
+                                <div class="card-header bgm-teal">
                                     <div class="cwh-year"></div>
                                     <div class="cwh-day"></div>
 
-                                    <button class="btn btn-default bg btn-float"><i class="zmdi zmdi-plus"></i></button>
+                                    <button class="bgm-lightgreen btn btn-default bg btn-float"><i class="zmdi zmdi-plus"></i></button>
                                 </div>
 
                                 <div class="card-body card-padding-sm">
@@ -983,7 +1002,7 @@
 
                             <!-- Recent Posts -->
                             <div class="card">
-                                <div class="card-header ch-alt m-b-20">
+                                <div class="card-header">
                                     <h2>Recent Posts <small>Phasellus condimentum ipsum id auctor imperdie</small></h2>
                                     <ul class="actions">
                                         <li>
@@ -1014,15 +1033,13 @@
                                             </ul>
                                         </li>
                                     </ul>
-
-                                    <button class="btn btn-default btn-float"><i class="zmdi zmdi-plus"></i></button>
                                 </div>
 
                                 <div class="card-body">
                                     <div class="list-group">
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">David Belle</div>
@@ -1031,7 +1048,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Jonathan Morris</div>
@@ -1040,7 +1057,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Fredric Mitchell Jr.</div>
@@ -1049,7 +1066,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Glenn Jecobs</div>
@@ -1058,7 +1075,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Bill Phillips</div>
@@ -1089,7 +1106,7 @@
 
         <!-- Page Loader -->
         <div class="page-loader">
-            <div class="preloader pls-white">
+            <div class="preloader pls-blue">
                 <svg class="pl-circular" viewBox="25 25 50 50">
                     <circle class="plc-path" cx="50" cy="50" r="20" />
                 </svg>
@@ -1156,7 +1173,7 @@
         <script src="vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
         <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
         <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
-        <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
         <script src="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 
         <!-- Placeholder for IE9 -->

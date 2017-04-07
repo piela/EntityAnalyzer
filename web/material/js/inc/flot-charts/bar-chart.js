@@ -1,37 +1,35 @@
 $(document).ready(function(){
-    
 
     /*----------------------------------------------
         Make some random data for Flot Line Chart
-     ----------------------------------------------*/
+    ----------------------------------------------*/
     var data1 = [[1,60], [2,30], [3,50], [4,100], [5,10], [6,90], [7,85]];
     var data2 = [[1,20], [2,90], [3,60], [4,40], [5,100], [6,25], [7,65]];
     var data3 = [[1,100], [2,20], [3,60], [4,90], [5,80], [6,10], [7,5]];
-    
+
     // Create an Array push the data + Draw the bars
 
     var barData = [
         {
             label: 'Tokyo',
             data: data1,
-            color: '#dbdddd'
+            color: '#8BC34A'
         },
         {
             label: 'Seoul',
             data: data2,
-            color: '#636c72'
+            color: '#00BCD4'
         },
         {
             label: 'Beijing',
             data: data3,
-            color: '#3e4a51'
+            color: '#FF9800'
         }
     ]
-    
 
     /*---------------------------------
         Let's create the chart
-     ---------------------------------*/
+    ---------------------------------*/
     if ($('#bar-chart')[0]) {
         $.plot($("#bar-chart"), barData, {
             series: {
@@ -43,15 +41,15 @@ $(document).ready(function(){
                 }
             },
             grid : {
-                    borderWidth: 1,
-                    borderColor: '#333c42',
-                    show : true,
-                    hoverable : true,
-                    clickable : true
+                borderWidth: 1,
+                borderColor: '#eee',
+                show : true,
+                hoverable : true,
+                clickable : true
             },
 
             yaxis: {
-                tickColor: '#333c42',
+                tickColor: '#eee',
                 tickDecimals: 0,
                 font :{
                     lineHeight: 13,
@@ -62,14 +60,14 @@ $(document).ready(function(){
             },
 
             xaxis: {
-                tickColor: '#333c42',
+                tickColor: '#fff',
                 tickDecimals: 0,
                 font :{
                     lineHeight: 13,
                     style: "normal",
                     color: "#9f9f9f"
                 },
-                shadowSize: 0
+                shadowSize: 0,
             },
 
             legend:{
@@ -81,11 +79,10 @@ $(document).ready(function(){
             }
         });
     }
-    
 
     /*---------------------------------
         Tooltips for Flot Charts
-     ---------------------------------*/
+    ---------------------------------*/
     if ($(".flot-chart")[0]) {
         $(".flot-chart").bind("plothover", function (event, pos, item) {
             if (item) {
@@ -97,7 +94,7 @@ $(document).ready(function(){
                 $(".flot-tooltip").hide();
             }
         });
-        
+
         $("<div class='flot-tooltip' class='chart-tooltip'></div>").appendTo("body");
     }
 });

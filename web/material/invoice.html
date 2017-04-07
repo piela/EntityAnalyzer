@@ -5,20 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Material Admin</title>
-
+    
         <!-- Vendor CSS -->
         <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet">
+        <link href="vendors/bower_components/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
         <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
-
+        <link href="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">        
+            
         <!-- CSS -->
         <link href="css/app_1.min.css" rel="stylesheet">
         <link href="css/app_2.min.css" rel="stylesheet">
     </head>
-
+    
     <body>
-        <header id="header" class="clearfix">
+        <header id="header" class="clearfix" data-ma-theme="blue">
             <ul class="h-inner">
                 <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
                     <div class="line-wrap">
@@ -45,14 +45,14 @@
                                 <i class="him-counts">6</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                <div class="list-group list-group-light">
+                                <div class="list-group">
                                     <div class="lg-header">
                                         Messages
                                     </div>
                                     <div class="lg-body">
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">David Belle</div>
@@ -61,7 +61,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Jonathan Morris</div>
@@ -70,7 +70,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Fredric Mitchell Jr.</div>
@@ -79,7 +79,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Glenn Jecobs</div>
@@ -88,7 +88,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Bill Phillips</div>
@@ -96,7 +96,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <a class="view-more view-more-light" href="">View All</a>
+                                    <a class="view-more" href="">View All</a>
                                 </div>
                             </div>
                         </li>
@@ -106,7 +106,7 @@
                                 <i class="him-counts">9</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                <div class="list-group list-group-light him-notification">
+                                <div class="list-group him-notification">
                                     <div class="lg-header">
                                         Notification
 
@@ -121,7 +121,7 @@
                                     <div class="lg-body">
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">David Belle</div>
@@ -130,7 +130,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Jonathan Morris</div>
@@ -139,7 +139,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Fredric Mitchell Jr.</div>
@@ -148,7 +148,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Glenn Jecobs</div>
@@ -157,7 +157,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Bill Phillips</div>
@@ -166,7 +166,7 @@
                                         </a>
                                     </div>
 
-                                    <a class="view-more view-more-light" href="">View Previous</a>
+                                    <a class="view-more" href="">View Previous</a>
                                 </div>
                             </div>
                         </li>
@@ -176,7 +176,7 @@
                                 <i class="him-counts">2</i>
                             </a>
                             <div class="dropdown-menu pull-right dropdown-menu-lg">
-                                <div class="list-group list-group-light">
+                                <div class="list-group">
                                     <div class="lg-header">
                                         Tasks
                                     </div>
@@ -185,7 +185,7 @@
                                             <div class="lgi-heading m-b-5">HTML5 Validation Report</div>
 
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
                                                     <span class="sr-only">95% Complete (success)</span>
                                                 </div>
                                             </div>
@@ -228,13 +228,22 @@
                                         </div>
                                     </div>
 
-                                    <a class="view-more view-more-light" href="">View All</a>
+                                    <a class="view-more" href="">View All</a>
                                 </div>
                             </div>
                         </li>
                         <li class="dropdown">
                             <a data-toggle="dropdown" href=""><i class="him-icon zmdi zmdi-more-vert"></i></a>
                             <ul class="dropdown-menu dm-icon pull-right">
+                                <li class="skin-switch hidden-xs">
+                                    <span class="ss-skin bgm-lightblue" data-ma-action="change-skin" data-ma-skin="lightblue"></span>
+                                    <span class="ss-skin bgm-bluegray" data-ma-action="change-skin" data-ma-skin="bluegray"></span>
+                                    <span class="ss-skin bgm-cyan" data-ma-action="change-skin" data-ma-skin="cyan"></span>
+                                    <span class="ss-skin bgm-teal" data-ma-action="change-skin" data-ma-skin="teal"></span>
+                                    <span class="ss-skin bgm-orange" data-ma-action="change-skin" data-ma-skin="orange"></span>
+                                    <span class="ss-skin bgm-blue" data-ma-action="change-skin" data-sma-kin="blue"></span>
+                                </li>
+                                <li class="divider hidden-xs"></li>
                                 <li class="hidden-xs">
                                     <a data-ma-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
                                 </li>
@@ -267,32 +276,45 @@
 
         <section id="main">
             <aside id="sidebar" class="sidebar c-overflow">
+                <div class="s-profile">
+                    <a href="" data-ma-action="profile-menu-toggle">
+                        <div class="sp-pic">
+                            <img src="img/demo/profile-pics/1.jpg" alt="">
+                        </div>
+
+                        <div class="sp-info">
+                            Malinda Hollaway
+
+                            <i class="zmdi zmdi-caret-down"></i>
+                        </div>
+                    </a>
+
+                    <ul class="main-menu">
+                        <li>
+                            <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
                 <ul class="main-menu">
-                    <li class="mm-profile sub-menu">
-                        <a href="" data-ma-action="submenu-toggle" class="media">
-                            <img class="pull-left" src="img/profile-pics/1.jpg" alt="">
-                            <div class="media-body">
-                                Malinda Hollaway
-                                <small>malinda-h@gmail.com</small>
-                            </div>
-                        </a>
+                    <li><a href="index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                    <li class="sub-menu">
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-chart"></i> Dashboards</a>
 
                         <ul>
-                            <li>
-                                <a href="profile-about.html">View Profile</a>
-                            </li>
-                            <li>
-                                <a href="">Privacy Settings</a>
-                            </li>
-                            <li>
-                                <a href="">Settings</a>
-                            </li>
-                            <li>
-                                <a href="">Logout</a>
-                            </li>
+                            <li><a href="dashboards/analytics.html">Analytics</a></li>
+                            <li><a href="dashboards/school.html">School</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
                     <li class="sub-menu">
                         <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-compact"></i> Headers</a>
 
@@ -334,7 +356,6 @@
                         <ul>
                             <li><a href="colors.html">Colors</a></li>
                             <li><a href="animations.html">Animations</a></li>
-                            <li><a href="box-shadow.html">Box Shadow</a></li>
                             <li><a href="buttons.html">Buttons</a></li>
                             <li><a href="icons.html">Icons</a></li>
                             <li><a href="alerts.html">Alerts</a></li>
@@ -346,10 +367,11 @@
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-trending-up"></i>Charts</a>
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-trending-up"></i>Charts & Maps</a>
                         <ul>
                             <li><a href="flot-charts.html">Flot Charts</a></li>
                             <li><a href="other-charts.html">Other Charts</a></li>
+                            <li><a href="maps.html">Maps</a></li>
                         </ul>
                     </li>
                     <li><a href="calendar.html"><i class="zmdi zmdi-calendar"></i> Calendar</a></li>
@@ -363,7 +385,8 @@
 
                     <li><a href="generic-classes.html"><i class="zmdi zmdi-layers"></i> Generic Classes</a></li>
                     <li class="sub-menu active toggled">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-collection-item"></i> Sample Pages</a>
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-collection-item"></i> Sample
+                            Pages</a>
                         <ul>
 
                             <li><a href="profile-about.html">Profile</a></li>
@@ -394,7 +417,7 @@
                                     <li><a href="">Third one</a></li>
                                 </ul>
                             </li>
-                            <li><a href="form-validations.html">One more</a></li>
+                            <li><a href="form-validations.html">One more 2</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -413,7 +436,7 @@
                     <div class="list-group">
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                 <i class="chat-status-busy"></i>
                             </div>
                             <div class="media-body">
@@ -424,7 +447,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">David Belle</div>
@@ -434,7 +457,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                 <i class="chat-status-online"></i>
                             </div>
                             <div class="media-body">
@@ -445,7 +468,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                 <i class="chat-status-online"></i>
                             </div>
                             <div class="media-body">
@@ -456,7 +479,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/5.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/5.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">Bill Phillips</div>
@@ -466,7 +489,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/6.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/6.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">Wendy Mitchell</div>
@@ -478,9 +501,15 @@
             </aside>
 
             <section id="content">
+
                 <div class="container invoice">
+
                     <div class="block-header">
-                        <h2>Invoice <small>Print ready simple and sleek invoice template. Please use Google Chrome or any other Webkit browsers for better printing.</small></h2>
+                        <h2>Invoice
+                            <small>Print ready simple and sleek invoice template. Please use Google Chrome or any other
+                                Webkit browsers for better printing.
+                            </small>
+                        </h2>
 
                         <ul class="actions">
                             <li>
@@ -527,17 +556,17 @@
                             <div class="row m-b-25">
                                 <div class="col-xs-6">
                                     <div class="text-right">
-                                        <p>Invoice from</p>
+                                        <p class="c-gray">Invoice from</p>
 
                                         <h4>David Designs LLC</h4>
-
+                                        
                                         <span class="text-muted">
                                             <address>
                                                 44, Qube Towers
                                                 Dubai Media City, Dubai<br>
                                                 United Arab Emirates
                                             </address>
-
+                
                                             0097154686384<br/>
                                             david.atom@ddesign.com
                                         </span>
@@ -546,17 +575,17 @@
 
                                 <div class="col-xs-6">
                                     <div class="i-to">
-                                        <p>Invoice to</p>
+                                        <p class="c-gray">Invoice to</p>
 
                                         <h4>Mallinda Hollaway</h4>
-
+                                        
                                         <span class="text-muted">
                                             <address>
                                                 10098 ABC Towers
                                                 Dubai Silicon Oasis, Dubai<br>
                                                 United Arab Emirates.
                                             </address>
-
+                
                                             00971123456789<br/>
                                             malinda.h@gmail.com
                                         </span>
@@ -569,28 +598,28 @@
 
                             <div class="row m-t-25 p-0 m-b-25">
                                 <div class="col-xs-3">
-                                    <div class="brd-2 p-15 i-info">
+                                    <div class="bgm-amber brd-2 p-15">
                                         <div class="c-white m-b-5">Invoice#</div>
                                         <h2 class="m-0 c-white f-300">456213</h2>
                                     </div>
                                 </div>
 
                                 <div class="col-xs-3">
-                                    <div class="brd-2 p-15 i-info">
+                                    <div class="bgm-blue brd-2 p-15">
                                         <div class="c-white m-b-5">Date</div>
                                         <h2 class="m-0 c-white f-300">20/06/2015</h2>
                                     </div>
                                 </div>
 
                                 <div class="col-xs-3">
-                                    <div class="brd-2 p-15 i-info">
+                                    <div class="bgm-green brd-2 p-15">
                                         <div class="c-white m-b-5">Whatever</div>
                                         <h2 class="m-0 c-white f-300">472-000</h2>
                                     </div>
                                 </div>
 
                                 <div class="col-xs-3">
-                                    <div class="brd-2 p-15 i-info">
+                                    <div class="bgm-red brd-2 p-15">
                                         <div class="c-white m-b-5">Grand Total</div>
                                         <h2 class="m-0 c-white f-300">$23,980</h2>
                                     </div>
@@ -601,95 +630,111 @@
 
                             <table class="table i-table m-t-25 m-b-25">
                                 <thead class="text-uppercase">
-                                    <th>ITEM DESCRIPTION</th>
-                                    <th>UNIT PRICE</th>
-                                    <th>QUANTITY</th>
-                                    <th>TOTAL</th>
+                                <th class="c-gray">ITEM DESCRIPTION</th>
+                                <th class="c-gray">UNIT PRICE</th>
+                                <th class="c-gray">QUANTITY</th>
+                                <th class="highlight">TOTAL</th>
                                 </thead>
 
                                 <tbody>
-                                    <thead>
-                                        <tr>
-                                            <td width="50%">
-                                                <h5 class="text-uppercase f-400">Curabitur lobortis</h5>
-                                                <p class="text-muted">Nullam consectetur dolor nec ullamcorper finibus. Quisque a porta mauris, non venenatis mi. Pellentesque habitant morbi tristique</p>
-                                            </td>
+                                <thead>
+                                <tr>
+                                    <td width="50%">
+                                        <h5 class="text-uppercase f-400">Curabitur lobortis</h5>
+                                        <p class="text-muted">Nullam consectetur dolor nec ullamcorper finibus. Quisque
+                                            a porta mauris, non venenatis mi. Pellentesque habitant morbi tristique</p>
+                                    </td>
 
-                                            <td>$450.00</td>
-                                            <td>05</td>
-                                            <td>$2250.00</td>
-                                        </tr>
+                                    <td>$450.00</td>
+                                    <td>05</td>
+                                    <td class="highlight">$2250.00</td>
+                                </tr>
 
-                                        <tr>
-                                            <td>
-                                                <h5 class="text-uppercase f-400">Phasellus idarcu suscipit nun</h5>
-                                                <p class="text-muted">Pellentesque habitant morbi tristique senectus</p>
-                                            </td>
-                                            <td>$20.00</td>
-                                            <td>02</td>
-                                            <td>$40.00</td>
-                                        </tr>
+                                <tr>
+                                    <td>
+                                        <h5 class="text-uppercase f-400">Phasellus idarcu suscipit nun</h5>
+                                        <p class="text-muted">Pellentesque habitant morbi tristique senectus</p>
+                                    </td>
+                                    <td>$20.00</td>
+                                    <td>02</td>
+                                    <td class="highlight">$40.00</td>
+                                </tr>
 
-                                        <tr>
-                                            <td>
-                                                <h5 class="text-uppercase f-400">Vivamus</h5>
-                                                <p class="text-muted">Maecenas nec faucibus lectus. Ut cursus elit ante, rutrum pretium augue tincidunt ut. Suspendisse ultrices sapien sit amet</p>
-                                            </td>
-                                            <td>$2322.00</td>
-                                            <td>01</td>
-                                            <td>$2322.00</td>
-                                        </tr>
+                                <tr>
+                                    <td>
+                                        <h5 class="text-uppercase f-400">Vivamus</h5>
+                                        <p class="text-muted">Maecenas nec faucibus lectus. Ut cursus elit ante, rutrum
+                                            pretium augue tincidunt ut. Suspendisse ultrices sapien sit amet</p>
+                                    </td>
+                                    <td>$2322.00</td>
+                                    <td>01</td>
+                                    <td class="highlight">$2322.00</td>
+                                </tr>
 
-                                        <tr>
-                                            <td>
-                                                <h5 class="text-uppercase f-400">Nullam consectetur dolor</h5>
-                                                <p class="text-muted">Quisque a porta mauris, non venenatis mi. Pellentesque habitant morbi</p>
-                                            </td>
-                                            <td>$1290.00</td>
-                                            <td>12</td>
-                                            <td>$15,480.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"></td>
-                                            <td>$20,092.00</td>
-                                        </tr>
-                                    </thead>
+                                <tr>
+                                    <td>
+                                        <h5 class="text-uppercase f-400">Nullam consectetur dolor</h5>
+                                        <p class="text-muted">Quisque a porta mauris, non venenatis mi. Pellentesque
+                                            habitant morbi</p>
+                                    </td>
+                                    <td>$1290.00</td>
+                                    <td>12</td>
+                                    <td class="highlight">$15,480.00</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="highlight">$20,092.00</td>
+                                </tr>
+                                </thead>
                                 </tbody>
                             </table>
 
                             <div class="clearfix"></div>
 
                             <div class="p-25">
-                                <h4 class="f-400">REMARKS</h4>
-                                <p>Ornare non tortor. Nam quis ipsum vitae dolor porttitor interdum. Curabitur faucibus erat vel ante fermentum lacinia. Integer porttitor laoreet suscipit. Sed cursus cursus massa ut pellentesque. Phasellus vehicula dictum arcu, eu interdum massa bibendum.</p>
+                                <h4 class="c-green f-400">REMARKS</h4>
+                                <p class="c-gray">Ornare non tortor. Nam quis ipsum vitae dolor porttitor interdum.
+                                    Curabitur faucibus erat vel ante fermentum lacinia. Integer porttitor laoreet
+                                    suscipit. Sed cursus cursus massa ut pellentesque. Phasellus vehicula dictum arcu,
+                                    eu interdum massa bibendum.</p>
 
                                 <br/>
 
-                                <h4 class="f-400">MERCY FOR YOUR BUSINESS</h4>
-                                <p>Proin ac iaculis metus. Etiam nisi nulla, fermentum blandit consectetur sed, ornare non tortor. Nam quis ipsum vitae dolor porttitor interdum. Curabitur faucibus erat vel ante fermentum lacinia. Integer porttitor laoreet suscipit. Sed cursus cursus massa ut pellentesque. Phasellus vehicula dictum arcu, eu interdum massa bibendum sit amet.</p>
+                                <h4 class="c-green f-400">MERCY FOR YOUR BUSINESS</h4>
+                                <p class="c-gray">Proin ac iaculis metus. Etiam nisi nulla, fermentum blandit
+                                    consectetur sed, ornare non tortor. Nam quis ipsum vitae dolor porttitor interdum.
+                                    Curabitur faucibus erat vel ante fermentum lacinia. Integer porttitor laoreet
+                                    suscipit. Sed cursus cursus massa ut pellentesque. Phasellus vehicula dictum arcu,
+                                    eu interdum massa bibendum sit amet.</p>
                             </div>
                         </div>
 
                         <footer class="m-t-15 p-20">
-                            <ul class="list-inline text-center list-unstyled text-muted">
-                                <li class="m-l-5 m-r-5"><small>support@company.com</small></li>
-                                <li class="m-l-5 m-r-5"><small>00971 452 9900</small></li>
-                                <li class="m-l-5 m-r-5"><small>www.company.com</small></li>
+                            <ul class="list-inline text-center list-unstyled">
+                                <li class="m-l-5 m-r-5">
+                                    <small>support@company.com</small>
+                                </li>
+                                <li class="m-l-5 m-r-5">
+                                    <small>00971 452 9900</small>
+                                </li>
+                                <li class="m-l-5 m-r-5">
+                                    <small>www.company.com</small>
+                                </li>
                             </ul>
                         </footer>
                     </div>
 
                 </div>
 
-                <button class="btn btn-float bgm-white m-btn" data-ma-action="print"><i class="zmdi zmdi-print"></i></button>
+                <a class="btn btn-float bgm-red m-btn" data-ma-action="print" href=""><i class="zmdi zmdi-print"></i></a>
 
 
             </section>
         </section>
-
+        
         <footer id="footer">
             Copyright &copy; 2015 Material Admin
-
+            
             <ul class="f-menu">
                 <li><a href="">Home</a></li>
                 <li><a href="">Dashboard</a></li>
@@ -701,7 +746,7 @@
 
         <!-- Page Loader -->
         <div class="page-loader">
-            <div class="preloader pls-white">
+            <div class="preloader pls-blue">
                 <svg class="pl-circular" viewBox="25 25 50 50">
                     <circle class="plc-path" cx="50" cy="50" r="20" />
                 </svg>
@@ -750,19 +795,19 @@
                     </ul>
                 </div>
                 <p>Sorry for the inconvenience!</p>
-            </div>
+            </div>   
         <![endif]-->
-
-
+    
+    
         <!-- Javascript Libraries -->
         <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
         <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-        <script src="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+        
+                <script src="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
         <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
-        <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-
+        <script src="vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+        
         <!-- Placeholder for IE9 -->
         <!--[if IE 9 ]>
             <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>

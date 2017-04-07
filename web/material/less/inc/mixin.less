@@ -22,7 +22,6 @@
     background-position: @position;
 }
 
-
 /*--------------------------------------------------
     CSS Animations based on animate.css
 ---------------------------------------------------*/
@@ -35,7 +34,6 @@
     animation-fill-mode: both;
 }
 
-
 /*--------------------------------------------------
     CSS Transform - Scale and Rotate
 ---------------------------------------------------*/
@@ -45,7 +43,6 @@
     -o-transform: scale(@scale) rotate(@rotate);
     transform: scale(@scale) rotate(@rotate);
 }
-
 
 /*-------------------------
     User Select
@@ -58,7 +55,6 @@
     -ms-user-select:        @val;
     user-select:            @val;
 }
-
 
 /*-------------------------
     Background Image Cover
@@ -82,14 +78,12 @@
     background-position: center;
 }
 
-
 /*-------------------------
     Tab Focus
 --------------------------*/
 .tab-focus() {
     outline: none !important;
 }
-
 
 /*--------------------------------------------------
     Override Bootstrap Button Mixin
@@ -107,7 +101,7 @@
         color: @color;
         background-color: @background;
         border-color: transparent;
-
+        
         &:hover,
         &:focus,
         &.focus {
@@ -140,7 +134,6 @@
     }
 }
 
-
 /*-------------------------
     Scale 3d
 --------------------------*/
@@ -153,7 +146,6 @@
   transform: scale3d(@process);
 }
 
-
 /*-------------------------
     Select BG
 --------------------------*/
@@ -165,20 +157,11 @@
         content: "";
         height: ~"calc(100% - 2px)";
         width: 30px;
+        background-color: #FFF;
         background-position: right ~"calc(100% - 7px)";
         background-repeat: no-repeat;
         .img-retina('../img/select.png', '../img/select@2x.png', 12px, 12px);
         pointer-events: none;
         z-index: 5;
     }
-}
-
-
-/*-------------------------
-    Filter Grayscale
---------------------------*/
-.gray-filter() {
-    filter: gray;
-    filter: grayscale(100%);
-    filter: url(../img/desaturate.svg#greyscale);
 }

@@ -30,6 +30,16 @@ $(document).ready(function () {
 
 
             /*-------------------------------------------
+                Profile Menu Toggle
+            ---------------------------------------------*/
+            case 'profile-menu-toggle':
+                $this.parent().toggleClass('toggled');
+                $this.next().slideToggle(200);
+
+                break;
+
+
+            /*-------------------------------------------
                 Mainmenu Submenu Toggle
             ---------------------------------------------*/
             case 'submenu-toggle':
@@ -82,7 +92,7 @@ $(document).ready(function () {
 
                 //Popup empty message
                 setTimeout(function(){
-                    $('#notifications').addClass('empty');
+                    $('.him-notification').addClass('empty');
                 }, (z*150)+200);
 
                 break;
@@ -132,8 +142,7 @@ $(document).ready(function () {
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonText: "Yes, delete it!",
-                    closeOnConfirm: false
-                }, function(){
+                }).then(function(){
                     localStorage.clear();
                     swal("Done!", "localStorage is cleared", "success");
                 });
@@ -236,6 +245,17 @@ $(document).ready(function () {
             case 'todo-form-close':
                 $this.closest('.t-add').removeClass('toggled');
                 $this.closest('.t-add').find('textarea').val('');
+
+                break;
+
+
+            /*-------------------------------------------
+                Change Header Skin
+            ---------------------------------------------*/
+            case 'change-skin':
+
+                var skin = $this.data('ma-skin');
+                $('[data-ma-theme]').attr('data-ma-theme', skin);
 
                 break;
         }

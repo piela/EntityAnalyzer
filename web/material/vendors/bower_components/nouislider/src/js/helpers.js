@@ -37,12 +37,6 @@
 		return typeof a === 'number' && !isNaN( a ) && isFinite( a );
 	}
 
-	// Rounds a number to 7 supported decimals.
-	function accurateNumber( number ) {
-		var p = Math.pow(10, 7);
-		return Number((Math.round(number*p)/p).toFixed(7));
-	}
-
 	// Sets a class and removes it after [duration] ms.
 	function addClassFor ( element, className, duration ) {
 		addClass(element, className);
@@ -101,17 +95,5 @@
 		return {
 			x: x,
 			y: y
-		};
-	}
-
-	// Shorthand for stopPropagation so we don't have to create a dynamic method
-	function stopPropagation ( e ) {
-		e.stopPropagation();
-	}
-
-	// todo
-	function addCssPrefix(cssPrefix) {
-		return function(className) {
-			return cssPrefix + className;
 		};
 	}

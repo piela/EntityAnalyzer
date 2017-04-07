@@ -8,7 +8,7 @@
     
         <!-- Vendor CSS -->
         <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet">
+        <link href="vendors/bower_components/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
         <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
         <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
         <link href="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">        
@@ -19,7 +19,7 @@
     </head>
     
     <body>
-        <header id="header" class="clearfix">
+        <header id="header" class="clearfix" data-ma-theme="blue">
             <ul class="h-inner">
                 <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
                     <div class="line-wrap">
@@ -46,14 +46,14 @@
                                 <i class="him-counts">6</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                <div class="list-group list-group-light">
+                                <div class="list-group">
                                     <div class="lg-header">
                                         Messages
                                     </div>
                                     <div class="lg-body">
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">David Belle</div>
@@ -62,7 +62,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Jonathan Morris</div>
@@ -71,7 +71,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Fredric Mitchell Jr.</div>
@@ -80,7 +80,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Glenn Jecobs</div>
@@ -89,7 +89,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Bill Phillips</div>
@@ -97,7 +97,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <a class="view-more view-more-light" href="">View All</a>
+                                    <a class="view-more" href="">View All</a>
                                 </div>
                             </div>
                         </li>
@@ -107,7 +107,7 @@
                                 <i class="him-counts">9</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                <div class="list-group list-group-light him-notification">
+                                <div class="list-group him-notification">
                                     <div class="lg-header">
                                         Notification
 
@@ -122,7 +122,7 @@
                                     <div class="lg-body">
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">David Belle</div>
@@ -131,7 +131,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Jonathan Morris</div>
@@ -140,7 +140,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Fredric Mitchell Jr.</div>
@@ -149,7 +149,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Glenn Jecobs</div>
@@ -158,7 +158,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Bill Phillips</div>
@@ -167,7 +167,7 @@
                                         </a>
                                     </div>
 
-                                    <a class="view-more view-more-light" href="">View Previous</a>
+                                    <a class="view-more" href="">View Previous</a>
                                 </div>
                             </div>
                         </li>
@@ -177,7 +177,7 @@
                                 <i class="him-counts">2</i>
                             </a>
                             <div class="dropdown-menu pull-right dropdown-menu-lg">
-                                <div class="list-group list-group-light">
+                                <div class="list-group">
                                     <div class="lg-header">
                                         Tasks
                                     </div>
@@ -186,7 +186,7 @@
                                             <div class="lgi-heading m-b-5">HTML5 Validation Report</div>
 
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
                                                     <span class="sr-only">95% Complete (success)</span>
                                                 </div>
                                             </div>
@@ -229,13 +229,22 @@
                                         </div>
                                     </div>
 
-                                    <a class="view-more view-more-light" href="">View All</a>
+                                    <a class="view-more" href="">View All</a>
                                 </div>
                             </div>
                         </li>
                         <li class="dropdown">
                             <a data-toggle="dropdown" href=""><i class="him-icon zmdi zmdi-more-vert"></i></a>
                             <ul class="dropdown-menu dm-icon pull-right">
+                                <li class="skin-switch hidden-xs">
+                                    <span class="ss-skin bgm-lightblue" data-ma-action="change-skin" data-ma-skin="lightblue"></span>
+                                    <span class="ss-skin bgm-bluegray" data-ma-action="change-skin" data-ma-skin="bluegray"></span>
+                                    <span class="ss-skin bgm-cyan" data-ma-action="change-skin" data-ma-skin="cyan"></span>
+                                    <span class="ss-skin bgm-teal" data-ma-action="change-skin" data-ma-skin="teal"></span>
+                                    <span class="ss-skin bgm-orange" data-ma-action="change-skin" data-ma-skin="orange"></span>
+                                    <span class="ss-skin bgm-blue" data-ma-action="change-skin" data-sma-kin="blue"></span>
+                                </li>
+                                <li class="divider hidden-xs"></li>
                                 <li class="hidden-xs">
                                     <a data-ma-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
                                 </li>
@@ -265,34 +274,48 @@
                 </div>
             </div>
         </header>
+
         <section id="main">
             <aside id="sidebar" class="sidebar c-overflow">
+                <div class="s-profile">
+                    <a href="" data-ma-action="profile-menu-toggle">
+                        <div class="sp-pic">
+                            <img src="img/demo/profile-pics/1.jpg" alt="">
+                        </div>
+
+                        <div class="sp-info">
+                            Malinda Hollaway
+
+                            <i class="zmdi zmdi-caret-down"></i>
+                        </div>
+                    </a>
+
+                    <ul class="main-menu">
+                        <li>
+                            <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
                 <ul class="main-menu">
-                    <li class="mm-profile sub-menu">
-                        <a href="" data-ma-action="submenu-toggle" class="media">
-                            <img class="pull-left" src="img/profile-pics/1.jpg" alt="">
-                            <div class="media-body">
-                                Malinda Hollaway
-                                <small>malinda-h@gmail.com</small>
-                            </div>
-                        </a>
+                    <li><a href="index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                    <li class="sub-menu">
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-chart"></i> Dashboards</a>
 
                         <ul>
-                            <li>
-                                <a href="profile-about.html">View Profile</a>
-                            </li>
-                            <li>
-                                <a href="">Privacy Settings</a>
-                            </li>
-                            <li>
-                                <a href="">Settings</a>
-                            </li>
-                            <li>
-                                <a href="">Logout</a>
-                            </li>
+                            <li><a href="dashboards/analytics.html">Analytics</a></li>
+                            <li><a href="dashboards/school.html">School</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
                     <li class="sub-menu">
                         <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-compact"></i> Headers</a>
 
@@ -334,7 +357,6 @@
                         <ul>
                             <li><a href="colors.html">Colors</a></li>
                             <li><a href="animations.html">Animations</a></li>
-                            <li><a href="box-shadow.html">Box Shadow</a></li>
                             <li><a href="buttons.html">Buttons</a></li>
                             <li><a href="icons.html">Icons</a></li>
                             <li><a href="alerts.html">Alerts</a></li>
@@ -346,10 +368,11 @@
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-trending-up"></i>Charts</a>
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-trending-up"></i>Charts & Maps</a>
                         <ul>
                             <li><a href="flot-charts.html">Flot Charts</a></li>
                             <li><a href="other-charts.html">Other Charts</a></li>
+                            <li><a href="maps.html">Maps</a></li>
                         </ul>
                     </li>
                     <li class="active"><a href="calendar.html"><i class="zmdi zmdi-calendar"></i> Calendar</a></li>
@@ -363,7 +386,8 @@
 
                     <li><a href="generic-classes.html"><i class="zmdi zmdi-layers"></i> Generic Classes</a></li>
                     <li class="sub-menu">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-collection-item"></i> Sample Pages</a>
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-collection-item"></i> Sample
+                            Pages</a>
                         <ul>
 
                             <li><a href="profile-about.html">Profile</a></li>
@@ -394,7 +418,7 @@
                                     <li><a href="">Third one</a></li>
                                 </ul>
                             </li>
-                            <li><a href="form-validations.html">One more</a></li>
+                            <li><a href="form-validations.html">One more 2</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -413,7 +437,7 @@
                     <div class="list-group">
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                 <i class="chat-status-busy"></i>
                             </div>
                             <div class="media-body">
@@ -424,7 +448,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">David Belle</div>
@@ -434,7 +458,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                 <i class="chat-status-online"></i>
                             </div>
                             <div class="media-body">
@@ -445,7 +469,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                 <i class="chat-status-online"></i>
                             </div>
                             <div class="media-body">
@@ -456,7 +480,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/5.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/5.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">Bill Phillips</div>
@@ -466,7 +490,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/6.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/6.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">Wendy Mitchell</div>
@@ -476,87 +500,156 @@
                     </div>
                 </div>
             </aside>
-        
+
             <section id="content">
                 <div class="container container-alt">
-                    <div class="block-header">
-                        <h2>Calendar <small>FullCalendar is a jQuery plugin that provides a full-sized, drag & drop event calendar like the one below. It uses AJAX to fetch events on-the-fly and is easily configured to use your own feed format. It is visually customizable with a rich API.</small></h2>
-                    
-                        <ul class="actions">
-                            <li>
-                                <a href="">
-                                    <i class="zmdi zmdi-trending-up"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="zmdi zmdi-check-all"></i>
-                                </a>
-                            </li>
+                    <div class="block-header block-header-calendar">
+                        <h2>
+                            <span></span>
+                            <small>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</small>
+                        </h2>
+
+                        <ul class="actions actions-calendar">
+                            <li><a class="calendar-next" href=""><i class="zmdi zmdi-chevron-left"></i></a></li>
+                            <li><a class="calendar-prev" href=""><i class="zmdi zmdi-chevron-right"></i></a></li>
+
                             <li class="dropdown">
-                                <a href="" data-toggle="dropdown">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
-                    
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="">Refresh</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Manage Widgets</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Widgets Settings</a>
-                                    </li>
+                                <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+                                <ul class="dropdown-menu dm-icon pull-right">
+                                    <li><a href="" data-calendar-view="month"><i class="zmdi zmdi-view-comfy active"></i> Month View</a></li>
+                                    <li><a href="" data-calendar-view="basicWeek"><i class="zmdi zmdi-view-week"></i> Week View</a></li>
+                                    <li><a href="" data-calendar-view="basicDay"><i class="zmdi zmdi-view-day"></i> Day View</a></li>
                                 </ul>
                             </li>
                         </ul>
-                    
                     </div>
-                    
+
                     <div id="calendar" class="card"></div>
-                    
+
                     <!-- Add event -->
-                    <div class="modal fade" id="addNew-event" data-backdrop="static" data-keyboard="false">
-                        <div class="modal-dialog">
+                    <div class="modal fade" id="modal-new-event" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-sm">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Add an Event</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="addEvent" role="form">
+                                    <form class="form-event" role="form">
                                         <div class="form-group">
-                                            <label for="eventName">Event Name</label>
-                                            <div class="fg-line fg-line-alt">
-                                                <input type="text" class="input-sm form-control form-control-alt" id="eventName" placeholder="eg: Sports day">
+                                            <div class="fg-line">
+                                                <input type="text" class="input-sm form-control" id="new-event-title" placeholder="Event Name">
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-group">
-                                            <label for="eventName">Tag Color</label>
                                             <div class="event-tag">
-                                                <span data-tag="bgm-teal" class="bgm-teal selected"></span>
-                                                <span data-tag="bgm-red" class="bgm-red"></span>
-                                                <span data-tag="bgm-pink" class="bgm-pink"></span>
-                                                <span data-tag="bgm-blue" class="bgm-blue"></span>
-                                                <span data-tag="bgm-lime" class="bgm-lime"></span>
-                                                <span data-tag="bgm-green" class="bgm-green"></span>
-                                                <span data-tag="bgm-cyan" class="bgm-cyan"></span>
-                                                <span data-tag="bgm-orange" class="bgm-orange"></span>
-                                                <span data-tag="bgm-purple" class="bgm-purple"></span>
-                                                <span data-tag="bgm-gray" class="bgm-gray"></span>
-                                                <span data-tag="bgm-black" class="bgm-black"></span>
+                                                <span class="bgm-blue">
+                                                    <input type="radio" value="bgm-blue" name="event-tag" checked="">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-teal">
+                                                    <input type="radio" value="bgm-teal" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-red">
+                                                    <input type="radio" value="bgm-red" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-green">
+                                                    <input type="radio" value="bgm-green" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-cyan">
+                                                    <input type="radio" value="bgm-cyan" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-amber">
+                                                    <input type="radio" value="bgm-amber" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-purple">
+                                                    <input type="radio" value="bgm-purple" name="event-tag">
+                                                    <i></i>
+                                                </span>
                                             </div>
                                         </div>
-                                        
-                                        <input type="hidden" id="getStart" />
-                                        <input type="hidden" id="getEnd" />
+
+                                        <input type="hidden" id="new-event-start"/>
+                                        <input type="hidden" id="new-event-end"/>
                                     </form>
                                 </div>
-                                
+
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-link" id="addEvent">Add Event</button>
+                                    <button type="submit" class="btn btn-link" id="btn-add-event">Add Event</button>
                                     <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Edit event -->
+                    <div class="modal fade" id="modal-edit-event" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Edit Event</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form class="edit-event__form">
+                                        <div class="form-group">
+                                            <div class="fg-line">
+                                                <input type="text" class="form-control edit-event-title" placeholder="Event Title">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="event-tag event-tag-edit">
+                                                <span class="bgm-blue">
+                                                    <input type="radio" value="bgm-blue" name="event-tag" checked="">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-teal">
+                                                    <input type="radio" value="bgm-teal" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-red">
+                                                    <input type="radio" value="bgm-red" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-green">
+                                                    <input type="radio" value="bgm-green" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-cyan">
+                                                    <input type="radio" value="bgm-cyan" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-amber">
+                                                    <input type="radio" value="bgm-amber" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                                <span class="bgm-purple">
+                                                    <input type="radio" value="bgm-purple" name="event-tag">
+                                                    <i></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="fg-line">
+                                                <textarea class="form-control edit-event-description auto-size" placeholder="Event Desctiption"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" class="edit-event-id">
+                                    </form>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button class="btn btn-link" data-calendar="update">Update</button>
+                                    <button class="btn btn-link" data-calendar="delete">Delete</button>
+                                    <button class="btn btn-link" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
@@ -579,7 +672,7 @@
 
         <!-- Page Loader -->
         <div class="page-loader">
-            <div class="preloader pls-white">
+            <div class="preloader pls-blue">
                 <svg class="pl-circular" viewBox="25 25 50 50">
                     <circle class="plc-path" cx="50" cy="50" r="20" />
                 </svg>
@@ -638,187 +731,295 @@
         <script src="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
         <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
-        <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
         <script src="vendors/bower_components/moment/min/moment.min.js"></script>
         <script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-        
+        <script src="vendors/bower_components/autosize/dist/autosize.min.js"></script>
+
         <!-- Placeholder for IE9 -->
         <!--[if IE 9 ]>
             <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
         <![endif]-->
 
         <script src="js/app.min.js"></script>
-        
+
+        <!-- Calendar Script -->
         <script type="text/javascript">
             $(document).ready(function() {
                 var date = new Date();
-                var d = date.getDate();
                 var m = date.getMonth();
                 var y = date.getFullYear();
+                var target = $('#calendar');
 
-                var cId = $('#calendar'); //Change the name if you want. I'm also using thsi add button for more actions
-
-                //Generate the Calendar
-                cId.fullCalendar({
+                target.fullCalendar({
                     header: {
                         right: '',
-                        center: 'prev, title, next',
+                        center: '',
                         left: ''
                     },
 
-                    theme: true, //Do not remove this as it ruin the design
+                    theme: false,
                     selectable: true,
                     selectHelper: true,
                     editable: true,
-
-                    //Add Events
                     events: [
                         {
-                            title: 'Hangout with friends',
+                            id: 1,
+                            title: 'Fusce dapibus tellus',
                             start: new Date(y, m, 1),
                             allDay: true,
+                            className: 'bgm-cyan',
+                            description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
                         },
                         {
-                            title: 'Meeting with client',
+                            id: 2,
+                            title: 'Fusce dapibus tellus',
                             start: new Date(y, m, 10),
                             allDay: true,
+                            className: 'bgm-amber',
+                            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
                         },
                         {
-                            title: 'Repeat Event',
+                            id: 3,
+                            title: 'Egestas Justo',
                             start: new Date(y, m, 18),
                             allDay: true,
+                            className: 'bgm-green',
+                            description: ''
                         },
                         {
-                            title: 'Semester Exam',
+                            id: 4,
+                            title: 'Bibendum Vehicula Quam',
                             start: new Date(y, m, 20),
                             allDay: true,
+                            className: 'bgm-blue',
+                            description: ''
                         },
                         {
-                            title: 'Soccor match',
+                            id: 5,
+                            title: 'Venenatis Dolor Porta',
                             start: new Date(y, m, 5),
                             allDay: true,
+                            className: 'bgm-teal',
+                            description: 'Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
                         },
                         {
-                            title: 'Coffee time',
+                            id: 6,
+                            title: 'Sem Pharetra',
                             start: new Date(y, m, 21),
                             allDay: true,
+                            className: 'bgm-red',
+                            description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
                         },
                         {
-                            title: 'Job Interview',
+                            id: 7,
+                            title: 'Ullamcorper Porta',
                             start: new Date(y, m, 5),
                             allDay: true,
+                            className: 'bgm-amber',
+                            description: 'Malesuada Ullamcorper Nullam'
                         },
                         {
-                            title: 'IT Meeting',
+                            id: 8,
+                            title: 'Egestas',
                             start: new Date(y, m, 5),
                             allDay: true,
+                            className: 'bgm-green',
+                            description: ''
                         },
                         {
-                            title: 'Brunch at Beach',
+                            id: 9,
+                            title: 'Purus',
                             start: new Date(y, m, 1),
                             allDay: true,
+                            className: 'bgm-green',
+                            description: 'Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.'
                         },
                         {
-                            title: 'Live TV Show',
+                            id: 10,
+                            title: 'Risus Elit',
                             start: new Date(y, m, 15),
                             allDay: true,
+                            className: 'bgm-cyan',
+                            description: 'Etiam porta sem malesuada magna mollis euismod. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
                         },
                         {
-                            title: 'Software Conference',
+                            id: 11,
+                            title: 'Risus Fermentum Justo',
                             start: new Date(y, m, 25),
                             allDay: true,
+                            className: 'bgm-blue',
+                            description: 'Vehicula Cras'
                         },
                         {
-                            title: 'Coffee time',
+                            id: 12,
+                            title: 'Porta Ornare Euismod',
                             start: new Date(y, m, 30),
                             allDay: true,
+                            className: 'bgm-red',
+                            description: ''
                         },
                         {
-                            title: 'Job Interview',
+                            id: 13,
+                            title: 'Amet Adipiscing',
                             start: new Date(y, m, 30),
                             allDay: true,
+                            className: 'bgm-teal',
+                            description: ''
                         },
                     ],
-                     
-                    //On Day Select
-                    select: function(start, end, allDay) {
-                        $('#addNew-event').modal('show');   
-                        $('#addNew-event input:text').val('');
-                        $('#getStart').val(start);
-                        $('#getEnd').val(end);
+
+                    dayClick: function(date) {
+                        var isoDate = moment(date).toISOString();
+
+                        $('#modal-new-event').modal('show');
+                        $('#event-name').val('');
+                        $('#new-event-start').val(isoDate);
+                        $('#new-event-end').val(isoDate);
+                    },
+
+                    viewRender: function (view) {
+                        var calendarDate = $("#calendar").fullCalendar('getDate');
+                        var calendarMonth = calendarDate.month();
+
+                        //Set data attribute for header. This is used to switch header images using css
+                        $('#calendar .fc-toolbar').attr('data-calendar-month', calendarMonth);
+
+                        //Set title in page header
+                        $('.block-header-calendar > h2 > span').html(view.title);
+                    },
+
+                    eventClick: function (event, element) {
+
+                        $('.edit-event-id').val(event.id);
+                        $('.edit-event-title').val(event.title);
+                        $('.edit-event-description').val(event.description);
+                        $('#modal-edit-event input[value='+event.className+']').prop('checked', true);
+                        $('#modal-edit-event').modal('show');
                     }
                 });
 
-                //Create and ddd Action button with dropdown in Calendar header. 
-                var actionMenu = '<ul class="actions" id="fc-actions">' +
-                                    '<li class="dropdown">' +
-                                        '<a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>' +
-                                        '<ul class="dropdown-menu dropdown-menu-right">' +
-                                            '<li class="active">' +
-                                                '<a data-view="month" href="">Month View</a>' +
-                                            '</li>' +
-                                            '<li>' +
-                                                '<a data-view="basicWeek" href="">Week View</a>' +
-                                            '</li>' +
-                                            '<li>' +
-                                                '<a data-view="agendaWeek" href="">Agenda Week View</a>' +
-                                            '</li>' +
-                                            '<li>' +
-                                                '<a data-view="basicDay" href="">Day View</a>' +
-                                            '</li>' +
-                                            '<li>' +
-                                                '<a data-view="agendaDay" href="">Agenda Day View</a>' +
-                                            '</li>' +
-                                        '</ul>' +
-                                    '</div>' +
-                                '</li>';
 
-
-                cId.find('.fc-toolbar').append(actionMenu);
-                
-                //Event Tag Selector
-                (function(){
-                    $('body').on('click', '.event-tag > span', function(){
-                        $('.event-tag > span').removeClass('selected');
-                        $(this).addClass('selected');
-                    });
-                })();
-            
                 //Add new Event
-                $('body').on('click', '#addEvent', function(){
-                    var eventName = $('#eventName').val();
-                    var tagColor = $('.event-tag > span.selected').attr('data-tag');
-                        
-                    if (eventName != '') {
-                        //Render Event
-                        $('#calendar').fullCalendar('renderEvent',{
-                            title: eventName,
-                            start: $('#getStart').val(),
-                            end:  $('#getEnd').val(),
-                            allDay: true,
-                            className: tagColor
-                            
-                        },true ); //Stick the event
-                        
-                        $('#addNew-event form')[0].reset()
-                        $('#addNew-event').modal('hide');
-                    }
-                    
-                    else {
-                        $('#eventName').closest('.form-group').addClass('has-error');
-                    }
-                });   
+                $('body').on('click', '#btn-add-event', function(){
+                    var eventTitle = $('#new-event-title').val();
 
-                //Calendar views
-                $('body').on('click', '#fc-actions [data-view]', function(e){
-                    e.preventDefault();
-                    var dataView = $(this).attr('data-view');
-                    
-                    $('#fc-actions li').removeClass('active');
-                    $(this).parent().addClass('active');
-                    cId.fullCalendar('changeView', dataView);  
+                    var GenRandom =  {
+                        Stored: [],
+                        Job: function(){
+                            var newId = Date.now().toString().substr(6); // or use any method that you want to achieve this string
+
+                            if( !this.Check(newId) ){
+                                this.Stored.push(newId);
+                                return newId;
+                            }
+                            return this.Job();
+                        },
+                        Check: function(id){
+                            for( var i = 0; i < this.Stored.length; i++ ){
+                                if( this.Stored[i] == id ) return true;
+                            }
+                            return false;
+                        }
+                    };
+
+                    if (eventTitle != '') {
+                        $('#calendar').fullCalendar('renderEvent', {
+                            id: GenRandom.Job(),
+                            title: eventTitle,
+                            start: $('#new-event-start').val(),
+                            end:  $('#new-event-end').val(),
+                            allDay: true,
+                            className: $('.event-tag input:checked').val()
+
+                        },true );
+
+                        $('.form-event')[0].reset()
+                        $('#modal-new-event').modal('hide');
+                        $('#new-event-title').closest('.form-group').removeClass('has-error');
+                    }
+                    else {
+                        $('#new-event-title').closest('.form-group').addClass('has-error');
+                        $('#new-event-title').focus();
+                    }
                 });
-            });                        
+
+
+                //Update/Delete an Event
+                $('body').on('click', '[data-calendar]', function(){
+                    var calendarAction = $(this).data('calendar');
+                    var currentId = $('.edit-event-id').val();
+                    var currentTitle = $('.edit-event-title').val();
+                    var currentDesc = $('.edit-event-description').val();
+                    var currentClass = $('.event-tag-edit input:checked').val();
+                    var currentEvent = $('#calendar').fullCalendar( 'clientEvents', currentId );
+
+                    //Update
+                    if(calendarAction === 'update') {
+                        if (currentTitle != '') {
+                            currentEvent[0].title = currentTitle;
+                            currentEvent[0].description = currentDesc;
+                            currentEvent[0].className = currentClass;
+
+                            $('#calendar').fullCalendar('updateEvent', currentEvent[0]);
+                            $('#modal-edit-event').modal('hide');
+                        }
+                        else {
+                            $('.edit-event-title').closest('.form-group').addClass('has-error');
+                            $('.edit-event-title').focus();
+                        }
+                    }
+
+                    //Delete
+                    if(calendarAction === 'delete') {
+                        $('#modal-edit-event').modal('hide');
+
+                        setTimeout(function () {
+                            swal({
+                                title: 'Are you sure?',
+                                text: "You won't be able to revert this!",
+                                type: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, delete it!'
+                            }).then(function() {
+                                target.fullCalendar('removeEvents', currentId);
+                                swal(
+                                    'Deleted!',
+                                    'Your list has been deleted.',
+                                    'success'
+                                );
+                            })
+                        }, 200);
+                    }
+                });
+
+
+                //Calendar views switch
+                $('body').on('click', '[data-calendar-view]', function(e){
+                    e.preventDefault();
+
+                    $('[data-calendar-view]').removeClass('active');
+                    $(this).addClass('active');
+                    var calendarView = $(this).attr('data-calendar-view');
+                    target.fullCalendar('changeView', calendarView);
+                });
+
+
+                //Calendar Next
+                $('body').on('click', '.calendar-next', function (e) {
+                    e.preventDefault();
+                    target.fullCalendar('next');
+                });
+
+
+                //Calendar Prev
+                $('body').on('click', '.calendar-prev', function (e) {
+                    e.preventDefault();
+                    target.fullCalendar('prev');
+                });
+            });
         </script>
     </body>
 </html>

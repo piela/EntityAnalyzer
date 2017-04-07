@@ -8,7 +8,7 @@
 
         <!-- Vendor CSS -->
         <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet">
+        <link href="vendors/bower_components/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
         <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
         <link href="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
         <link href="vendors/bower_components/lightgallery/dist/css/lightgallery.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
     </head>
 
     <body>
-        <header id="header" class="clearfix">
+        <header id="header" class="clearfix" data-ma-theme="blue">
             <ul class="h-inner">
                 <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
                     <div class="line-wrap">
@@ -46,14 +46,14 @@
                                 <i class="him-counts">6</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                <div class="list-group list-group-light">
+                                <div class="list-group">
                                     <div class="lg-header">
                                         Messages
                                     </div>
                                     <div class="lg-body">
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">David Belle</div>
@@ -62,7 +62,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Jonathan Morris</div>
@@ -71,7 +71,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Fredric Mitchell Jr.</div>
@@ -80,7 +80,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Glenn Jecobs</div>
@@ -89,7 +89,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Bill Phillips</div>
@@ -97,7 +97,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <a class="view-more view-more-light" href="">View All</a>
+                                    <a class="view-more" href="">View All</a>
                                 </div>
                             </div>
                         </li>
@@ -107,7 +107,7 @@
                                 <i class="him-counts">9</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                <div class="list-group list-group-light him-notification">
+                                <div class="list-group him-notification">
                                     <div class="lg-header">
                                         Notification
 
@@ -122,7 +122,7 @@
                                     <div class="lg-body">
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">David Belle</div>
@@ -131,7 +131,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Jonathan Morris</div>
@@ -140,7 +140,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Fredric Mitchell Jr.</div>
@@ -149,7 +149,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Glenn Jecobs</div>
@@ -158,7 +158,7 @@
                                         </a>
                                         <a class="list-group-item media" href="">
                                             <div class="pull-left">
-                                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lgi-heading">Bill Phillips</div>
@@ -167,7 +167,7 @@
                                         </a>
                                     </div>
 
-                                    <a class="view-more view-more-light" href="">View Previous</a>
+                                    <a class="view-more" href="">View Previous</a>
                                 </div>
                             </div>
                         </li>
@@ -177,7 +177,7 @@
                                 <i class="him-counts">2</i>
                             </a>
                             <div class="dropdown-menu pull-right dropdown-menu-lg">
-                                <div class="list-group list-group-light">
+                                <div class="list-group">
                                     <div class="lg-header">
                                         Tasks
                                     </div>
@@ -186,7 +186,7 @@
                                             <div class="lgi-heading m-b-5">HTML5 Validation Report</div>
 
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
                                                     <span class="sr-only">95% Complete (success)</span>
                                                 </div>
                                             </div>
@@ -229,13 +229,22 @@
                                         </div>
                                     </div>
 
-                                    <a class="view-more view-more-light" href="">View All</a>
+                                    <a class="view-more" href="">View All</a>
                                 </div>
                             </div>
                         </li>
                         <li class="dropdown">
                             <a data-toggle="dropdown" href=""><i class="him-icon zmdi zmdi-more-vert"></i></a>
                             <ul class="dropdown-menu dm-icon pull-right">
+                                <li class="skin-switch hidden-xs">
+                                    <span class="ss-skin bgm-lightblue" data-ma-action="change-skin" data-ma-skin="lightblue"></span>
+                                    <span class="ss-skin bgm-bluegray" data-ma-action="change-skin" data-ma-skin="bluegray"></span>
+                                    <span class="ss-skin bgm-cyan" data-ma-action="change-skin" data-ma-skin="cyan"></span>
+                                    <span class="ss-skin bgm-teal" data-ma-action="change-skin" data-ma-skin="teal"></span>
+                                    <span class="ss-skin bgm-orange" data-ma-action="change-skin" data-ma-skin="orange"></span>
+                                    <span class="ss-skin bgm-blue" data-ma-action="change-skin" data-sma-kin="blue"></span>
+                                </li>
+                                <li class="divider hidden-xs"></li>
                                 <li class="hidden-xs">
                                     <a data-ma-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
                                 </li>
@@ -268,32 +277,45 @@
 
         <section id="main">
             <aside id="sidebar" class="sidebar c-overflow">
+                <div class="s-profile">
+                    <a href="" data-ma-action="profile-menu-toggle">
+                        <div class="sp-pic">
+                            <img src="img/demo/profile-pics/1.jpg" alt="">
+                        </div>
+
+                        <div class="sp-info">
+                            Malinda Hollaway
+
+                            <i class="zmdi zmdi-caret-down"></i>
+                        </div>
+                    </a>
+
+                    <ul class="main-menu">
+                        <li>
+                            <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
                 <ul class="main-menu">
-                    <li class="mm-profile sub-menu">
-                        <a href="" data-ma-action="submenu-toggle" class="media">
-                            <img class="pull-left" src="img/profile-pics/1.jpg" alt="">
-                            <div class="media-body">
-                                Malinda Hollaway
-                                <small>malinda-h@gmail.com</small>
-                            </div>
-                        </a>
+                    <li><a href="index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                    <li class="sub-menu">
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-chart"></i> Dashboards</a>
 
                         <ul>
-                            <li>
-                                <a href="profile-about.html">View Profile</a>
-                            </li>
-                            <li>
-                                <a href="">Privacy Settings</a>
-                            </li>
-                            <li>
-                                <a href="">Settings</a>
-                            </li>
-                            <li>
-                                <a href="">Logout</a>
-                            </li>
+                            <li><a href="dashboards/analytics.html">Analytics</a></li>
+                            <li><a href="dashboards/school.html">School</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
                     <li class="sub-menu">
                         <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-compact"></i> Headers</a>
 
@@ -335,7 +357,6 @@
                         <ul>
                             <li><a href="colors.html">Colors</a></li>
                             <li><a href="animations.html">Animations</a></li>
-                            <li><a href="box-shadow.html">Box Shadow</a></li>
                             <li><a href="buttons.html">Buttons</a></li>
                             <li><a href="icons.html">Icons</a></li>
                             <li><a href="alerts.html">Alerts</a></li>
@@ -347,10 +368,11 @@
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-trending-up"></i>Charts</a>
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-trending-up"></i>Charts & Maps</a>
                         <ul>
                             <li><a href="flot-charts.html">Flot Charts</a></li>
                             <li><a href="other-charts.html">Other Charts</a></li>
+                            <li><a href="maps.html">Maps</a></li>
                         </ul>
                     </li>
                     <li><a href="calendar.html"><i class="zmdi zmdi-calendar"></i> Calendar</a></li>
@@ -364,7 +386,8 @@
 
                     <li><a href="generic-classes.html"><i class="zmdi zmdi-layers"></i> Generic Classes</a></li>
                     <li class="sub-menu active toggled">
-                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-collection-item"></i> Sample Pages</a>
+                        <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-collection-item"></i> Sample
+                            Pages</a>
                         <ul>
 
                             <li><a href="profile-about.html">Profile</a></li>
@@ -395,7 +418,7 @@
                                     <li><a href="">Third one</a></li>
                                 </ul>
                             </li>
-                            <li><a href="form-validations.html">One more</a></li>
+                            <li><a href="form-validations.html">One more 2</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -414,7 +437,7 @@
                     <div class="list-group">
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                 <i class="chat-status-busy"></i>
                             </div>
                             <div class="media-body">
@@ -425,7 +448,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">David Belle</div>
@@ -435,7 +458,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                 <i class="chat-status-online"></i>
                             </div>
                             <div class="media-body">
@@ -446,7 +469,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left p-relative">
-                                <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                 <i class="chat-status-online"></i>
                             </div>
                             <div class="media-body">
@@ -457,7 +480,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/5.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/5.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">Bill Phillips</div>
@@ -467,7 +490,7 @@
 
                         <a class="list-group-item media" href="">
                             <div class="pull-left">
-                                <img class="lgi-img" src="img/profile-pics/6.jpg" alt="">
+                                <img class="lgi-img" src="img/demo/profile-pics/6.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="lgi-heading">Wendy Mitchell</div>
@@ -541,18 +564,18 @@
 
                                     <div class="wp-actions clearfix">
                                         <div class="wpa-media-list pull-left">
-                                            <a data-toggle="tab" href="#wpm-image">
+                                            <a data-toggle="tab" href="#wpm-image" class="c-amber">
                                                 <i class="zmdi zmdi-image"></i>
                                             </a>
-                                            <a data-toggle="tab" href="#wpm-video">
+                                            <a data-toggle="tab" href="#wpm-video" class="c-green">
                                                 <i class="zmdi zmdi-play-circle"></i>
                                             </a>
-                                            <a data-toggle="tab" href="#wpm-link">
+                                            <a data-toggle="tab" href="#wpm-link" class="c-blue">
                                                 <i class="zmdi zmdi-link"></i>
                                             </a>
                                         </div>
 
-                                        <button class="btn btn-default btn-sm pull-right">Post</button>
+                                        <button class="btn btn-primary btn-sm pull-right">Post</button>
                                     </div>
                                 </div>
                             </div>
@@ -561,7 +584,7 @@
                                 <div class="card-header">
                                     <div class="media">
                                         <div class="pull-left">
-                                            <img class="avatar-img" src="img/profile-pics/1.jpg" alt="">
+                                            <img class="avatar-img" src="img/demo/profile-pics/1.jpg" alt="">
                                         </div>
 
                                         <div class="media-body">
@@ -589,10 +612,10 @@
                                         </div>
 
                                         <div class="wis-commentors">
-                                            <a href=""><img src="img/profile-pics/1.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/2.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/3.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/5.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/1.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/2.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/3.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/5.jpg" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -603,7 +626,7 @@
                                     <div class="list-group">
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/5.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/5.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -620,7 +643,7 @@
 
                                         <div class="wicf-actions text-right">
                                             <button class="btn btn-sm btn-link" data-ma-action="wall-comment-close">Cancel</button>
-                                            <button class="btn btn-sm btn-default">Post</button>
+                                            <button class="btn btn-sm btn-primary">Post</button>
                                         </div>
                                     </div>
                                 </div>
@@ -630,7 +653,7 @@
                                 <div class="card-header">
                                     <div class="media">
                                         <div class="pull-left">
-                                            <img class="avatar-img" src="img/profile-pics/3.jpg" alt="">
+                                            <img class="avatar-img" src="img/demo/profile-pics/3.jpg" alt="">
                                         </div>
 
                                         <div class="media-body">
@@ -651,7 +674,7 @@
                                         </div>
 
                                         <div class="wis-commentors">
-                                            <a href=""><img src="img/profile-pics/3.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/3.jpg" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -673,7 +696,7 @@
                                 <div class="card-header">
                                     <div class="media">
                                         <div class="pull-left">
-                                            <img class="avatar-img" src="img/profile-pics/2.jpg" alt="">
+                                            <img class="avatar-img" src="img/demo/profile-pics/2.jpg" alt="">
                                         </div>
 
                                         <div class="media-body">
@@ -705,8 +728,8 @@
                                         </div>
 
                                         <div class="wis-commentors">
-                                            <a href=""><img src="img/profile-pics/2.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/3.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/2.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/3.jpg" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -716,7 +739,7 @@
                                     <!-- Comment Listing -->
                                     <div class="list-group">
                                         <div class="list-group-item media">
-                                            <a href="" class="pull-left"><img src="img/profile-pics/3.jpg" alt="" class="lgi-img"></a>
+                                            <a href="" class="pull-left"><img src="img/demo/profile-pics/3.jpg" alt="" class="lgi-img"></a>
                                             <div class="media-body">
                                                 <a href="" class="lgi-heading">Jonathan Morris <small class="text-muted m-l-10">1 hour ago</small></a>
                                                 <small class="lgi-text">Pellentesque mollis fringilla finibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</small>
@@ -740,7 +763,7 @@
                                 <div class="card-header">
                                     <div class="media">
                                         <div class="pull-left">
-                                            <img class="avatar-img" src="img/profile-pics/5.jpg" alt="">
+                                            <img class="avatar-img" src="img/demo/profile-pics/5.jpg" alt="">
                                         </div>
 
                                         <div class="media-body">
@@ -776,8 +799,8 @@
                                         </div>
 
                                         <div class="wis-commentors">
-                                            <a href=""><img src="img/profile-pics/2.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/3.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/2.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/3.jpg" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -788,7 +811,7 @@
                                     <div class="list-group">
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/3.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/3.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -814,7 +837,7 @@
                                 <div class="card-header">
                                     <div class="media">
                                         <div class="pull-left">
-                                            <img class="avatar-img" src="img/profile-pics/2.jpg" alt="">
+                                            <img class="avatar-img" src="img/demo/profile-pics/2.jpg" alt="">
                                         </div>
 
                                         <div class="media-body">
@@ -854,10 +877,10 @@
                                         </div>
 
                                         <div class="wis-commentors">
-                                            <a href=""><img src="img/profile-pics/1.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/7.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/9.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/8.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/1.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/7.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/9.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/8.jpg" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -868,7 +891,7 @@
                                     <div class="list-group">
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/9.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/9.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -878,7 +901,7 @@
                                         </div>
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/8.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/8.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -888,7 +911,7 @@
                                         </div>
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/3.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/3.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -914,7 +937,7 @@
                                 <div class="card-header">
                                     <div class="media">
                                         <div class="pull-left">
-                                            <img class="avatar-img" src="img/profile-pics/7.jpg" alt="">
+                                            <img class="avatar-img" src="img/demo/profile-pics/7.jpg" alt="">
                                         </div>
 
                                         <div class="media-body">
@@ -958,8 +981,8 @@
                                         </div>
 
                                         <div class="wis-commentors">
-                                            <a href=""><img src="img/profile-pics/4.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/8.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/4.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/8.jpg" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -970,7 +993,7 @@
                                     <div class="list-group">
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/8.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/8.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -996,7 +1019,7 @@
                                 <div class="card-header">
                                     <div class="media">
                                         <div class="pull-left">
-                                            <img class="avatar-img" src="img/profile-pics/6.jpg" alt="">
+                                            <img class="avatar-img" src="img/demo/profile-pics/6.jpg" alt="">
                                         </div>
 
                                         <div class="media-body">
@@ -1044,7 +1067,7 @@
                                         </div>
 
                                         <div class="wis-commentors">
-                                            <a href=""><img src="img/profile-pics/6.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/6.jpg" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -1067,7 +1090,7 @@
                                 <div class="card-header">
                                     <div class="media">
                                         <div class="pull-left">
-                                            <img class="avatar-img" src="img/profile-pics/5.jpg" alt="">
+                                            <img class="avatar-img" src="img/demo/profile-pics/5.jpg" alt="">
                                         </div>
 
                                         <div class="media-body">
@@ -1119,11 +1142,11 @@
                                         </div>
 
                                         <div class="wis-commentors">
-                                            <a href=""><img src="img/profile-pics/2.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/3.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/1.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/6.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/4.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/2.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/3.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/1.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/6.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/4.jpg" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -1134,7 +1157,7 @@
                                     <div class="list-group">
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/2.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/2.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -1145,7 +1168,7 @@
 
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/4.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/4.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -1156,7 +1179,7 @@
 
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/3.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/3.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -1167,7 +1190,7 @@
 
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/6.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/6.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -1178,7 +1201,7 @@
 
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/3.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/3.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -1204,7 +1227,7 @@
                                 <div class="card-header">
                                     <div class="media">
                                         <div class="pull-left">
-                                            <img class="avatar-img" src="img/profile-pics/2.jpg" alt="">
+                                            <img class="avatar-img" src="img/demo/profile-pics/2.jpg" alt="">
                                         </div>
 
                                         <div class="media-body">
@@ -1261,10 +1284,10 @@
                                         </div>
 
                                         <div class="wis-commentors">
-                                            <a href=""><img src="img/profile-pics/1.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/7.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/9.jpg" alt=""></a>
-                                            <a href=""><img src="img/profile-pics/8.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/1.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/7.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/9.jpg" alt=""></a>
+                                            <a href=""><img src="img/demo/profile-pics/8.jpg" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -1275,7 +1298,7 @@
                                     <div class="list-group">
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/9.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/9.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -1285,7 +1308,7 @@
                                         </div>
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/8.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/8.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -1295,7 +1318,7 @@
                                         </div>
                                         <div class="list-group-item media">
                                             <a href="" class="pull-left">
-                                                <img src="img/profile-pics/3.jpg" alt="" class="lgi-img">
+                                                <img src="img/demo/profile-pics/3.jpg" alt="" class="lgi-img">
                                             </a>
 
                                             <div class="media-body">
@@ -1435,7 +1458,7 @@
                                 <div class="list-group">
                                     <a class="list-group-item media" href="">
                                         <div class="pull-left">
-                                            <img class="lgi-img" src="img/profile-pics/1.jpg" alt="">
+                                            <img class="lgi-img" src="img/demo/profile-pics/1.jpg" alt="">
                                         </div>
                                         <div class="media-body">
                                             <div class="lgi-heading">David Belle</div>
@@ -1444,7 +1467,7 @@
                                     </a>
                                     <a class="list-group-item media" href="">
                                         <div class="pull-left">
-                                            <img class="lgi-img" src="img/profile-pics/2.jpg" alt="">
+                                            <img class="lgi-img" src="img/demo/profile-pics/2.jpg" alt="">
                                         </div>
                                         <div class="media-body">
                                             <div class="lgi-heading">Jonathan Morris</div>
@@ -1453,7 +1476,7 @@
                                     </a>
                                     <a class="list-group-item media" href="">
                                         <div class="pull-left">
-                                            <img class="lgi-img" src="img/profile-pics/3.jpg" alt="">
+                                            <img class="lgi-img" src="img/demo/profile-pics/3.jpg" alt="">
                                         </div>
                                         <div class="media-body">
                                             <div class="lgi-heading">Fredric Mitchell Jr.</div>
@@ -1462,7 +1485,7 @@
                                     </a>
                                     <a class="list-group-item media" href="">
                                         <div class="pull-left">
-                                            <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                            <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                         </div>
                                         <div class="media-body">
                                             <div class="lgi-heading">Glenn Jecobs</div>
@@ -1471,7 +1494,7 @@
                                     </a>
                                     <a class="list-group-item media" href="">
                                         <div class="pull-left">
-                                            <img class="lgi-img" src="img/profile-pics/4.jpg" alt="">
+                                            <img class="lgi-img" src="img/demo/profile-pics/4.jpg" alt="">
                                         </div>
                                         <div class="media-body">
                                             <div class="lgi-heading">Bill Phillips</div>
@@ -1539,7 +1562,7 @@
 
         <!-- Page Loader -->
         <div class="page-loader">
-            <div class="preloader pls-white">
+            <div class="preloader pls-blue">
                 <svg class="pl-circular" viewBox="25 25 50 50">
                     <circle class="plc-path" cx="50" cy="50" r="20" />
                 </svg>
@@ -1599,8 +1622,8 @@
         <script src="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
         <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
-        <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="vendors/bower_components/lightgallery/dist/js/lightgallery-all.min.js"></script>
+        <script src="vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+        <script src="vendors/bower_components/lightgallery/lib/lightgallery-all.min.js"></script>
         <script src="vendors/bower_components/autosize/dist/autosize.min.js"></script>
 
         <!-- Placeholder for IE9 -->

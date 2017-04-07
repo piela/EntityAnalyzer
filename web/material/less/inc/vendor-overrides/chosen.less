@@ -25,7 +25,6 @@
                 background: transparent;
                 color: @text-color;
                 position: relative;
-                color: #444;
 
                 &:before {
                     content: "\f26b";
@@ -34,7 +33,6 @@
                     right: 15px;
                     top: 10px;
                     font-size: 19px;
-                    color: @card-bg;
                 }
             }
 
@@ -64,8 +62,6 @@
         border-bottom: 1px solid @input-border;
         background: none;
         box-shadow: none;
-        color: @off-white;
-        text-transform: none;
 
         .select-bg();
 
@@ -76,7 +72,7 @@
 
     .chosen-search {
         padding: 5px 5px 5px 40px;
-        background: #F7F7F7;
+        background: @ace;
 
         &:before {
             content: "\f1c3";
@@ -88,7 +84,6 @@
             height: 100%;
             font-size: 25px;
             padding: 5px 0 0 15px;
-            color: @card-bg;
         }
 
         input[type=text] {
@@ -96,7 +91,6 @@
             height: 35px;
             line-height: 1.42857143;
             background-image: none !important;
-            color: @card-bg;
         }
     }
 }
@@ -119,11 +113,10 @@
             &.search-choice {
                 border-radius: 2px;
                 margin: 4px 4px 0 0;
-                background: rgba(266,255,255,0.1);
+                background: darken(@ace, 5%);
                 padding: 5px 23px 5px 8px;
                 border: 0;
                 box-shadow: none;
-                color: @off-white;
                 font-size: 12px;
             }
 
@@ -146,13 +139,11 @@
         content: "\f135";
         position: relative;
         top: 1px;
-        color: @off-white;
+        color: #9C9C9C;
         z-index: 2;
-        background: #454F55;
+        background: #EAEAEA;
         font-size: 12px;
     }
 }
 
-select.chosen {
-    display: none;
-}
+

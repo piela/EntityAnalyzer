@@ -1,4 +1,6 @@
 .bootstrap-select {
+    width: 100%;
+
     .dropdown-toggle:focus {
         outline: none !important;
     }
@@ -9,16 +11,10 @@
 
     & > .btn-default {
         background: none !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-bottom: 1px solid #e0e0e0 !important;
         border-radius: 0;
         padding-left: 0;
         padding-right: 0;
-        position: relative;
-        color: @off-white;
-
-        &:hover {
-            color: @off-white;
-        }
 
         .select-bg();
     }
@@ -26,26 +22,24 @@
     .bs-searchbox {
         padding: 5px 5px 5px 40px;
         position: relative;
-        background: #f7f7f7;
+        background: @ace;
         margin-top: -10px;
 
         &:before {
             position: absolute;
             left: 0;
-            top: 1px;
+            top: 0;
             width: 40px;
             height: 100%;
             content: "\f1c3";
             font-family: @font-icon-md;
             font-size: 25px;
             padding: 4px 0 0 15px;
-            color: #313C42;
         }
 
         input {
             border: 0;
             background: transparent;
-            color: @text-dark;
         }
     }
 

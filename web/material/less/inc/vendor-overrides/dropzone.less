@@ -1,13 +1,13 @@
 .dropzone {
     border: 0;
-    background-color: rgba(255,255,255,.04);
+    background-color: #f3f3f3;
     border-radius: 2px;
 
     .dz-preview {
-        background-color: transparent !important;
-
         .dz-image {
             border-radius: 2px !important;
+            border: 4px solid #fff;
+            box-shadow: @card-shadow;
         }
 
         .dz-remove {
@@ -40,8 +40,9 @@
     .dz-message {
         span {
             font-size: 20px;
-            color: rgba(255,255,255,0.3);
-            border: 2px solid rgba(255,255,255,.04);
+            color: #b5b5b5;
+            text-shadow: 0 1px 1px #fff;
+            border: 2px solid #e4e4e4;
             padding: 15px 20px;
             display: inline-block;
             border-radius: 5px;
@@ -63,8 +64,8 @@
     &:hover {
         .dz-message {
             span {
-                border-color: rgba(255,255,255,0.1);
-                color: rgba(255,255,255,0.5)
+                border-color: darken(#e4e4e4, 5%);
+                color: darken(#b5b5b5, 5%);
             }
         }
     }

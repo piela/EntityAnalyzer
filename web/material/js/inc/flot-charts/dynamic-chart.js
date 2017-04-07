@@ -32,7 +32,6 @@ $(document).ready(function(){
         return res;
     }
 
-
     /*---------------------------------
         Create Chart
      ---------------------------------*/
@@ -46,13 +45,13 @@ $(document).ready(function(){
                     fill: 0.6
                 },
     
-                color: '#fff',
+                color: '#00BCD4',
                 shadowSize: 0,
             },
             yaxis: {
                 min: 0,
                 max: 100,
-                tickColor: '#333c42',
+                tickColor: '#eee',
                 font :{
                     lineHeight: 13,
                     style: "normal",
@@ -62,7 +61,7 @@ $(document).ready(function(){
     
             },
             xaxis: {
-                tickColor: '#333c42',
+                tickColor: '#eee',
                 show: true,
                 font :{
                     lineHeight: 13,
@@ -75,22 +74,16 @@ $(document).ready(function(){
             },
             grid: {
                 borderWidth: 1,
-                borderColor: '#333c42',
+                borderColor: '#eee',
                 labelMargin:10,
                 hoverable: true,
                 clickable: true,
-                mouseActiveRadius:6,
+                mouseActiveRadius:6
             },
             legend:{
-                container: '.flc-dynamic',
-                backgroundOpacity: 0.5,
-                noColumns: 0,
-                backgroundColor: "white",
-                lineWidth: 0
+                show: false
             }
         });
-
-
 
         /*---------------------------------
             Update
