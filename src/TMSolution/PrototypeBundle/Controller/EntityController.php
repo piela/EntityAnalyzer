@@ -35,12 +35,12 @@ class EntityController extends FOSRestController {
     }
 
     public function listAction(Request $request) {
-        //form z lexika 
+        
         $driver = $this->getDriver($request, self::_LIST);
         $this->isActionAllowed($driver);
         $result = $this->invokeModelMethod($driver, self::_LIST, [$driver->getEntityClass(), $request->query]);
         $data = [];
-        $this->addResultToData($driver, self::_LIST, $data, $result);
+        $this->addResultToData($driver, self::_LIST, $data, $result,true);
         $view = $this->view($data, 200)
                 ->setTemplateData([
                     'driver' => $driver,
@@ -75,7 +75,6 @@ class EntityController extends FOSRestController {
                 return $this->handleView($view);
             }
         }
-
 
         $view = $this->view($data, 200)
                 ->setTemplateData([
@@ -250,10 +249,18 @@ class EntityController extends FOSRestController {
         }
     }
 
-    protected function addResultToData($driver, $modelName, &$data, $result) {
+    protected function addResultToData($driver, $modelName, &$data, $result, $required=false) {
         if ($driver->hasModel($modelName)) {
-            if ($driver->returnResultToView($modelName)) {
-                $data[$driver->getResultParameter($modelName)] = $result;
+            $resultParameter=$driver->getResultParameter($modelName);
+            if ($resultParameter) {
+                $data[$resultParameter] = $result;
+            }
+            else{
+               
+                if($required)
+                {
+                    throw new \Exception('Model "%s" must result parameter. Set paremter name in config - result_parameter',$modelName);
+                }
             }
         }
 

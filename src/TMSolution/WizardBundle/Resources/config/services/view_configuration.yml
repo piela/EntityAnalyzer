@@ -4,17 +4,16 @@ parameters:
             allowed: true
             form: 
                    action: new 
-                   form_type_class: 'TMSolution\WizardBundle\Form\ViewConfigurationType'
+                   form_type: 'TMSolution\WizardBundle\Form\ViewConfigurationType'
             models:
                  get:
                         name: 'tm_solution_wizard.model'
                         method: findOneById
-                        return_result_to_view: true
                         result_parameter: viewConfiguration    
         actions: 
             new:
                templates:
-                    element: 'viewconfiguration\new.html.twig'
+                    widget: 'viewconfiguration\new.html.twig'
                models:
                     create:
                         name: 'tm_solution_wizard.model'
@@ -24,19 +23,18 @@ parameters:
                     route_name: list                                     
             list:
                 templates:
-                    element: 'viewconfiguration\index.html.twig' 
+                    widget: 'viewconfiguration\index.html.twig' 
                 models:
                     list:
                         name: 'tm_solution_wizard.model'
                         method: search
-                        return_result_to_view: true
                         result_parameter: viewConfigurations   
             get:
                 templates:
-                    element: 'viewconfiguration\show.html.twig'
+                    widget: 'viewconfiguration\show.html.twig'
             edit:
                 templates:
-                    element: 'viewconfiguration\edit.html.twig'            
+                    widget: 'viewconfiguration\edit.html.twig'            
    
    
 services:

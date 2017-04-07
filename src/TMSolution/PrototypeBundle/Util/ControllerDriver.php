@@ -130,7 +130,7 @@ class ControllerDriver implements ControllerDriverInterface {
     
     public function getFormTypeClass() {
 
-        $formTypeClass = $this->configuration->get('form.form_type_class');
+        $formTypeClass = $this->configuration->get('form.form_type');
         return $formTypeClass;
     }
 
@@ -143,7 +143,7 @@ class ControllerDriver implements ControllerDriverInterface {
 
     public function getTemplate() {
 
-        $template = $this->configuration->get('templates.element');
+        $template = $this->configuration->get('templates.widget');
 
         return $template;
     }
