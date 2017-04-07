@@ -131,7 +131,6 @@ class ControllerDriver implements ControllerDriverInterface {
     public function getFormTypeClass() {
 
         $formTypeClass = $this->configuration->get('form.form_type_class');
-
         return $formTypeClass;
     }
 

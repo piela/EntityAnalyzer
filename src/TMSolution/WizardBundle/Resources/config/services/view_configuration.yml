@@ -10,16 +10,12 @@ parameters:
                         name: 'tm_solution_wizard.model'
                         method: findOneById
                         return_result_to_view: true
-                        result_parameter: viewConfiguration   
-        
+                        result_parameter: viewConfiguration    
         actions: 
             new:
                templates:
                     element: 'viewconfiguration\new.html.twig'
                models:
-                    prepare:
-                        name: 'tm_solution_wizard.map_reader'
-                        method: getEntities
                     create:
                         name: 'tm_solution_wizard.model'
                         method: save
@@ -53,8 +49,11 @@ services:
         tm_solution_wizard.model:
             class: TMSolution\ModelBundle\Util\Model
             arguments: ['@doctrine.orm.entity_manager']
-            
-        tm_solution_wizard.map_reader:
-            class: TMSolution\WizardBundle\Util\MapReader
-            arguments: [%tm_solution_mapper.entities%]    
+              
+        tm_solution_wizard.form.friend_message:
+            class: TMSolution\WizardBundle\Form\ViewConfigurationType
+            arguments: ['@tm_solution_wizard.model']
+            tags:
+                - { name: form.type }
+    
             

@@ -12,12 +12,22 @@ class ViewConfigurationType extends AbstractType
     /**
      * {@inheritdoc}
      */
+    
+    protected $mapReader;
+    
+    public function __construct($mapReader)
+    {
+        $this->mapReader=$mapReader;
+        
+    }
+    
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name')->add('address')->add('viewType')
         ->add('entity', ChoiceType::class, [
             'label' => 'Entity',
-            'choices' => $options['form_options']['entities']
+            'choices' => $this->mapReader->getEntities()
         ]);
         
         
@@ -30,7 +40,7 @@ class ViewConfigurationType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'TMSolution\WizardBundle\Entity\ViewConfiguration',
-            'form_options'=>[]
+   
         ));
     }
 

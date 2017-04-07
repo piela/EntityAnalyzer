@@ -24,7 +24,6 @@ class EntityController extends FOSRestController {
     const _EDIT = 'edit';
     const _UPDATE = 'update';
     const _DELETE = 'delete';
-    const _PREPARE = 'prepare';
     const APPLICATION_PATH = 'application_path';
     const ENTITIES_PATH = 'entities_path';
 
@@ -58,8 +57,7 @@ class EntityController extends FOSRestController {
         $entityClass = $driver->getEntityClass();
         $entity = $this->createEntity($entityClass);
         $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver, $entity));
-        $formOptions = $this->invokeModelMethod($driver, self::_PREPARE, [$entity], true);
-        $form = $this->createForm($driver->getFormTypeClass(), $entity, ['action' => $this->getFormActionUrl($driver),'form_options' => $formOptions]);
+        $form = $this->createForm($driver->getFormTypeClass(), $entity, ['action' => $this->getFormActionUrl($driver)]);
         $result = $this->invokeModelMethod($driver, self::_NEW, [$entity], true);
         $form->handleRequest($request);
         $data = ['entity' => $entity];
@@ -136,8 +134,8 @@ class EntityController extends FOSRestController {
         $data['entity'] = $entity;
         $this->addResultToData($driver, self::_EDIT, $data, $entity);
         $deleteForm = $this->createDeleteForm($request, $entity);
-        $formOptions = $this->invokeModelMethod($driver, self::_PREPARE, [$entity], true);
-        $editForm = $this->createForm($driver->getFormTypeClass(), $entity, ['action' => $this->getFormActionUrl($driver, ['id' => $entity->getId()]), 'form_options' => $formOptions]);
+
+        $editForm = $this->createForm($driver->getFormTypeClass(), $entity, ['action' => $this->getFormActionUrl($driver, ['id' => $entity->getId()])]);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
