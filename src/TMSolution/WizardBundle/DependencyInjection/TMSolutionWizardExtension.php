@@ -25,8 +25,8 @@ class TMSolutionWizardExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $loader->load('services/view_type.yml');
-
         $loader->load('services/view_configuration.yml');
+        
         $loader->load('services.yml');
     }
 }

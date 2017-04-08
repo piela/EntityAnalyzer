@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Menuitem</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ menuItem.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ menuItem.name }}</td>
+            </tr>
+            <tr>
+                <th>Route</th>
+                <td>{{ menuItem.route }}</td>
+            </tr>
+            <tr>
+                <th>Routeparameters</th>
+                <td>
+                    <ul>
+                        {% for item in menuItem.routeParameters  %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Lft</th>
+                <td>{{ menuItem.lft }}</td>
+            </tr>
+            <tr>
+                <th>Lvl</th>
+                <td>{{ menuItem.lvl }}</td>
+            </tr>
+            <tr>
+                <th>Rgt</th>
+                <td>{{ menuItem.rgt }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('list',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath }) }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': menuItem.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

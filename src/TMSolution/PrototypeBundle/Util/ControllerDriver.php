@@ -67,9 +67,13 @@ class ControllerDriver implements ControllerDriverInterface {
 
             if (array_key_exists('route_name', $redirection)) {
                 return $redirection['route_name'];
+            }else
+            {
+                throw new \Exception('No route_name in redirection');
             }
+            
         } else {
-            throw new \Exception('No routeName in redirection');
+            throw new \Exception('No redirection parameter');
         }
     }
 

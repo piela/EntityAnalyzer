@@ -13,8 +13,9 @@
         <link href="{{ asset('material/vendors/bower_components/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet">
         <link href="{{ asset('material/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css')}}" rel="stylesheet">
         <link href="{{ asset('material/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css')}}" rel="stylesheet">
-
+        <link href="{{ asset('material/vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css')}}" rel="stylesheet">
         <!-- CSS -->
+        <link href="{{ asset('material/vendors/bower_components/chosen/chosen.css')}}" rel="stylesheet">
         <link href="{{ asset('material/css/app_1.min.css')}}" rel="stylesheet">
         <link href="{{ asset('material/css/app_2.min.css')}}" rel="stylesheet">
     {% endblock %}
@@ -307,6 +308,8 @@
                 </ul>
             </div>
 
+            {{ knp_menu_render('main',{'template': 'Menu/knp_menu.html.twig', 'depth':2, 'currentClass': 'active','ancestorClass':'toogle active'}) }}        
+                    
             <ul class="main-menu">
                 <li class="active">
                     <a href="index.html"><i class="zmdi zmdi-home"></i> Home</a>
@@ -507,12 +510,7 @@
         <section id="content">
 
             <div class="card">
-                <div class="card-header">
-                    <h2>Praesent vitae justo purus
-                        <small>In hendrerit lorem nislac lacinia</small>
-                    </h2>
-                </div>
-
+                
                 <div class="card-body">
                     <div class='list-group'>
                         <div class="p-15">
@@ -602,6 +600,8 @@
 <script src="{{ asset('material/vendors/sparklines/jquery.sparkline.min.js')}}"></script>
 <script src="{{ asset('material/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js')}}"></script>
 
+<script src="{{ asset('material/vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js')}}"></script>
+<script src="{{ asset('material/vendors/bower_components/chosen/chosen.jquery.js')}}"></script>
 <script src="{{ asset('material/vendors/bower_components/moment/min/moment.min.js')}}"></script>
 <script src="{{ asset('material/vendors/bower_components/fullcalendar/dist/fullcalendar.min.js')}} "></script>
 <script src="{{ asset('material/vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js')}}"></script>

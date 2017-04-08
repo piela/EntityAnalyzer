@@ -29,9 +29,9 @@ col-sm-1 control-label-reset
     <div class="form-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
         {{ form_label(form) }}
         <div class="{{ block('form_group_class') }}">
-            <div class="fg-line">
+           {# <div class="fg-line">#}
             {{ form_widget(form) }}
-            </div>
+           {# </div> #}
             {{ form_errors(form) }}
         </div>
     </div>

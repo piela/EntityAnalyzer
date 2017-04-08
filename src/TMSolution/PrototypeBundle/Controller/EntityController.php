@@ -305,8 +305,8 @@ class EntityController extends FOSRestController {
 
         if (is_array($formAction)) {
 
-            if (!array_key_exists('routeName', $formAction)) {
-                throw new \Exception('Parameter "routeName" for "formAciton" doesn\'t exists ');
+            if (!array_key_exists('route_name', $formAction)) {
+                throw new \Exception('Parameter "route_name" for form "action" doesn\'t exists ');
             }
 
             if (array_key_exists('parameters', $formAction)) {

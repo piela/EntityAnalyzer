@@ -191,6 +191,9 @@ $(document).ready(function () {
                 break;
 
 
+
+
+
             /*-------------------------------------------
                 Action Header Open/Close
             ---------------------------------------------*/
@@ -410,7 +413,7 @@ $(document).ready(function(){
     var data1 = [[1,60], [2,30], [3,50], [4,100], [5,10], [6,90], [7,85]];
     var data2 = [[1,20], [2,90], [3,60], [4,40], [5,100], [6,25], [7,65]];
     var data3 = [[1,100], [2,20], [3,60], [4,90], [5,80], [6,10], [7,5]];
-    
+
     // Create an Array push the data + Draw the bars
 
     var barData = [
@@ -451,7 +454,7 @@ $(document).ready(function(){
                 hoverable : true,
                 clickable : true
             },
-            
+
             yaxis: {
                 tickColor: '#eee',
                 tickDecimals: 0,
@@ -462,7 +465,7 @@ $(document).ready(function(){
                 },
                 shadowSize: 0
             },
-            
+
             xaxis: {
                 tickColor: '#fff',
                 tickDecimals: 0,
@@ -473,7 +476,7 @@ $(document).ready(function(){
                 },
                 shadowSize: 0,
             },
-    
+
             legend:{
                 container: '.flc-bar',
                 backgroundOpacity: 0.5,
@@ -498,10 +501,11 @@ $(document).ready(function(){
                 $(".flot-tooltip").hide();
             }
         });
-        
+
         $("<div class='flot-tooltip' class='chart-tooltip'></div>").appendTo("body");
     }
 });
+
 $(document).ready(function(){
 
     /*-----------------------------------------
@@ -799,6 +803,7 @@ $(document).ready(function(){
         $.plot($("#effective-index"), dataset, options);
     }
 });
+
 $(document).ready(function(){
     var feeData = [
         {data: 5, color: '#03A9F4', label: 'Collected'},

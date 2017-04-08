@@ -1,0 +1,14 @@
+services:
+
+services:
+    tm_solution_menu.sample_menu_builder:
+        class: TMSolution\MenuBundle\Menu\SampleMenuBuilder
+        arguments: ['@knp_menu.factory','@doctrine.orm.entity_manager','main']
+
+    tm_solution_menu.main_menu:
+        class: Knp\Menu\MenuItem 
+        factory: ['@tm_solution_menu.sample_menu_builder', createMainMenu]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: main }
+

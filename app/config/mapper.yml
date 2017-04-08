@@ -8,13 +8,47 @@ tm_solution_mapper:
             bundles:
                 - tm_solution_sample_entities
             name: api
-            
         wizard:
             bundles:
                 - tm_solution_wizard
-            name: wizard    
+            name: wizard
             
+        menu:
+            bundles:
+                - tm_solution_menu
+            name: menu    
     entities:
+        gedmo_lo:
+            log_entry:
+                alias: log-entry
+                entity_class: Gedmo\Loggable\Entity\LogEntry
+        gedmo_loggable:
+            abstract_log_entry:
+                alias: abstract-log-entry
+                entity_class: Gedmo\Loggable\Entity\MappedSuperclass\AbstractLogEntry
+        gedmo_tran:
+            translation:
+                alias: translation
+                entity_class: Gedmo\Translator\Entity\Translation
+        gedmo_transl:
+            translation:
+                alias: translation
+                entity_class: Gedmo\Translatable\Entity\Translation
+        gedmo_translatable:
+            abstract_personal_translation:
+                alias: abstract-personal-translation
+                entity_class: Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation
+            abstract_translation:
+                alias: abstract-translation
+                entity_class: Gedmo\Translatable\Entity\MappedSuperclass\AbstractTranslation
+        gedmo_tree:
+            abstract_closure:
+                alias: abstract-closure
+                entity_class: Gedmo\Tree\Entity\MappedSuperclass\AbstractClosure
+        tm_solution_menu:
+            menu_item:
+                alias: menu-item
+                entity_class: TMSolution\MenuBundle\Entity\MenuItem
         tm_solution_sample_entities:
             discount:
                 alias: discount

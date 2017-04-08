@@ -24,9 +24,20 @@ class ViewConfigurationType extends AbstractType
     
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('address')->add('viewType')
+        $builder->add('name')->add('address')->add('viewType', ChoiceType::class, [
+          
+            'attr' =>[
+                'class'=>'chosen'
+                
+            ]
+         
+        ])
         ->add('entity', ChoiceType::class, [
             'label' => 'Entity',
+            'attr' =>[
+                'class'=>'chosen'
+                
+            ],
             'choices' => $this->mapReader->getEntities()
         ]);
         

@@ -88,7 +88,7 @@
 {%- endblock time_widget %}
 
 {% block choice_widget_collapsed -%}
-    {% set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) %}
+    {% set attr = attr|merge({class: (attr.class|default('') ~ '')|trim}) %}
     {{- parent() -}}
 {%- endblock %}
 
