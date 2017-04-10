@@ -102,7 +102,8 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
     
-fos_rest:  
+fos_rest: 
+
     view:
         formats:
             json: true
@@ -117,7 +118,7 @@ fos_rest:
         json: true    
     format_listener:
             rules:
-                - { path: '^/', priorities: ['html'], prefer_extension: false }    
+                - { path: '^/', priorities: [ 'html', 'json', 'xml' ], prefer_extension: false }    
 
 
 tm_solution_prototype:

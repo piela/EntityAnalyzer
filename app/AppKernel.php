@@ -31,6 +31,8 @@ class AppKernel extends Kernel
             new TMSolution\GeneratorBundle\TMSolutionGeneratorBundle(),
             new TMSolution\FormTypeTemplatesBundle\TMSolutionFormTypeTemplatesBundle(),
             new TMSolution\WizardBundle\TMSolutionWizardBundle(),
+            new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             /*form menu*/
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new TMSolution\MenuBundle\TMSolutionMenuBundle(),

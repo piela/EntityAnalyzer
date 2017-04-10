@@ -2,9 +2,7 @@ parameters:
     tm_solution_menu_menu_item.config: 
         base:
             allowed: true
-            form: 
-                   action: new 
-                   form_type: 'TMSolution\MenuBundle\Form\MenuItemType'
+                   
             models:
                  get:
                         name: 'tm_solution_menu.model'
@@ -18,10 +16,11 @@ parameters:
                     create:
                         name: 'tm_solution_menu.model'
                         method: save
-                        result_parameter: menuItem    
-                      
+                        result_parameter: menuItem
+                        
                form: 
                    action: new 
+                   form_type: 'TMSolution\MenuBundle\Form\MenuItemType'
                redirection: 
                     route_name: list                                     
             list:
@@ -29,9 +28,15 @@ parameters:
                     widget: 'menuitem\index.html.twig' 
                 models:
                     list:
-                        name: 'tm_solution_menu.model'
-                        method: search
-                        result_parameter: menuItems   
+                        name: 'tm_solution_menu.list_model'
+                        method: find
+                        result_parameter: menuItems 
+                        data_parameter: items
+                form: 
+                   form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
+                   action: list
+                   method: GET
+                        
             get:
                 templates:
                     widget: 'menuitem\show.html.twig'
@@ -39,6 +44,7 @@ parameters:
                 templates:
                     widget: 'menuitem\edit.html.twig' 
                 form: 
+                   form_type: 'TMSolution\MenuBundle\Form\MenuItemType' 
                    action: edit
                 models:
                     update:
@@ -67,6 +73,19 @@ services:
         tm_solution_menu.model:
             class: TMSolution\ModelBundle\Util\Model
             arguments: ['@doctrine.orm.entity_manager']
+            
+            
+        tm_solution_menu.paginator:    
+            class: TMSolution\MenuBundle\Model\Paginator
+            arguments: ['@knp_paginator',5 ]    
+       
+        tm_solution_menu.filter:
+            class: TMSolution\MenuBundle\Model\Filter
+            arguments: ['@lexik_form_filter.query_builder_updater']
+        tm_solution_menu.list_model:
+            class: TMSolution\MenuBundle\Model\Model
+            arguments: ['@doctrine.orm.entity_manager','@tm_solution_menu.filter','@tm_solution_menu.paginator' ]    
+            
             
            
        
