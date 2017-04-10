@@ -80,5 +80,9 @@ tm_solution_prototype:
             templates:
                 container: 'Default\Container\blank.html.twig'
                 element: 'Default\Element\delete.html.twig'
+                widget: 'viewtype\delete.html.twig'
+            form: 
+                action: delete 
+                form_type: 'TMSolution\WizardBundle\Form\ViewTypeType'       
             redirection: 
                     route_name: list    
