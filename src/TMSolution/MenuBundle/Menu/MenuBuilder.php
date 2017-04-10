@@ -5,7 +5,7 @@ namespace TMSolution\MenuBundle\Menu;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class SampleMenuBuilder {
+class MenuBuilder {
 
     protected $factory;
     protected $orm;

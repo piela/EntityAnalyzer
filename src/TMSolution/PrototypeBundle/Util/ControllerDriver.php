@@ -33,24 +33,23 @@ class ControllerDriver implements ControllerDriverInterface {
     }
 
     public function returnResultToView($modelName) {
-        
-        $returnToViewParameter=sprintf('models.%s.return_result_to_view',$modelName);
- 
+
+        $returnToViewParameter = sprintf('models.%s.return_result_to_view', $modelName);
+
         if ($this->configuration->has($returnToViewParameter)) {
             return $this->configuration->get($returnToViewParameter);
-
         } else {
-             return false;
+            return false;
         }
     }
 
     public function getResultParameter($modelName) {
-        
-        $resultParameter=sprintf('models.%s.result_parameter',$modelName);
+
+        $resultParameter = sprintf('models.%s.result_parameter', $modelName);
         if ($this->configuration->has($resultParameter)) {
             return $this->configuration->get($resultParameter);
         } else {
-             throw new \Exception(sprintf('No result_parameter for %s',$modelName));
+            throw new \Exception(sprintf('No result_parameter for %s', $modelName));
         }
     }
 
@@ -67,11 +66,9 @@ class ControllerDriver implements ControllerDriverInterface {
 
             if (array_key_exists('route_name', $redirection)) {
                 return $redirection['route_name'];
-            }else
-            {
+            } else {
                 throw new \Exception('No route_name in redirection');
             }
-            
         } else {
             throw new \Exception('No redirection parameter');
         }
@@ -113,29 +110,61 @@ class ControllerDriver implements ControllerDriverInterface {
 
 
             return $model;
-        } 
-       else {
+        } else {
 
-           throw new \Exception('Model %s doesn\'t exists in configuration');
-       }
+            throw new \Exception('Model %s doesn\'t exists in configuration');
+        }
+    }
+
+    public function hasModelDataParameter($name) {
+
+        $dataParameterPath = sprintf('models.%s.data_parameter', $name);
+
+        if ($this->configuration->has($dataParameterPath)) {
+            return true;
+        }
+    }
+
+    public function getModelDataParameter($name) {
+
+        $dataParameterPath = sprintf('models.%s.data_parameter', $name);
+
+        return $this->configuration->get($dataParameterPath);
     }
 
     public function hasModel($name) {
 
         $modelName = sprintf('models.%s', $name);
-       
-        if($this->configuration->has($modelName))
-        {
+
+        if ($this->configuration->has($modelName)) {
             return true;
         }
-        
     }
-    
-    
+
     public function getFormTypeClass() {
 
         $formTypeClass = $this->configuration->get('form.form_type');
         return $formTypeClass;
+    }
+
+    public function hasFormTypeClass() {
+
+        if ($this->configuration->has('form.form_type')) {
+            return true;
+        }
+    }
+
+    public function hasFormMethod() {
+
+        if ($this->configuration->has('form.method')) {
+
+            return true;
+        }
+    }
+
+    public function getFormMethod() {
+
+        return $this->configuration->get('form.method');
     }
 
     public function getFormAction() {
