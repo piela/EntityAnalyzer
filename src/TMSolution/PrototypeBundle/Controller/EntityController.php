@@ -55,7 +55,7 @@ class EntityController extends FOSRestController {
         }
 
         $result = $this->invokeModelMethod($driver, self::_LIST, [$driver->getEntityClass(), $request, $form], true);
-        $adapter = $this->getAdapter($result);
+        $adapter->setObject($result);
         $view = $this->view($adapter->getData(), 200)
                 ->setTemplateVar($this->getTemplateVar($driver))
                 ->setTemplateData($adapter->getTemplateData(['driver' => $driver, 'is_xml_http' => $request->isXmlHttpRequest()]))

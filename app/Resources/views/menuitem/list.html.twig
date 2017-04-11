@@ -1,5 +1,4 @@
-{{dump()}}
-{#    <table class='table'>
+    <table class='table'>
         <thead>
             <tr>
                 <th>Id</th>
@@ -15,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for menuItem in items.paginator %}
+            {% for menuItem in paginator %}
                 <tr>
                     <td><a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': menuItem.id }) }}">{{ menuItem.id }}</a></td>
                     <td>{{ menuItem.name }}</td>
@@ -58,6 +57,6 @@
         </tbody>
     </table>
     <div class="navigation">
-        {{ knp_pagination_render(items.paginator) }}
+        {{ knp_pagination_render(paginator) }}
     </div>
-#}
+

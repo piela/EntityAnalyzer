@@ -36,7 +36,9 @@ parameters:
                 form: 
                    form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
                    action: list
-                   method: GET               
+                   method: GET
+                adapter: 'tm_solution_menu.paginator_adapter'
+                    
             typeahead:
                 allowed: 
                         - xhttp
@@ -105,8 +107,10 @@ services:
         tm_solution_menu.filter:
             class: TMSolution\MenuBundle\Model\Filter
             arguments: ['@lexik_form_filter.query_builder_updater']
-            
         
+        tm_solution_menu.paginator_adapter:
+            class: TMSolution\MenuBundle\Model\PaginatorAdapter
+            
         tm_solution_menu.list_model:
             class: TMSolution\MenuBundle\Model\Model
             arguments: ['@tm_solution_menu.model','@tm_solution_menu.filter','@tm_solution_menu.paginator' ]    
