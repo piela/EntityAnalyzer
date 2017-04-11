@@ -6,7 +6,7 @@ parameters:
                  get:
                         name: 'tm_solution_menu.model'
                         method: findOneById
-                        result_parameter: menuItem    
+   
         actions: 
             new:
                templates:
@@ -15,7 +15,7 @@ parameters:
                     create:
                         name: 'tm_solution_menu.model'
                         method: save
-                        result_parameter: menuItem
+
                         
                form: 
                    action: new 
@@ -32,7 +32,6 @@ parameters:
                     list:
                         name: 'tm_solution_menu.list_model'
                         method: find
-                        data_adapter: xyz
                 form: 
                    form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
                    action: list
@@ -48,7 +47,7 @@ parameters:
                     list:
                         name: 'tm_solution_menu.typeahead'
                         method: find
-                        result_parameter: items 
+  
      
                 form: 
                    form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
@@ -102,7 +101,7 @@ services:
             
         tm_solution_menu.paginator:    
             class: TMSolution\MenuBundle\Model\Paginator
-            arguments: ['@knp_paginator',3 ]    
+            arguments: ['@knp_paginator',10 ]    
        
         tm_solution_menu.filter:
             class: TMSolution\MenuBundle\Model\Filter
