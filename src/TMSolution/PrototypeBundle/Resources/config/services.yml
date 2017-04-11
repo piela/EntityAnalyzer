@@ -22,7 +22,7 @@ services:
    
     tm_solution_prototype.entity_controller:
         class: TMSolution\PrototypeBundle\Controller\EntityController
-        arguments: ['@service_container','@tm_solution_prototype.configuration_factory']
+        arguments: ['@service_container','@tm_solution_prototype.configuration_factory','@request_stack']
         
     tm_solution_prototype.test_controller:
         class: TMSolution\PrototypeBundle\Controller\TestController

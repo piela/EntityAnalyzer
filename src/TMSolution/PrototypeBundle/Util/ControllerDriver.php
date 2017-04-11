@@ -13,7 +13,7 @@ class ControllerDriver implements ControllerDriverInterface {
         $this->configuration = $configuration;
     }
 
-    public function isActionAllowed() {
+    public function getActionAllowed() {
         return $this->configuration->get('allowed');
     }
 
@@ -179,6 +179,25 @@ class ControllerDriver implements ControllerDriverInterface {
         $template = $this->configuration->get('templates.widget');
 
         return $template;
+    }
+
+    public function getXHTTP() {
+
+        if ($this->configuration->has('xhttp')) {
+
+            return $this->configuration->get('xhttp');
+        } else {
+            return false;
+        }
+    }
+
+    public function getInner() {
+
+        if ($this->configuration->has('inner')) {
+            return $this->configuration->get('inner');
+        } else {
+            return false;
+        }
     }
 
 }

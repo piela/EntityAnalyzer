@@ -2,7 +2,6 @@ parameters:
     tm_solution_menu_menu_item.config: 
         base:
             allowed: true
-                   
             models:
                  get:
                         name: 'tm_solution_menu.model'
@@ -24,6 +23,9 @@ parameters:
                redirection: 
                     route_name: list                                     
             list:
+                allowed: 
+                        - xhttp
+                        - inner
                 templates:
                     widget: 'menuitem\query.html.twig' 
                 models:
@@ -35,9 +37,7 @@ parameters:
                 form: 
                    form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
                    action: list
-                   method: GET            
-            
-                        
+                   method: GET               
             typeahead:
                 templates:
                     widget: 'menuitem\query.html.twig' 
@@ -50,10 +50,7 @@ parameters:
                 form: 
                    form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
                    action: list
-                   method: GET            
-                        
-                        
-                        
+                   method: GET                                  
             filter:
                 templates:
                     widget: 'menuitem\index.html.twig' 
@@ -61,10 +58,7 @@ parameters:
                 form: 
                    form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
                    method: GET
-                   action: filter
-                   
-                   
-                        
+                   action: filter   
             get:
                 templates:
                     widget: 'menuitem\show.html.twig'
@@ -80,8 +74,7 @@ parameters:
                         method: update
                         result_parameter: menuItem
                 redirection:
-                    route_name: list    
-                   
+                    route_name: list       
             delete:
                 models:
                     delete:

@@ -6,7 +6,7 @@ namespace TMSolution\PrototypeBundle\Util;
 interface ControllerDriverInterface {
 
   
-    public function isActionAllowed();
+    public function getActionAllowed();
 
     public function getEntityClass(); 
     

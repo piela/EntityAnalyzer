@@ -27,16 +27,19 @@ class EntityController extends FOSRestController {
     const ENTITIES_PATH = 'entities_path';
 
     protected $configurationFactory;
+    protected $requestStack;
 
-    public function __construct(ContainerInterface $container, ControllerConfigurationFactoryInterface $configurationFactory) {
+    public function __construct(ContainerInterface $container, ControllerConfigurationFactoryInterface $configurationFactory, $requestStack) {
         $this->container = $container;
         $this->configurationFactory = $configurationFactory;
+        $this->requestStack = $requestStack;
     }
 
     public function listAction(Request $request, $action) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver);
+
+        $this->isActionAllowed($driver,$request);
         $entityClass = $driver->getEntityClass();
         $entity = $this->createEntity($entityClass);
         $formTypeClass = $this->getFormTypeClass($driver, false);
@@ -65,7 +68,7 @@ class EntityController extends FOSRestController {
     public function filterAction(Request $request, $action) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver);
+        $this->isActionAllowed($driver,$request);
         $entityClass = $driver->getEntityClass();
         $entity = $this->createEntity($entityClass);
         $this->denyAccessUnlessGranted(self::_LIST, $this->getSecurityTicket($driver, $entity));
@@ -84,13 +87,11 @@ class EntityController extends FOSRestController {
 
         return $this->handleView($view);
     }
-    
-    
 
     public function newAction(Request $request, $action) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver);
+        $this->isActionAllowed($driver,$request);
         $entityClass = $driver->getEntityClass();
         $entity = $this->createEntity($entityClass);
         $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver, $entity));
@@ -131,7 +132,7 @@ class EntityController extends FOSRestController {
     public function getAction(Request $request, $action, $id) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver);
+        $this->isActionAllowed($driver,$request);
         //find
         $entity = $this->invokeModelMethod($driver, self::_GET, [$driver->getEntityClass(), $id, $request]);
         $this->checkEntityExists($driver, $entity);
@@ -160,7 +161,7 @@ class EntityController extends FOSRestController {
     public function editAction(Request $request, $action, $id) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver);
+        $this->isActionAllowed($driver,$request);
         //find
         $entity = $this->invokeModelMethod($driver, self::_GET, [$driver->getEntityClass(), $id, $request]);
         $this->checkEntityExists($driver, $entity);
@@ -206,7 +207,7 @@ class EntityController extends FOSRestController {
     public function deleteAction(Request $request, $action, $id) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver);
+        $this->isActionAllowed($driver,$request);
         $entity = $this->invokeModelMethod($driver, self::_GET, [$driver->getEntityClass(), $id, $request]);
         $this->checkEntityExists($driver, $entity);
         $this->denyAccessUnlessGranted(self::_DELETE, $this->getSecurityTicket($driver, $entity));
@@ -279,9 +280,46 @@ class EntityController extends FOSRestController {
         return new $entityClass;
     }
 
-    protected function isActionAllowed($driver) {
+    protected function isActionAllowed($driver, $request) {
 
-        if (!$driver->isActionAllowed()) {
+        if ($this->checkActionAllowed($driver, $request)) {
+            return true;
+        } else {
+
+            throw new NotFoundHttpException('Action not allowed');
+        }
+    }
+
+    protected function checkActionAllowed($driver, $request) {
+
+        $actionAllowed = $driver->getActionAllowed();
+        
+        if (is_array($actionAllowed)) {
+       
+            if (in_array('xhttp', $actionAllowed)) {
+                
+                if ($request->isXmlHttpRequest()) {
+                    return true;
+                }
+            }
+
+            if (in_array('inner', $actionAllowed)) {
+     
+                if ($this->requestStack->getParentRequest()) {
+                    return true;
+                }
+            }
+        } else if ($actionAllowed == true) {
+            return true;
+        }
+
+
+        return false;
+    }
+
+    protected function isRequestTypeAllowed($driver, $request) {
+
+        if (!$this->isXHTTP($driver, $request) && !$this->isInner($driver, $request)) {
             throw new NotFoundHttpException('Action not allowed');
         }
     }
