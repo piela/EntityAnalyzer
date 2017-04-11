@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('list',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath }) }}">List</a>
+            <a href="{{ path('filter',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath }) }}">List</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

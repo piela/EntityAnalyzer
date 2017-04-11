@@ -21,7 +21,7 @@ parameters:
                    action: new 
                    form_type: 'TMSolution\MenuBundle\Form\MenuItemType'
                redirection: 
-                    route_name: list                                     
+                    route_name: filter                                     
             list:
                 allowed: 
                         - xhttp
@@ -32,15 +32,17 @@ parameters:
                     list:
                         name: 'tm_solution_menu.list_model'
                         method: find
-                        result_parameter: menuItems 
+                        result_parameter: items 
                         data_parameter: items      
                 form: 
                    form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
                    action: list
                    method: GET               
             typeahead:
+                allowed: 
+                        - xhttp
                 templates:
-                    widget: 'menuitem\query.html.twig' 
+                    widget: 'blank.html.twig' 
                 models:
                     list:
                         name: 'tm_solution_menu.typeahead'
@@ -74,14 +76,14 @@ parameters:
                         method: update
                         result_parameter: menuItem
                 redirection:
-                    route_name: list       
+                    route_name: filter       
             delete:
                 models:
                     delete:
                         name: 'tm_solution_menu.model'
                         method: delete
                 redirection:
-                    route_name: list
+                    route_name: filter
    
    
 services:
