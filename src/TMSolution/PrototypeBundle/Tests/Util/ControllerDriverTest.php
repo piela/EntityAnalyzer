@@ -32,6 +32,9 @@ class ControllerDriverTest extends TestCase {
     static protected $expected_application_path = 'admin/some/other/path';
     static protected $expected_entities_path = 'discount/2/measure-unit/3/payment-frequency';
     static protected $expected_result_parameter = 'productCategory';
+    static protected $expected_form_type = 'TMSolution\WizardBundle\Form\ViewTypeType';
+    static protected $expected_form_action = 'delete';
+    static protected $expected_widget_template = 'viewtype\delete.html.twig';
     static protected $expected_model_array = array(
         'name' => 'some_model',
         'method' => 'findOneById',
@@ -144,16 +147,19 @@ class ControllerDriverTest extends TestCase {
         $this->assertTrue(self::$controllerDriver->hasModel(self::_MODEL_NAME));
     }
 
-    public function testFormTypeClass() {
-        
+    public function testGetFormTypeClass() {
+        $controllerDriver = $this->getDeleteActionConfiguration();
+        $this->assertEquals($controllerDriver->getFormTypeClass(), self::$expected_form_type);  
     }
 
     public function testGetFormAction() {
-        
+        $controllerDriver = $this->getDeleteActionConfiguration();
+        $this->assertEquals($controllerDriver->getFormAction(), self::$expected_form_action);
     }
 
-    public function testGetTemplate() {
-        
+    public function testGetTemplate() { 
+        $controllerDriver = $this->getDeleteActionConfiguration();
+        $this->assertEquals($controllerDriver->getTemplate(), self::$expected_widget_template);
     }
 
 }
