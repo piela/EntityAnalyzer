@@ -19,10 +19,15 @@ services:
     tm_solution_prototype.configuration_factory:
         class: TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory
         arguments: ['@tm_solution_prototype.base_configuration','@tm_solution_prototype.request_analyzer']
+
+   
+    tm_solution_prototype.data_adapter:
+        class: TMSolution\PrototypeBundle\Util\DataAdapter
+   
    
     tm_solution_prototype.entity_controller:
         class: TMSolution\PrototypeBundle\Controller\EntityController
-        arguments: ['@service_container','@tm_solution_prototype.configuration_factory','@request_stack']
+        arguments: ['@service_container','@tm_solution_prototype.configuration_factory','@request_stack','@tm_solution_prototype.data_adapter']
         
     tm_solution_prototype.test_controller:
         class: TMSolution\PrototypeBundle\Controller\TestController

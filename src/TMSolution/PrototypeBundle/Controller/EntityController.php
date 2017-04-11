@@ -28,38 +28,37 @@ class EntityController extends FOSRestController {
 
     protected $configurationFactory;
     protected $requestStack;
+    protected $defaultAdapter;
 
-    public function __construct(ContainerInterface $container, ControllerConfigurationFactoryInterface $configurationFactory, $requestStack) {
+    public function __construct(ContainerInterface $container, ControllerConfigurationFactoryInterface $configurationFactory, $requestStack, $defaultAdapter) {
         $this->container = $container;
         $this->configurationFactory = $configurationFactory;
         $this->requestStack = $requestStack;
+        $this->defaultAdapter = $defaultAdapter;
     }
 
     public function listAction(Request $request, $action) {
 
         $driver = $this->getDriver($request, $action);
 
-        $this->isActionAllowed($driver,$request);
+        $this->isActionAllowed($driver, $request);
         $entityClass = $driver->getEntityClass();
+        $adapter = $this->getAdapter($driver);
         $entity = $this->createEntity($entityClass);
         $formTypeClass = $this->getFormTypeClass($driver, false);
         $form = null;
-        $templateData = ['driver' => $driver, 'is_xml_http' => $request->isXmlHttpRequest()];
 
         if ($formTypeClass) {
 
             $form = $this->createForm($this->getFormTypeClass($driver), $entity, ['method' => $this->getFormMethod($driver), 'action' => $this->getFormActionUrl($driver)]);
             $form->handleRequest($request);
-            $templateData['form'] = $form->createView();
         }
 
         $result = $this->invokeModelMethod($driver, self::_LIST, [$driver->getEntityClass(), $request, $form], true);
-        $data = [];
-        $this->addResultToData($driver, self::_LIST, $data, $result, true, $this->getDataParameter($driver, self::_LIST));
-        $this->addResultToData($driver, self::_LIST, $templateData, $result, true);
-
-        $view = $this->view($data, 200)
-                ->setTemplateData($templateData)
+        $adapter = $this->getAdapter($result);
+        $view = $this->view($adapter->getData(), 200)
+                ->setTemplateVar($this->getTemplateVar($driver))
+                ->setTemplateData($adapter->getTemplateData(['driver' => $driver, 'is_xml_http' => $request->isXmlHttpRequest()]))
                 ->setTemplate($driver->getTemplate());
 
         return $this->handleView($view);
@@ -68,21 +67,24 @@ class EntityController extends FOSRestController {
     public function filterAction(Request $request, $action) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver,$request);
+        $this->isActionAllowed($driver, $request);
         $entityClass = $driver->getEntityClass();
+        $adapter = $this->getAdapter($driver);
         $entity = $this->createEntity($entityClass);
+        $adapter->setObject($entity);
         $this->denyAccessUnlessGranted(self::_LIST, $this->getSecurityTicket($driver, $entity));
         $form = $this->createForm($this->getFormTypeClass($driver), $entity, ['method' => $this->getFormMethod($driver), 'action' => $this->getFormActionUrl($driver)]);
         $result = $this->invokeModelMethod($driver, self::_LIST, [$entity], true);
         $form->handleRequest($request);
-        $data = [];
 
-        $view = $this->view($data, 200)
-                ->setTemplateData([
+
+        $view = $this->view($adapter->getData(), 200)
+                ->setTemplateVar($this->getTemplateVar($driver))
+                ->setTemplateData($adapter->getTemplateData([
                     'driver' => $driver,
                     'form' => $form->createView(),
                     'is_xml_http' => $request->isXmlHttpRequest()
-                ])
+                ]))
                 ->setTemplate($driver->getTemplate());
 
         return $this->handleView($view);
@@ -91,14 +93,15 @@ class EntityController extends FOSRestController {
     public function newAction(Request $request, $action) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver,$request);
+        $this->isActionAllowed($driver, $request);
         $entityClass = $driver->getEntityClass();
+        $adapter = $this->getAdapter($driver);
         $entity = $this->createEntity($entityClass);
+        $adapter->setObject($entity);
         $this->denyAccessUnlessGranted(self::_NEW, $this->getSecurityTicket($driver, $entity));
         $form = $this->createForm($this->getFormTypeClass($driver), $entity, ['method' => $this->getFormMethod($driver), 'action' => $this->getFormActionUrl($driver)]);
         $result = $this->invokeModelMethod($driver, self::_NEW, [$entity], true);
         $form->handleRequest($request);
-        $data = ['entity' => $entity];
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -114,12 +117,13 @@ class EntityController extends FOSRestController {
             }
         }
 
-        $view = $this->view($data, 200)
-                ->setTemplateData([
-                    'driver' => $driver,
-                    'form' => $form->createView(),
-                    'is_xml_http' => $request->isXmlHttpRequest()
-                ])
+        $view = $this->view($adapter->getData(), 200)
+                ->setTemplateVar($this->getTemplateVar($driver))
+                ->setTemplateData($adapter->getTemplateData([
+                            'driver' => $driver,
+                            'form' => $form->createView(),
+                            'is_xml_http' => $request->isXmlHttpRequest()
+                ]))
                 ->setTemplate($driver->getTemplate());
 
         return $this->handleView($view);
@@ -132,23 +136,25 @@ class EntityController extends FOSRestController {
     public function getAction(Request $request, $action, $id) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver,$request);
-        //find
+        $this->isActionAllowed($driver, $request);
+        $adapter = $this->getAdapter($driver);
         $entity = $this->invokeModelMethod($driver, self::_GET, [$driver->getEntityClass(), $id, $request]);
+        $adapter->setObject($entity);
         $this->checkEntityExists($driver, $entity);
         $this->denyAccessUnlessGranted(self::_GET, $this->getSecurityTicket($driver, $entity));
-        $data = [];
-        $data['entity'] = $entity;
-        $this->addResultToData($driver, self::_GET, $data, $entity, false, $this->getDataParameter($driver, self::_GET));
+//        $data = [];
+//        
+//        $this->addResultToData($driver, self::_GET, $data, $entity, false, $this->getDataParameter($driver, self::_GET));
 
         $deleteForm = $this->createDeleteForm($request, $entity);
 
-        $view = $this->view($data, 200)
-                ->setTemplateData([
-                    'driver' => $driver,
-                    'delete_form' => $deleteForm->createView(),
-                    'is_xml_http' => $request->isXmlHttpRequest()
-                ])
+        $view = $this->view($adapter->getData(), 200)
+                ->setTemplateVar($this->getTemplateVar($driver))
+                ->setTemplateData($adapter->getTemplateData([
+                            'driver' => $driver,
+                            'delete_form' => $deleteForm->createView(),
+                            'is_xml_http' => $request->isXmlHttpRequest()
+                ]))
                 ->setTemplate($driver->getTemplate());
 
         return $this->handleView($view);
@@ -161,15 +167,13 @@ class EntityController extends FOSRestController {
     public function editAction(Request $request, $action, $id) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver,$request);
+        $this->isActionAllowed($driver, $request);
         //find
         $entity = $this->invokeModelMethod($driver, self::_GET, [$driver->getEntityClass(), $id, $request]);
         $this->checkEntityExists($driver, $entity);
         $this->denyAccessUnlessGranted(self::_EDIT, $this->getSecurityTicket($driver, $entity));
 
-        $data = [];
-        $data['entity'] = $entity;
-        $this->addResultToData($driver, self::_EDIT, $data, $entity, false, $this->getDataParameter($driver, self::_EDIT));
+
         $deleteForm = $this->createDeleteForm($request, $entity);
 
         $form = $this->createForm($this->getFormTypeClass($driver), $entity, ['method' => $this->getFormMethod($driver), 'action' => $this->getFormActionUrl($driver, ['id' => $entity->getId()])]);
@@ -177,7 +181,7 @@ class EntityController extends FOSRestController {
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //update
+            $data = [];
             $result = $this->invokeModelMethod($driver, self::_UPDATE, [$entity, $request, $form]);
             $data['id'] = $entity->getId();
             $this->addResultToData($driver, self::_UPDATE, $data, $result);
@@ -188,7 +192,8 @@ class EntityController extends FOSRestController {
                 return $this->handleView($view);
             }
         }
-        $view = $this->view($data, 200)
+        $view = $this->view($entity, 200)
+                ->setTemplateVar($this->getTemplateVar($driver))
                 ->setTemplateData([
                     'driver' => $driver,
                     'delete_form' => $deleteForm->createView(),
@@ -207,7 +212,7 @@ class EntityController extends FOSRestController {
     public function deleteAction(Request $request, $action, $id) {
 
         $driver = $this->getDriver($request, $action);
-        $this->isActionAllowed($driver,$request);
+        $this->isActionAllowed($driver, $request);
         $entity = $this->invokeModelMethod($driver, self::_GET, [$driver->getEntityClass(), $id, $request]);
         $this->checkEntityExists($driver, $entity);
         $this->denyAccessUnlessGranted(self::_DELETE, $this->getSecurityTicket($driver, $entity));
@@ -293,18 +298,18 @@ class EntityController extends FOSRestController {
     protected function checkActionAllowed($driver, $request) {
 
         $actionAllowed = $driver->getActionAllowed();
-        
+
         if (is_array($actionAllowed)) {
-       
+
             if (in_array('xhttp', $actionAllowed)) {
-                
+
                 if ($request->isXmlHttpRequest()) {
                     return true;
                 }
             }
 
             if (in_array('inner', $actionAllowed)) {
-     
+
                 if ($this->requestStack->getParentRequest()) {
                     return true;
                 }
@@ -440,6 +445,24 @@ class EntityController extends FOSRestController {
             if ($required == true) {
                 throw new \Exception('There is no form_type in configuration');
             }
+        }
+    }
+
+    protected function getTemplateVar($driver) {
+        if ($driver->getTemplateVar()) {
+
+            return $driver->getTemplateVar();
+        }
+        return 'data';
+    }
+
+    protected function getAdapter($driver) {
+
+        $adapter = $driver->getAdapter();
+        if ($adapter) {
+            return $this->get($adapter);
+        } else {
+            return $this->defaultAdapter;
         }
     }
 

@@ -27,13 +27,12 @@ parameters:
                         - xhttp
                         - inner
                 templates:
-                    widget: 'menuitem\query.html.twig' 
+                    widget: 'menuitem\list.html.twig' 
                 models:
                     list:
                         name: 'tm_solution_menu.list_model'
                         method: find
-                        result_parameter: items 
-                        data_parameter: items      
+                        data_adapter: xyz
                 form: 
                    form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
                    action: list
@@ -64,6 +63,7 @@ parameters:
             get:
                 templates:
                     widget: 'menuitem\show.html.twig'
+                template_var: menuItem    
             edit:
                 templates:
                     widget: 'menuitem\edit.html.twig' 

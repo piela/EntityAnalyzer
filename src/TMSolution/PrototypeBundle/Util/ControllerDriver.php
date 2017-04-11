@@ -141,6 +141,13 @@ class ControllerDriver implements ControllerDriverInterface {
         }
     }
 
+    public function getTemplateVar() {
+
+        if ($this->configuration->has('template_var')) {
+            return $this->configuration->get('template_var');
+        }
+    }
+
     public function getFormTypeClass() {
 
         $formTypeClass = $this->configuration->get('form.form_type');
@@ -195,6 +202,15 @@ class ControllerDriver implements ControllerDriverInterface {
 
         if ($this->configuration->has('inner')) {
             return $this->configuration->get('inner');
+        } else {
+            return false;
+        }
+    }
+    
+    public function getAdapter()
+    {
+        if ($this->configuration->has('adapter')) {
+            return $this->configuration->get('adapter');
         } else {
             return false;
         }

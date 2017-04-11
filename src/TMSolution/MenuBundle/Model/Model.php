@@ -26,7 +26,7 @@ class Model {
         }
         
         $pagination=$this->paginator->paginate($queryBuidler, $page);
-        return ["items"=>$pagination->getItems(),"paginator"=>$pagination];
+        return $pagination;
     }
 
 }
