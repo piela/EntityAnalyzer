@@ -25,17 +25,45 @@ parameters:
                     route_name: list                                     
             list:
                 templates:
-                    widget: 'menuitem\index.html.twig' 
+                    widget: 'menuitem\query.html.twig' 
                 models:
                     list:
                         name: 'tm_solution_menu.list_model'
                         method: find
                         result_parameter: menuItems 
-                        data_parameter: items
+                        data_parameter: items      
                 form: 
                    form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
                    action: list
+                   method: GET            
+            
+                        
+            typeahead:
+                templates:
+                    widget: 'menuitem\query.html.twig' 
+                models:
+                    list:
+                        name: 'tm_solution_menu.typeahead'
+                        method: find
+                        result_parameter: items 
+     
+                form: 
+                   form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
+                   action: list
+                   method: GET            
+                        
+                        
+                        
+            filter:
+                templates:
+                    widget: 'menuitem\index.html.twig' 
+     
+                form: 
+                   form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
                    method: GET
+                   action: filter
+                   
+                   
                         
             get:
                 templates:
@@ -77,15 +105,19 @@ services:
             
         tm_solution_menu.paginator:    
             class: TMSolution\MenuBundle\Model\Paginator
-            arguments: ['@knp_paginator',5 ]    
+            arguments: ['@knp_paginator',3 ]    
        
         tm_solution_menu.filter:
             class: TMSolution\MenuBundle\Model\Filter
             arguments: ['@lexik_form_filter.query_builder_updater']
+            
+        
         tm_solution_menu.list_model:
             class: TMSolution\MenuBundle\Model\Model
-            arguments: ['@doctrine.orm.entity_manager','@tm_solution_menu.filter','@tm_solution_menu.paginator' ]    
+            arguments: ['@tm_solution_menu.model','@tm_solution_menu.filter','@tm_solution_menu.paginator' ]    
             
-            
+        tm_solution_menu.typeahead:
+            class: TMSolution\MenuBundle\Model\Typeahead
+            arguments: ['@tm_solution_menu.model','@tm_solution_menu.filter',10,{ 'name': 'p.name' }]    
            
        

@@ -34,7 +34,10 @@ class SearchMenuItemType extends AbstractType {
      * {@inheritdoc}
      */
     public function getBlockPrefix() {
-        return 'tmsolution_menubundle_menuitem';
+        return 'menu_menuitem';
     }
+    
+    
+    
 
 }

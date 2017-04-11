@@ -42,68 +42,9 @@
 
         </li>
     </ul>
-
-    <table class='table'>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Route</th>
-                <th>Routeparameters</th>
-                <th>Lft</th>
-                <th>Lvl</th>
-                <th>Rgt</th>
-                <th>Position</th>
-                <th>Parent</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for menuItem in menuItems.paginator %}
-                <tr>
-                    <td><a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': menuItem.id }) }}">{{ menuItem.id }}</a></td>
-                    <td>{{ menuItem.name }}</td>
-                    <td>{{ menuItem.route }}</td>
-                    <td><ul>
-                            {% for item in menuItem.routeParameters  %}
-                                <li>{{ item }}</li>
-                                {% endfor %}
-                        </ul></td>
-                    <td>{{ menuItem.lft }}</td>
-                    <td>{{ menuItem.lvl }}</td>
-                    <td>{{ menuItem.rgt }}</td>
-                    <td>{{ menuItem.position }}</td>
-                    <td>{{ menuItem.parent }}</td>
-                    <td>
-                        <ul class='actions'>
-                            <li class="dropdown">
-                                <a aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="not-lazy-loaded">
-                                    <i class="zmdi zmdi-more-vert">
-                                    </i>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li>
-                                        <a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': menuItem.id }) }}">
-                                            <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('edit',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': menuItem.id }) }}">
-                                            <i class="zmdi zmdi-border-color">
-                                            </i>
-                                            Edytuj
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <div class="navigation">
-        {{ knp_pagination_render(menuItems.paginator) }}
-    </div>
+    {{ render(controller("tm_solution_prototype.entity_controller:listAction",{ 'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath,'action': 'list', 'request' : app.request })) }}
+         
+   
 
 
 {% endblock %}

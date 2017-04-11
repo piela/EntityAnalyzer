@@ -4,12 +4,12 @@ namespace TMSolution\MenuBundle\Model;
 
 class Model {
 
-    protected $entityManager;
+    protected $model;
     protected $filter;
     protected $paginator;
 
-    public function __construct($entityManager, $filter, $paginator) {
-        $this->entityManager = $entityManager;
+    public function __construct($model, $filter, $paginator) {
+        $this->model = $model;
         $this->filter = $filter;
         $this->paginator = $paginator;
     }
@@ -18,7 +18,7 @@ class Model {
 
         $page = $request->query->getInt('page', 1);
        
-        $queryBuidler = $this->entityManager->getRepository($entityClass)->createQueryBuilder('p');
+        $queryBuidler = $this->model->getQueryBuilder($entityClass);
 
         if ($form) {
             $formMethod = $form->getConfig()->getMethod();

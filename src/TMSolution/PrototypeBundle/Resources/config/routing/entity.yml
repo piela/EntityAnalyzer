@@ -3,53 +3,59 @@
 #{entities_path} ={parent}/{parentid}/{entityAlias}
 list:
     path: "{application_path}/-/{entities_path}/list/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:listAction", state: "",  format: ~ }
+    defaults: { _controller: "tm_solution_prototype.entity_controller:listAction", "action": "list", state: "",  format: ~ }
+    requirements: {"application_path":".+" ,"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true 
+        
+        
+filter:
+    path: "{application_path}/-/{entities_path}/filter/{state}"
+    defaults: { _controller: "tm_solution_prototype.entity_controller:filterAction", "action": "filter", state: "",  format: ~ }
     requirements: {"application_path":".+" ,"path": ".+" }
     methods:  [GET, POST]
     options:
         expose: true    
+        
+typeahead:
+    path: "{application_path}/-/{entities_path}/typeahead/{field}"
+    defaults: { _controller: "tm_solution_prototype.entity_controller:listAction", "action": "typeahead", format: ~ }
+    requirements: {"application_path":".+" ,"path": ".+" }
+    methods:  [GET, POST]
+    options:
+        expose: true    
+        
                
 new:
     path: "{application_path}/-/{entities_path}/new/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:newAction", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"path": ".+" }
+    defaults: { _controller: "tm_solution_prototype.entity_controller:newAction", "action": "new", state: "",  format: ~ }
+    requirements: {"application_path":".+" ,"path": ".+"}
     methods:  [GET, POST]
     options:
         expose: true
 
-create:
-    path: "{application_path}/-/{entities_path}/create/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:createAction", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"path": ".+" }
-    methods:  [GET, POST]
-    options:
-        expose: true      
+    
 
 delete:
     path: "{application_path}/-/{entities_path}/delete/{id}/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:deleteAction", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"path": ".+" }
+    defaults: { _controller: "tm_solution_prototype.entity_controller:deleteAction", "action": "delete",  state: "",  format: ~ }
+    requirements: {"application_path":".+" ,"path": ".+", "action": "delete" }
     methods:  [GET,DELETE]
     options:
         expose: true
 edit:
     path: "{application_path}/-/{entities_path}/edit/{id}/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:editAction", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"path": ".+" }
+    defaults: { _controller: "tm_solution_prototype.entity_controller:editAction",  "action": "edit", state: "",  format: ~ }
+    requirements: {"application_path":".+" ,"path": ".+"}
     methods:  [GET, POST]
     options:
         expose: true          
-update:
-    path: "{application_path}/-/{entities_path}/update/{id}/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:updateAction", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"path": ".+" }
-    methods:  [GET, POST]
-    options:
-        expose: true      
+     
 get:
     path: "{application_path}/-/{entities_path}/get/{id}/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:getAction", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"path": ".+" }
+    defaults: { _controller: "tm_solution_prototype.entity_controller:getAction","action": "get", state: "",  format: ~ }
+    requirements: {"application_path":".+" ,"path": ".+"}
     methods:  [GET, POST]
     options:
         expose: true
