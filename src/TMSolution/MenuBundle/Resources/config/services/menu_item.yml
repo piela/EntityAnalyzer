@@ -55,12 +55,12 @@ parameters:
                    method: GET                                  
             filter:
                 templates:
-                    widget: 'menuitem\index.html.twig' 
+                    widget: 'menuitem\filter.html.twig' 
      
                 form: 
                    form_type: 'TMSolution\MenuBundle\Form\SearchMenuItemType'
                    method: GET
-                   action: filter   
+                   action: test   
             get:
                 templates:
                     widget: 'menuitem\show.html.twig'
@@ -101,7 +101,7 @@ services:
             
         tm_solution_menu.paginator:    
             class: TMSolution\MenuBundle\Model\Paginator
-            arguments: ['@knp_paginator',10 ]    
+            arguments: ['@knp_paginator',3 ]    
        
         tm_solution_menu.filter:
             class: TMSolution\MenuBundle\Model\Filter

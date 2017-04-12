@@ -28,31 +28,27 @@ class RequestAnalyzer implements RequestAnalyzerInterface {
         $requestAnalyze = new RequestAnalyze();
 
         $applicationPath = $request->attributes->get(self::APPLICATION_PATH);
-        if(!$applicationPath)
-        {
-            throw new \Exception(sprintf('No "%s" parameter in Request attributes',self::APPLICATION_PATH));
-        }    
-        
+
+
+
         $entitiesPath = $request->attributes->get(self::ENTITIES_PATH);
-        if(!$entitiesPath)
-        {
-            throw new \Exception(sprintf('No "%s" parameter in Request attributes',self::ENTITIES_PATH));
-        }   
-        
-        $id = $request->query->get(self::ID);
 
-        $entityAlias = $this->getEntityAlias($entitiesPath);
-        $application = $this->getApplication($applicationPath);
-        $bundles = $this->getBundles($application);
-        $entityClass = $this->getEntityClass($entityAlias, $bundles);
-        $entittiesFromPath = $this->getEntitiesFromPath($id, $entitiesPath, $bundles);
-        $requestAnalyze->setApplicationPath($applicationPath);
-        $requestAnalyze->setApplication($application);
-        $requestAnalyze->setEntitiesPath($entitiesPath);
-        $requestAnalyze->setEntitiesFromPath($entittiesFromPath);
-        $requestAnalyze->setEntityAlias($entityAlias);
-        $requestAnalyze->setEntityClass($entityClass);
+        if ($applicationPath && $entitiesPath) {
+          //  throw new \Exception(sprintf('No "%s" parameter in Request attributes', self::APPLICATION_PATH));
+            $id = $request->query->get(self::ID);
 
+            $entityAlias = $this->getEntityAlias($entitiesPath);
+            $application = $this->getApplication($applicationPath);
+            $bundles = $this->getBundles($application);
+            $entityClass = $this->getEntityClass($entityAlias, $bundles);
+            $entittiesFromPath = $this->getEntitiesFromPath($id, $entitiesPath, $bundles);
+            $requestAnalyze->setApplicationPath($applicationPath);
+            $requestAnalyze->setApplication($application);
+            $requestAnalyze->setEntitiesPath($entitiesPath);
+            $requestAnalyze->setEntitiesFromPath($entittiesFromPath);
+            $requestAnalyze->setEntityAlias($entityAlias);
+            $requestAnalyze->setEntityClass($entityClass);
+        }
         return $requestAnalyze;
     }
 

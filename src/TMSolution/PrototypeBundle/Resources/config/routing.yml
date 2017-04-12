@@ -2,3 +2,12 @@ tm_solution_prototype_prototype:
     resource: "@TMSolutionPrototypeBundle/Resources/config/routing/entity.yml"
     prefix:   /
 
+
+
+test:
+    path: "test1"
+    defaults: { _controller: "tm_solution_prototype.test_controller:testAction", state: "",  format: ~ }
+    methods:  [GET, POST]
+    options:
+        expose: true 
+        
