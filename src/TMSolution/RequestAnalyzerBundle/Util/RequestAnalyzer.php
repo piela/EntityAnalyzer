@@ -8,8 +8,7 @@ use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
 
 class RequestAnalyzer implements RequestAnalyzerInterface {
 
-    const APPLICATION_PATH = 'application_path';
-    const ENTITIES_PATH = 'entities_path';
+
     const DELIMETER = '/';
     const ID = 'id';
     const ENTITIES_LIMIT = 10;
@@ -23,20 +22,14 @@ class RequestAnalyzer implements RequestAnalyzerInterface {
         $this->entityMapper = $entityMapper;
     }
 
-    public function analyze($request) {
+    public function analyze($applicationPath,$entitiesPath,$id=null) {
 
-        $requestAnalyze = new RequestAnalyze();
+            $requestAnalyze = new RequestAnalyze();
 
-        $applicationPath = $request->attributes->get(self::APPLICATION_PATH);
-
-
-
-        $entitiesPath = $request->attributes->get(self::ENTITIES_PATH);
-
-        if ($applicationPath && $entitiesPath) {
-          //  throw new \Exception(sprintf('No "%s" parameter in Request attributes', self::APPLICATION_PATH));
-            $id = $request->query->get(self::ID);
-
+            //$applicationPath = $request->attributes->get(self::applicationPath);
+            //$entitiesPath = $request->attributes->get(self::entitiesPath);
+           //if ($applicationPath && $entitiesPath) {
+           //  throw new \Exception(sprintf('No "%s" parameter in Request attributes', self::applicationPath));
             $entityAlias = $this->getEntityAlias($entitiesPath);
             $application = $this->getApplication($applicationPath);
             $bundles = $this->getBundles($application);
@@ -48,7 +41,7 @@ class RequestAnalyzer implements RequestAnalyzerInterface {
             $requestAnalyze->setEntitiesFromPath($entittiesFromPath);
             $requestAnalyze->setEntityAlias($entityAlias);
             $requestAnalyze->setEntityClass($entityClass);
-        }
+        //}
         return $requestAnalyze;
     }
 

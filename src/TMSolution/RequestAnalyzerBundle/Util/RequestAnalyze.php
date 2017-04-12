@@ -74,11 +74,11 @@ class RequestAnalyze {
     {
         
     return [    
-    'application_path'=>$this->applicationPath,
+    'applicationPath'=>$this->applicationPath,
     'application'=>$this->application,
     'entity_alias'=>$this->entityAlias,
     'entity_class'=> $this->entityClass,
-    'entities_path'=> $this->entitiesPath,
+    'entitiesPath'=> $this->entitiesPath,
     'entities_from_path'=> $this->entitiesFromPath
     ];
         

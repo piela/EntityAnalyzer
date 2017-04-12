@@ -16,7 +16,7 @@
         <tbody>
             {% for menuItem in paginator %}
                 <tr>
-                    <td><a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': menuItem.id }) }}">{{ menuItem.id }}</a></td>
+                    <td><a href="{{ path('get',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath, 'id': menuItem.id }) }}">{{ menuItem.id }}</a></td>
                     <td>{{ menuItem.name }}</td>
                     <td>{{ menuItem.route }}</td>
                     <td><ul>
@@ -38,11 +38,11 @@
                                 </a>
                                 <ul class="dropdown-menu pull-right">
                                     <li>
-                                        <a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': menuItem.id }) }}">
+                                        <a href="{{ path('get',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath, 'id': menuItem.id }) }}">
                                             <i class="glyphicon glyphicon-eye-open"></i> View</a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('edit',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': menuItem.id }) }}">
+                                        <a href="{{ path('edit',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath, 'id': menuItem.id }) }}">
                                             <i class="zmdi zmdi-border-color">
                                             </i>
                                             Edytuj

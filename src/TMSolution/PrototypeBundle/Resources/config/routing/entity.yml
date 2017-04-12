@@ -1,36 +1,36 @@
 
-#{application_path} ={application}/{service}/{name} = app.{application}.{service}.{name}
-#{entities_path} ={parent}/{parentid}/{entityAlias}
+#{applicationPath} ={application}/{service}/{name} = app.{application}.{service}.{name}
+#{entitiesPath} ={parent}/{parentid}/{entityAlias}
 list:
-    path: "{application_path}/-/{entities_path}/list/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:listAction", "action": "list", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"entities_path": ".+" }
+    path: "{applicationPath}/-/{entitiesPath}/list"
+    defaults: { _controller: "tm_solution_prototype.entity_controller:listAction", "action": "list",   format: ~ }
+    requirements: {"applicationPath":".+" ,"entitiesPath": ".+" }
     methods:  [GET, POST]
     options:
         expose: true 
         
         
 filter:
-    path: "{application_path}/-/{entities_path}/filter/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:filterAction", "action": "filter", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"entities_path": ".+" }
+    path: "{applicationPath}/-/{entitiesPath}/filter"
+    defaults: { _controller: "tm_solution_prototype.entity_controller:filterAction", "action": "filter",   format: ~ }
+    requirements: {"applicationPath":".+" ,"entitiesPath": ".+" }
     methods:  [GET, POST]
     options:
         expose: true    
         
 typeahead:
-    path: "{application_path}/-/{entities_path}/typeahead/{field}"
+    path: "{applicationPath}/-/{entitiesPath}/typeahead/{field}"
     defaults: { _controller: "tm_solution_prototype.entity_controller:listAction", "action": "typeahead", format: ~ }
-    requirements: {"application_path":".+" ,"entities_path": ".+" }
+    requirements: {"applicationPath":".+" ,"entitiesPath": ".+" }
     methods:  [GET, POST]
     options:
         expose: true    
         
                
 new:
-    path: "{application_path}/-/{entities_path}/new/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:newAction", "action": "new", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"entities_path": ".+"}
+    path: "{applicationPath}/-/{entitiesPath}/new"
+    defaults: { _controller: "tm_solution_prototype.entity_controller:newAction", "action": "new",   format: ~ }
+    requirements: {"applicationPath":".+" ,"entitiesPath": ".+"}
     methods:  [GET, POST]
     options:
         expose: true
@@ -38,24 +38,24 @@ new:
     
 
 delete:
-    path: "{application_path}/-/{entities_path}/delete/{id}/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:deleteAction", "action": "delete",  state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"entities_path": ".+", "action": "delete" }
+    path: "{applicationPath}/-/{entitiesPath}/delete/{id}"
+    defaults: { _controller: "tm_solution_prototype.entity_controller:deleteAction", "action": "delete",    format: ~,id: '' }
+    requirements: {"applicationPath":".+" ,"entitiesPath": ".+", "action": "delete" }
     methods:  [GET,DELETE]
     options:
         expose: true
 edit:
-    path: "{application_path}/-/{entities_path}/edit/{id}/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:editAction",  "action": "edit", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"entities_path": ".+"}
+    path: "{applicationPath}/-/{entitiesPath}/edit/{id}"
+    defaults: { _controller: "tm_solution_prototype.entity_controller:editAction",  "action": "edit",   format: ~, id: '' }
+    requirements: {"applicationPath":".+" ,"entitiesPath": ".+"}
     methods:  [GET, POST]
     options:
         expose: true          
      
 get:
-    path: "{application_path}/-/{entities_path}/get/{id}/{state}"
-    defaults: { _controller: "tm_solution_prototype.entity_controller:getAction","action": "get", state: "",  format: ~ }
-    requirements: {"application_path":".+" ,"entities_path": ".+"}
+    path: "{applicationPath}/-/{entitiesPath}/get/{id}"
+    defaults: { _controller: "tm_solution_prototype.entity_controller:getAction","action": "get",   format: ~,id: '' }
+    requirements: {"applicationPath":".+" ,"entitiesPath": ".+"}
     methods:  [GET, POST]
     options:
         expose: true

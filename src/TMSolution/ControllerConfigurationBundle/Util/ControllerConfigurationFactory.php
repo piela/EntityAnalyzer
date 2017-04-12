@@ -23,11 +23,11 @@ class ControllerConfigurationFactory  implements ControllerConfigurationFactoryI
         $this->requestAnalyzer = $requestAnalyzer;
     }
 
-    public function createConfiguration($request, ConfigurationInterface $controllerConfiguration, $action) {
+    public function createConfiguration( ConfigurationInterface $controllerConfiguration, $action,$applicationPath,$entitiesPath,$id=null) {
         
         $this->configuration=$controllerConfiguration;
         
-        $analyze = $this->requestAnalyzer->analyze($request);
+        $analyze = $this->requestAnalyzer->analyze($applicationPath,$entitiesPath,$id);
         $analyzeSection = $this->getAnalyzeSection($analyze);
         
         $applicationPath = $analyze->getApplicationPath();

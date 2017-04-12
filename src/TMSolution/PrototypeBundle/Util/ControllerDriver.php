@@ -24,12 +24,12 @@ class ControllerDriver implements ControllerDriverInterface {
 
     public function getApplicationPath() {
 
-        return $this->configuration->get('request_analyze.application_path');
+        return $this->configuration->get('request_analyze.applicationPath');
     }
 
     public function getEntitiesPath() {
 
-        return $this->configuration->get('request_analyze.entities_path');
+        return $this->configuration->get('request_analyze.entitiesPath');
     }
 
     public function returnResultToView($modelName) {

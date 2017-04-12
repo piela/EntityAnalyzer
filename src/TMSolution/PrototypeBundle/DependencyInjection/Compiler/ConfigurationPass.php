@@ -11,7 +11,7 @@ class ConfigurationPass implements CompilerPassInterface {
     const SERVICE_NAME = 'tm_solution_prototype.configuration_factory';
     const METHOD_NAME = 'addConfiguration';
     const TAG_ID = 'tm_solution_prototype.controller_configuration';
-    const APPLICATION_PATH = 'application_path';
+    const applicationPath = 'applicationPath';
     const ENTITY_ALIAS = 'entity_alias';
 
     public function process(ContainerBuilder $container) {
@@ -43,9 +43,9 @@ class ConfigurationPass implements CompilerPassInterface {
 
         foreach ($tags as $attributes) {
 
-            if (!array_key_exists(self::APPLICATION_PATH, $attributes)) {
+            if (!array_key_exists(self::applicationPath, $attributes)) {
 
-                throw new \Exception(sprintf('There is no "%s" parameter for "%s" named service', self::APPLICATION_PATH, $id));
+                throw new \Exception(sprintf('There is no "%s" parameter for "%s" named service', self::applicationPath, $id));
             }
             if (!array_key_exists(self::ENTITY_ALIAS, $attributes)) {
 
@@ -54,7 +54,7 @@ class ConfigurationPass implements CompilerPassInterface {
 
             $definition->addMethodCall(self::METHOD_NAME, array(
                 new Reference($id),
-                $attributes[self::APPLICATION_PATH], $attributes[self::ENTITY_ALIAS]
+                $attributes[self::applicationPath], $attributes[self::ENTITY_ALIAS]
             ));
         }
     }

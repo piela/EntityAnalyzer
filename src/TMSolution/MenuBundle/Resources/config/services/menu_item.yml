@@ -25,7 +25,7 @@ parameters:
             list:
                 allowed: 
                         - xhttp
-                        - inner
+                        - subrequest
                 templates:
                     widget: 'menuitem\list.html.twig' 
                 models:
@@ -92,7 +92,7 @@ services:
             class: TMSolution\ConfigurationBundle\Util\Configuration
             arguments: [%tm_solution_menu_menu_item.config%]
             tags:
-                - { name: tm_solution_prototype.controller_configuration, application_path: 'menu', entity_alias: 'menu-item' }
+                - { name: tm_solution_prototype.controller_configuration, applicationPath: 'menu', entity_alias: 'menu-item' }
         
         tm_solution_menu.model:
             class: TMSolution\ModelBundle\Util\Model

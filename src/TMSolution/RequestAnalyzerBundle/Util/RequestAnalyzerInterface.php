@@ -4,6 +4,6 @@ namespace TMSolution\RequestAnalyzerBundle\Util;
 
 interface RequestAnalyzerInterface {
 
-        public function analyze($request);
+        public function analyze($applicationPath,$entitiesPath,$id=null);
 
 }

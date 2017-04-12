@@ -46,6 +46,6 @@ services:
             class: TMSolution\ConfigurationBundle\Util\Configuration
             arguments: [%tm_solution_wizard_view_type.config%]
             tags:
-                - { name: tm_solution_prototype.controller_configuration, application_path: 'wizard', entity_alias: 'view-type' }
+                - { name: tm_solution_prototype.controller_configuration, applicationPath: 'wizard', entity_alias: 'view-type' }
         
 

@@ -24,8 +24,8 @@ class PrototypeController extends FOSRestController {
     const _EDIT = 'edit';
     const _UPDATE = 'update';
     const _DELETE = 'delete';
-    const APPLICATION_PATH = 'application_path';
-    const ENTITIES_PATH = 'entities_path';
+    const APPLICATION_PATH = 'applicationPath';
+    const ENTITIES_PATH = 'entitiesPath';
 
     protected $configurationFactory;
     protected $requestStack;
@@ -38,13 +38,13 @@ class PrototypeController extends FOSRestController {
         $this->defaultAdapter = $defaultAdapter;
     }
 
-    protected function getDriver(Request $request, $action) {
-        $driver = $this->createConfiguration($request, $action);
+    protected function getDriver( $action,$applicationPath,$entitiesPath,$id=null) {
+        $driver = $this->createConfiguration($action,$applicationPath,$entitiesPath,$id);
         return new ControllerDriver($driver);
     }
 
-    protected function createConfiguration($request, $action) {
-        return $this->configurationFactory->createConfiguration($request, new ControllerConfiguration(), $action);
+    protected function createConfiguration($action,$applicationPath,$entitiesPath,$id=null) {
+        return $this->configurationFactory->createConfiguration( new ControllerConfiguration(), $action,$applicationPath,$entitiesPath,$id);
     }
 
     protected function getModelObject($model) {
@@ -104,7 +104,7 @@ class PrototypeController extends FOSRestController {
                 }
             }
 
-            if (in_array('inner', $actionAllowed)) {
+            if (in_array('subrequest', $actionAllowed)) {
 
                 if ($this->requestStack->getParentRequest()) {
                     return true;

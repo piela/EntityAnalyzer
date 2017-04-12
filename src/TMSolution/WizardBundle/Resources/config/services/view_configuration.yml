@@ -42,7 +42,7 @@ services:
             class: TMSolution\ConfigurationBundle\Util\Configuration
             arguments: [%tm_solution_wizard_view_configuration.config%]
             tags:
-                - { name: tm_solution_prototype.controller_configuration, application_path: 'wizard', entity_alias: 'view-configuration' }
+                - { name: tm_solution_prototype.controller_configuration, applicationPath: 'wizard', entity_alias: 'view-configuration' }
         
         tm_solution_wizard.model:
             class: TMSolution\ModelBundle\Util\Model

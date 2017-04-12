@@ -24,8 +24,8 @@ use \PHPUnit\Framework\TestCase;
 class TicketTest extends TestCase {
 
     const _ALIAS = 'payment-frequency';
-    const _APPLICATION_PATH = 'admin/some/other/path';
-    const _ENTITIES_PATH = 'discount/2/measure-unit/3/payment-frequency';
+    const _applicationPath = 'admin/some/other/path';
+    const _entitiesPath = 'discount/2/measure-unit/3/payment-frequency';
     const _ID = '7';
     const _MODEL_NAME = 'get';
 

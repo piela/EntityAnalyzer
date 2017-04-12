@@ -20,8 +20,8 @@ use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory
 class ControllerConfigurationFactoryTest extends TestCase {
 
     const _ALIAS = 'payment-frequency';
-    const _APPLICATION_PATH = 'admin/some/other/path';
-    const _ENTITIES_PATH = 'discount/2/measure-unit/3/payment-frequency';
+    const _applicationPath = 'admin/some/other/path';
+    const _entitiesPath = 'discount/2/measure-unit/3/payment-frequency';
     const _ID = '7';
 
     static protected $request;
@@ -32,8 +32,8 @@ class ControllerConfigurationFactoryTest extends TestCase {
     public static function setupBeforeClass() {
 
         self::$request = new Request(['id' => self::_ID], [/* post */], [
-            'application_path' => self::_APPLICATION_PATH,
-            'entities_path' => self::_ENTITIES_PATH
+            'applicationPath' => self::_applicationPath,
+            'entitiesPath' => self::_entitiesPath
         ]);
 
         self::$mapperConfiguration = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml');
@@ -57,7 +57,7 @@ class ControllerConfigurationFactoryTest extends TestCase {
         $baseConfiguration = new Configuration($prototypeConfiguration['tm_solution_prototype']);
         $configurationFactory = new ControllerConfigurationFactory($baseConfiguration, $requestAnalyzer);
         $developerConfiguration = new Configuration($developerConfiguration['tm_solution_prototype']);
-        $configurationFactory->addConfiguration($developerConfiguration, self::_APPLICATION_PATH, self::_ALIAS);
+        $configurationFactory->addConfiguration($developerConfiguration, self::_applicationPath, self::_ALIAS);
         return $configurationFactory->createConfiguration(self::$request, new ControllerConfiguration(), 'new');
     }
 

@@ -14,15 +14,15 @@
         <tbody>
         {% for viewType in viewTypes %}
             <tr>
-                <td><a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': viewType.id }) }}">{{ viewType.id }}</a></td>
+                <td><a href="{{ path('get',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath, 'id': viewType.id }) }}">{{ viewType.id }}</a></td>
                 <td>{{ viewType.name }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': viewType.id }) }}">Show </a>
+                            <a href="{{ path('get',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath, 'id': viewType.id }) }}">Show </a>
                         </li>
                         <li>
-                            <a href="{{ path('edit',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': viewType.id }) }}">Edit </a>
+                            <a href="{{ path('edit',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath, 'id': viewType.id }) }}">Edit </a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +33,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('new',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath }) }}">new </a>
+            <a href="{{ path('new',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath }) }}">new </a>
         </li>
     </ul>
 {% endblock %}

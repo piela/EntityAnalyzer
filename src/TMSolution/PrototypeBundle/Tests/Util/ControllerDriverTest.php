@@ -23,14 +23,14 @@ use \PHPUnit\Framework\TestCase;
 class ControllerDriverTest extends TestCase {
 
     const _ALIAS = 'payment-frequency';
-    const _APPLICATION_PATH = 'admin/some/other/path';
-    const _ENTITIES_PATH = 'discount/2/measure-unit/3/payment-frequency';
+    const _applicationPath = 'admin/some/other/path';
+    const _entitiesPath = 'discount/2/measure-unit/3/payment-frequency';
     const _ID = '7';
     const _MODEL_NAME = 'get';
 
     static protected $expected_entity_name = 'TMSolution\EntityAnalyzerBundle\Entity\PaymentFrequency';
-    static protected $expected_application_path = 'admin/some/other/path';
-    static protected $expected_entities_path = 'discount/2/measure-unit/3/payment-frequency';
+    static protected $expected_applicationPath = 'admin/some/other/path';
+    static protected $expected_entitiesPath = 'discount/2/measure-unit/3/payment-frequency';
     static protected $expected_result_parameter = 'productCategory';
     static protected $expected_form_type = 'TMSolution\WizardBundle\Form\ViewTypeType';
     static protected $expected_form_action = 'delete';
@@ -56,8 +56,8 @@ class ControllerDriverTest extends TestCase {
         self::$controllerDriver = new ControllerDriver($controllerConfiguration);
 
         self::$request = new Request(['id' => self::_ID], [], [
-            'application_path' => self::_APPLICATION_PATH,
-            'entities_path' => self::_ENTITIES_PATH
+            'applicationPath' => self::_applicationPath,
+            'entitiesPath' => self::_entitiesPath
         ]);
         self::$mapperConfiguration = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml');
         self::$prototypeConfiguration = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testPrototypeConfiguration.yml');
@@ -86,7 +86,7 @@ class ControllerDriverTest extends TestCase {
         $baseConfiguration = new Configuration($prototypeConfiguration['tm_solution_prototype']);
         $configurationFactory = new ControllerConfigurationFactory($baseConfiguration, $requestAnalyzer);
         $developerConfiguration = new Configuration($developerConfiguration['tm_solution_prototype']);
-        $configurationFactory->addConfiguration($developerConfiguration, self::_APPLICATION_PATH, self::_ALIAS);
+        $configurationFactory->addConfiguration($developerConfiguration, self::_applicationPath, self::_ALIAS);
         $controllerConfiguration = new ControllerConfiguration($configurationFactory->createConfiguration(self::$request, new ControllerConfiguration(), 'new'));
         return new ControllerDriver($controllerConfiguration);
     }
@@ -106,14 +106,14 @@ class ControllerDriverTest extends TestCase {
 
         $controllerDriver = $this->getDriver();
         $applicationPath = $controllerDriver->getApplicationPath();
-        $this->assertEquals($applicationPath, self::$expected_application_path);
+        $this->assertEquals($applicationPath, self::$expected_applicationPath);
     }
 
     public function testGetEntitiesPath() {
 
         $controllerDriver = $this->getDriver();
         $entitiesPath = $controllerDriver->getEntitiesPath();
-        $this->assertEquals($entitiesPath, self::$expected_entities_path);
+        $this->assertEquals($entitiesPath, self::$expected_entitiesPath);
     }
 
     public function testReturnResultToView() {

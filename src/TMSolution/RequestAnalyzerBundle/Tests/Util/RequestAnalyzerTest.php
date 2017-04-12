@@ -17,16 +17,16 @@ use Symfony\Component\HttpFoundation\Request;
 class RequestAnalyzerTest extends TestCase {
 
     const _NAMESPACE = 'admin';
-    const _APPLICATION_PATH = 'admin/some/other/path';
-    const _ENTITIES_PATH = 'discount/2/measure-unit/3/payment-frequency';
+    const _applicationPath = 'admin/some/other/path';
+    const _entitiesPath = 'discount/2/measure-unit/3/payment-frequency';
     const _ID = '7';
     
     static protected $request;
 
     public static function setupBeforeClass() {
         self::$request = new Request(['id' => self::_ID], [/* post */], [
-            'application_path' => self::_APPLICATION_PATH,
-            'entities_path' => self::_ENTITIES_PATH
+            'applicationPath' => self::_applicationPath,
+            'entitiesPath' => self::_entitiesPath
         ]);
     }
 

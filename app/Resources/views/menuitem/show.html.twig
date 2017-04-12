@@ -45,10 +45,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('filter',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath }) }}">Back to the list</a>
+            <a href="{{ path('filter',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath }) }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('get',{'application_path': driver.applicationPath, 'entities_path': driver.entitiesPath, 'id': menuItem.id }) }}">Edit</a>
+            <a href="{{ path('get',{'applicationPath': driver.applicationPath, 'entitiesPath': driver.entitiesPath, 'id': menuItem.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
