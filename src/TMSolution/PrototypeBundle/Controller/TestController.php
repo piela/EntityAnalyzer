@@ -18,9 +18,14 @@ use FOS\RestBundle\Controller\FOSRestController;
 class TestController extends PrototypeController {
 
     public function testAction(Request $request) {
-     $view = $this->view(null, 200)
-       ->setTemplate('menuitem\index.html.twig');
-    
-       return $this->handleView($view);
+        $view = $this->view(null, 200)
+                ->setTemplateData([
+                    'is_xml_http_request' => $request->isXmlHttpRequest(),
+                    'is_sub_request' => (boolean) $this->requestStack->getParentRequest()
+                ])
+                ->setTemplate('menuitem\index.html.twig');
+
+        return $this->handleView($view);
     }
+
 }

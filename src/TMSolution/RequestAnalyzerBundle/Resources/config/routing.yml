@@ -1,3 +1,0 @@
-tm_solution_request_analyzer_homepage:
-    path:     /
-    defaults: { _controller: TMSolutionRequestAnalyzerBundle:Default:index }

@@ -1,12 +1,12 @@
 <?php
 
-//TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzer
+//TMSolution\PathAnalyzerBundle\Util\PathAnalyzer
 
-namespace TMSolution\RequestAnalyzerBundle\Util;
+namespace TMSolution\PathAnalyzerBundle\Util;
 
-use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
+use TMSolution\PathAnalyzerBundle\Util\PathAnalyzerInterface;
 
-class RequestAnalyzer implements RequestAnalyzerInterface {
+class PathAnalyzer implements PathAnalyzerInterface {
 
 
     const DELIMETER = '/';
@@ -24,7 +24,7 @@ class RequestAnalyzer implements RequestAnalyzerInterface {
 
     public function analyze($applicationPath,$entitiesPath,$id=null) {
 
-            $requestAnalyze = new RequestAnalyze();
+            $pathAnalyze = new PathAnalyze();
 
             //$applicationPath = $request->attributes->get(self::applicationPath);
             //$entitiesPath = $request->attributes->get(self::entitiesPath);
@@ -35,14 +35,15 @@ class RequestAnalyzer implements RequestAnalyzerInterface {
             $bundles = $this->getBundles($application);
             $entityClass = $this->getEntityClass($entityAlias, $bundles);
             $entittiesFromPath = $this->getEntitiesFromPath($id, $entitiesPath, $bundles);
-            $requestAnalyze->setApplicationPath($applicationPath);
-            $requestAnalyze->setApplication($application);
-            $requestAnalyze->setEntitiesPath($entitiesPath);
-            $requestAnalyze->setEntitiesFromPath($entittiesFromPath);
-            $requestAnalyze->setEntityAlias($entityAlias);
-            $requestAnalyze->setEntityClass($entityClass);
+            $pathAnalyze->setApplicationPath($applicationPath);
+            $pathAnalyze->setApplication($application);
+            $pathAnalyze->setEntitiesPath($entitiesPath);
+            $pathAnalyze->setEntitiesFromPath($entittiesFromPath);
+            $pathAnalyze->setEntityAlias($entityAlias);
+            $pathAnalyze->setEntityClass($entityClass);
+            $pathAnalyze->setEntityId($id);
         //}
-        return $requestAnalyze;
+        return $pathAnalyze;
     }
 
     protected function getApplication($applicationPath) {

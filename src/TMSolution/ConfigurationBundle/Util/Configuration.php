@@ -62,7 +62,7 @@ class Configuration implements ConfigurationInterface {
 
         foreach ($propertyArr as $value) {
 
-            if (isset($result[$value])) {
+            if (array_key_exists($value,$result)) {
                 $result = $result[$value];
             } else {
                 throw new \Exception(sprintf('Property \'%s\' doesn\'t exists in configuration', $property));
@@ -80,7 +80,7 @@ class Configuration implements ConfigurationInterface {
 
         foreach ($propertyArr as $value) {
 
-            if (isset($result[$value])) {
+            if (array_key_exists($value,$result)) {
                 $result = $result[$value];
             } else {
                 return false;

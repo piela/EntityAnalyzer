@@ -1,8 +1,8 @@
 <?php
 
-namespace TMSolution\RequestAnalyzerBundle\Tests\Util;
+namespace TMSolution\PathAnalyzerBundle\Tests\Util;
 
-use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzer;
+use TMSolution\PathAnalyzerBundle\Util\PathAnalyzer;
 use Symfony\Component\Yaml\Yaml;
 use TMSolution\MapperBundle\Util\ApplicationMapper;
 use TMSolution\MapperBundle\Util\EntityMapper;
@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Description of EntityAnalyzer
- * php  app/phpunit.phar   --bootstrap=./app/autoload.php ./src/TMSolution/PrototypeBundle/Tests/Util/RequestAnalyzerTest.php
+ * php  app/phpunit.phar   --bootstrap=./app/autoload.php ./src/TMSolution/PrototypeBundle/Tests/Util/PathAnalyzerTest.php
  * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
-class RequestAnalyzerTest extends TestCase {
+class PathAnalyzerTest extends TestCase {
 
     const _NAMESPACE = 'admin';
     const _applicationPath = 'admin/some/other/path';
@@ -35,10 +35,10 @@ class RequestAnalyzerTest extends TestCase {
         $mapperConfiguration = Yaml::parse(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'testMapper.yml'));
         $appliactionMapper = new ApplicationMapper($mapperConfiguration['tm_solution_mapper']['applications']);
         $entityMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
-        $requestAnalyzer = new RequestAnalyzer($appliactionMapper, $entityMapper);
-        $requestAnalyze = $requestAnalyzer->analyze(self::$request);
-        $patternRequestAnalyze = unserialize(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'serializedRequestAnalyze'));
-        $this->assertEquals($patternRequestAnalyze, $requestAnalyze);
+        $PathAnalyzer = new PathAnalyzer($appliactionMapper, $entityMapper);
+        $PathAnalyze = $PathAnalyzer->analyze(self::$request);
+        $patternPathAnalyze = unserialize(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'serializedPathAnalyze'));
+        $this->assertEquals($patternPathAnalyze, $PathAnalyze);
     }
 
 }

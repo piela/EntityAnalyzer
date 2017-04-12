@@ -19,7 +19,7 @@ class Paginator {
             $limit = $this->limit;
         }
 
-        $pagination = $this->paginator->paginate($queryBuilder->getQuery(), $page, $limit);
+        $pagination = $this->paginator->paginate($queryBuilder, $page, $limit);
 
         return  $pagination;
 

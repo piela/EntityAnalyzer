@@ -13,23 +13,35 @@ class ControllerDriver implements ControllerDriverInterface {
         $this->configuration = $configuration;
     }
 
+    public function getAction() {
+        return $this->configuration->getAction();
+    }
+
+    
     public function getActionAllowed() {
         return $this->configuration->get('allowed');
     }
 
+    public function getEntityId() {
+
+        return $this->configuration->get('path_analyze.entity_id');
+    }
+
+    
+    
     public function getEntityClass() {
 
-        return $this->configuration->get('request_analyze.entity_class');
+        return $this->configuration->get('path_analyze.entity_class');
     }
 
     public function getApplicationPath() {
 
-        return $this->configuration->get('request_analyze.applicationPath');
+        return $this->configuration->get('path_analyze.applicationPath');
     }
 
     public function getEntitiesPath() {
 
-        return $this->configuration->get('request_analyze.entitiesPath');
+        return $this->configuration->get('path_analyze.entitiesPath');
     }
 
     public function returnResultToView($modelName) {

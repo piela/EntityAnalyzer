@@ -9,7 +9,7 @@ services:
         arguments: [%tm_solution_mapper.entities%]
     
     tm_solution_prototype.request_analyzer:
-        class: TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzer
+        class: TMSolution\PathAnalyzerBundle\Util\PathAnalyzer
         arguments: ['@tm_solution_prototype.application_mapper', '@tm_solution_prototype.entity_mapper']
     
     tm_solution_prototype.base_configuration:

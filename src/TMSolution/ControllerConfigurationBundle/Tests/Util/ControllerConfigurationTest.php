@@ -2,7 +2,7 @@
 
 namespace TMSolution\ControllerConfigurationBundle\Tests\Util;
 
-use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzer;
+use TMSolution\PathAnalyzerBundle\Util\PathAnalyzer;
 use Symfony\Component\Yaml\Yaml;
 use TMSolution\MapperBundle\Util\ApplicationMapper;
 use TMSolution\MapperBundle\Util\EntityMapper;
@@ -12,7 +12,7 @@ use TMSolution\ControllerConfigurationBundle\Util\ControllerConfiguration;
 
 /**
  * Description of EntityAnalyzer
- * php  app/phpunit.phar   --bootstrap=./app/autoload.php ./src/TMSolution/PrototypeBundle/Tests/Util/RequestAnalyzerTest.php
+ * php  app/phpunit.phar   --bootstrap=./app/autoload.php ./src/TMSolution/PrototypeBundle/Tests/Util/PathAnalyzerTest.php
  * @author Mariusz Piela <mariuszpiela@tmsolution.pl>
  */
 class ControllerConfigurationTest extends TestCase {

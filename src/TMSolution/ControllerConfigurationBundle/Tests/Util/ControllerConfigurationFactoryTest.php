@@ -2,7 +2,7 @@
 
 namespace TMSolution\ControllerConfigurationBundle\Tests\Util;
 
-use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzer;
+use TMSolution\PathAnalyzerBundle\Util\PathAnalyzer;
 use \PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Yaml\Yaml;
@@ -49,13 +49,13 @@ class ControllerConfigurationFactoryTest extends TestCase {
 
         $entityMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
 
-        $requestAnalyzer = new RequestAnalyzer($appliactionMapper, $entityMapper);
+        $PathAnalyzer = new PathAnalyzer($appliactionMapper, $entityMapper);
 
         $prototypeConfiguration = Yaml::parse(self::$prototypeConfiguration);
         $developerConfiguration = Yaml::parse(self::$developerConfiguration);
 
         $baseConfiguration = new Configuration($prototypeConfiguration['tm_solution_prototype']);
-        $configurationFactory = new ControllerConfigurationFactory($baseConfiguration, $requestAnalyzer);
+        $configurationFactory = new ControllerConfigurationFactory($baseConfiguration, $PathAnalyzer);
         $developerConfiguration = new Configuration($developerConfiguration['tm_solution_prototype']);
         $configurationFactory->addConfiguration($developerConfiguration, self::_applicationPath, self::_ALIAS);
         return $configurationFactory->createConfiguration(self::$request, new ControllerConfiguration(), 'new');

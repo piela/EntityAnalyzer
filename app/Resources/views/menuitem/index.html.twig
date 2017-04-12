@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends is_sub_request or is_xml_http_request ?  'blank.html.twig':'base.html.twig'  %}
 
 {% block body %}
 
@@ -19,12 +19,46 @@
         }
     </style>    
     <h1 class='p-l-15'>Menuitems list</h1>
-    {{ render(controller("tm_solution_prototype.entity_controller:editAction",{ 'request' : app.request ,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'edit','id': 4 })) }}
-    {{ render(controller("tm_solution_prototype.entity_controller:newAction",{ 'request' : app.request ,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'new' })) }}
-    {{ render(controller("tm_solution_prototype.entity_controller:filterAction",{ 'request' : app.request ,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'filter' })) }}
-    {{ render(controller("tm_solution_prototype.entity_controller:listAction",{ 'request' : app.request,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'list' })) }}
-    {{ render(controller("tm_solution_prototype.entity_controller:listAction",{ 'request' : app.request,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'list' })) }}
-    {{ render(controller("tm_solution_prototype.entity_controller:listAction",{ 'request' : app.request,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'list' })) }}    
-    {{ render(controller("tm_solution_prototype.entity_controller:editAction",{ 'request' : app.request ,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'edit','id': 5 })) }}
+
+  
+        <div role="tabpanel">
+            <ul class="tab-nav" role="tablist">
+                <li class="active"><a href="#home11" aria-controls="home11" role="tab" data-toggle="tab">Home</a></li>
+                <li><a href="#profile11" aria-controls="profile11" role="tab" data-toggle="tab" data-route='{}' >Profile</a>
+                </li>
+                <li><a href="#messages11" aria-controls="messages11" role="tab" data-toggle="tab">Messages</a>
+                </li>
+                <li><a href="#settings11" aria-controls="settings11" role="tab" data-toggle="tab">Settings</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home11">
+                  {{ render(controller("tm_solution_prototype.entity_controller:filterAction",{ 'request' : app.request ,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'filter' })) }}
+                  {{ render(controller("tm_solution_prototype.entity_controller:listAction",{ 'request' : app.request,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'list' })) }}
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile11">
+                    {{ render(controller("tm_solution_prototype.entity_controller:filterAction",{ 'request' : app.request ,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'filter' })) }}
+                    {{ render(controller("tm_solution_prototype.entity_controller:listAction",{ 'request' : app.request,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'list' })) }}
+             
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages11">
+                    <p>Etiam rhoncus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis,
+                    {{ render(controller("tm_solution_prototype.entity_controller:newAction",{ 'request' : app.request ,'applicationPath': 'menu', 'entitiesPath': 'menu-item','action': 'new' })) }}
+                </div>
+                <div role="tabpanel" class="tab-pane" id="settings11">
+                    <p>Praesent turpis. Phasellus magna. Fusce vulputate eleifend sapien. Duis arcu
+                        tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Donec elit
+                        libero, sodales nec, volutpat a, suscipit non, turpis.</p>
+                </div>
+            </div>
+        </div>
+
+        
+
+
     
+
+
+
 {% endblock %}

@@ -1,3 +1,4 @@
+
 tm_solution_menu:
     resource: "@TMSolutionMenuBundle/Resources/config/routing.yml"
     prefix:   /

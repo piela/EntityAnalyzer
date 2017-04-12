@@ -3,63 +3,59 @@
 namespace TMSolution\ControllerConfigurationBundle\Util;
 
 use TMSolution\ConfigurationBundle\Util\ConfigurationInterface;
-use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
+use TMSolution\PathAnalyzerBundle\Util\PathAnalyzerInterface;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactoryInterface;
 
 //@to do: change mergin model
-class ControllerConfigurationFactory  implements ControllerConfigurationFactoryInterface{
+class ControllerConfigurationFactory implements ControllerConfigurationFactoryInterface {
 
     const BASE_CONFIG = 'base';
-    const REQUEST_ANALYZE = 'request_analyze';
+    const REQUEST_ANALYZE = 'path_analyze';
 
     protected $configurations = [];
     protected $baseConfiguration;
     protected $configuration;
-    protected $requestAnalyzer;
+    protected $PathAnalyzer;
 
-    public function __construct(ConfigurationInterface $baseConfig, RequestAnalyzerInterface $requestAnalyzer) {
+    public function __construct(ConfigurationInterface $baseConfig, PathAnalyzerInterface $PathAnalyzer) {
 
         $this->baseConfiguration = $baseConfig;
-        $this->requestAnalyzer = $requestAnalyzer;
+        $this->PathAnalyzer = $PathAnalyzer;
     }
 
-    public function createConfiguration( ConfigurationInterface $controllerConfiguration, $action,$applicationPath,$entitiesPath,$id=null) {
-        
-        $this->configuration=$controllerConfiguration;
-        
-        $analyze = $this->requestAnalyzer->analyze($applicationPath,$entitiesPath,$id);
+    public function createConfiguration(ConfigurationInterface $controllerConfiguration, $action, $applicationPath, $entitiesPath, $id = null) {
+
+        $this->configuration = $controllerConfiguration;
+
+        $analyze = $this->PathAnalyzer->analyze($applicationPath, $entitiesPath, $id);
         $analyzeSection = $this->getAnalyzeSection($analyze);
-        
+
         $applicationPath = $analyze->getApplicationPath();
         $entityAlias = $analyze->getEntityAlias();
 
         $this->mergeToConfiguration($this->baseConfiguration, $action);
-        $this->mergeConfigurations($applicationPath, $entityAlias,$action);
+        $this->mergeConfigurations($applicationPath, $entityAlias, $action);
 
         $this->configuration->merge($analyzeSection);
         $controllerConfiguration->setAction($action);
-        
-        
+
+
         return $controllerConfiguration;
     }
-    
-    protected function mergeToConfiguration($configuration, $action)
-    {
+
+    protected function mergeToConfiguration($configuration, $action) {
         $baseSection = $this->getBaseSection($configuration);
-        $actionSection = $this->getActionSection($configuration,$action);
-        return $this->mergeSections($baseSection,$actionSection);
+        $actionSection = $this->getActionSection($configuration, $action);
+        return $this->mergeSections($baseSection, $actionSection);
     }
 
     protected function mergeSections() {
-        
-        $sections=func_get_args();
-        foreach($sections as $section)
-        {
-            if($section)
-            {
+
+        $sections = func_get_args();
+        foreach ($sections as $section) {
+            if ($section) {
                 $this->configuration->merge($section);
             }
-            
         }
         return $this->configuration;
     }
@@ -82,15 +78,15 @@ class ControllerConfigurationFactory  implements ControllerConfigurationFactoryI
     protected function getAnalyzeSection($analyze) {
 
         $analyzeConfiguration = [];
-        $analyzeConfiguration[self::REQUEST_ANALYZE] =  $analyze->dump();
+        $analyzeConfiguration[self::REQUEST_ANALYZE] = $analyze->dump();
 
         return $analyzeConfiguration;
     }
 
-    protected function mergeConfigurations($applicationPath, $entityAlias,$action) {
+    protected function mergeConfigurations($applicationPath, $entityAlias, $action) {
 
         $configuration = $this->findSpecializedConfiguration($applicationPath, $entityAlias);
-        if ($configuration) { 
+        if ($configuration) {
             $this->mergeToConfiguration($configuration, $action);
         }
         return $this->configuration;
@@ -105,7 +101,7 @@ class ControllerConfigurationFactory  implements ControllerConfigurationFactoryI
     }
 
     public function addConfiguration(ConfigurationInterface $configuration, $applicationPath, $entityAlias) {
-        
+
         $this->configurations[$applicationPath][$entityAlias] = $configuration;
     }
 

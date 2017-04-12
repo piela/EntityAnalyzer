@@ -1,26 +1,34 @@
 <?php
 
-//TMSolution\PrototypeBundle\Util\RequestAnalyze
+//TMSolution\PrototypeBundle\Util\PathAnalyze
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-namespace TMSolution\RequestAnalyzerBundle\Util;
-
+namespace TMSolution\PathAnalyzerBundle\Util;
 
 /**
  * cache
  */
-class RequestAnalyze {
+class PathAnalyze {
 
     protected $applicationPath;
     protected $application;
     protected $entityAlias;
     protected $entityClass;
     protected $entitiesPath;
+    protected $entityId;
     protected $entitiesFromPath = [];
+
+    function getEntityId() {
+        return $this->entityId;
+    }
+
+    function setEntityId($entityId) {
+        $this->entityId = $entityId;
+    }
 
     function getEntityClass() {
         return $this->entityClass;
@@ -69,20 +77,18 @@ class RequestAnalyze {
     function setEntitiesFromPath($entitiesFromPath) {
         $this->entitiesFromPath = $entitiesFromPath;
     }
-    
-    function dump()
-    {
-        
-    return [    
-    'applicationPath'=>$this->applicationPath,
-    'application'=>$this->application,
-    'entity_alias'=>$this->entityAlias,
-    'entity_class'=> $this->entityClass,
-    'entitiesPath'=> $this->entitiesPath,
-    'entities_from_path'=> $this->entitiesFromPath
-    ];
-        
+
+    function dump() {
+
+        return [
+            'applicationPath' => $this->applicationPath,
+            'application' => $this->application,
+            'entity_alias' => $this->entityAlias,
+            'entity_id' => $this->entityId,
+            'entity_class' => $this->entityClass,
+            'entitiesPath' => $this->entitiesPath,
+            'entities_from_path' => $this->entitiesFromPath
+        ];
     }
-    
-   
+
 }

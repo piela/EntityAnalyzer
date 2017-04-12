@@ -3,7 +3,7 @@
 namespace TMSolution\ControllerConfigurationBundle\Util;
 
 use TMSolution\ConfigurationBundle\Util\ConfigurationInterface;
-use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzerInterface;
+use TMSolution\PathAnalyzerBundle\Util\PathAnalyzerInterface;
 
 //@to do: change mergin model
 interface ControllerConfigurationFactoryInterface {

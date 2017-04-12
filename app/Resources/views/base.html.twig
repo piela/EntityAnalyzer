@@ -309,7 +309,7 @@
             </div>
 
             {{ knp_menu_render('main',{'template': 'Menu/knp_menu.html.twig', 'depth':2, 'currentClass': 'active','ancestorClass':'toogle active'}) }}        
-                    
+
             <ul class="main-menu">
                 <li class="active">
                     <a href="index.html"><i class="zmdi zmdi-home"></i> Home</a>
@@ -510,10 +510,11 @@
         <section id="content">
 
             <div class="card">
-                
+
                 <div class="card-body">
                     <div class='list-group'>
-                        <div class="p-15">
+                        <div class="p-15" id='content-wrap'>
+
                         {% block body %}{% endblock %}
                     </div>
                 </div>
@@ -619,6 +620,27 @@
 <script src="{{ asset('material/js/app.min.js')}}"></script>
 </body>
 </html>
+<script>
+    $(function () {
+        $(document).on('click', '.main-menu a', function (e) {
+           
+            e.preventDefault();
+            var url=$(this).attr('href');
+            history.pushState({}, url,url);
+            $.ajax({
+                url:url ,
+                context: $('#content-wrap'),
+                beforeSend: function (xhr) {
+                        $(this).css('background-color', 'green');
+                    }
+        })
+            
+            .done(function (result) {
+                    $(this).html(result);
+                    $(this).css('background-color', 'white');
+                });
+    }) })
+</script>    
 
 
 
