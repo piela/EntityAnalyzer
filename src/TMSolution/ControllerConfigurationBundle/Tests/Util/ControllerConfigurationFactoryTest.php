@@ -58,7 +58,7 @@ class ControllerConfigurationFactoryTest extends TestCase {
         $configurationFactory = new ControllerConfigurationFactory($baseConfiguration, $PathAnalyzer);
         $developerConfiguration = new Configuration($developerConfiguration['tm_solution_prototype']);
         $configurationFactory->addConfiguration($developerConfiguration, self::_applicationPath, self::_ALIAS);
-        return $configurationFactory->createConfiguration(self::$request, new ControllerConfiguration(), 'new');
+        return $configurationFactory->createConfiguration(new ControllerConfiguration(), 'new',self::_applicationPath,self::_entitiesPath,self::_ID);
     }
 
     public function testCreateConfiguration_instaceOfControllerConfiguration() {

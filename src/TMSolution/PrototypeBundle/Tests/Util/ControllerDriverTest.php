@@ -11,7 +11,7 @@ use TMSolution\PrototypeBundle\Controller\PrototypeController;
 use TMSolution\MapperBundle\Util\EntityMapper;
 use TMSolution\ConfigurationBundle\Util\Configuration;
 use TMSolution\ControllerConfigurationBundle\Util\ControllerConfigurationFactory;
-use TMSolution\RequestAnalyzerBundle\Util\RequestAnalyzer;
+use TMSolution\PathAnalyzerBundle\Util\PathAnalyzer;
 use Symfony\Component\HttpFoundation\Request;
 use \PHPUnit\Framework\TestCase;
 
@@ -78,7 +78,7 @@ class ControllerDriverTest extends TestCase {
 
         $entityMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
 
-        $requestAnalyzer = new RequestAnalyzer($appliactionMapper, $entityMapper);
+        $requestAnalyzer = new PathAnalyzer($appliactionMapper, $entityMapper);
 
         $prototypeConfiguration = Yaml::parse(self::$prototypeConfiguration);
         $developerConfiguration = Yaml::parse(self::$developerConfiguration);
@@ -87,13 +87,13 @@ class ControllerDriverTest extends TestCase {
         $configurationFactory = new ControllerConfigurationFactory($baseConfiguration, $requestAnalyzer);
         $developerConfiguration = new Configuration($developerConfiguration['tm_solution_prototype']);
         $configurationFactory->addConfiguration($developerConfiguration, self::_applicationPath, self::_ALIAS);
-        $controllerConfiguration = new ControllerConfiguration($configurationFactory->createConfiguration(self::$request, new ControllerConfiguration(), 'new'));
+        $controllerConfiguration = new ControllerConfiguration($configurationFactory->createConfiguration(new ControllerConfiguration(), 'new', self::_applicationPath, self::_entitiesPath,self::_ID));
         return new ControllerDriver($controllerConfiguration);
     }
 
-    public function testIsActionAllowed() {
+    public function testGetActionAllowed() {
 
-        $this->assertTrue(self::$controllerDriver->isActionAllowed());
+        $this->assertTrue(self::$controllerDriver->getActionAllowed());
     }
 
     public function testGetEntityClass() {

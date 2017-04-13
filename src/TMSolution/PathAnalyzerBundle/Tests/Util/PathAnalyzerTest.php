@@ -21,14 +21,9 @@ class PathAnalyzerTest extends TestCase {
     const _entitiesPath = 'discount/2/measure-unit/3/payment-frequency';
     const _ID = '7';
     
-    static protected $request;
+    
 
-    public static function setupBeforeClass() {
-        self::$request = new Request(['id' => self::_ID], [/* post */], [
-            'applicationPath' => self::_applicationPath,
-            'entitiesPath' => self::_entitiesPath
-        ]);
-    }
+  
 
     public function testAnalyze() {
 
@@ -36,7 +31,7 @@ class PathAnalyzerTest extends TestCase {
         $appliactionMapper = new ApplicationMapper($mapperConfiguration['tm_solution_mapper']['applications']);
         $entityMapper = new EntityMapper($mapperConfiguration['tm_solution_mapper']['entities']);
         $PathAnalyzer = new PathAnalyzer($appliactionMapper, $entityMapper);
-        $PathAnalyze = $PathAnalyzer->analyze(self::$request);
+        $PathAnalyze = $PathAnalyzer->analyze(self::_applicationPath,self::_entitiesPath,self::_ID);
         $patternPathAnalyze = unserialize(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'serializedPathAnalyze'));
         $this->assertEquals($patternPathAnalyze, $PathAnalyze);
     }
