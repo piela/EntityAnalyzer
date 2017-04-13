@@ -1,0 +1,6 @@
+services:
+        flexix_wizard.model:
+            class: Flexix\ModelBundle\Util\Model
+            arguments: ['@doctrine.orm.entity_manager']
+
+            

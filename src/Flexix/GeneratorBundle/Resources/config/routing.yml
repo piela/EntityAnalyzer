@@ -1,0 +1,3 @@
+flexix_generator_homepage:
+    path:     /
+    defaults: { _controller: FlexixGeneratorBundle:Default:index }

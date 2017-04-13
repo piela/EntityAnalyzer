@@ -121,7 +121,7 @@ fos_rest:
                 - { path: '^/', priorities: [ 'html', 'json', 'xml' ], prefer_extension: false }    
 
 
-tm_solution_prototype:
+flexix_prototype:
     base:
         allowed: false
         

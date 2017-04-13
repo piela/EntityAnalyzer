@@ -1,0 +1,13 @@
+flexix_prototype_prototype:
+    resource: "@FlexixPrototypeBundle/Resources/config/routing/entity.yml"
+    prefix:   /
+
+
+
+test:
+    path: "test1"
+    defaults: { _controller: "flexix_prototype.test_controller:testAction", state: "",  format: ~ }
+    methods:  [GET, POST]
+    options:
+        expose: true 
+        

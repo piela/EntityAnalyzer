@@ -1,0 +1,7 @@
+
+flexix_sandbox_test:
+    path: "test"
+    defaults: { _controller: "flexix_prototype.test_controller:testAction",  format: ~ }
+    methods:  [GET, POST]
+    options:
+        expose: true    

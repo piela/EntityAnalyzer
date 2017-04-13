@@ -1,0 +1,640 @@
+entity_class: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+fields:
+    id:
+        name: id
+        setter_name: null
+        type: bigint
+        metadata:
+            field_name: id
+            type: bigint
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column_name: id
+            id: true
+    measure_unit_quantity:
+        name: measureUnitQuantity
+        setter_name: setMeasureUnitQuantity
+        type: integer
+        metadata:
+            field_name: measureUnitQuantity
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column_name: measureunit_quantity
+    parents:
+        name: parents
+        setter_name: setParents
+        type: object
+        metadata:
+            field_name: parents
+            join_table: {  }
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            mapped_by: productDefinitions
+            inversed_by: null
+            cascade:
+                - persist
+            orphan_removal: false
+            fetch: 2
+            type: 8
+            is_owning_side: false
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: true
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+        association_type: 8
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+    product_definitions:
+        name: productDefinitions
+        setter_name: addProductDefinition
+        type: object
+        metadata:
+            field_name: productDefinitions
+            join_table:
+                name: callcenter_productdefinition_has_productdefinition
+                schema: null
+                join_columns:
+                    -
+                        name: product_definition_source
+                        referenced_column_name: id
+                        on_delete: CASCADE
+                inverse_join_columns:
+                    -
+                        name: product_definition_target
+                        referenced_column_name: id
+                        on_delete: CASCADE
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            mapped_by: null
+            inversed_by: parents
+            cascade:
+                - persist
+            orphan_removal: false
+            fetch: 2
+            type: 8
+            is_owning_side: true
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: true
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            join_table_columns:
+                - product_definition_source
+                - product_definition_target
+            is_on_delete_cascade: true
+            relation_to_source_key_columns:
+                product_definition_source: id
+            relation_to_target_key_columns:
+                product_definition_target: id
+        association_type: 8
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+    measure_unit:
+        name: measureUnit
+        setter_name: setMeasureUnit
+        type: object
+        metadata:
+            field_name: measureUnit
+            join_columns:
+                -
+                    name: measureunit_id
+                    unique: false
+                    nullable: true
+                    on_delete: null
+                    column_definition: null
+                    referenced_column_name: id
+            cascade: {  }
+            inversed_by: null
+            target_entity: Flexix\SampleEntitiesBundle\Entity\MeasureUnit
+            fetch: 2
+            type: 2
+            mapped_by: null
+            is_owning_side: true
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
+                measureunit_id: id
+            join_column_field_names:
+                measureunit_id: measureunit_id
+            target_to_source_key_columns:
+                id: measureunit_id
+            orphan_removal: false
+        association_type: 2
+        entity_name: Flexix\SampleEntitiesBundle\Entity\MeasureUnit
+    product_dictionary:
+        name: productDictionary
+        setter_name: setProductDictionary
+        type: object
+        metadata:
+            field_name: productDictionary
+            join_columns:
+                -
+                    name: product_dictionary_id
+                    referenced_column_name: id
+            cascade: {  }
+            inversed_by: null
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDictionary
+            fetch: 2
+            type: 2
+            mapped_by: null
+            is_owning_side: true
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
+                product_dictionary_id: id
+            join_column_field_names:
+                product_dictionary_id: product_dictionary_id
+            target_to_source_key_columns:
+                id: product_dictionary_id
+            orphan_removal: false
+        association_type: 2
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDictionary
+    product_prices:
+        name: productPrices
+        setter_name: addProductPrice
+        type: object
+        metadata:
+            field_name: productPrices
+            mapped_by: productDefinition
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductPrice
+            cascade: {  }
+            orphan_removal: false
+            fetch: 2
+            type: 4
+            inversed_by: null
+            is_owning_side: false
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+        association_type: 4
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductPrice
+    discounts:
+        name: discounts
+        setter_name: addDiscount
+        type: object
+        metadata:
+            field_name: discounts
+            mapped_by: productDefinition
+            target_entity: Flexix\SampleEntitiesBundle\Entity\Discount
+            cascade: {  }
+            orphan_removal: false
+            fetch: 2
+            type: 4
+            inversed_by: null
+            is_owning_side: false
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+        association_type: 4
+        entity_name: Flexix\SampleEntitiesBundle\Entity\Discount
+parent_entities:
+    parents:
+        name: parents
+        setter_name: setParents
+        type: object
+        metadata:
+            field_name: parents
+            join_table: {  }
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            mapped_by: productDefinitions
+            inversed_by: null
+            cascade:
+                - persist
+            orphan_removal: false
+            fetch: 2
+            type: 8
+            is_owning_side: false
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: true
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+        association_type: 8
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+    product_definitions:
+        name: productDefinitions
+        setter_name: addProductDefinition
+        type: object
+        metadata:
+            field_name: productDefinitions
+            join_table:
+                name: callcenter_productdefinition_has_productdefinition
+                schema: null
+                join_columns:
+                    -
+                        name: product_definition_source
+                        referenced_column_name: id
+                        on_delete: CASCADE
+                inverse_join_columns:
+                    -
+                        name: product_definition_target
+                        referenced_column_name: id
+                        on_delete: CASCADE
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            mapped_by: null
+            inversed_by: parents
+            cascade:
+                - persist
+            orphan_removal: false
+            fetch: 2
+            type: 8
+            is_owning_side: true
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: true
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            join_table_columns:
+                - product_definition_source
+                - product_definition_target
+            is_on_delete_cascade: true
+            relation_to_source_key_columns:
+                product_definition_source: id
+            relation_to_target_key_columns:
+                product_definition_target: id
+        association_type: 8
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+    measure_unit:
+        name: measureUnit
+        setter_name: setMeasureUnit
+        type: object
+        metadata:
+            field_name: measureUnit
+            join_columns:
+                -
+                    name: measureunit_id
+                    unique: false
+                    nullable: true
+                    on_delete: null
+                    column_definition: null
+                    referenced_column_name: id
+            cascade: {  }
+            inversed_by: null
+            target_entity: Flexix\SampleEntitiesBundle\Entity\MeasureUnit
+            fetch: 2
+            type: 2
+            mapped_by: null
+            is_owning_side: true
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
+                measureunit_id: id
+            join_column_field_names:
+                measureunit_id: measureunit_id
+            target_to_source_key_columns:
+                id: measureunit_id
+            orphan_removal: false
+        association_type: 2
+        entity_name: Flexix\SampleEntitiesBundle\Entity\MeasureUnit
+    product_dictionary:
+        name: productDictionary
+        setter_name: setProductDictionary
+        type: object
+        metadata:
+            field_name: productDictionary
+            join_columns:
+                -
+                    name: product_dictionary_id
+                    referenced_column_name: id
+            cascade: {  }
+            inversed_by: null
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDictionary
+            fetch: 2
+            type: 2
+            mapped_by: null
+            is_owning_side: true
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
+                product_dictionary_id: id
+            join_column_field_names:
+                product_dictionary_id: product_dictionary_id
+            target_to_source_key_columns:
+                id: product_dictionary_id
+            orphan_removal: false
+        association_type: 2
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDictionary
+child_entities:
+    parents:
+        name: parents
+        setter_name: setParents
+        type: object
+        metadata:
+            field_name: parents
+            join_table: {  }
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            mapped_by: productDefinitions
+            inversed_by: null
+            cascade:
+                - persist
+            orphan_removal: false
+            fetch: 2
+            type: 8
+            is_owning_side: false
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: true
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+        association_type: 8
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+    product_definitions:
+        name: productDefinitions
+        setter_name: addProductDefinition
+        type: object
+        metadata:
+            field_name: productDefinitions
+            join_table:
+                name: callcenter_productdefinition_has_productdefinition
+                schema: null
+                join_columns:
+                    -
+                        name: product_definition_source
+                        referenced_column_name: id
+                        on_delete: CASCADE
+                inverse_join_columns:
+                    -
+                        name: product_definition_target
+                        referenced_column_name: id
+                        on_delete: CASCADE
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            mapped_by: null
+            inversed_by: parents
+            cascade:
+                - persist
+            orphan_removal: false
+            fetch: 2
+            type: 8
+            is_owning_side: true
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: true
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            join_table_columns:
+                - product_definition_source
+                - product_definition_target
+            is_on_delete_cascade: true
+            relation_to_source_key_columns:
+                product_definition_source: id
+            relation_to_target_key_columns:
+                product_definition_target: id
+        association_type: 8
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+    product_prices:
+        name: productPrices
+        setter_name: addProductPrice
+        type: object
+        metadata:
+            field_name: productPrices
+            mapped_by: productDefinition
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductPrice
+            cascade: {  }
+            orphan_removal: false
+            fetch: 2
+            type: 4
+            inversed_by: null
+            is_owning_side: false
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+        association_type: 4
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductPrice
+    discounts:
+        name: discounts
+        setter_name: addDiscount
+        type: object
+        metadata:
+            field_name: discounts
+            mapped_by: productDefinition
+            target_entity: Flexix\SampleEntitiesBundle\Entity\Discount
+            cascade: {  }
+            orphan_removal: false
+            fetch: 2
+            type: 4
+            inversed_by: null
+            is_owning_side: false
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+        association_type: 4
+        entity_name: Flexix\SampleEntitiesBundle\Entity\Discount
+associations:
+    parents:
+        name: parents
+        setter_name: setParents
+        type: object
+        metadata:
+            field_name: parents
+            join_table: {  }
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            mapped_by: productDefinitions
+            inversed_by: null
+            cascade:
+                - persist
+            orphan_removal: false
+            fetch: 2
+            type: 8
+            is_owning_side: false
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: true
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+        association_type: 8
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+    product_definitions:
+        name: productDefinitions
+        setter_name: addProductDefinition
+        type: object
+        metadata:
+            field_name: productDefinitions
+            join_table:
+                name: callcenter_productdefinition_has_productdefinition
+                schema: null
+                join_columns:
+                    -
+                        name: product_definition_source
+                        referenced_column_name: id
+                        on_delete: CASCADE
+                inverse_join_columns:
+                    -
+                        name: product_definition_target
+                        referenced_column_name: id
+                        on_delete: CASCADE
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            mapped_by: null
+            inversed_by: parents
+            cascade:
+                - persist
+            orphan_removal: false
+            fetch: 2
+            type: 8
+            is_owning_side: true
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: true
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            join_table_columns:
+                - product_definition_source
+                - product_definition_target
+            is_on_delete_cascade: true
+            relation_to_source_key_columns:
+                product_definition_source: id
+            relation_to_target_key_columns:
+                product_definition_target: id
+        association_type: 8
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+    measure_unit:
+        name: measureUnit
+        setter_name: setMeasureUnit
+        type: object
+        metadata:
+            field_name: measureUnit
+            join_columns:
+                -
+                    name: measureunit_id
+                    unique: false
+                    nullable: true
+                    on_delete: null
+                    column_definition: null
+                    referenced_column_name: id
+            cascade: {  }
+            inversed_by: null
+            target_entity: Flexix\SampleEntitiesBundle\Entity\MeasureUnit
+            fetch: 2
+            type: 2
+            mapped_by: null
+            is_owning_side: true
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
+                measureunit_id: id
+            join_column_field_names:
+                measureunit_id: measureunit_id
+            target_to_source_key_columns:
+                id: measureunit_id
+            orphan_removal: false
+        association_type: 2
+        entity_name: Flexix\SampleEntitiesBundle\Entity\MeasureUnit
+    product_dictionary:
+        name: productDictionary
+        setter_name: setProductDictionary
+        type: object
+        metadata:
+            field_name: productDictionary
+            join_columns:
+                -
+                    name: product_dictionary_id
+                    referenced_column_name: id
+            cascade: {  }
+            inversed_by: null
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductDictionary
+            fetch: 2
+            type: 2
+            mapped_by: null
+            is_owning_side: true
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+            source_to_target_key_columns:
+                product_dictionary_id: id
+            join_column_field_names:
+                product_dictionary_id: product_dictionary_id
+            target_to_source_key_columns:
+                id: product_dictionary_id
+            orphan_removal: false
+        association_type: 2
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductDictionary
+    product_prices:
+        name: productPrices
+        setter_name: addProductPrice
+        type: object
+        metadata:
+            field_name: productPrices
+            mapped_by: productDefinition
+            target_entity: Flexix\SampleEntitiesBundle\Entity\ProductPrice
+            cascade: {  }
+            orphan_removal: false
+            fetch: 2
+            type: 4
+            inversed_by: null
+            is_owning_side: false
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+        association_type: 4
+        entity_name: Flexix\SampleEntitiesBundle\Entity\ProductPrice
+    discounts:
+        name: discounts
+        setter_name: addDiscount
+        type: object
+        metadata:
+            field_name: discounts
+            mapped_by: productDefinition
+            target_entity: Flexix\SampleEntitiesBundle\Entity\Discount
+            cascade: {  }
+            orphan_removal: false
+            fetch: 2
+            type: 4
+            inversed_by: null
+            is_owning_side: false
+            source_entity: Flexix\SampleEntitiesBundle\Entity\ProductDefinition
+            is_cascade_remove: false
+            is_cascade_persist: false
+            is_cascade_refresh: false
+            is_cascade_merge: false
+            is_cascade_detach: false
+        association_type: 4
+        entity_name: Flexix\SampleEntitiesBundle\Entity\Discount

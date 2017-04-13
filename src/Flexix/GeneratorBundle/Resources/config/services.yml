@@ -1,0 +1,20 @@
+parameters:
+    
+    flexix_generator.twig_enviroment_parameter:
+            debug: true,
+            cache: false,
+            strict_variables: true,
+            autoescape: false
+services:
+    flexix_generator.twig_loader_filesystem:
+        class: Twig_Loader_Filesystem
+ 
+    flexix_generator.twig_enviroment:
+        class: Twig_Environment
+        arguments: ['@flexix_generator.twig_loader_filesystem',%flexix_generator.twig_enviroment_parameter%]    
+        
+    flexix_generator.generator:
+        class: Flexix\GeneratorBundle\Util\Generator
+        arguments: ['@flexix_generator.twig_enviroment']
+        
+        

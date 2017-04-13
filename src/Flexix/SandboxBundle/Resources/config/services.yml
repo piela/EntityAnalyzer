@@ -1,0 +1,133 @@
+parameters:
+  #####################################exeperiment     
+    test.configuration:    
+        base:
+            allowed: true
+            form: 
+                   form_type_class: 'Flexix\SampleEntitiesBundle\Form\ProductCategoryType'
+                   action: list
+            models:
+                    get:
+                        name: some_model
+                        method: findOneById
+                        return_result_to_view: true
+                        result_parameter: productCategory 
+                   
+        actions: 
+            list:
+                templates:
+                    element: 'productcategory\index.html.twig' 
+                models:
+                    list:
+                        name: some_model
+                        method: search
+                        return_result_to_view: true
+                        result_parameter: productCategories
+            new:
+               form: 
+                   action: new 
+               #                routeName: aaa    
+               #                parameters:
+               #                value        
+               templates:
+                    element: 'productcategory\new.html.twig'
+               models:
+                    prepare:
+                        name: some_model
+                        method: save2
+                    create:
+                        name: some_model
+                        method: save
+                        return_result_to_view: true
+                        result_parameter: result 
+               redirection: 
+                    route_name: list
+                    parameters:                                       
+            get:
+                templates:
+                    element: 'productcategory\show.html.twig'   
+                redirection: 
+                    route_name: new
+                    parameters:                        
+            edit:
+                form:
+                   form_type_class: 'Flexix\SampleEntitiesBundle\Form\ProductCategoryType'
+                   action:
+                   paremeters: 
+                            -id
+                models:
+                   get:
+                        name: some_model
+                        method: findOneById
+                        return_result_to_view: true
+                        result_parameter: entity 
+                templates:
+                    element: 'productcategory\edit.html.twig'
+                   
+                models:
+                    get:
+                        name: some_model
+                        method: findOneById
+                        return_result_to_view: true
+                        result_parameter: entity
+                    update:
+                        name: some_model
+                        method: update
+                        return_result_to_view: true
+                        result_parameter: entity    
+                templates:
+                    element: 'productcategory\edit.html.twig'         
+            delete:
+                form:
+                   action: delete     
+                models:
+                    delete:
+                        name: some_model
+                        method: delete
+                        return_result_to_view: true
+                        result_parameter: entity   
+                templates:
+                    element: 'productcategory\list.html.twig'
+                redirection: 
+                    route_name: list
+ 
+ 
+services:
+    
+    app.post_voter:
+        class: Flexix\SandboxBundle\Sample\SampleVoter
+        arguments: ['@security.access.decision_manager']
+        tags:
+            - { name: security.voter }
+        public: false
+
+    
+    
+    flexix_prototype.test_configuration:
+        class: Flexix\ConfigurationBundle\Util\Configuration
+        arguments: [%test.configuration%]
+        tags:
+            - { name: flexix_prototype.controller_configuration, applicationPath: 'admin/ala/ma/kota', entity_alias: 'product-category' }
+    
+
+    #wczesniejsza deklaracja
+    #some_model:
+    #    class: Flexix\ModelBundle\Util\Model
+    #    arguments: ['@doctrine.orm.entity_manager']
+    
+    
+    real_model:
+        class: Flexix\ModelBundle\Util\Model
+        arguments: ['@doctrine.orm.entity_manager']
+    
+    some_model:
+        class: Flexix\SandboxBundle\Sample\SampleLogger
+        arguments: ['@real_model']
+        
+    
+    
+    flexix_prototype.test_configuration1:
+        class: Flexix\ConfigurationBundle\Util\Configuration
+        arguments: [%test.configuration%]
+        tags:
+            - { name: flexix_prototype.controller_configuration, applicationPath: 'api', entity_alias: 'product-category' }  

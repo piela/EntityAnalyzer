@@ -1,0 +1,3 @@
+flexix_configuration_homepage:
+    path:     /
+    defaults: { _controller: FlexixConfigurationBundle:Default:index }

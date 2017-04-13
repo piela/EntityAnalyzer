@@ -1,28 +1,28 @@
 
-tm_solution_menu:
-    resource: "@TMSolutionMenuBundle/Resources/config/routing.yml"
+flexix_menu:
+    resource: "@FlexixMenuBundle/Resources/config/routing.yml"
     prefix:   /
 
 
 
-tm_solution_form_type_templates:
-    resource: "@TMSolutionFormTypeTemplatesBundle/Resources/config/routing.yml"
+flexix_form_type_templates:
+    resource: "@FlexixFormTypeTemplatesBundle/Resources/config/routing.yml"
     prefix:   /
 
-tm_solution_generator:
-    resource: "@TMSolutionGeneratorBundle/Resources/config/routing.yml"
+flexix_generator:
+    resource: "@FlexixGeneratorBundle/Resources/config/routing.yml"
     prefix:   /
 
-tm_solution_sandbox:
-    resource: "@TMSolutionSandboxBundle/Resources/config/routing.yml"
+flexix_sandbox:
+    resource: "@FlexixSandboxBundle/Resources/config/routing.yml"
     prefix:   /
 
-tm_solution_sample_entities_product_category:
-    resource: "@TMSolutionSampleEntitiesBundle/Controller/ProductCategoryController.php"
+flexix_sample_entities_product_category:
+    resource: "@FlexixSampleEntitiesBundle/Controller/ProductCategoryController.php"
     type:     annotation
 
-tm_solution_prototype:
-    resource: "@TMSolutionPrototypeBundle/Resources/config/routing.yml"
+flexix_prototype:
+    resource: "@FlexixPrototypeBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:

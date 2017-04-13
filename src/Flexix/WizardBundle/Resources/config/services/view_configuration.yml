@@ -1,0 +1,62 @@
+parameters:    
+    flexix_wizard_view_configuration.config: 
+        base:
+            allowed: true
+            form: 
+                   action: new 
+                   form_type: 'Flexix\WizardBundle\Form\ViewConfigurationType'
+            models:
+                 get:
+                        name: 'flexix_wizard.model'
+                        method: findOneById
+                        result_parameter: viewConfiguration    
+        actions: 
+            new:
+               templates:
+                    widget: 'viewconfiguration\new.html.twig'
+               models:
+                    create:
+                        name: 'flexix_wizard.model'
+                        method: save
+                      
+               redirection: 
+                    route_name: list                                     
+            list:
+                templates:
+                    widget: 'viewconfiguration\index.html.twig' 
+                models:
+                    list:
+                        name: 'flexix_wizard.model'
+                        method: search
+                        result_parameter: viewConfigurations   
+            get:
+                templates:
+                    widget: 'viewconfiguration\show.html.twig'
+            edit:
+                templates:
+                    widget: 'viewconfiguration\edit.html.twig'            
+   
+   
+services:
+        flexix_wizard.view_configuration:
+            class: Flexix\ConfigurationBundle\Util\Configuration
+            arguments: [%flexix_wizard_view_configuration.config%]
+            tags:
+                - { name: flexix_prototype.controller_configuration, applicationPath: 'wizard', entity_alias: 'view-configuration' }
+        
+        flexix_wizard.model:
+            class: Flexix\ModelBundle\Util\Model
+            arguments: ['@doctrine.orm.entity_manager']
+            
+            
+        flexix_wizard.map_reader:
+            class: Flexix\WizardBundle\Util\MapReader
+            arguments: [%flexix_mapper.entities%]    
+              
+        flexix_wizard.form.view_configuration_type:
+            class: Flexix\WizardBundle\Form\ViewConfigurationType
+            arguments: ['@flexix_wizard.map_reader']
+            tags:
+                - { name: form.type }
+    
+            

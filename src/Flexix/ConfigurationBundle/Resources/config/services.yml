@@ -1,0 +1,4 @@
+services:
+#    flexix_configuration.example:
+#        class: Flexix\ConfigurationBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

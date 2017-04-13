@@ -1,0 +1,51 @@
+parameters:    
+    flexix_wizard_view_type.config:                    
+        actions: 
+            new:
+               allowed: true
+               form: 
+                   action: new 
+                   form_type: 'Flexix\WizardBundle\Form\ViewTypeType'
+               templates:
+                    widget: 'viewtype\new.html.twig'
+               models:
+                    create:
+                        name: 'flexix_wizard.model'
+                        method: save
+                      
+               redirection: 
+                    route_name: list 
+            edit:
+               allowed: true
+               form: 
+                   action: edit 
+                   form_type_class: 'Flexix\WizardBundle\Form\ViewTypeType'
+               templates:
+                    widget: 'viewtype\edit.html.twig'
+               models:
+                    get:
+                        name: 'flexix_wizard.model'
+                        method: findOneById
+                    update:
+                        name: 'flexix_wizard.model'
+                        method: update          
+               redirection: 
+                    route_name: list         
+            list:
+                allowed: true
+                templates:
+                    widget: 'viewtype\index.html.twig' 
+                models:
+                    list:
+                        name: 'flexix_wizard.model'
+                        method: search
+                        result_parameter: viewTypes      
+   
+services:
+        flexix_wizard.view_type:
+            class: Flexix\ConfigurationBundle\Util\Configuration
+            arguments: [%flexix_wizard_view_type.config%]
+            tags:
+                - { name: flexix_prototype.controller_configuration, applicationPath: 'wizard', entity_alias: 'view-type' }
+        
+
