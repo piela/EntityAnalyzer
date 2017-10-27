@@ -1,11 +1,11 @@
 <?php
 
-namespace TMSolution\SandboxBundle\Sample;
+namespace TMSolution\SecurityBundle\Util;
 
 use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
-use TMSolution\PrototypeBundle\Util\TicketInterface;
+use Flexix\PrototypeControllerBundle\Util\TicketInterface;
 
 /**
  * Description of Voter

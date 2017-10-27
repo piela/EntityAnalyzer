@@ -24,15 +24,17 @@ class AppKernel extends Kernel
             new Flexix\ControllerConfigurationBundle\FlexixControllerConfigurationBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+           
+           
             new Flexix\ModelBundle\FlexixModelBundle(),
             new Flexix\SandboxBundle\FlexixSandboxBundle(),
             new Flexix\GeneratorBundle\FlexixGeneratorBundle(),
             new Flexix\FormTypeTemplatesBundle\FlexixFormTypeTemplatesBundle(),
             new Flexix\WizardBundle\FlexixWizardBundle(),
+            
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            /*form menu*/
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Flexix\MenuBundle\FlexixMenuBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
